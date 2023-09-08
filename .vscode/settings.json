@@ -1,0 +1,9 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"html.format.wrapLineLength": 20000,
+	"javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+	"editor.formatOnType": true,
+	"explorer.compactFolders": false,
+	"explorer.fileNesting.expand": false,
+	"workbench.editor.openSideBySideDirection": "down"
+}
