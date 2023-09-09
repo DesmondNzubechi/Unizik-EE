@@ -4,13 +4,15 @@ import tools from '../../assets/images/ee.avif';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {HiXMark} from 'react-icons/hi2';
 import { Link } from "react-router-dom";
+import { FaUserCircle } from 'react-icons/fa';
+import { fullNewsContext } from "../context/Context";
+import { useContext } from "react";
 
 export const Navmobile = () => {
+    const { signedIn } = useContext(fullNewsContext);
 
 const [showNav, SetShowNav] = useState(false);
-
 const [hideBtn, setHideBtn] = useState(false);
-
 const [showBtn, setShowBtn] = useState(true);
 
 const shownavF = () => {
@@ -48,14 +50,18 @@ const hidenavF = () => {
 
          </ul>
 
-        <div className="flex relative z-2 flex-col gap-2">
+       {!signedIn && <div className="flex relative z-2 flex-col gap-2">
             <button className="border-yellow-500 w-fit border text-white px-[20px] text-center py-[4px] text-[20px] rounded capitaliz font-semibold ">
             <Link onClick={hidenavF} to='/login'>Login</Link>
             </button>
             <button className="bg-yellow-500 px-[20px] text-center py-[4px] text-[17px] rounded w-fit capitaliz font-semibold ">
             <Link onClick={hidenavF} to='/signup'>Signup</Link>
             </button>
-          </div>
+                    </div>}
+                  { signedIn && <button className=" w-fit p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
+            <Link onClick={hidenavF} className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+        
+            </button>}
           </div>
 }
           <div className="flex gap-2 ">

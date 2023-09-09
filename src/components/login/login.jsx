@@ -4,13 +4,19 @@ import { Link } from "react-router-dom";
 import { BounceLoader, CircleLoader, ClipLoader} from "react-spinners";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { fullNewsContext } from "../context/Context";
+
 
 export const Login = () => {
+    const { signedIn } = useContext(fullNewsContext);
     const [spinnerJs, setSpinnerJs] = useState(false);
     const [userDetails, setUserDetails] = useState({
         emailAddress: '',
         password: '',
     })
+
     const signUserIn = async () => {
         setSpinnerJs(true);
         try {
@@ -21,7 +27,9 @@ export const Login = () => {
             alert(error);
         }
     }
-    return(
+    const navig = useNavigate();
+    return (
+        signedIn? navig('/profile') : !signedIn &&
         <div className="py-[70px] pt-[150px] ">
             <div className="flex flex-row justify-center">
             { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"

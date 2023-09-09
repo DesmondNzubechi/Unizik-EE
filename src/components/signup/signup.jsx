@@ -5,7 +5,9 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { db } from "../config/firebase";
 import { addDoc, collection } from "firebase/firestore";
-
+import { useContext } from "react";
+import { fullNewsContext } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 export const Sign = () => {
     const [spinnerJs, setSpinnerJs] = useState(false);
     const [userDetails, setUserDetails] = useState({
@@ -16,6 +18,7 @@ export const Sign = () => {
         password: '',
         confirmPassword: '',
     })
+    const { signedIn } = useContext(fullNewsContext);
 
     const signUserUp = async () => {
         const userRef = collection(db, 'allUser')
@@ -34,8 +37,10 @@ export const Sign = () => {
             alert(error);
         }
     }
+    const navig = useNavigate();
 
-    return(
+    return (
+        signedIn? navig('/profile') : !signedIn &&
         <div className="py-[70px] pt-[150px]">
             <div className="flex flex-row justify-center">
            { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"

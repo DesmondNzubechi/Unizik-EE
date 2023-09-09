@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { CoursesOffered } from "../CourseOffered/CourseOffered";
 import { allPdfs } from "../PDFs/PDFs";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 export const fullNewsContext = createContext();
@@ -71,20 +71,27 @@ export const NewsContext = (props) => {
 
       const getMainUser = () => {
      const personalInfo =  registeredUser.filter(user => {
-          return  user.email === signedIn.email
+          return  user.email == signedIn?.email
      })
         setMainUser(personalInfo);
       }
       getMainUser();
     }, [])
-    console.log(mainUser)
-  console.log(registeredUser)
+   
+  const signOutUser = async () => {
+    try {
+      setMainUser(0)
+      await signOut(auth)
+    } catch (error) {
+      
+    }
+  }
   
     //const getCourseName = (courses) => {
     
     //}
 
-    return <fullNewsContext.Provider value={{getFullNews, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

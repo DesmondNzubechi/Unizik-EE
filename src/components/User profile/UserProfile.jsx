@@ -8,6 +8,7 @@ import  { HiOutlineBars3, HiXMark } from 'react-icons/hi2';
 import { useState } from "react";
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 const levels = [
    100, 200, 300, 400, 500
 ];
@@ -17,7 +18,7 @@ export const UserProfile = () => {
         changePassword : 'top-[-2000px]', 
         editProfile : 'top-[-2000px]',
     });
-  const {signedIn, mainUser} = useContext(fullNewsContext)
+  const {signedIn, mainUser, signOutUser} = useContext(fullNewsContext)
 
       //view edit profile page
         const viewEditProfile = () => {
@@ -50,9 +51,10 @@ export const UserProfile = () => {
             editProfile : 'top-[-1000px]',
            });
         }
-      
+  const navig = useNavigate();
 
-    return(
+  return (
+      !signedIn? navig('/login') : signedIn &&
         <>
         <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center bg-white">
             <div className="bg-gradient-to-b  from-white to-white p-5 rounded ">
@@ -70,10 +72,10 @@ export const UserProfile = () => {
                 <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{ mainUser[0]?.lastName}</span></p>
                 <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Email:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{signedIn?.email}</span></p>
                 <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Level:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{ mainUser[0]?.userLevel}</span></p>
-                     <div className="flex items-center text-center  flex-row gap-1">
-            <button onClick={viewChangePassword} className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-green-500 text-[12px]  p-2 h-fit rounded ">Change Password </button>
-            <button onClick={viewEditProfile}  className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-yellow-500 text-[12px]  p-2 h-fit rounded ">Edit Profile</button>
-            <button className="flex items-center  text-slate-50 gap-2 md:text-[15px] bg-red-500 text-[12px]  p-2 px-[45px] h-fit rounded ">Logout </button>
+                     <div className="flex items-center  text-center   gap-1">
+            <button onClick={viewChangePassword} className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-green-500 text-[12px] w-fit  p-2 h-fit rounded ">Change Password </button>
+            <button onClick={viewEditProfile}  className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-yellow-500 text-[12px] w-fit p-2 h-fit rounded ">Edit Profile</button>
+            <button onClick={signOutUser} className="flex items-center  text-slate-50 gap-2 md:text-[15px] bg-red-500 text-[12px]  p-2 w-fit h-fit rounded ">Logout </button>
            </div>
                     </div>
                 </div>
