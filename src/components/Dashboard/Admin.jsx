@@ -32,14 +32,12 @@ const [logoutB, setLogoutB] = useState(false);
      const [sideLinkState, setSideLinkState] = useState('hidden');
 
     return(
-        <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[150px] bottom-0 "
+        <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[70px] bottom-0 "
         >
           <div className="flex flex-row items-center justify-center">
-          <div className="fixed flex justify-between top-0 w-full right-0 left-0 p-5 shadow-2xl bg-slate-900 z-[50]">
-            <div className="flex gap-2 items-center" >
-            <img className="max-w-[50px]" src={logo} alt="" />
-            <h1 className="text-slate-50 md:flex hidden uppercase text-[30px] font-bold"><span className="text-yellow-500">ee</span>UNIZIK</h1>
-            <div >
+          <div className="fixed flex justify-between top-0 w-full right-0 left-0 py-2 px-5 shadow bg-slate-50 z-[50]">
+                    <div className="flex gap-2 items-center" >
+                    <div >
             {sideLinks.prevIc && <HiXMark  onClick={() => {
                 setSideLinkState('hidden');
                 setSideLinks({
@@ -53,15 +51,17 @@ const [logoutB, setLogoutB] = useState(false);
                 setSideLinks({nextIc:false, prevIc:true,  })
             }} className={`bg-slate-50  p-1 rounded-[2px] text-[20px] md:text-[30px]`}/>}
             </div>
-            </div>
+          {  /*<img className="max-w-[50px]" src={logo} alt="" />*/}
+           { <h1 className="text-slate-900 md:flex  uppercase text-[12px] md:text-[20px] font-bold"><span className="text-yellow-500">ee</span>UNIZIK</h1>}
+                    </div>
+                        <h1 className="self-center text-[15px] uppercase font-semibold ">Dashboard</h1>
+                  
            <div className="flex flex-row gap-1">
             <button onClick={() => setDisplaying(<UserProfile/>)} className="flex items-center text-slate-50 gap-2 md:text-[20px] bg-green-500 text-[15px]  p-2 h-fit rounded ">Profile <FaUserCircle/></button>
-            <button className="flex items-center text-slate-50 gap-2 md:text-[20px] bg-yellow-500 text-[15px]  p-2 h-fit rounded ">Logout <AiOutlineLogout/></button>
+           {/* <button className="flex items-center text-slate-50 gap-2 md:text-[20px] bg-yellow-500 text-[15px]  p-2 h-fit rounded ">Logout <AiOutlineLogout/></button>*/}
            </div>
           </div>
-
-
-             <div className="bg-slate-800 z-[10] bottom-0 p-1 md:p-5 fixed top-0 left-0 h-[100%]">
+             <div className="bg-slate-500 z-[10] bottom-0 p-1 md:p-5 fixed rounded-full top-0 left-0 h-[100%]">
              <div>
                 <ul className="flex flex-col px-[5px] pt-[100px] gap-[40px]">
                     <li ><Link onClick={() => setDisplaying(<DashboardView/>)}  className="flex-row   flex items-center gap-x-2  "> <AiFillDashboard className="text-slate-100 text-[17px] md:text-[30px] " />  <span className={`text-[15px] md:text-[20px]  ${sideLinkState}  text-white   `}>Dashboard</span> </Link></li>
@@ -69,7 +69,9 @@ const [logoutB, setLogoutB] = useState(false);
                     <li><Link onClick={() => setDisplaying(<PdfUpload/>)}  className="flex-row flex items-center gap-x-2  "><MdPictureAsPdf className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Upload Pdf</span>  </Link></li>
                     <li><Link onClick={() => setDisplaying(<Users/>)}  className="flex-row flex items-center gap-x-2  "><FaUsers className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Users</span> </Link></li>
                     <li><Link onClick={() => setDisplaying(<UserProfile/>)} className="flex-row flex items-center gap-x-2  "><FaUserCircle className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Profile</span> </Link></li>
-                </ul>
+                    <li><Link  className="flex-row flex items-center gap-x-2  "><AiOutlineLogout className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Logout</span> </Link></li>
+               
+                        </ul>
             </div>
             </div>
             

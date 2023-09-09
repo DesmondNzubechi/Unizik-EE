@@ -1,10 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader, CircleLoader, ClipLoader} from "react-spinners";
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
+import { db } from "../config/firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export const Sign = () => {
-     const [spinnerJs, setSpinnerJs] = useState(false);
+    const [spinnerJs, setSpinnerJs] = useState(false);
+    const [userDetails, setUserDetails] = useState({
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        level: '',
+        password: '',
+        confirmPassword: '',
+    })
+
+    const signUserUp = async () => {
+        const userRef = collection(db, 'allUser')
+        setSpinnerJs(true);
+        try {
+            await createUserWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);
+            await addDoc(userRef,{
+                email: userDetails.emailAddress,
+                firstName: userDetails.firstName,
+                lastName: userDetails.lastName,
+                userLevel: userDetails.level,
+                }
+            )
+            setSpinnerJs(false);
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     return(
         <div className="py-[70px] pt-[150px]">
             <div className="flex flex-row justify-center">
@@ -22,11 +52,11 @@ export const Sign = () => {
 <div className="flex flex-col md:flex-row gap-5">
                     <div className="flex flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">First name:</label>
-                <input placeholder="Input First Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, firstName: e.target.value})} value={userDetails.firstName} placeholder="Input First Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
             </div>
             <div className="flex flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">Last name:</label>
-                <input placeholder="Input Last Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, lastName: e.target.value})} value={userDetails.lastName} placeholder="Input Last Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
             </div>
             
 </div>
@@ -38,12 +68,12 @@ export const Sign = () => {
     </div>*/} 
             <div  className="flex flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">Email Address:</label>
-                <input className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="email" placeholder="Input Email" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="email" placeholder="Input Email" name="email" id="" />
             </div>
 
             <div  className="flex w-full flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">Level:</label>
-                <select name="" id="" className="border-yellow-500 bg-yellow-500 border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
+                <select onChange={(e) => setUserDetails({...userDetails, level: e.target.value})} value={userDetails.level} name="" id="" className="border-yellow-500 bg-yellow-500 border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
     <option className="text-[20px] " >select level</option>
     <option value="500l"  className="text-[20px] " >Aspirant</option>
    <option value="500l"  className="text-[20px] " >100level</option>
@@ -59,17 +89,17 @@ export const Sign = () => {
                  <div className="flex flex-col md:flex-row gap-3">
             <div className="flex flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">Password:</label>
-                <input placeholder="Input Password" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="email" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, password: e.target.value})} value={userDetails.password} placeholder="Input Password" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="password" name="email" id="" />
             </div>
          
             
 
             <div  className="flex flex-col ">
                 <label className="text-[17px] font-[400]" htmlFor="">Confirm Password:</label>
-                <input className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="password" placeholder="Confirm Password" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, confirmPassword: e.target.value})} value={userDetails.confirmPassword} className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="password" placeholder="Confirm Password" name="email" id="" />
             </div>
             </div>
-            <button onClick={() => setSpinnerJs(true)} className="bg-slate-900 py-[3px] w-full  rounded shadow-2xl text-white text-[17px] font-[400] " type="button">Sign Up</button>
+            <button onClick={signUserUp} className="bg-slate-900 py-[3px] w-full  rounded shadow-2xl text-white text-[17px] font-[400] " type="button">Sign Up</button>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <span className="h-[4px] bg-yellow-500 w-full "></span>

@@ -2,11 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BounceLoader, CircleLoader, ClipLoader} from "react-spinners";
-
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 export const Login = () => {
     const [spinnerJs, setSpinnerJs] = useState(false);
+    const [userDetails, setUserDetails] = useState({
+        emailAddress: '',
+        password: '',
+    })
     return(
         <div className="py-[70px] pt-[150px] ">
             <div className="flex flex-row justify-center">
