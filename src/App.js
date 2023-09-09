@@ -157,7 +157,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-   <div className='overflow-x-hidden'>
+   <div className='overflow-x-hidden font-fonty'>
 <NewsContext>
 <BrowserRouter>
 <ScrollToTop/>

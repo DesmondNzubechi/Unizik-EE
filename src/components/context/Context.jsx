@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import { CoursesOffered } from "../CourseOffered/CourseOffered";
 import { allPdfs } from "../PDFs/PDFs";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../config/firebase";
+import { collection, getDocs } from "firebase/firestore";
 export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
@@ -42,11 +45,46 @@ export const NewsContext = (props) => {
       setClickedCoursePdf(pdf);
     }
 
+  const [signedIn, setSignedIn] = useState({});
+  const userInfoStore = collection(db, 'allUser');
+  const [registeredUser, setRegisteredUser] = useState([]);
+  const [mainUser, setMainUser] = useState([])
+    useEffect(() => {
+      onAuthStateChanged(auth, (currentUser) => {
+        setSignedIn(currentUser)
+      });
+      const getUserInfo = async () => {
+        try {
+          const userInfo = await getDocs(userInfoStore);
+          const allUsers = userInfo.docs
+            .map((doc) => ({
+              ...doc.data(),
+              id: doc.id,
+            }));
+          setRegisteredUser(allUsers);
+          
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      getUserInfo();
+
+      const getMainUser = () => {
+     const personalInfo =  registeredUser.filter(user => {
+          return  user.email === signedIn.email
+     })
+        setMainUser(personalInfo);
+      }
+      getMainUser();
+    }, [])
+    console.log(mainUser)
+  console.log(registeredUser)
+  
     //const getCourseName = (courses) => {
     
     //}
 
-    return <fullNewsContext.Provider value={{getFullNews, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }
