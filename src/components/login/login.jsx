@@ -22,6 +22,7 @@ export const Login = () => {
         try {
             await signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);
             setSpinnerJs(false);
+            navig('/profile')
         } catch (error) {
             setSpinnerJs(false)
             alert(error);

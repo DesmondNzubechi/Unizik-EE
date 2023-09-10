@@ -33,6 +33,7 @@ export const Sign = () => {
                 }
             )
             setSpinnerJs(false);
+            navig('/profile')
         } catch (error) {
             alert(error);
         }

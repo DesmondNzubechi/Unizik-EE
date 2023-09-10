@@ -5,10 +5,11 @@ import { allPdfs } from "../PDFs/PDFs";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 export const fullNewsContext = createContext();
 
+
 export const NewsContext = (props) => {
-  
     const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
     const [clickedCoursePdf, setClickedCoursePdf] = useState(localStorage.getItem("clickedCoursePdf") ||  '');
     const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
@@ -49,34 +50,40 @@ export const NewsContext = (props) => {
   const userInfoStore = collection(db, 'allUser');
   const [registeredUser, setRegisteredUser] = useState([]);
   const [mainUser, setMainUser] = useState([])
-    useEffect(() => {
-      onAuthStateChanged(auth, (currentUser) => {
-        setSignedIn(currentUser)
-      });
-      const getUserInfo = async () => {
-        try {
-          const userInfo = await getDocs(userInfoStore);
-          const allUsers = userInfo.docs
-            .map((doc) => ({
-              ...doc.data(),
-              id: doc.id,
-            }));
-          setRegisteredUser(allUsers);
-          
-        } catch (error) {
-          console.log(error)
-        }
-      }
-      getUserInfo();
 
-      const getMainUser = () => {
-     const personalInfo =  registeredUser.filter(user => {
-          return  user.email == signedIn?.email
-     })
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (currentUser) => {
+      setSignedIn(currentUser)
+    });
+    // Function to get user information
+    const getUserInfo = async () => {
+      try {
+        // Fetch user information
+        const userInfo = await getDocs(userInfoStore);
+        const allUsers = userInfo.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+  
+        // Set registered users
+        setRegisteredUser(allUsers);
+  
+        // Find the current user based on email
+        const personalInfo = allUsers.filter((user) => user.email === signedIn.email);
+        console.log('personalInfo:', personalInfo);
+        console.log('signedIn?.email:', signedIn?.email);
+        // Set the main user
         setMainUser(personalInfo);
+      } catch (error) {
+        console.error(error);
       }
-      getMainUser();
-    }, [])
+    };
+  
+    // Call the function to get user information
+    getUserInfo();
+  }, [signedIn]); // Trigger this effect when signedIn changes
+  
    
   const signOutUser = async () => {
     try {
@@ -91,7 +98,7 @@ export const NewsContext = (props) => {
     
     //}
 
-    return <fullNewsContext.Provider value={{getFullNews, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

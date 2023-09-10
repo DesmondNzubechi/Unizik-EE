@@ -6,9 +6,13 @@ import {RiLockPasswordFill} from 'react-icons/ri';
 import {AiFillEdit} from 'react-icons/ai'; 
 import  { HiOutlineBars3, HiXMark } from 'react-icons/hi2';
 import { useState } from "react";
+import { collection, doc, updateDoc } from "firebase/firestore";
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { auth, db } from "../config/firebase";
 const levels = [
    100, 200, 300, 400, 500
 ];
@@ -18,8 +22,10 @@ export const UserProfile = () => {
         changePassword : 'top-[-2000px]', 
         editProfile : 'top-[-2000px]',
     });
-  const {signedIn, mainUser, signOutUser} = useContext(fullNewsContext)
+  const notification = () => toast('Profile Info Succesfully Updated');
+  const {signedIn, mainUser, setMainUser, signOutUser} = useContext(fullNewsContext)
 
+  const [mainUserInfo, setMainUserInfo] = useState({ ...mainUser[0]})
       //view edit profile page
         const viewEditProfile = () => {
           setForm({
@@ -52,7 +58,24 @@ export const UserProfile = () => {
            });
         }
   const navig = useNavigate();
+  const updateUserInfo = async (userId) => {
 
+    const userInfoStore = doc(db, 'allUser', userId);
+
+     try {
+       await updateDoc(userInfoStore, {
+         email: mainUser[0]?.email,
+         firstName: mainUser[0]?.firstName,
+         lastName: mainUser[0]?.lastName,
+         userLevel: mainUser[0]?.userLevel
+       });
+       hideEditProfile();
+       notification();
+     } catch (error) {
+    console.log(error)
+     }
+  }
+console.log("MainUser ifo", mainUserInfo)
   return (
       !signedIn? navig('/login') : signedIn &&
         <>
@@ -100,26 +123,33 @@ export const UserProfile = () => {
             <h1 className="text-[20px] font-bold uppercase text-slate-100 ">Edit Profile</h1>
             <div className="flex flex-col">
                 <label className="text-slate-900 font-[400] text-[20px]" htmlFor="email">Email:</label>
-                <input type="email" disabled className="border outline-0  p-2 rounded" placeholder="nzubechukwu1@gmail.com" />
+                <input value={mainUser[0]?.email} type="email" disabled className="border outline-0  p-2 rounded" placeholder="nzubechukwu1@gmail.com" />
            </div>
             <div className="flex flex-col">
                 <label htmlFor="name" className="text-slate-900 font-[400] text-[20px]">First Name:</label>
-                <input type="text" className="border outline-0  p-2 rounded" placeholder="Nzubechukwu " />
+              <input onChange={(e) => {
+                setMainUser({...mainUser[0], firstName: e.target.value })
+                }} value={mainUser[0]?.firstName} type="text" className="border outline-0  p-2 rounded" placeholder="Nzubechukwu " />
             </div>
             <div className="flex flex-col">
                 <label htmlFor="name" className="text-slate-900 font-[400] text-[20px]">Last Name:</label>
-                <input type="text" className="border outline-0  p-2 rounded" placeholder="Desmond" />
+              <input value={mainUser[0]?.lastName} onChange={e => {
+                setMainUser([{ ...mainUser[0], lastName: e.target.value }])
+              }} type="text" className="border outline-0  p-2 rounded" placeholder="Desmond" />
             </div>
             <div className="flex flex-col">
                 <label className="text-slate-900 font-[400] text-[20px]" htmlFor="Level">Level:</label>
-              <select className="border outline-0  p-2 rounded"  name="" id="">
-                <option value="">Select</option>
+              <select value={mainUser[0]?.userLevel} onChange={(e) => setMainUser([{
+                ...mainUser[0],
+                userLevel: e.target.value
+              }])} className=" border  outline-0 p-2 rounded" name="" id="">
+                <option value="">Select</option> 
                 {levels.map(level => {
                     return <option value={level}>{level} Level</option>
                 })}
               </select>
             <div className="flex flex-col">
-                <button className="bg-slate-900 text-slate-50 p-2 my-[20px] rounded text-[20px] capitalize">Update Profile</button>
+                <button type="button" onClick={() => updateUserInfo(mainUser[0]?.id)} className="bg-slate-900 text-slate-50 p-2 my-[20px] rounded text-[20px] capitalize">Update Profile</button>
             </div>
             </div>
         </form>
