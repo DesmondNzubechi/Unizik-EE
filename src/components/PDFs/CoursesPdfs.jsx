@@ -30,12 +30,19 @@ export const DownloadPdfs = () => {
         </div>
         
         <div className="flex flex-row gap-2 items-center justify-center">
-          <button className="shadow-2xl p-2 rounded bg-yellow-500 text-slate-50 capitalize font-semibold">handouts</button>
-          <button className="shadow-2xl p-2 rounded bg-slate-100 capitalize font-semibold">Textbooks</button>
-          <button className="shadow-2xl p-2 rounded bg-slate-100 capitalize font-semibold">Past Question</button>
+          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-yellow-500 text-slate-50 capitalize font-semibold">handouts</button>
+          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-slate-100 capitalize font-semibold">Textbooks</button>
+          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-slate-100 capitalize font-semibold">Past Question</button>
         </div>
 
-        <div className="grid grid-cols-1  my-[50px] gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1  my-[50px] gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
+            <div className="flex flex-col gap-2">
+              <h1 className="md:text-[17x] text-[14px] font-bold  ">Flip Flop</h1>  
+              <p className="md:text-[15px] text-[12px]">20mb</p>
+            </div>
+            <HiDocumentDownload className="text-[35px] hover:text-green-500  text-slate-900"/>
+          </div>
           <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
             <div className="flex flex-col gap-2">
               <h1 className="md:text-[17x] text-[14px] font-bold  ">Flip Flop</h1>  
