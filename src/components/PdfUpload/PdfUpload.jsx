@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { CoursesOffered } from "../CourseOffered/CourseOffered";
-
+import { addDoc, collection } from "firebase/firestore";
+import { db, storage } from "../config/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import pdfjsLib from 'pdfjs-dist';
 
 export const PdfUpload = () => {
 const [courseName, setCourseName] = useState("");
@@ -9,17 +12,142 @@ const [level, setLevel] = useState([]);
 const [getSemester, setGetSemester] = useState(null);
 const [selectedCourse, setSelectedCourse] = useState('select');
 const [selectedUnit, setSelectedUnit] = useState(null);
-const [courses, setCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
+    const [pdfDatas, setpdfDatas] = useState(null)
 const [pdfDetails, setPdfDetails] =  useState({
       level: '',
       semester: '',
       course:  '',
       topic : '',
-      coursePdf : null,
-
-
 });
+    
+    
+    
+// const uploadPdf = async () => {
+//     const pdfStore = collection(db, 'learningResources');
+//     const storageRef = ref(storage, 'learningResources');
+  
+//     try {
+//       // Render the first page of the PDF as an image
+//       const pdfDataResponse = await fetch(pdfDatas); // Assuming pdfDatas.url contains the URL of the PDF
+//       const pdfData = await pdfDataResponse.arrayBuffer();
+//       const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+//       const firstPage = await pdf.getPage(1);
+//       const viewport = firstPage.getViewport({ scale: 1 });
+//       const canvas = document.createElement('canvas');
+//       const context = canvas.getContext('2d');
+//       canvas.height = viewport.height;
+//       canvas.width = viewport.width;
+//       await firstPage.render({ canvasContext: context, viewport }).promise;
+//       const imageBase64 = canvas.toDataURL('image/jpeg');
+  
+//       // Upload the image of the first page to Firebase Storage
+//       const imageRef = ref(storage, `learningResources/${pdfDatas.name}_first_page.jpg`);
+//       const imageUploadData = await uploadBytes(imageRef, imageBase64, 'data_url');
+  
+//       // Get the download URL for the uploaded image
+//       const imageDownloadURL = await getDownloadURL(imageUploadData.ref);
+  
+//       // Now that the image is uploaded, you can proceed to upload the PDF
+//       const fileRef = ref(storageRef, pdfDatas.name);
+//       const uploadPdfData = await uploadBytes(fileRef, pdfDatas);
+  
+//       // Get the download URL for the uploaded PDF
+//       const getPdfLink = await getDownloadURL(uploadPdfData.ref);
+//    // Calculate the size in megabytes
+//       const pdfSizeInBytes = pdfDatas.size;
+//       const pdfSizeInMB = (pdfSizeInBytes / 1048576).toFixed(2); // Convert to MB and round to 2 decimal places
+//       // Add both PDF and image details to Firestore
+//       await addDoc(pdfStore, {
+//         level: pdfDetails.level,
+//         semester: pdfDetails.semester,
+//         course: pdfDetails.course,
+//         topic: pdfDetails.topic,
+//         link: getPdfLink,
+//         size: pdfSizeInMB + ' MB',
+//         firstPageImage: imageDownloadURL,
+//       });
+  
+//       alert('PDF and image uploaded successfully!');
+//     } catch (error) {
+//       console.error(error);
+//       alert('Error uploading PDF: ' + error.message);
+//     }
+//   };
+  
 
+const uploadPdf = async () => {
+    const pdfStore = collection(db, 'learningResources');
+    const storageRef = ref(storage, 'learningResources');
+
+    try {
+      const fileRef = ref(storageRef, pdfDatas.name);
+      const uploadPdfData = await uploadBytes(fileRef, pdfDatas);
+      const getPdfLink = await getDownloadURL(uploadPdfData.ref);
+
+      // Calculate the size in megabytes
+      const pdfSizeInBytes = pdfDatas.size;
+      const pdfSizeInMB = (pdfSizeInBytes / 1048576).toFixed(2); // Convert to MB and round to 2 decimal places
+
+      // Render the first page of the PDF as an image
+      const pdfDataResponse = await fetch(getPdfLink);
+      const pdfData = await pdfDataResponse.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
+      const firstPage = await pdf.getPage(1);
+      const viewport = firstPage.getViewport({ scale: 1 });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      await firstPage.render({ canvasContext: context, viewport }).promise;
+      const imageBase64 = canvas.toDataURL('image/jpeg');
+
+      // Upload the image of the first page to Firebase Storage
+      const imageRef = ref(storage, `learningResources/${pdfDatas.name}_first_page.jpg`);
+      const imageUploadData = await uploadBytes(imageRef, imageBase64, 'data_url');
+
+      // Get the download URL for the uploaded image
+      const imageDownloadURL = await getDownloadURL(imageUploadData.ref);
+
+      await addDoc(pdfStore, {
+        level: pdfDetails.level,
+        semester: pdfDetails.semester,
+        course: pdfDetails.course,
+        topic: pdfDetails.topic,
+        link: getPdfLink,
+        size: pdfSizeInMB + ' MB',
+        firstPageImage: imageDownloadURL, // Include the image download URL in Firestore
+      });
+
+      alert('PDF and image uploaded successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('Error uploading PDF: ' + error.message);
+    }
+  };
+
+
+    // const uploadPdf = async () => {
+    //     const pdfStore = collection(db, 'learningResources');
+    //     const storageRef = ref(storage, 'learningResources');
+
+    //     try {
+    //         const fileRef = ref(storageRef, pdfDatas.name);
+    //         const uploadPdfDatas = await uploadBytes(fileRef, pdfDatas)
+    //         const getPdfLink = await getDownloadURL(uploadPdfDatas.ref);
+    //         await addDoc(pdfStore, {
+    //             level: pdfDetails.level,
+    //             semester: pdfDetails.semester,
+    //             course:  pdfDetails.course,
+    //             topic : pdfDetails.topic,
+    //             link: getPdfLink,
+    //             size: pdfDatas.size,
+    //         })
+    //         alert('sure sure')
+    //     } catch (error) {
+    //         alert(error)
+    //     }
+    // }
 
 console.log(pdfDetails);
 
@@ -120,17 +248,15 @@ console.log(pdfDetails);
                         <input
                         onChange={(e) => {
                             const getPdf = e.target.files[0];
-                            setPdfDetails({
-                                ...pdfDetails,
-                                coursePdf: getPdf,
-                            })
+                                    setpdfDatas(getPdf);
                         }}
-                         type="file" name="" className="outline-0 p-2 bg-yellow-400 rounded-[2px] md:text-[20px] text-[10px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase " placeholder="Input headline" id="" />
+                         type="file" accept=".pdf" name="" className="outline-0 p-2 bg-yellow-400 rounded-[2px] md:text-[20px] text-[10px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase " placeholder="Input headline" id="" />
                     </div>
-                    <button className="outline-0 p-2 bg-green-400 rounded-[2px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase"  type="submit">Upload Pdf</button>
+                    <button onClick={uploadPdf} className="outline-0 p-2 bg-green-400 rounded-[2px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase"  type="button">Upload Pdf</button>
                     </div>
                 </form>
             </div>
             </div>
     )
 }
+

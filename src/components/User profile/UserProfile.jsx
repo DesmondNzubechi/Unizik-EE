@@ -13,12 +13,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, db, storage } from "../config/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 const levels = [
    100, 200, 300, 400, 500
 ];
 
 export const UserProfile = () => {
+  
     const [form, setForm] = useState({
         changePassword : 'top-[-2000px]', 
         editProfile : 'top-[-2000px]',
@@ -92,12 +93,32 @@ export const UserProfile = () => {
         lastName: mainUser[0]?.lastName,
         userLevel: mainUser[0]?.userLevel
       });
+    if (mainUser[0].profilePic) {
+      const oldImgPathArray = mainUser[0]?.profilePic.split('/');
+      const oldImgPath = oldImgPathArray[oldImgPathArray.length - 1];
+      const oldImgName = oldImgPath.split('?')[0];
+      const oldImgRef = ref(storage, `profilePictures/${oldImgName.replace('profilePictures%2F', '')}`);
+      await deleteObject(oldImgRef);
+    }
       alert('su')
     } catch (error) {
       alert(error)
     }
 
   }
+  const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/ee-unizik-18128.appspot.com/o/profilePictures%2FaccountManagement.avif?alt=media&token=8bf2e4fb-0748-49b8-8bda-a294046fa465';
+
+// Split the URL by '/' to get an array of segments
+const urlSegments = imageUrl.split('/');
+
+// The last segment (after the last '/') contains the image name
+const imageNameWithQuery = urlSegments[urlSegments.length - 1];
+
+// To get just the image name without the query parameters, split by '?' and take the first part
+const imageName = imageNameWithQuery.split('?')[0];
+
+console.log('Image Name:', imageName);
+
   return (
       !signedIn? navig('/login') : signedIn &&
         <>

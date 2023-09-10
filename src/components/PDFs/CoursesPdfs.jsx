@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { fullNewsContext } from "../context/Context";
 import { allPdfs } from "./PDFs";
 import {MdAllInbox, MdOutlineFileDownload} from  'react-icons/md';
-
+import { FaFileDownload } from 'react-icons/fa';
+import { HiDocumentDownload } from 'react-icons/hi';
 export const DownloadPdfs = () => {
    // const {allPdfs} = useContext(fullNewsContext);
     const [getLevelPdf, setGetLevelPdf] = useState([]);
@@ -24,9 +25,39 @@ export const DownloadPdfs = () => {
     return(
         <div className="pt-[150px] px-[30px]  pb-[50px] ">
         <div className="text-center my-[20px] ">
-              <h1 className="font-bold uppercase text-slate-900 text-[25px] md:text-[30px] ">{clickedCoursePdf}  e-book Download</h1>
-              <p className="text-slate-700 capitalize text-[18px]  ">Here you find/download textbook, handouts and past exam questions on {clickedCoursePdf}</p>
-             </div>
+              <h1 className="font-bold uppercase text-slate-900 text-[20px] md:text-[30px] ">{clickedCoursePdf}  e-book Download</h1>
+              <p className="text-slate-700 capitalize text-[12px] md:text-[18px]  ">Here you find/download textbook, handouts and past exam questions on {clickedCoursePdf}</p>
+        </div>
+        
+        <div className="flex flex-row gap-2 items-center justify-center">
+          <button className="shadow-2xl p-2 rounded bg-yellow-500 text-slate-50 capitalize font-semibold">handouts</button>
+          <button className="shadow-2xl p-2 rounded bg-slate-100 capitalize font-semibold">Textbooks</button>
+          <button className="shadow-2xl p-2 rounded bg-slate-100 capitalize font-semibold">Past Question</button>
+        </div>
+
+        <div className="grid grid-cols-1  my-[50px] gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
+            <div className="flex flex-col gap-2">
+              <h1 className="md:text-[17x] text-[14px] font-bold  ">Flip Flop</h1>  
+              <p className="md:text-[15px] text-[12px]">20mb</p>
+            </div>
+            <HiDocumentDownload className="text-[35px] hover:text-green-500  text-slate-900"/>
+          </div>
+          <div className="flex flex-row shadow p-2  hover:bg-slate-100 gap-2 justify-between p-2 border items-center rounded ">
+            <div className="flex flex-col gap-2">
+              <h1 className="md:text-[17x] text-[14px] font-bold  ">Flip Flop</h1>  
+              <p className="md:text-[15px] text-[12px]">20mb</p>
+            </div>
+            <HiDocumentDownload className="text-[35px]  hover:text-green-500  text-slate-900"/>
+          </div>
+          <div className="flex flex-row shadow p-2  hover:bg-slate-100 gap-2 justify-between p-2 border items-center rounded ">
+            <div className="flex flex-col gap-2">
+              <h1 className="md:text-[17x] text-[14px] font-bold  ">Flip Flop</h1>  
+              <p className="md:text-[15px] text-[12px]">20mb</p>
+            </div>
+            <HiDocumentDownload className="text-[35px]  hover:text-green-500  text-slate-900"/>
+          </div>
+        </div>
       
              {currentPdf.length == 0 &&  <div className="flex items-center justify-center"> <h1 className="text-center my-[50px] font-semibold">{clickedCoursePdf}  e-book is currently unavailable. Please Check back later🙏</h1></div> }
        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 grid-cols-1 ">
