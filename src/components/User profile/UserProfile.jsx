@@ -12,7 +12,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { auth, db } from "../config/firebase";
+import { auth, db, storage } from "../config/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 const levels = [
    100, 200, 300, 400, 500
 ];
@@ -24,8 +25,9 @@ export const UserProfile = () => {
     });
   const notification = () => toast('Profile Info Succesfully Updated');
   const {signedIn, mainUser, setMainUser, signOutUser} = useContext(fullNewsContext)
-
-  const [mainUserInfo, setMainUserInfo] = useState({ ...mainUser[0]})
+  const [profileImg, setProfileImg] = useState([]);
+  //const [mainUserInfo, setMainUserInfo] = useState({ ...mainUser[0]})
+  const uid = mainUser[0]?.id;
       //view edit profile page
         const viewEditProfile = () => {
           setForm({
@@ -62,20 +64,40 @@ export const UserProfile = () => {
 
     const userInfoStore = doc(db, 'allUser', userId);
 
-     try {
-       await updateDoc(userInfoStore, {
-         email: mainUser[0]?.email,
-         firstName: mainUser[0]?.firstName,
-         lastName: mainUser[0]?.lastName,
-         userLevel: mainUser[0]?.userLevel
-       });
-       hideEditProfile();
-       notification();
-     } catch (error) {
-    console.log(error)
-     }
+    try {
+      await updateDoc(userInfoStore, {
+        email: mainUser[0]?.email,
+        firstName: mainUser[0]?.firstName,
+        lastName: mainUser[0]?.lastName,
+        userLevel: mainUser[0]?.userLevel
+      });
+      hideEditProfile();
+      notification();
+    } catch (error) {
+      console.log(error)
+    }
+  };
+  
+  const updateProfilePic = async (uid) => {
+    const picFolderRef = ref(storage, 'profilePictures');
+    try {
+      const picRef = ref(picFolderRef, profileImg.name);
+      const uploadImg = await uploadBytes(picRef, profileImg);
+      const imgUrl = await getDownloadURL(uploadImg.ref);
+      const userInfoStore = doc(db, 'allUser', uid);
+      await updateDoc(userInfoStore, {
+        profilePic: imgUrl,
+        email: mainUser[0]?.email,
+        firstName: mainUser[0]?.firstName,
+        lastName: mainUser[0]?.lastName,
+        userLevel: mainUser[0]?.userLevel
+      });
+      alert('su')
+    } catch (error) {
+      alert(error)
+    }
+
   }
-console.log("MainUser ifo", mainUserInfo)
   return (
       !signedIn? navig('/login') : signedIn &&
         <>
@@ -83,10 +105,10 @@ console.log("MainUser ifo", mainUserInfo)
             <div className="bg-gradient-to-b  from-white to-white p-5 rounded ">
                 <div className="flex flex-col items-start md:items-start md:flex-row gap-5 md:gap-[150px]">
                     <div className="flex flex-col items-center ">
-                        <img className="w-[100px] shadow-2xl h-[100px] rounded-full" src={userImg} alt="" />
+                        <img className="w-[100px] shadow-2xl h-[100px] rounded-full" src={!mainUser[0]?.profilePic? userImg : mainUser[0].profilePic} alt="" />
                         <div className="flex flex-col justify-center items-center">
-                    <input type="file" className="file:bg-transparent font-semibold py-[10px]  text-[15px] file:border-0 max-w-[200px]" name="" id="" />
-                    <button className="flex items-start text-center text-slate-50 gap-2 md:text-[15px] font-semibold bg-black text-[12px]  p-2 h-fit rounded ">Update profile picture</button>
+                    <input onChange={e => setProfileImg(e.target.files[0])} type="file" accept="image/*" className="file:bg-transparent font-semibold py-[10px]  text-[15px] file:border-0 max-w-[200px]" name="" id="" />
+                    <button onClick={() => updateProfilePic(uid)} className="flex items-start text-center text-slate-50 gap-2 md:text-[15px] font-semibold bg-black text-[12px]  p-2 h-fit rounded ">Update profile picture</button>
                     </div>
                     </div>
                   
