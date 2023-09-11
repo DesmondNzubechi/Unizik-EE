@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "../config/firebase";
 
 
 const usersInfo = [
@@ -32,10 +34,43 @@ const usersInfo = [
 
 
 export const Users = () => {
-
+    const [userList, setUserList] = useState([]);
+    useEffect(() => {
+        const getUsers = async () => {
+            const userStore = collection(db, 'allUser');
+        try {
+            const users = await getDocs(userStore);
+            const fetchUsers = users.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+            setUserList(fetchUsers);
+        } catch (error) {
+            
+        }
+        }
+        getUsers();
+}, [userList])
      const [searchUser, setSearchedUser] = useState([]);
     console.log(searchUser);
 
+    const makeUserAdmin = async (uid) => {
+        const theUser = doc(db, 'allUser', uid)
+    try {
+        await updateDoc(theUser, {
+            stats: 'admin'
+        })
+    } catch (error) {
+        alert(error)
+    }
+    }
+    const removeAdmin = async (uid) => {
+        const theUser = doc(db, 'allUser', uid)
+    try {
+        await updateDoc(theUser, {
+            stats: 'user'
+        })
+    } catch (error) {
+        alert(error)
+    }
+}
     return(
         <div className="justify-center flex">
             <div className="md:ml-2 ml-[150px]">
@@ -43,60 +78,73 @@ export const Users = () => {
                 <div>
                     <input onChange={(e) => {
                         const value = e.target.value;
-                        const findUser = usersInfo.filter(user => {
-                            return  user.Name.toLocaleLowerCase().includes(value.toLocaleLowerCase()) || user.email.toLocaleLowerCase().includes(value.toLocaleLowerCase()) || user.level.toLocaleLowerCase().includes(value.toLocaleLowerCase());
+                        const findUser = userList.filter(user => {
+                            return  user.firstName.toLocaleLowerCase().includes(value.toLocaleLowerCase()) ||  user.lastName.toLocaleLowerCase().includes(value.toLocaleLowerCase()) || user.email.toLocaleLowerCase().includes(value.toLocaleLowerCase()) || user.userLevel.toLocaleLowerCase().includes(value.toLocaleLowerCase());
                         });
                         setSearchedUser(findUser);
                     }} type="text" placeholder="Search for a user" className="border-2 outline-0  px-[20px] rounded  " name="" id="" />
                 </div>
           <table class="border-separate relative  overflow-x-scroll   border-spacing-2  shadow-2xl ...">
            <thead  className=" ">
-            <tr className="">
-                <th class="border  md:text-[25px] text-[10px] py-1 px-2 uppercase border-slate-500 ...">Full Name</th>
-                <th class="border md:text-[25px] text-[10px] py-1 px-2 uppercase border-slate-500 ...">Email Address</th>
-                <th class="border md:text-[25px] text-[10px] py-1 px-2 uppercase border-slate-500 ...">Level</th>
+                        <tr className="">
+                        <th class="border  md:text-[25px] text-[10px] py-1 rounded px-2 uppercase border-slate-300 ...">s/n</th>
+                <th class="border  md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">Full Name</th>
+                <th class="border md:text-[25px] text-[10px] py-1 px-2  rounded uppercase border-slate-300 ...">Email Address</th>
+                            <th class="border md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">Level</th>
+                            <th class="border md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">picture</th>
             </tr>
            </thead>
            <tbody className=" overflow-x-auto ">
          { 
-searchUser.length !== 0 &&     searchUser.map(user => {
+searchUser.length !== 0 &&     searchUser.map((user, index) => {
     return <tr className="">
-        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{user.Name}
+          <td class="  ... text-[10px] md:text-[14px] font-bold text-slate-500 py-1 px-2 ">{index + 1 }
+
+</td>
+        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{user.firstName} <br /> {user.lastName}
 
        </td>
-        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.email}</td>
-        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.level}  
+        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
+            {user.email} <br />
+            {user.stats == 'user' && <button onClick={() => {makeUserAdmin(user.id)} } className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
+                       {user.stats == 'admin' && <button onClick={() => {removeAdmin(user.id)}} className="bg-red-500 px-2 w-full text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
         </td>
-      
-        <td class=" text-[10px]  md:text-[14px]  text-slate-500 py-1 px-2 ">
-        <button className="bg-green-500  px-2 text-[7px] md:text-[13px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>
-        
+        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.userLevel}  
         </td>
-        <td class=" text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
+        <td class="  text-[10px] md:text-[14px] w-fit  text-slate-500 py-1 px-2 "><img className="max-w-[60px] max-h-[60px] rounded " src={user?.profilePic} alt="" />
+            
+        </td>
+       { /*<td class="  flex flex-col  text-slate-500 py-1 px-2 ">
+                       {user.stats == 'user' && <button className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
+                       {user.stats == 'admin' && <button className="bg-red-500 px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
+</td>*/}
+      { /* <td class=" text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
         <button className="bg-red-500 px-2 text-[7px] md:text-[13px]   font-semibold rounded-[2px] py-1 text-slate-50">Disable Account</button>
-        </td>
+</td>*/}
        {/* <button className="bg-red-500 px-2 text-[10px] md:text-[17px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>*/}   
     </tr>
     
 })
 }
 {
-           searchUser.length == 0 &&     usersInfo.map(user => {
-                    return <tr className="">
-                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{user.Name}
+           searchUser.length == 0 &&     userList.map((user, index) => {
+               return <tr className="">
+                           <td class="  ... text-[10px] md:text-[14px] font-bold text-slate-500 py-1 px-2 ">{index + 1 }
+
+</td>
+                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{index + 1 } . {user.firstName} <br /> {user.lastName}
 
                        </td>
-                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.email}</td>
-                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.level} 
+                       <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
+            {user.email} <br />
+            {user.stats == 'user' && <button onClick={() => {makeUserAdmin(user.id)} } className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
+                       {user.stats == 'admin' && <button onClick={() => {removeAdmin(user.id)}} className="bg-red-500 px-2 w-full text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
+        </td>
+                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.userLevel} 
                         </td>
                       
-                        <td class=" text-[10px]  md:text-[14px]  text-slate-500 py-1 px-2 ">
-                        <button className="bg-green-500  px-2 text-[7px] md:text-[13px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>
-                        
-                        </td>
-                        <td class=" text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
-                        <button className="bg-red-500 px-2 text-[7px] md:text-[13px]   font-semibold rounded-[2px] py-1 text-slate-50">Disable Account</button>
-                        </td>
+                        <td class="  text-[10px] md:text-[14px] w-fit  text-slate-500 py-1 px-2 "><img className="max-w-[60px] max-h-[60px] rounded " src={user?.profilePic} alt="" /> </td>
+            
                        {/* <button className="bg-red-500 px-2 text-[10px] md:text-[17px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>*/}   
                     </tr>
                     

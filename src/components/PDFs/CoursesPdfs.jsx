@@ -54,7 +54,7 @@ export const DownloadPdfs = () => {
     filterClickedCourse();
     const filterBookType = () => {
       const getHandout = currentPdf.filter(handout => {
-        return handout.bookType === 'handouts';
+        return handout.bookType === 'handout';
       })
       const getTextbook = currentPdf.filter(handout => {
         return handout.bookType === 'textbook';

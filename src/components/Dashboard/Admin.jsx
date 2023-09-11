@@ -23,13 +23,23 @@ import { PdfUpload } from "../PdfUpload/PdfUpload";
 import { UserProfile } from "../User profile/UserProfile";
 import { BsFillCalendarEventFill } from 'react-icons/bs';
 export const Admindashboard = () => {
-  const [displaying, setDisplaying] = useState(<DashboardView/>);
+    const [displaying, setDisplaying] = useState(JSON.parse(localStorage.getItem('displaying')) || {
+        pdfView: false,
+        viewDashboard: true,
+        viewProfile: false,
+        pdfPost: false,
+        newsPost: false,
+        userView: false,
+   });
 const [logoutB, setLogoutB] = useState(false);
     const [sideLinks, setSideLinks] = useState({
         nextIc: true,
         prevIc: false
     });
-     const [sideLinkState, setSideLinkState] = useState('hidden');
+    const [sideLinkState, setSideLinkState] = useState('hidden');
+    useEffect(() => {
+        localStorage.setItem('displaying', JSON.stringify(displaying))
+    }, [displaying])
 
     return(
         <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[70px] bottom-0 "
@@ -61,15 +71,50 @@ const [logoutB, setLogoutB] = useState(false);
            {/* <button className="flex items-center text-slate-50 gap-2 md:text-[20px] bg-yellow-500 text-[15px]  p-2 h-fit rounded ">Logout <AiOutlineLogout/></button>*/}
            </div>
           </div>
-             <div className="bg-slate-500 z-[10] bottom-0 p-1 md:p-5 fixed rounded-full top-0 left-0 h-[100%]">
+             <div className="bg-slate-50 shadow z-[10] bottom-0 p-1 md:p-5 fixed  top-0 left-0 h-[100%]">
              <div>
                 <ul className="flex flex-col px-[5px] pt-[100px] gap-[40px]">
-                    <li ><Link onClick={() => setDisplaying(<DashboardView/>)}  className="flex-row   flex items-center gap-x-2  "> <AiFillDashboard className="text-slate-100 text-[17px] md:text-[30px] " />  <span className={`text-[15px] md:text-[20px]  ${sideLinkState}  text-white   `}>Dashboard</span> </Link></li>
-                    <li><Link onClick={() => setDisplaying(<NewsUpload/>)} className="flex-row flex items-center gap-x-2  "><BsNewspaper className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Upload News</span> </Link></li>
-                    <li><Link onClick={() => setDisplaying(<PdfUpload/>)}  className="flex-row flex items-center gap-x-2  "><MdPictureAsPdf className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Upload Pdf</span>  </Link></li>
-                    <li><Link onClick={() => setDisplaying(<Users/>)}  className="flex-row flex items-center gap-x-2  "><FaUsers className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Users</span> </Link></li>
-                    <li><Link onClick={() => setDisplaying(<UserProfile/>)} className="flex-row flex items-center gap-x-2  "><FaUserCircle className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Profile</span> </Link></li>
-                    <li><Link  className="flex-row flex items-center gap-x-2  "><AiOutlineLogout className="text-slate-100 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-white   `}>Logout</span> </Link></li>
+                            <li ><Link onClick={() => setDisplaying({
+                          pdfView: false,
+                          viewDashboard: true,
+                          viewProfile: false,
+                          pdfPost: false,
+                          newsPost: false,
+                          userView: false,
+                    })}  className="flex-row   flex items-center gap-x-2  "> <AiFillDashboard className="text-slate-700 text-[17px] md:text-[30px] " />  <span className={`text-[15px] md:text-[20px]  ${sideLinkState}  text-slate-900   `}>Dashboard</span> </Link></li>
+                    <li><Link onClick={() => setDisplaying({
+                          pdfView: false,
+                          viewDashboard: false,
+                          viewProfile: false,
+                          pdfPost: false,
+                          newsPost: true,
+                          userView: false,
+                    })} className="flex-row flex items-center gap-x-2  "><BsNewspaper className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Upload News</span> </Link></li>
+                    <li><Link onClick={() => setDisplaying({
+                          pdfView: false,
+                          viewDashboard: false,
+                          viewProfile: false,
+                          pdfPost: true,
+                          newsPost: false,
+                          userView: false,
+                    })}  className="flex-row flex items-center gap-x-2  "><MdPictureAsPdf className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Upload Pdf</span>  </Link></li>
+                    <li><Link onClick={() => setDisplaying({
+                          pdfView: false,
+                          viewDashboard: false,
+                          viewProfile: false,
+                          pdfPost: false,
+                          newsPost: false,
+                          userView: true,
+                    })}  className="flex-row flex items-center gap-x-2  "><FaUsers className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Users</span> </Link></li>
+                    <li><Link onClick={() => setDisplaying({
+                          pdfView: false,
+                          viewDashboard: false,
+                          viewProfile: true,
+                          pdfPost: false,
+                          newsPost: false,
+                          userView: false,
+                    })} className="flex-row flex items-center gap-x-2  "><FaUserCircle className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Profile</span> </Link></li>
+                    <li><Link  className="flex-row flex items-center gap-x-2  "><AiOutlineLogout className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Logout</span> </Link></li>
                
                         </ul>
             </div>
@@ -77,7 +122,14 @@ const [logoutB, setLogoutB] = useState(false);
             
             <div className="py-[10px] relative flex justify-center  ml-[30px] ">
               <div>
-              {displaying}
+                    
+                        {displaying.viewDashboard && <DashboardView />}
+                        {displaying.newsPost && <NewsUpload />}
+                        {displaying.pdfPost && <PdfUpload />}
+                        {displaying.userView && <Users />}
+                        {  displaying.viewProfile && <UserProfile/>}
+                            
+             
               </div>
             </div>
             </div>

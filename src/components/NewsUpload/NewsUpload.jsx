@@ -164,7 +164,7 @@ const currentDate = new Date();
       noti()
     }
 
-  }
+  } 
 useEffect(() => {
   localStorage.setItem('newsContents', JSON.stringify(newsContents));
 }, [newsContents])

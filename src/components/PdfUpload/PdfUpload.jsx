@@ -18,7 +18,9 @@ const [pdfDetails, setPdfDetails] =  useState({
       level: '',
       semester: '',
       course:  '',
-      topic : '',
+    topic: '',
+    resourcesType: ''
+      
 });
     
     
@@ -89,34 +91,14 @@ const uploadPdf = async () => {
       const pdfSizeInBytes = pdfDatas.size;
       const pdfSizeInMB = (pdfSizeInBytes / 1048576).toFixed(2); // Convert to MB and round to 2 decimal places
 
-      // Render the first page of the PDF as an image
-      const pdfDataResponse = await fetch(getPdfLink);
-      const pdfData = await pdfDataResponse.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
-      const firstPage = await pdf.getPage(1);
-      const viewport = firstPage.getViewport({ scale: 1 });
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      await firstPage.render({ canvasContext: context, viewport }).promise;
-      const imageBase64 = canvas.toDataURL('image/jpeg');
-
-      // Upload the image of the first page to Firebase Storage
-      const imageRef = ref(storage, `learningResources/${pdfDatas.name}_first_page.jpg`);
-      const imageUploadData = await uploadBytes(imageRef, imageBase64, 'data_url');
-
-      // Get the download URL for the uploaded image
-      const imageDownloadURL = await getDownloadURL(imageUploadData.ref);
-
       await addDoc(pdfStore, {
         level: pdfDetails.level,
         semester: pdfDetails.semester,
         course: pdfDetails.course,
-        topic: pdfDetails.topic,
+          topic: pdfDetails.topic,
+          bookType: pdfDetails.resourcesType,
         link: getPdfLink,
         size: pdfSizeInMB + ' MB',
-        firstPageImage: imageDownloadURL, // Include the image download URL in Firestore
       });
 
       alert('PDF and image uploaded successfully!');
@@ -154,12 +136,12 @@ console.log(pdfDetails);
     return(
             <div className="px-[20px] flex justify-center  py-[50px] ">
                 <div>
-                <h1 className="text-center md:max-w-full max-w-[250px]  uppercase mb-[30px] font-bold text-[15px] md:text-[30px] ">Hey! You can now Upload Pdf/Book </h1>
+                <h1 className="text-center md:max-w-full max-w-[250px] font-myfont  capitalize mb-[30px] font-bold text-[12px] md:text-[20px] ">Hey! You can now Upload Pdf/Book </h1>
                 <form action=""  className="flex md:max-w-full max-w-[250px]  flex-col  gap-3 ">
-                    <div className="flex w-full flex-col  gap-3 ">
+                    <div className=" grid grid-cols-1 md:grid-cols-2 w-full   gap-3 ">
                     <div className="flex w-full  flex-col ">
-                        <label className="md:text-[20px] text-[15px] font-semibold " htmlFor="category">Level</label>
-                        <select name=""  className="outline-0 p-2 bg-yellow-400 rounded-[2px] shadow-2xl md:text-[20px] text-[10px] text-slate-900 placeholder:text-slate-400 font-[500] uppercase " onChange={(e) => {
+                        <label className="md:text-[15px] text-[12px] font-semibold " htmlFor="category">Level</label>
+                        <select name=""  className="outline-0 p-2 bg-slate-300 rounded-[2px] shadow-2xl md:text-[20px] text-[10px] text-slate-900 placeholder:text-slate-400 font-[500] capitalize " onChange={(e) => {
            const getVal = e.target.value;
            setPdfDetails({
             ...pdfDetails,
@@ -187,8 +169,8 @@ console.log(pdfDetails);
           </select>
                     </div>
                     <div className="flex   flex-col ">
-                        <label className="md:text-[20px] text-[15px] font-semibold "  htmlFor="title">Semester</label>
-                        <select name="" className="outline-0 md:text-[20px] text-[10px] p-2 bg-yellow-400 rounded-[2px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase "  onChange={(e) => {
+                        <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="title">Semester</label>
+                        <select name="" className="outline-0 md:text-[20px] text-[10px] p-2 bg-slate-300 rounded-[2px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] capitalize "  onChange={(e) => {
           
           const getValue = e.target.value;
           setGetSemester(getValue);
@@ -208,7 +190,7 @@ console.log(pdfDetails);
            </select>
                     </div>
                     <div className="flex   flex-col ">
-                        <label className="md:text-[20px] text-[15px] font-semibold "  htmlFor="headline">Course Name</label>
+                        <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="headline">Course Name</label>
                         <select onChange={(e) => {
             setCourseName(e.target.value);
             setPdfDetails({
@@ -222,17 +204,34 @@ console.log(pdfDetails);
             setSelectedCourse(e.target.value);
             }}
             value={selectedCourse}
-            className="outline-0 p-2 md:text-[20px] text-[10px] bg-yellow-400 rounded-[2px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase " name="" id="">
+            className="outline-0 p-2 md:text-[20px] text-[10px] bg-slate-300 rounded-[2px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] capitalize " name="" id="">
             <option value="">select</option>
             {courses.length !== 0 && courses.map(course => {
               return <option 
                value={course.Course}>{course.Course}</option>
             })}
            </select>
-                    </div>
+                        </div>
+                        <div className="flex   flex-col ">
+                        <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="headline">Resources Type</label>
+                        
+                            <select onChange={(e) => {
+                                setPdfDetails({
+                                    ...pdfDetails,
+                                    resourcesType: e.target.value,
+                                })
+                            }}  className="outline-0 p-2 md:text-[20px] text-[10px] bg-slate-300 rounded-[2px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] capitalize " name="" id="">
+                            <option value="">Select...</option>
+                                <option value='handout'>Handout</option>
+                                <option value='textbook'>textbook</option>
+                                <option value='past question'>past question</option>
+                               
+                                
+                            </select>
+                        </div>
 
                     <div className="flex   flex-col ">
-                        <label className="md:text-[20px] text-[15px] font-semibold "  htmlFor="headline">Topic</label>
+                        <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="headline">Topic</label>
                         <input
                         onChange={(e) => {
                             const getTopic = e.target.value;
@@ -241,18 +240,18 @@ console.log(pdfDetails);
                                 topic: getTopic,
                             })
                         }}
-                         type="text" name="" className="outline-0 p-2 bg-yellow-400 rounded-[2px] md:text-[20px] text-[10px] shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase " placeholder="Input topic" id="" /></div>
+                         type="text" name="" className="outline-0 p-2 bg-slate-300 rounded-[2px] md:text-[20px] text-[10px] shadow-2xl text-slate-900 placeholder:text-slate-900 font-[500] capitalize " placeholder="Input topic" id="" /></div>
 
                     <div className="flex   flex-col ">
-                        <label className="md:text-[20px] text-[15px] font-semibold "  htmlFor="image">Pdf</label>
+                        <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="image">Pdf</label>
                         <input
                         onChange={(e) => {
                             const getPdf = e.target.files[0];
                                     setpdfDatas(getPdf);
                         }}
-                         type="file" accept=".pdf" name="" className="outline-0 p-2 bg-yellow-400 rounded-[2px] md:text-[20px] text-[10px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase " placeholder="Input headline" id="" />
+                         type="file" accept=".pdf" name="" className="outline-0 p-2 bg-slate-300 rounded-[2px] md:text-[20px] text-[10px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-900 font-[500] capitalize " placeholder="Input headline" id="" />
                     </div>
-                    <button onClick={uploadPdf} className="outline-0 p-2 bg-green-400 rounded-[2px] file:bg-transparent file:border-0 shadow-2xl text-slate-900 placeholder:text-slate-400 font-[500] uppercase"  type="button">Upload Pdf</button>
+                    <button onClick={uploadPdf} className="outline-0 w-fit px-[30px] py-1 bg-slate-900 rounded-[2px] hover:bg-green-500  shadow-2xl font-bold text-slate-50  font-[500] capitalize"  type="button">Upload Pdf</button>
                     </div>
                 </form>
             </div>
