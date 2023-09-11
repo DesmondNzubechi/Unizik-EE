@@ -8,7 +8,19 @@ import { HiDocumentDownload } from 'react-icons/hi';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 export const DownloadPdfs = () => {
-   // const {allPdfs} = useContext(fullNewsContext);
+  // const {allPdfs} = useContext(fullNewsContext);
+  const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
+  const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
+    handoutText: 'text-slate-50',
+    handoutBg: 'bg-yellow-500',
+    handoutState: true,
+    textBookText: 'text-slate-900',
+    textBookBg: 'bg-slate-100',
+    textBookState: false,
+    pastQuestionText: 'text-slate-900',
+    pastQuestionBg: 'bg-slate-100',
+    pastQuestion: false,
+  })
     const [getLevelPdf, setGetLevelPdf] = useState([]);
     const {clickedCoursePdf} = useContext(fullNewsContext);
   const [currentPdf, setCurrentPdf] = useState([]);
@@ -18,7 +30,6 @@ export const DownloadPdfs = () => {
     TextBooks: [],
     pastQuestions: [],
   })
-
   useEffect(() => {
         
     const fetchPdf = async () => {
@@ -33,13 +44,31 @@ export const DownloadPdfs = () => {
       }
     }
     fetchPdf();
+    localStorage.setItem('bookCat', JSON.stringify(bookCat))
         const filterClickedCourse = () => {
           const coursePdf = allPdfs.filter(pdf => {
             return pdf.course === clickedCoursePdf;
           });
           setCurrentPdf(coursePdf);
         };
-        filterClickedCourse();
+    filterClickedCourse();
+    const filterBookType = () => {
+      const getHandout = currentPdf.filter(handout => {
+        return handout.bookType === 'handouts';
+      })
+      const getTextbook = currentPdf.filter(handout => {
+        return handout.bookType === 'textbook';
+      })
+      const getPastquestion = currentPdf.filter(handout => {
+        return handout.bookType === 'past question';
+      })
+      setBookType({
+        Handouts: getHandout,
+        TextBooks: getTextbook,
+        pastQuestions:getPastquestion,
+      })
+    }
+    filterBookType();
       }, [allPdfs])
     
       console.log(clickedCoursePdf); 
@@ -51,33 +80,94 @@ export const DownloadPdfs = () => {
         </div>
         
         <div className="flex flex-row gap-2 items-center justify-center">
-          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-yellow-500 text-slate-50 capitalize font-semibold">handouts</button>
-          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-slate-100 capitalize font-semibold">Textbooks</button>
-          <button className="shadow-2xl p-2 md:text-[15px] text-[12px] rounded bg-slate-100 capitalize font-semibold">Past Question</button>
+          <button onClick={() => {
+            setBookCat({
+              handoutText: 'text-slate-50',
+    handoutBg: 'bg-yellow-500',
+    handoutState: true,
+    textBookText: 'text-slate-900',
+    textBookBg: 'bg-slate-100',
+    textBookState: false,
+    pastQuestionText: 'text-slate-900',
+    pastQuestionBg: 'bg-slate-100',
+    pastQuestion: false,
+            })
+          }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.handoutBg}  ${bookCat.handoutText} capitalize font-semibold`}>handouts</button>
+          <button onClick={() => {
+            setBookCat({
+              handoutText: 'text-slate-900',
+    handoutBg: 'bg-slate-100',
+    handoutState: false,
+    textBookText: 'text-slate-50',
+    textBookBg: 'bg-yellow-500',
+    textBookState: true,
+    pastQuestionText: 'text-slate-900',
+    pastQuestionBg: 'bg-slate-100',
+    pastQuestion: false,
+            })
+          }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.textBookBg}  ${bookCat.textBookText}  capitalize font-semibold`}>Textbooks</button>
+          <button onClick={() => {
+            setBookCat({
+              handoutText: 'text-slate-900',
+    handoutBg: 'bg-slate-100',
+    handoutState: false,
+    textBookText: 'text-slate-900',
+    textBookBg: 'bg-slate-100',
+    textBookState: false,
+    pastQuestionText: 'text-slate-50',
+    pastQuestionBg: 'bg-yellow-500',
+    pastQuestion: true,
+            })
+          }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.pastQuestionBg}  ${bookCat.pastQuestionText} capitalize font-semibold`}>Past Question</button>
         </div>
 
        
       
-             {currentPdf.length == 0 &&  <div className="flex items-center justify-center"> <h1 className="text-center my-[50px] font-semibold">{clickedCoursePdf}  e-book is currently unavailable. Please Check back later🙏</h1></div> }
+        
+       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  handouts is not available now. </h1>  }
+       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  textbook is not available now. </h1>  }
+        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  past exam questions is not available now. </h1>}  
+        
        <div className="grid md:grid-cols-3 my-[50px] lg:grid-cols-4 gap-5 grid-cols-1 ">
       
-     {
-        currentPdf.map(pdf => {
-          return   <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
-          <div className="flex flex-col gap-2">
-            <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>  
-              <p className="md:text-[15px] text-[12px]">{ pdf.size}</p>
-            </div>
-            <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900"/></a>
-        </div>
-          {/* <div className="md:max-w-[300px] border hover:border-slate-900 border-slate-300 relative shadow-2xl rounded-[5px] p-[5px]  ">
-            <img src={pdf.pdfImg} className="  " alt="" />
-            <span className="flex rounded-b p-[10px] absolute bottom-0 left-0 right-0 flex-row bg-slate-900 justify-between items-center">
-                <h1 className="text-[20px] text-slate-50 ">{pdf.topic}</h1>
-              <a href={pdf.downloadLink}  ><MdOutlineFileDownload  className="text-[20px] hover:text-yellow-500 text-slate-50 "/></a>   
-            </span>
-        </div>*/ }
-        })
+          {
+        bookCat.handoutState &&   bookType.Handouts.map(pdf => {
+              return <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
+                <div className="flex flex-col gap-2">
+                  <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
+                  <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
+                </div>
+                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+              </div>
+             }
+            )
+          }
+          
+          {
+            
+         bookCat.textBookState &&    bookType.TextBooks.map(pdf => {
+              return <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
+                <div className="flex flex-col gap-2">
+                  <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
+                  <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
+                </div>
+                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+              </div>
+             }
+            )
+          }
+          {
+            
+           bookCat.pastQuestion &&  bookType.pastQuestions.map(pdf => {
+              return <div className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
+                <div className="flex flex-col gap-2">
+                  <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
+                  <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
+                </div>
+                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+              </div>
+             }
+            )
       }
       
       
