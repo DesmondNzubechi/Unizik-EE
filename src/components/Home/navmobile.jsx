@@ -42,7 +42,8 @@ const hidenavF = () => {
             <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
             <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
             <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/cgpa'>Calculate cgpa</Link></li>
-            <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
+                        <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
+                        <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
             <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/courses'>courses outline</Link></li>
            {/* <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Admission'>Student Leaders</Link></li>}
           {/*  <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Admission'>Excos</Link></li> */}

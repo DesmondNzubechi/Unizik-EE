@@ -11,7 +11,7 @@ import { Sign } from './components/signup/signup';
 import { Navdesktop } from './components/Home/navdesktop';
 import { Contact } from './components/contact/contact';
 import { Courses } from './components/courses/courses';
-
+import { Events } from './components/Events/Events';
 /*========100 Level ======================*/
 
 import { Level100 } from './components/courses/100level/level100';
@@ -165,7 +165,8 @@ function App() {
 <Navdesktop/>
     <Routes>
       <Route path='/' element={<Home/>} />
-      <Route path='/news' element={<News/>} />
+                                <Route path='/news' element={<News />} />
+                                <Route path='/events' element={<Events/>} />
       <Route path='/about' element={<FullAbout/>} />
       <Route path='/mission' element={<Aim/>} />
       <Route path='/login' element={<Login/>} />

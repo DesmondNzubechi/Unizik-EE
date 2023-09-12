@@ -15,14 +15,17 @@ export const NewsContext = (props) => {
     const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
    // const [courseName, setCourseName] = useState('');
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
-
+  const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
+  const [allEvents, setAllEvents] = useState(JSON.parse(localStorage.getItem('allEvents')) || []);
     useEffect(() => {
-        localStorage.setItem('eleCourses', JSON.stringify(eleCourses));
+      localStorage.setItem('eleCourses', JSON.stringify(eleCourses));
+      localStorage.setItem('allNews', JSON.stringify(allNews));
+      localStorage.setItem('allEvents', JSON.stringify(allEvents));
         localStorage.setItem('clickedCoursePdf', clickedCoursePdf);
         localStorage.setItem('clickedLevel', clickedLevel);
     }, [eleCourses, clickedCoursePdf, clickedLevel]);
     const [fullNews, setFullNews] = useState(JSON.parse(localStorage.getItem('fullNews')) || []);
-
+    
     useEffect(() => {
         localStorage.setItem('anotherNews', JSON.stringify(anotherNews))
     }, [anotherNews]);
@@ -65,10 +68,8 @@ export const NewsContext = (props) => {
           ...doc.data(),
           id: doc.id,
         }));
-  
         // Set registered users
         setRegisteredUser(allUsers);
-  
         // Find the current user based on email
         const personalInfo = allUsers.filter((user) => user.email === signedIn.email);
         console.log('personalInfo:', personalInfo);
@@ -79,12 +80,9 @@ export const NewsContext = (props) => {
         console.error(error);
       }
     };
-  
     // Call the function to get user information
     getUserInfo();
   }, [signedIn]); // Trigger this effect when signedIn changes
-  
-   
   const signOutUser = async () => {
     try {
       setMainUser(0)
@@ -93,12 +91,11 @@ export const NewsContext = (props) => {
       
     }
   }
-  
     //const getCourseName = (courses) => {
     
     //}
 
-    return <fullNewsContext.Provider value={{getFullNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

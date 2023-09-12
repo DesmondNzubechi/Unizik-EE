@@ -9,93 +9,23 @@ import AboutNewsImg from '../../assets/images/news2.png';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 
-let newsDe = [
-  {
-    newsPic: tools,
-    newsHeadline : 'Eesa induction taking place',
-    newsDetails: 'Lorem ipsum dolor sit  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-    newsDate: '10 April 2023',
-  },
-  {
-    newsPic: tools3,
-    newsHeadline : 'Eesa induction taking place',
-    newsDetails: 'Lorem ipsum dolor sit  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-    newsDate: '10 April 2023',
-  },
-  {
-    newsPic: tools,
-    newsHeadline : 'Eesa induction taking place',
-    newsDetails: 'Lorem ipsum dolor sit  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-    newsDate: '10 April 2023',
-  },
-  {
-    newsPic: tools1,
-    newsHeadline : 'Eesa induction taking place',
-    newsDetails: 'Lorem ipsum dolor sit  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-    newsDate: '10 April 2023',
-  },
-  {
-    newsPic: tools2,
-    newsHeadline : 'Eesa induction taking place',
-    newsDetails: 'Lorem ipsum dolor sit  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-    newsDate: '10 April 2023',
-  },
-]
-
-let importantNews = [
-  {
-    newsPic: tools,
-    newsHeadline: 'Lorem ipsum dolor sit ',
-    newsDate: '10 April 2023',
-    newsDestails: 'Lorem ipsum dolor sit Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-  },
-  {
-    newsPic: tools1,
-    newsHeadline: 'Lorem ipsum dolor sit ',
-    newsDate: '10 April 2023',
-    newsDestails: 'Lorem ipsum dolor sit Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-  },
-  {
-    newsPic: tools2,
-    newsHeadline: 'Lorem ipsum dolor sit ',
-    newsDate: '10 April 2023',
-    newsDestails: 'Lorem ipsum dolor sit Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-  },
-];
 const apikey = 'b9a46b1958145632d73edfcb3ca65284';
 export const News = () => {
-  const [newsList, setNewsList] = useState([]);
-  const {getFullNews, anotherNews, setAnotherNews} = useContext(fullNewsContext);
+  const {getFullNews, anotherNews, allNews, setAllNews, setAnotherNews} = useContext(fullNewsContext);
   useEffect(() => {
-    const electricalEngineeringNewsApiCall =  async () => {
-      try {
-        const response = await fetch('https://gnews.io/api/v4/search?q=electrical%20engineering&lang=en&country=us&max=10&apikey=' + apikey);
-          if(!response.ok) {
-            alert('Request failed' + ' ' + response.status)
-          };
-        const restApi = await response.json();
-       setAnotherNews(restApi.articles);
-        console.log(restApi.articles)
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
 
-   
-    //  electricalEngineeringNewsApiCall();
-    
     const fetchNews = async () => {
       const newsStore = collection(db, 'News');
       try {
-        const newsDoc = getDocs(newsStore);
-        const fetchingNews = (await newsDoc).docs.map(doc => ({ ...doc.data(), id: doc.id }))
-        setNewsList(fetchingNews);
+        const newsDoc = await getDocs(newsStore);
+        const fetchingNews =  newsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+       setAllNews(fetchingNews);
        } catch (error) {
         
       }
     }
     fetchNews();
-  }, [newsList])
+  }, [allNews])
    
 
     return(
@@ -107,7 +37,7 @@ export const News = () => {
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
-          {newsList.map(news => {
+          {allNews?.map(news => {
             return <div className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
             <div>
             <img className="md:max-w-[180px] max-w-[120px]  rounded " src={news.newsImg} alt="" />

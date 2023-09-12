@@ -12,7 +12,7 @@ import { UserProfile } from "../User profile/UserProfile";
 import { NewsUpload } from "../NewsUpload/NewsUpload";
 import { PdfUpload } from "../PdfUpload/PdfUpload";
 import { Users } from "../Users/Users";
-import { SchoolEvents } from "../Events/Events";
+import { SchoolEvents } from "../Aims/Aims";
 
 
 export const Home = () => {
