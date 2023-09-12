@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import image from '../../assets/images/1682585228090.png';
 import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 
 export const FullNewsDetails = () => {
-    const {fullNews , anotherNews, getFullNews} = useContext(fullNewsContext);
+    const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
+    const organizeHtml = DOMPurify.sanitize(fullNews.fullNews)
     
     return(
         <div className="flex flex-col py-[50px] justify-between items-start md:flex-row">
@@ -14,17 +16,15 @@ export const FullNewsDetails = () => {
                     return    <div  className="   flex items-center justify-around flex-col  px-[30px] py-[100px] lg:min-h-[100vh] from-slate-50 bg-white rounded-t-[50px] gap-5 to-slate-50">
             
                     <div data-aos='zoom-in-down' aos-data-duration='2000' className="max-w-[700px] flex flex-col gap-3 ">
-                        <h1 className="uppercase font-bold text-[30px] text-slate-900">{news.title}</h1>
-                        <p className="text-slate-700 font-bold  text-[15px] md:text-[20px] ">{news.publishedAt}</p>
-                        <div  className="">
-                        <img  data-aos='zoom-in-down' aos-data-duration='2000' src={news.image} alt="" className="rounded" />
-                    </div>
-                        <p className="text-slate-700 font-fonty  text-[15px] md:text-[20px] ">{news.description}</p>
+                        <h1 className="uppercase font-bold text-[30px] text-slate-900">{news.newsHeadline}</h1>
+                        <div  className=" flex  ">
+                        <img  data-aos='zoom-in-down' aos-data-duration='2000' src={news.newsImg} alt="" className="max-w-[400px] max-h-[400px]" />
+                            </div>
+                            <p className="text-slate-700 font-bold  text-[15px] md:text-[20px] ">{news.date}</p>
+                        <p dangerouslySetInnerHTML={{__html: news.fullNews}} className="text-slate-700 font-fonty  text-[15px] md:text-[20px] "></p>
                         
                         <p className="text-slate-700 font-fonty  text-[15px] md:text-[20px] ">{news.content}</p>
-            
-                       
-                        <Link to='/about' className="bg-slate-900 w-fit px-5 p-2 text-slate-50 rounded shadow-2xl hover:bg-pink-500 text-[20px]">Read More</Link>
+        
                     </div>
                     </div>
                 })

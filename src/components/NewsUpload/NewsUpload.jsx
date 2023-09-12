@@ -126,38 +126,22 @@ const currentDate = new Date();
   ///NEWS CONTENTS
   const [newsContents, setNewsContents] = useState({
     newsImg: [],
-    newsVideo: [],
     newsHeadline: '',
     newsOverview: '',
-    fullNews: ''
+    fullNews: '',
+    category: 'News'
   })
   console.log(newsContents)
 
   const uploadNewsImg = async () => {
-    if (imgInfo.imgName === '') {
-      if (fileType === 'image') {
-        const noti = () => toast('Please select image to be uploaded');
-        noti();
-      } else {
-        const noti = () => toast('Please select Video to be uploaded');
-        noti();
-      }
-     return;
-    }
-    const folderRef = ref(storage,  'newsImg')
+    const folderRef = ref(storage,  'NewsImages')
     try {
       const imgRef = ref(folderRef, imgInfo.imgName)
     const imgUpload =  await uploadBytes(imgRef, imgInfo.imgFile);
     const url = await getDownloadURL(imgUpload.ref);
-    if (fileType === 'video') {
-      setNewsContents({...newsContents, newsVideo: [...newsContents.newsVideo, url]});
-      const noti = () => toast('Video Successfully Uploaded');
-      noti();
-    } else {
       setNewsContents({...newsContents, newsImg: [...newsContents.newsImg, url]});
       const noti = () => toast('Image Successfully Uploaded');
      noti();
-    }
 
     } catch (error) {
       const noti = () => toast(error);
@@ -171,30 +155,21 @@ useEffect(() => {
 
 
   const postNews = async () => {
-      if (newsContents.newsImg.length === 0 && newsContents.newsVideo.length === 0 || newsContents.fullNews === '' || newsContents.newsHeadline === '' || newsContents.newsOverview === '') {
+      if (newsContents.newsImg.length === 0  || newsContents.category === ''  || newsContents.fullNews === '' || newsContents.newsHeadline === '' || newsContents.newsOverview === '') {
         const noti = () => toast('Please fill the provided input field');
         noti();
         return;
       }
-    if (newsContents.newsImg.length === 0 && newsContents.newsVideo.length === 0) {
+    if (newsContents.newsImg.length === 0) {
       const shouldProceed = window.confirm("You have not uploaded Image or Video, Do you want to proceed");
       if (!shouldProceed) {
         return; // Function will stop if user clicks 'No'
       }
     }
     setSpinC(true)
-      const newsRef = collection(db, 'news');
+      const newsRef = collection(db, newsContents.category);
       try {
-        if (fileType === 'video') {
-          await addDoc(newsRef, {
-            newsVideo: newsContents.newsVideo,
-            newsHeadline: newsContents.newsHeadline,
-            newsOverview: newsContents.newsOverview,
-            fullNews:  newsContents.fullNews,
-            date: fullDate,
-            createTime: new Date().getTime(),
-           })
-        } else {
+       
           await addDoc(newsRef, {
             newsImg: newsContents.newsImg,
             newsHeadline: newsContents.newsHeadline,
@@ -203,7 +178,7 @@ useEffect(() => {
             date: fullDate,
             createTime: new Date().getTime(),
            })
-        }
+        
         setSpinC(false);
         const noti = () => toast('News Successfully Uploaded');
         noti();
@@ -224,32 +199,33 @@ useEffect(() => {
               <div className="flex flex-col gap-5 md:flex-row  ">
                 <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">headline :</label>
-                    <input onChange={(e) => setNewsContents({...newsContents, newsHeadline: e.target.value })} type="text" className="p-4 bg-transparent capitalize text-[13px] outline-0 shadow rounded  w-full " name="headline" placeholder="News headline" id="" />
+                    <input onChange={(e) => setNewsContents({...newsContents, newsHeadline: e.target.value })} type="text" className="p-4 bg-white capitalize text-[13px] outline-0 shadow rounded  w-full " name="headline" placeholder="News headline" id="" />
                 </div>
                 <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">overview:</label>
-                    <input onChange={(e) => setNewsContents({...newsContents, newsOverview: e.target.value })} type="text" className="p-4 bg-transparent capitalize text-[13px] outline-0 shadow rounded  w-full " name="headline" placeholder="News overview" id="" />
+                    <input onChange={(e) => setNewsContents({...newsContents, newsOverview: e.target.value })} type="text" className="p-4 bg-white capitalize text-[13px] outline-0 shadow rounded  w-full " name="headline" placeholder="News overview" id="" />
                     </div>
                     <div className="flex flex-col gap-0">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">Category:</label>
-                        <select onChange={(e) => setFileType(e.target.value)} className="rounded outline-0 p-1" name="" id="">
-                      <option value="News">News</option>
+                        <select onChange={(e) => setNewsContents({...newsContents, category: e.target.value})} className="rounded bg-slate shadow  outline-0 p-4" name="" id="">
+                        <option value="">Select</option>
+                         <option value="News">News</option>
                       <option value="Event">Event</option>
                     </select>
                     </div>
                 <div className="flex flex-col gap-0 ">
-                   {/* <label className="capitalize font-[600] text-[17px] " htmlFor="headline">image/Video:</label>*/}
-                    <select onChange={(e) => setFileType(e.target.value)} className="rounded outline-0 p-1" name="" id="">
+                   { <label className="capitalize font-[600] text-[13px] " htmlFor="headline">News image</label>}
+                   {/* <select onChange={(e) => setFileType(e.target.value)} className="rounded outline-0 p-1" name="" id="">
                       <option value="image">News Image</option>
                       <option value="video">News Video</option>
-                    </select>
+    </select>*/}
                     <input onChange={(e) => {
                       setImgInfo({
                         imgFile: e.target.files[0],
                         imgName: e.target.files[0].name,
                       });
-                    }} accept={`${fileType}/*`} type="file" className="p-4 file:bg-transparent file:border-0 capitalize text-[15px] outline-0 shadow rounded  w-full " name="headline" placeholder="News headline" id="" />
-                    <button onClick={ uploadNewsImg} type="button" className="w-fit capitalize text-[12px] hover:bg-slate-900 hover:text-slate-50  p-1 rounded bg-green-500 ">upload image</button>
+                    }} accept={`${fileType}/*`} type="file" className="p-3 file:bg-white file:border-0 capitalize text-[15px] bg-white outline-0 shadow rounded  w-full " name="headline" placeholder="News headline" id="" />
+                   { <button onClick={ uploadNewsImg} type="button" className="w-fit capitalize text-[12px] hover:bg-slate-900 hover:text-slate-50  p-1 rounded bg-green-500 ">upload image</button>}
                     </div>
               {/* <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[17px] " htmlFor="headline">Date :</label>
@@ -259,7 +235,7 @@ useEffect(() => {
               <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">news content :</label>
                     <ReactQuill
-       className="md:max-w-[700px] rounded-[30px] max-w-[500px] min-h-[30vh] lg:max-w-[1100px] "
+       className="md:max-w-[700px]  rounded-[30px] max-w-[500px] min-h-[30vh] lg:max-w-[1100px] "
         onChange={(e) => {
           setNewsContents({...newsContents, fullNews: e})
         }}

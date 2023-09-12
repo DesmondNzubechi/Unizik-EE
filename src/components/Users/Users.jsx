@@ -74,8 +74,8 @@ export const Users = () => {
     return(
         <div className="justify-center flex">
             <div className="md:ml-2 ml-[150px]">
-                <p className=" text-[15px] md:my-[25px] font-bold uppercase text-[20px] ">Registered  users</p>
-                <div>
+                <p className=" text-[15px] md:my-[25px] text-center font-bold uppercase text-[20px] ">Registered  users</p>
+                <div className="flex justify-center">
                     <input onChange={(e) => {
                         const value = e.target.value;
                         const findUser = userList.filter(user => {
@@ -87,11 +87,11 @@ export const Users = () => {
           <table class="border-separate relative  overflow-x-scroll   border-spacing-2  shadow-2xl ...">
            <thead  className=" ">
                         <tr className="">
-                        <th class="border  md:text-[25px] text-[10px] py-1 rounded px-2 uppercase border-slate-300 ...">s/n</th>
-                <th class="border  md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">Full Name</th>
-                <th class="border md:text-[25px] text-[10px] py-1 px-2  rounded uppercase border-slate-300 ...">Email Address</th>
-                            <th class="border md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">Level</th>
-                            <th class="border md:text-[25px] text-[10px] py-1 px-2 rounded uppercase border-slate-300 ...">picture</th>
+                        <th class="  md:text-[25px] text-[10px] py-1 rounded px-2 uppercase shadow">s/n</th>
+                <th class="  md:text-[25px] text-[10px] py-1 px-2 rounded uppercase shadow">Full Name</th>
+                <th class=" md:text-[25px] text-[10px] py-1 px-2  rounded uppercase shadow">Email Address</th>
+                            <th class=" md:text-[25px] text-[10px] py-1 px-2 rounded uppercase shadow">Level</th>
+                            <th class=" md:text-[25px] text-[10px] py-1 px-2 rounded uppercase shadow">picture</th>
             </tr>
            </thead>
            <tbody className=" overflow-x-auto ">
@@ -101,7 +101,7 @@ searchUser.length !== 0 &&     searchUser.map((user, index) => {
           <td class="  ... text-[10px] md:text-[14px] font-bold text-slate-500 py-1 px-2 ">{index + 1 }
 
 </td>
-        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{user.firstName} <br /> {user.lastName}
+        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{user.firstName} <hr /> {user.lastName}
 
        </td>
         <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
@@ -132,7 +132,7 @@ searchUser.length !== 0 &&     searchUser.map((user, index) => {
                            <td class="  ... text-[10px] md:text-[14px] font-bold text-slate-500 py-1 px-2 ">{index + 1 }
 
 </td>
-                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 py-1 px-2 ">{index + 1 } . {user.firstName} <br /> {user.lastName}
+                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px] text-slate-500 p-1 ">{user.firstName} <br /> {user.lastName}
 
                        </td>
                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
