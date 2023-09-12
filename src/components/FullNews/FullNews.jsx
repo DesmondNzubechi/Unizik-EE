@@ -2,13 +2,10 @@ import React, { useContext } from "react";
 import image from '../../assets/images/1682585228090.png';
 import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
-import DOMPurify from "dompurify";
 
 
 export const FullNewsDetails = () => {
     const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
-    const organizeHtml = DOMPurify.sanitize(fullNews.fullNews)
-    
     return(
         <div className="flex flex-col py-[50px] justify-between items-start md:flex-row">
             {
