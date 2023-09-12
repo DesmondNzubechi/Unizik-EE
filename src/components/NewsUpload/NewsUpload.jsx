@@ -176,6 +176,7 @@ useEffect(() => {
             newsOverview: newsContents.newsOverview,
             fullNews:  newsContents.fullNews,
             date: fullDate,
+            category: newsContents.category,
             createTime: new Date().getTime(),
            })
         

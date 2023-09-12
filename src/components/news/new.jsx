@@ -47,7 +47,7 @@ export const News = () => {
             <h1 className="font-bold text-[12px] uppercase md:text-[17px]  ">{news.newsHeadline}</h1>
             <span className="font-semibold text-[10px] md:text-[12px] text-slate-500 ">{news.date}</span>
             <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{news.newsOverview} </p>
-            <Link to='/news-details' onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
+            <Link to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 

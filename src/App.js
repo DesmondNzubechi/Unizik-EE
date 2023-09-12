@@ -154,11 +154,16 @@ import { Footer } from './components/Footer/Footer';
 import { Admindashboard } from './components/Dashboard/Admin';
 import { UserProfile } from './components/User profile/UserProfile';
 import { ToastContainer } from 'react-toastify';
-
+import { fullNewsContext } from './components/context/Context';
+import { useContext } from 'react';
 function App() {
+      const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
+      const getDetails = fullNews[0];
+      const cat = getDetails.category;
+      const headline = getDetails.newsHeadline.replace(' ', '-');
   return (
-   <div className='overflow-x-hidden font-fonty'>
-<NewsContext>
+        <div className='overflow-x-hidden font-fonty'>
+<>
 <BrowserRouter>
 <ScrollToTop/>
 <Navmobile/>
@@ -281,7 +286,7 @@ function App() {
       <Route path='/Book' element={<Book/>} />
 
       <Route path='/cgpa' element={<CGPACalculator/>} />
-     <Route path='/news-details' element={<FullNewsDetails/>}/>
+     <Route path={`/${cat}/${headline}`} element={<FullNewsDetails/>}/>
       <Route path='/level-courses' element={<LevelCourses/>} />
       <Route path='/download pdf' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
@@ -294,7 +299,7 @@ function App() {
 <ToastContainer
 autoClose={2000}
 />
-</NewsContext>
+</>
    </div>
   );
 }
