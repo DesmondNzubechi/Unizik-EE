@@ -99,63 +99,60 @@ export const News = () => {
    
 
     return(
-        <div className=" py-[100px] pt-[150px] flex flex-col md:flex-row gap-[20px] justify-around items-start px-[20px] ">
+        <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
          <div className="flex flex-col justify-center gap-[20px]">
            <div className="flex flex-col ">
            <h1 className="uppercase text-[30px] font-bold">News</h1>
            <span className="w-[70px] h-[7px] bg-yellow-500 "></span>
            </div>
            
-           <div className="flex flex-col gap-[40px]">
-          {newsDe.map(news => {
-            return <div className="flex flex-row items-start w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
+          {newsList.map(news => {
+            return <div className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
             <div>
-            <img className="md:max-w-[180px] max-w-[120px]  rounded " src={news.newsPic} alt="" />
+            <img className="md:max-w-[180px] max-w-[120px]  rounded " src={news.newsImg} alt="" />
             </div>
             
-            <div className="flex flex-col  max-w-[400px] ">
-            <h1 className="font-bold text-[12px] md:text-[17px] capitalize ">{news.newsHeadline}</h1>
-            <span className="font-semibold text-[12px] md:text-[15px] text-slate-700 ">{news.newsDate}</span>
-            <p className="text-slate-500  md:flex hidden  text-[11px] md:text-[15px] font-[400] ">{news.newsDetails} </p>
-            <a href="" className="text-yellow-500 text-[15px] font-bold my-1">Read More...</a>
+            <div className="flex flex-col gap-1   max-w-[400px] ">
+            <h1 className="font-bold text-[12px] uppercase md:text-[17px]  ">{news.newsHeadline}</h1>
+            <span className="font-semibold text-[10px] md:text-[12px] text-slate-500 ">{news.date}</span>
+            <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{news.newsOverview} </p>
+            <Link to='/news-details' onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 
-              }
-                <a href="" className="w-full bg-yellow-500  text-center py-[10px] px-[20px] font-semibold text-[20px] rounded-lg ">All News</a>
-             
-            </div>
+              }      </div>
          </div>
-         <div className="flex flex-col gap-5">
-         <div className="flex flex-col w-fit ">
-           <h1 className="uppercase text-[30px] font-bold">Other News</h1>
-           <span className="w-[150px] h-[7px] bg-yellow-500 self-end"></span>
-           </div>
-           <div>
-          {newsList.map((news, newsIndex) => {
-          
-            return <div className="flex flex-col items-start w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
-            <div>
-            <img className="md:max-w-[300px]   rounded " src={news.newsImg} alt="" />
-            </div>
-            <div className="flex flex-col  max-w-[400px] ">
-            <h1 className="font-bold text-[15px] md:max-w-[300px] md:text-[15px] capitalize ">{news.newsHeadline}</h1>
-            <span className="font-semibold text-[15px] md:text-[17px] text-slate-700 ">{news.date}</span>
-            <p className="text-slate-500    text-[14px] md:text-[13px] font-[400] ">{news.newsOverview}</p>
-            <Link to='/news-details' onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
-            </div>
-            </div>
-           
-          }) }
-    
-           </div>
-         </div>
+       
         </div>
     )
 }
 
 
+{ /*<div className="flex flex-col gap-5">
+<div className="flex flex-col w-fit ">
+  <h1 className="uppercase text-[30px] font-bold">Other News</h1>
+  <span className="w-[150px] h-[7px] bg-yellow-500 self-end"></span>
+  </div>
+  <div>
+ {newsList.map((news, newsIndex) => {
+ 
+   return <div className="flex flex-col items-start w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
+   <div>
+   <img className="md:max-w-[300px]   rounded " src={news.newsImg} alt="" />
+   </div>
+   <div className="flex flex-col  max-w-[400px] ">
+   <h1 className="font-bold text-[15px] md:max-w-[300px] md:text-[15px] capitalize ">{news.newsHeadline}</h1>
+   <span className="font-semibold text-[15px] md:text-[17px] text-slate-700 ">{news.date}</span>
+   <p className="text-slate-500    text-[14px] md:text-[13px] font-[400] ">{news.newsOverview}</p>
+   <Link to='/news-details' onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
+   </div>
+   </div>
+  
+ }) }
 
+  </div>
+</div>*/}
 
 export const AboutNews = () => {
   return(
