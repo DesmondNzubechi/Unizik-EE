@@ -21,7 +21,15 @@ export const NewsContext = (props) => {
     newsPost: false,
     userView: false,
     viewAllNews: false,
-    viewEditNews:false,
+    viewEditNews: false,
+    pdfViewColor: 'text-slate-700',
+    viewDashboardColor: 'text-green-500',
+    viewProfileColor: 'text-slate-700',
+    pdfPostColor: 'text-slate-700',
+    newsPostColor: 'text-slate-700',
+  userViewColor: 'text-slate-700',
+  viewAllNewsColor: 'text-slate-700',
+  viewEditNewsColor: 'text-slate-700',
 });
   // const [courseName, setCourseName] = useState('');
   const [logOut, setLogOut] = useState(false);

@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { fullNewsContext } from "../context/Context";
+import { fullNewsContext } from "../../context/Context";
 //import { allPdfs } from "./PDFs";
 import {MdAllInbox, MdOutlineFileDownload} from  'react-icons/md';
 import { FaFileDownload } from 'react-icons/fa';
 import { HiDocumentDownload } from 'react-icons/hi';
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../config/firebase";
+import { db } from "../../config/firebase";
+import { CoursesOffered } from "../../CourseOffered/CourseOffered";
+import { AiFillDelete } from 'react-icons/ai';
 
 
 export const AllPdf = () => {
+    const [courseName, setCourseName] = useState("");
+const [level, setLevel] = useState([]);
+const [getSemester, setGetSemester] = useState(null);
+const [selectedCourse, setSelectedCourse] = useState('select');
+const [selectedUnit, setSelectedUnit] = useState(null);
+    const [courses, setCourses] = useState([]);
+    const [pdfDatas, setpdfDatas] = useState(null)
+const [pdfDetails, setPdfDetails] =  useState({
+      level: '',
+      semester: '',
+      course:  '',
+    topic: '',
+    resourcesType: ''
+      
+});
   // const {allPdfs} = useContext(fullNewsContext);
   const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
@@ -49,7 +66,7 @@ export const AllPdf = () => {
     localStorage.setItem('bookCat', JSON.stringify(bookCat))
         const filterClickedCourse = () => {
           const coursePdf = allPdfs.filter(pdf => {
-            return pdf.course === clickedCoursePdf;
+            return pdf.course === selectedCourse;
           });
           setCurrentPdf(coursePdf);
         };
@@ -71,14 +88,88 @@ export const AllPdf = () => {
       })
     }
     filterBookType();
-      }, [allPdfs])
+      }, [selectedCourse])
     
       console.log(clickedCoursePdf); 
     return(
         <div className="pt-[150px] px-[30px]  pb-[50px] ">
         <div className="text-center my-[20px] ">
-              <h1 className="font-bold uppercase text-slate-900 text-[20px] md:text-[30px] ">{clickedCoursePdf}  e-book Download</h1>
-              <p className="text-slate-700 capitalize text-[12px] md:text-[18px]  ">Here you find/download textbook, handouts and past exam questions on {clickedCoursePdf}</p>
+                <h1 className="font-bold uppercase text-slate-900 text-[20px] md:text-[30px] "> All Books</h1>
+                <div className=" flex  flex-row justify-center    gap-1 ">
+                <div className="flex   flex-col ">
+                        <select name=""  className="outline-0 p-1 bg-slate-50 rounded-[2px] shadow w-fit text-[10px] text-slate-900 placeholder:text-slate-400 font-[500] capitalize " onChange={(e) => {
+           const getVal = e.target.value;
+           setPdfDetails({
+            ...pdfDetails,
+            level: getVal,
+           })
+           const filterLevel = CoursesOffered.filter(currentLevel => {
+           return currentLevel.Session[0] == getVal;
+           });
+           setLevel(filterLevel);
+           if (getSemester == null) return;
+           const filterSemester = filterLevel.filter(semester => {
+            return semester.Session[1] == getSemester;
+           });
+           setCourses(filterSemester);
+           console.log(e.target.value);
+           
+          }}  id="">
+           
+            <option value="">Select Level</option>
+            <option value={100}>100 Level</option>
+            <option value={200}>200 Level</option>
+            <option value={300}>300 Level</option>
+            <option value={400}>400 Level</option>
+            <option value={500}>500 Level</option>
+          </select>
+                </div>
+                <div className="flex   flex-col ">
+                      
+                        <select name="" className="outline-0 text-[10px] w-fit p-1 bg-slate-50 rounded-[2px] shadow text-slate-900 placeholder:text-slate-400 font-[500] capitalize "  onChange={(e) => {
+          
+          const getValue = e.target.value;
+          setGetSemester(getValue);
+          setPdfDetails({
+            ...pdfDetails,
+            semester: getValue,
+          })
+          const filterSemester = level.filter(semester => {
+           return semester.Session[1] == getValue;
+          });
+          setCourses(filterSemester);
+           }} id="">
+            
+             <option value="">Select Semester</option>
+             <option value={1}>First Semester</option>
+             <option value={2}>Second Semester</option>
+           </select>
+                    </div>
+                    
+                <div className="flex   flex-col ">
+                        <select onChange={(e) => {
+            setCourseName(e.target.value);
+            setPdfDetails({
+                ...pdfDetails,
+                course: e.target.value,
+            })
+            const getCreditUnit = courses.find(currentCourse => {
+             return currentCourse.Course == e.target.value;
+            });
+            setSelectedUnit(getCreditUnit.Credit);
+            setSelectedCourse(e.target.value);
+            }}
+            value={selectedCourse}
+            className="outline-0 p-1  text-[10px] bg-slate-50 rounded-[2px] shadow text-slate-900 placeholder:text-slate-400 font-[500] capitalize " name="" id="">
+            <option value="">select</option>
+            {courses.length !== 0 && courses.map(course => {
+              return <option 
+               value={course.Course}>{course.Course}</option>
+            })}
+           </select>
+                    </div>
+                    </div>
+            
         </div>
         
         <div className="flex flex-row gap-2 items-center justify-center">
@@ -126,9 +217,9 @@ export const AllPdf = () => {
        
       
         
-       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  handouts is not available now. </h1>  }
-       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  textbook is not available now. </h1>  }
-        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  past exam questions is not available now. </h1>}  
+       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  handouts is not available now. </h1>  }
+       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  textbook is not available now. </h1>  }
+        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  past exam questions is not available now. </h1>}  
         
        <div className="grid md:grid-cols-3 my-[50px] lg:grid-cols-4 gap-5 grid-cols-1 ">
       
@@ -139,7 +230,7 @@ export const AllPdf = () => {
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+                <a download={pdf.link} href={pdf.link}> <AiFillDelete className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
               </div>
              }
             )

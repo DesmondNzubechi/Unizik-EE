@@ -236,7 +236,7 @@ useEffect(() => {
               <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">news content :</label>
                     <ReactQuill
-       className="md:max-w-[700px]  rounded-[30px] max-w-[500px] min-h-[30vh] lg:max-w-[1100px] "
+       className="md:max-w-[700px]  rounded-[30px] max-w-[500px] md:min-h-[30vh] lg:max-w-[1100px] "
         onChange={(e) => {
           setNewsContents({...newsContents, fullNews: e})
         }}
