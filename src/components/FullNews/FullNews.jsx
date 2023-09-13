@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import image from '../../assets/images/1682585228090.png';
 import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
-import DOMPurify from "dompurify";
 
 
 export const FullNewsDetails = () => {
     const { fullNews, allNews, allEvent, anotherNews, getFullNews } = useContext(fullNewsContext);
     const [moreNews, setMoreNews] = useState([]);
-    const sanitizedHTML = DOMPurify.sanitize(fullNews[0].fullNews);
     useEffect(() => {
         const filterNews = () => {
             const getNewsFiltered = allNews?.filter(news => {
@@ -33,7 +31,7 @@ export const FullNewsDetails = () => {
                         <img  data-aos='zoom-in-down' aos-data-duration='2000' src={news.newsImg} alt="" className="" />
                             </div>
                             <p className="text-slate-700 font-bold   text-[15px] md:text-[20px] ">{news.date}</p>
-                        <div dangerouslySetInnerHTML={{__html: sanitizedHTML}} className="text-slate-700 font-fonty  text-[12px] pr-[20px] md:text-[20px] "></div>
+                        <div dangerouslySetInnerHTML={{__html: news.fullNews}} className="text-slate-700 font-fonty  text-[12px] pr-[20px] md:text-[20px] "></div>
                         
                         <p className="text-slate-700 font-fonty  text-[15px] md:text-[20px] ">{news.content}</p>
         
