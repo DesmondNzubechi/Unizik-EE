@@ -1,7 +1,7 @@
 import { collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { db } from "../config/firebase";
-
+import { fullNewsContext } from "../context/Context";
 
 const usersInfo = [
     {
@@ -34,6 +34,7 @@ const usersInfo = [
 
 
 export const Users = () => {
+    const {signedIn } = useContext(fullNewsContext);
     const [userList, setUserList] = useState([]);
     useEffect(() => {
         const getUsers = async () => {
@@ -106,8 +107,10 @@ searchUser.length !== 0 &&     searchUser.map((user, index) => {
        </td>
         <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
             {user.email} <br />
+            <div>
             {user.stats == 'user' && <button onClick={() => {makeUserAdmin(user.id)} } className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
                        {user.stats == 'admin' && <button onClick={() => {removeAdmin(user.id)}} className="bg-red-500 px-2 w-full text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
+            </div>
         </td>
         <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.userLevel}  
         </td>
@@ -137,8 +140,10 @@ searchUser.length !== 0 &&     searchUser.map((user, index) => {
                        </td>
                        <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
             {user.email} <br />
-            {user.stats == 'user' && <button onClick={() => {makeUserAdmin(user.id)} } className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
-                       {user.stats == 'admin' && <button onClick={() => {removeAdmin(user.id)}} className="bg-red-500 px-2 w-full text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
+           {signedIn?.email === 'eeunizik@gmail.com' && <div>
+            {user.stats == 'user' && user.userLevel !== 'Super Admin' && <button onClick={() => {makeUserAdmin(user.id)} } className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
+                       {user.stats == 'admin' && user.userLevel !== 'Super Admin' && <button  onClick={() => {removeAdmin(user.id)}} className="bg-red-500 px-2 w-full text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
+            </div>}
         </td>
                         <td class=" border border-slate-100 ... text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">{user.userLevel} 
                         </td>

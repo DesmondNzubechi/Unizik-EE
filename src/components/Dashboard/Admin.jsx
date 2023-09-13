@@ -29,7 +29,7 @@ import { useContext } from "react";
 import { EditNews } from "../Admin/EditNews/EditNews";
 import { useNavigate } from "react-router-dom";
 export const Admindashboard = () => {
-    const { displaying, setDisplaying, mainUser } = useContext(fullNewsContext);
+    const { displaying, setDisplaying, setLogOut, mainUser } = useContext(fullNewsContext);
 const [logoutB, setLogoutB] = useState(false);
     const [sideLinks, setSideLinks] = useState({
         nextIc: true,
@@ -134,7 +134,7 @@ const [logoutB, setLogoutB] = useState(false);
                         viewAllNews: false,
                         viewEditNews:false,
                     })} className="flex-row flex items-center gap-x-2  "><FaUserCircle className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Profile</span> </Link></li>
-                    <li><Link  className="flex-row flex items-center gap-x-2  "><AiOutlineLogout className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Logout</span> </Link></li>
+                    <li><Link onClick={() => setLogOut(true)}  className="flex-row flex items-center gap-x-2  "><AiOutlineLogout className="text-slate-700 text-[17px] md:text-[30px] "/><span className={`text-[15px] md:text-[20px]  ${sideLinkState} text-slate-900   `}>Logout</span> </Link></li>
                
                         </ul>
             </div>

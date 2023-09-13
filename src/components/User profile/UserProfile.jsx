@@ -25,7 +25,7 @@ export const UserProfile = () => {
         editProfile : 'top-[-2000px]',
     });
   const notification = () => toast('Profile Info Succesfully Updated');
-  const {signedIn, mainUser, setMainUser, signOutUser} = useContext(fullNewsContext)
+  const {signedIn, mainUser, logOut, setLogOut, setMainUser, signOutUser} = useContext(fullNewsContext)
   const [profileImg, setProfileImg] = useState([]);
   //const [mainUserInfo, setMainUserInfo] = useState({ ...mainUser[0]})
   const uid = mainUser[0]?.id;
@@ -141,7 +141,7 @@ console.log('Image Name:', imageName);
                      <div className="flex items-center  text-center   gap-1">
             <button onClick={viewChangePassword} className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-green-500 text-[12px] w-fit  p-2 h-fit rounded ">Change Password </button>
             <button onClick={viewEditProfile}  className="flex items-center text-center text-slate-50 gap-2 md:text-[15px] bg-yellow-500 text-[12px] w-fit p-2 h-fit rounded ">Edit Profile</button>
-            <button onClick={signOutUser} className="flex items-center  text-slate-50 gap-2 md:text-[15px] bg-red-500 text-[12px]  p-2 w-fit h-fit rounded ">Logout </button>
+            <button onClick={() => setLogOut(true)} className="flex items-center  text-slate-50 gap-2 md:text-[15px] bg-red-500 text-[12px]  p-2 w-fit h-fit rounded ">Logout </button>
            </div>
                     </div>
                 </div>

@@ -156,6 +156,7 @@ import { UserProfile } from './components/User profile/UserProfile';
 import { ToastContainer } from 'react-toastify';
 import { fullNewsContext } from './components/context/Context';
 import { useContext } from 'react';
+import { LogOut } from './components/Logout/logout';
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
@@ -168,6 +169,7 @@ function App() {
 <ScrollToTop/>
 <Navmobile/>
 <Navdesktop/>
+<LogOut/>
     <Routes>
       <Route path='/' element={<Home/>} />
                                 <Route path='/news' element={<News />} />

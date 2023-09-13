@@ -23,7 +23,8 @@ export const NewsContext = (props) => {
     viewAllNews: false,
     viewEditNews:false,
 });
-   // const [courseName, setCourseName] = useState('');
+  // const [courseName, setCourseName] = useState('');
+  const [logOut, setLogOut] = useState(false);
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
   const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
   const [allEvents, setAllEvents] = useState(JSON.parse(localStorage.getItem('allEvents')) || []);
@@ -99,14 +100,15 @@ export const NewsContext = (props) => {
   const signOutUser = async () => {
     try {
       setMainUser(0)
-      await signOut(auth)
+      await signOut(auth);
+      setLogOut(false)
     } catch (error) {
       
     }
   }
     //const getCourseName = (courses) => {
     //}
-    return <fullNewsContext.Provider value={{getFullNews, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }
