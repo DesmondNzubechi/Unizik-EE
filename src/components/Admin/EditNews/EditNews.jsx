@@ -45,30 +45,18 @@ const currentDate = new Date();
 
   const UpdateNewsImg = async () => {
     if (imgInfo.imgName === '') {
-      if (fileType === 'image') {
-        const noti = () => toast('Please select image to be uploaded');
-        noti();
-      } else {
         const noti = () => toast('Please select Video to be uploaded');
         noti();
-      }
      return;
     }
-     const folderRef = ref(storage,  'newsImg')
+     const folderRef = ref(storage,  'newsImages')
      try {
        const imgRef = ref(folderRef, imgInfo.imgName)
      const imgUpload =  await uploadBytes(imgRef, imgInfo.imgFile);
      const url = await getDownloadURL(imgUpload.ref);
-     if (fileType === 'video') {
-       setEditNews({...editNews, newsVideo: url});
-       const noti = () => toast('Video Successfully Updated');
-       noti();
-     } else {
        setEditNews({...editNews, newsImg:  url});
        const noti = () => toast('Image Successfully Updated');
       noti();
-     }
- 
      } catch (error) {
        const noti = () => toast(error);
        noti()
@@ -83,42 +71,24 @@ useEffect(() => {
   const updateNews = async (newsId) => {
 
     if (editNews.newsImg?.length === 0 ) {
-      const shouldProceed = window.confirm("newsImg is empty. Do you want to proceed with the execution of the function?");
-      if (!shouldProceed) {
-        return; // Function will stop if user clicks 'No'
-      }
-    }
-
-    if ( editNews.newsVideo?.length === 0) {
-      const shouldProceed = window.confirm("newsImg is empty. Do you want to proceed with the execution of the function?");
+      const shouldProceed = window.confirm("You have not updated Image. Do you want to proceed with the execution of the function?");
       if (!shouldProceed) {
         return; // Function will stop if user clicks 'No'
       }
     }
     setSpinC(true);
-      const newsRef = doc(db, 'news', newsId);
+      const newsRef = doc(db, `${editNews.category}`, newsId);
       try {
-        if (fileType === 'video') {
           await updateDoc(newsRef, {
-            newsVideo: editNews.newsVideo,
+            newsImg: editNews.newsImg,
             newsHeadline: editNews.newsHeadline,
             newsOverview: editNews.newsOverview,
             fullNews:  editNews.fullNews,
             date: fullDate,
+            category: editNews.category,
             createTime: new Date().getTime(),
            })
-        } else {
-          await updateDoc(newsRef, {
-            newsImg: newsContents.newsImg,
-            newsHeadline: newsContents.newsHeadline,
-            newsOverview: newsContents.newsOverview,
-            fullNews:  newsContents.fullNews,
-            date: fullDate,
-            category: newsContents.category,
-            createTime: new Date().getTime(),
-           })
-        }
-         const noti = () => toast('News Successfully Update');
+         const noti = () => toast('Successfully Updated');
          noti();
         setSpinC(false)
       } catch (error) {
@@ -144,12 +114,20 @@ useEffect(() => {
                 <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[17px] " htmlFor="headline">News overview:</label>
                     <input value={editNews.newsOverview} onChange={(e) => setEditNews({...editNews, newsOverview: e.target.value })} type="text" className="p-4 bg-transparent capitalize text-[20px] outline-0 shadow rounded  w-full " name="headline" placeholder="News overview" id="" />
-                </div>
+            </div>
+            <div className="flex flex-col gap-0">
+                    <label className="capitalize font-[600] text-[13px] " htmlFor="headline">Category:</label>
+                        <select value={editNews.category} onChange={(e) => setEditNews({...editNews, category: e.target.value})} className="rounded bg-slate shadow  outline-0 p-4" name="" id="">
+                        <option value="">Select</option>
+                         <option value="News">News</option>
+                      <option value="Event">Event</option>
+                    </select>
+                    </div>
                 <div className="flex flex-col gap-0 ">
-                <select onChange={(e) => setFileType(e.target.value)} className="rounded outline-0 p-1" name="" id="">
+               { /*<select onChange={(e) => setFileType(e.target.value)} className="rounded outline-0 p-1" name="" id="">
                       <option value="image">News Image</option>
                       <option value="video">News Video</option>
-                    </select>
+    </select>*/}
                     <input onChange={(e) => {
                       setImgInfo({
                         imgFile: e.target.files[0],
