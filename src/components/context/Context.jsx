@@ -12,18 +12,31 @@ export const fullNewsContext = createContext();
 export const NewsContext = (props) => {
     const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
     const [clickedCoursePdf, setClickedCoursePdf] = useState(localStorage.getItem("clickedCoursePdf") ||  '');
-    const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
+  const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
+  const [displaying, setDisplaying] = useState(JSON.parse(localStorage.getItem('displaying')) || {
+    pdfView: false,
+    viewDashboard: true,
+    viewProfile: false,
+    pdfPost: false,
+    newsPost: false,
+    userView: false,
+    viewAllNews: false,
+    viewEditNews:false,
+});
    // const [courseName, setCourseName] = useState('');
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
   const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
   const [allEvents, setAllEvents] = useState(JSON.parse(localStorage.getItem('allEvents')) || []);
-    useEffect(() => {
+  const [editNews, setEditNews] = useState(JSON.parse(localStorage.getItem('editNews')) || {});
+  useEffect(() => {
+    localStorage.setItem('editNews', JSON.stringify(editNews))  
+    localStorage.setItem('displaying', JSON.stringify(displaying))
       localStorage.setItem('eleCourses', JSON.stringify(eleCourses));
       localStorage.setItem('allNews', JSON.stringify(allNews));
       localStorage.setItem('allEvents', JSON.stringify(allEvents));
         localStorage.setItem('clickedCoursePdf', clickedCoursePdf);
         localStorage.setItem('clickedLevel', clickedLevel);
-    }, [eleCourses, clickedCoursePdf, clickedLevel]);
+    }, [eleCourses, clickedCoursePdf, clickedLevel,  displaying]);
     const [fullNews, setFullNews] = useState(JSON.parse(localStorage.getItem('fullNews')) || []);
     
     useEffect(() => {
@@ -92,10 +105,8 @@ export const NewsContext = (props) => {
     }
   }
     //const getCourseName = (courses) => {
-    
     //}
-
-    return <fullNewsContext.Provider value={{getFullNews, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

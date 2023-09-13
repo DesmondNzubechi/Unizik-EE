@@ -13,7 +13,6 @@ const apikey = 'b9a46b1958145632d73edfcb3ca65284';
 export const News = () => {
   const {getFullNews, anotherNews, allNews, setAllNews, setAnotherNews} = useContext(fullNewsContext);
   useEffect(() => {
-
     const fetchNews = async () => {
       const newsStore = collection(db, 'News');
       try {
@@ -25,7 +24,7 @@ export const News = () => {
       }
     }
     fetchNews();
-  }, [allNews])
+  }, [])
    
 
     return(
@@ -44,10 +43,10 @@ export const News = () => {
             </div>
             
             <div className="flex flex-col gap-1   max-w-[400px] ">
-            <h1 className="font-bold text-[12px] uppercase md:text-[17px]  ">{news.newsHeadline}</h1>
-            <span className="font-semibold text-[10px] md:text-[12px] text-slate-500 ">{news.date}</span>
-            <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{news.newsOverview} </p>
-            <Link to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
+            <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{news.newsHeadline}</h1>
+            <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{news.date}</span>
+          { /* <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{news.newsOverview} </p>*/}
+            <Link to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-1 w-fit rounded hover:bg-slate-700 text-[10px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 
