@@ -29,7 +29,7 @@ export const FullNewsDetails = () => {
             
                     <div data-aos='zoom-in-down' aos-data-duration='2000' className="max-w-[700px] flex flex-col gap-3 ">
                         <h1 className="uppercase font-bold text-[30px] text-slate-900">{news.newsHeadline}</h1>
-                        <div  className=" flex justify-start ">
+                        <div  className="  ">
                         <img  data-aos='zoom-in-down' aos-data-duration='2000' src={news.newsImg} alt="" className="max-w-[400px] max-h-[400px]" />
                             </div>
                             <p className="text-slate-700 font-bold   text-[15px] md:text-[20px] ">{news.date}</p>
