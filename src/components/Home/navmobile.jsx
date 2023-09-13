@@ -9,7 +9,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 
 export const Navmobile = () => {
-    const { signedIn } = useContext(fullNewsContext);
+    const { signedIn, mainUser } = useContext(fullNewsContext);
 
 const [showNav, SetShowNav] = useState(false);
 const [hideBtn, setHideBtn] = useState(false);
@@ -59,8 +59,14 @@ const hidenavF = () => {
             <Link onClick={hidenavF} to='/signup'>Signup</Link>
             </button>
                     </div>}
-                  { signedIn && <button className=" w-fit p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
-            <Link onClick={hidenavF} className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+                    {signedIn && mainUser[0]?.stats == 'user' &&
+        <button className=" p-[10px] border w-fit shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+        
+          </button>}
+          {signedIn && mainUser[0]?.stats !== 'user' &&
+        <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz w-fit font-semibold ">
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/dashboard'>Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
             </button>}
           </div>

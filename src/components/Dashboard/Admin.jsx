@@ -27,9 +27,9 @@ import { fullNewsContext } from "../context/Context";
 import { AllNews } from "../Admin/AllNews/Allnews";
 import { useContext } from "react";
 import { EditNews } from "../Admin/EditNews/EditNews";
-
+import { useNavigate } from "react-router-dom";
 export const Admindashboard = () => {
-    const { displaying, setDisplaying } = useContext(fullNewsContext);
+    const { displaying, setDisplaying, mainUser } = useContext(fullNewsContext);
 const [logoutB, setLogoutB] = useState(false);
     const [sideLinks, setSideLinks] = useState({
         nextIc: true,
@@ -39,8 +39,9 @@ const [logoutB, setLogoutB] = useState(false);
     // useEffect(() => {
     //     localStorage.setItem('displaying', JSON.stringify(displaying))
     // }, [displaying])
-
-    return(
+    const navig = useNavigate();
+    return (
+        mainUser[0]?.stats !== 'admin' ? navig('/login'):
         <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[70px] bottom-0 "
         >
           <div className="flex flex-row items-center justify-center">

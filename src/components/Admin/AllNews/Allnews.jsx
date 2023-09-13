@@ -4,14 +4,14 @@ import { fullNewsContext } from "../../context/Context";
 import { Link } from "react-router-dom";
 import { deleteDoc, collection, doc, getDocs } from "firebase/firestore";
 import { EditNews } from "../EditNews/EditNews";
-import { db } from "../../config/firebase";
+import { db, storage } from "../../config/firebase";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ClipLoader, FadeLoader, MoonLoader, RotateLoader } from "react-spinners";
+import { deleteObject, ref } from "firebase/storage";
 
 
 export const AllNews = () => {
-    
     const {  editNews, displaying,  allNews, allEvents, setAllEvents, getFullNews, setAllNews, setDisplaying, setEditNews, } = useContext(fullNewsContext);
     console.log('all news', allNews)
     useEffect(() => {
@@ -38,14 +38,19 @@ export const AllNews = () => {
         fetchNews();
         fetchEvents();
       }, [])
-    const deleteNews = async (id, cat) => {
+    const deleteNews = async (news) => {
 //     const deleteConfirmation = confirm('Are you sure you want to delete this news, Kindly note that you can\'t undo this action after being processed')
 // if(!deleteConfirmation) {
 //    return;
 // } 
 try {
-    const newsIn = doc(db, `${cat}`, id);
+    const newsIn = doc(db, `${news.category}`, news.id);
     await deleteDoc(newsIn);
+    const newsImgPath = news.newsImg.split('/');
+    const imgToBeDeleted = newsImgPath[newsImgPath.length - 1];
+    const newsImgName = imgToBeDeleted.split('?')[0];
+    const deletingImg = ref(storage, `NewsImages/${newsImgName.replace('NewsImages%2F', '')}`);
+    await deleteObject(deletingImg);
     const noti = () => toast('Deleted Successfully');
     noti();
 } catch (error) {
@@ -92,7 +97,7 @@ const newsAndEvent = [...allNews, ...allEvents]
                     })
                  }} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-slate-700  bg-gray-100 ">Edit </Link>
                  <Link key={news?.date} to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-green-500 bg-green-100 ">View</Link>
-                 <Link onClick={() => deleteNews(news.id, news.category)} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-red-500 bg-red-100 ">Delete</Link>
+                 <Link onClick={() => deleteNews(news)} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-red-500 bg-red-100 ">Delete</Link>
                 </div>
                </div>
              })}

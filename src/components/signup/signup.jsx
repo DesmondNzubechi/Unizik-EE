@@ -18,7 +18,7 @@ export const Sign = () => {
         password: '',
         confirmPassword: '',
     })
-    const { signedIn } = useContext(fullNewsContext);
+    const { signedIn, mainUser } = useContext(fullNewsContext);
 
     const signUserUp = async () => {
         const userRef = collection(db, 'allUser')
@@ -30,6 +30,7 @@ export const Sign = () => {
                 firstName: userDetails.firstName,
                 lastName: userDetails.lastName,
                 userLevel: userDetails.level,
+                stats: 'user',
                 }
             )
             setSpinnerJs(false);
@@ -41,7 +42,7 @@ export const Sign = () => {
     const navig = useNavigate();
 
     return (
-        signedIn? navig('/profile') : !signedIn &&
+        signedIn && mainUser[0]?.stats == 'user'? navig('/profile') :  signedIn && mainUser[0]?.stats == 'admin'? navig('/dashboard') : !signedIn &&
         <div className="py-[70px] pt-[150px]">
             <div className="flex flex-row justify-center">
            { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"

@@ -5,7 +5,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import {FaUserCircle} from 'react-icons/fa';
 export const Navdesktop = () => {
-  const { signedIn } = useContext(fullNewsContext);
+  const { signedIn,   mainUser } = useContext(fullNewsContext);
     return (
         <div className="lg:flex hidden  shadow-2xl bg-black z-[60] py-[5px] px-[20px] fixed top-0 left-0 right-0 w-full flex-row justify-around items-center">
   <div >
@@ -33,9 +33,14 @@ export const Navdesktop = () => {
         
             </button>
         </div>}
-       {signedIn &&
+       {signedIn && mainUser[0]?.stats == 'user' &&
         <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
             <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+        
+          </button>}
+          {signedIn && mainUser[0]?.stats !== 'user' &&
+        <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/dashboard'>Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
             </button>}
        
