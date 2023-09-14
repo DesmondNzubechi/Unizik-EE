@@ -4,9 +4,12 @@ import { CoursesOffered } from "../CourseOffered/CourseOffered";
 import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../config/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import pdfjsLib from 'pdfjs-dist';
+import { RotateLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const PdfUpload = () => {
+  const [spinC, setSpinC] = useState(false);
 const [courseName, setCourseName] = useState("");
 const [level, setLevel] = useState([]);
 const [getSemester, setGetSemester] = useState(null);
@@ -22,63 +25,14 @@ const [pdfDetails, setPdfDetails] =  useState({
     resourcesType: ''
       
 });
-    
-    
-    
-// const uploadPdf = async () => {
-//     const pdfStore = collection(db, 'learningResources');
-//     const storageRef = ref(storage, 'learningResources');
-  
-//     try {
-//       // Render the first page of the PDF as an image
-//       const pdfDataResponse = await fetch(pdfDatas); // Assuming pdfDatas.url contains the URL of the PDF
-//       const pdfData = await pdfDataResponse.arrayBuffer();
-//       const pdf = await pdfjsLib.getDocument({ data: pdfData }).promise;
-//       const firstPage = await pdf.getPage(1);
-//       const viewport = firstPage.getViewport({ scale: 1 });
-//       const canvas = document.createElement('canvas');
-//       const context = canvas.getContext('2d');
-//       canvas.height = viewport.height;
-//       canvas.width = viewport.width;
-//       await firstPage.render({ canvasContext: context, viewport }).promise;
-//       const imageBase64 = canvas.toDataURL('image/jpeg');
-  
-//       // Upload the image of the first page to Firebase Storage
-//       const imageRef = ref(storage, `learningResources/${pdfDatas.name}_first_page.jpg`);
-//       const imageUploadData = await uploadBytes(imageRef, imageBase64, 'data_url');
-  
-//       // Get the download URL for the uploaded image
-//       const imageDownloadURL = await getDownloadURL(imageUploadData.ref);
-  
-//       // Now that the image is uploaded, you can proceed to upload the PDF
-//       const fileRef = ref(storageRef, pdfDatas.name);
-//       const uploadPdfData = await uploadBytes(fileRef, pdfDatas);
-  
-//       // Get the download URL for the uploaded PDF
-//       const getPdfLink = await getDownloadURL(uploadPdfData.ref);
-//    // Calculate the size in megabytes
-//       const pdfSizeInBytes = pdfDatas.size;
-//       const pdfSizeInMB = (pdfSizeInBytes / 1048576).toFixed(2); // Convert to MB and round to 2 decimal places
-//       // Add both PDF and image details to Firestore
-//       await addDoc(pdfStore, {
-//         level: pdfDetails.level,
-//         semester: pdfDetails.semester,
-//         course: pdfDetails.course,
-//         topic: pdfDetails.topic,
-//         link: getPdfLink,
-//         size: pdfSizeInMB + ' MB',
-//         firstPageImage: imageDownloadURL,
-//       });
-  
-//       alert('PDF and image uploaded successfully!');
-//     } catch (error) {
-//       console.error(error);
-//       alert('Error uploading PDF: ' + error.message);
-//     }
-//   };
-  
 
-const uploadPdf = async () => {
+  const uploadPdf = async () => {
+    if (pdfDetails.level == '' || pdfDetails.semester == '' || pdfDetails.course == '' || pdfDetails.topic == '' || pdfDetails == '' || pdfDatas == null) {
+      const notify = () => toast('Please make sure you fill out the form');
+      notify();
+      return;
+    }
+    setSpinC(true);
     const pdfStore = collection(db, 'learningResources');
     const storageRef = ref(storage, 'learningResources');
 
@@ -100,41 +54,21 @@ const uploadPdf = async () => {
         link: getPdfLink,
         size: pdfSizeInMB + ' MB',
       });
-
-      alert('PDF and image uploaded successfully!');
+      setSpinC(false);
+      const notify = () => toast('Uploaded successfully');
+      notify();
     } catch (error) {
       console.error(error);
-      alert('Error uploading PDF: ' + error.message);
+      alert('Failed to upload');
+      setSpinC(false);
     }
   };
-
-
-    // const uploadPdf = async () => {
-    //     const pdfStore = collection(db, 'learningResources');
-    //     const storageRef = ref(storage, 'learningResources');
-
-    //     try {
-    //         const fileRef = ref(storageRef, pdfDatas.name);
-    //         const uploadPdfDatas = await uploadBytes(fileRef, pdfDatas)
-    //         const getPdfLink = await getDownloadURL(uploadPdfDatas.ref);
-    //         await addDoc(pdfStore, {
-    //             level: pdfDetails.level,
-    //             semester: pdfDetails.semester,
-    //             course:  pdfDetails.course,
-    //             topic : pdfDetails.topic,
-    //             link: getPdfLink,
-    //             size: pdfDatas.size,
-    //         })
-    //         alert('sure sure')
-    //     } catch (error) {
-    //         alert(error)
-    //     }
-    // }
-
-console.log(pdfDetails);
-
     return(
-            <div className="px-[20px] flex justify-center  py-[50px] ">
+      <div className="px-[20px] flex justify-center  py-[50px] ">
+          {spinC && <div className="fixed bg-tpr w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><RotateLoader className="relative z-[600]" color="#36d7b7"
+           size={30}
+           width={10}
+            /></div> }
                 <div>
                 <h1 className="text-center md:max-w-full max-w-[250px] font-bold  uppercase  mb-[30px] font-bold text-[12px] md:text-[20px] ">Hey! You can now Upload Handouts, Textbooks and exam past questions </h1>
                 <form action=""  className="flex md:max-w-full max-w-[250px]  flex-col  gap-3 ">

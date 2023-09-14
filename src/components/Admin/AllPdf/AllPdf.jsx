@@ -32,7 +32,7 @@ const [pdfDetails, setPdfDetails] =  useState({
     resourcesType: ''
       
 });
-  const {allPdfs} = useContext(fullNewsContext);
+  //const {allPdfs} = useContext(fullNewsContext);
  // const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
@@ -48,7 +48,7 @@ const [pdfDetails, setPdfDetails] =  useState({
     const [getLevelPdf, setGetLevelPdf] = useState([]);
     const {clickedCoursePdf} = useContext(fullNewsContext);
   const [currentPdf, setCurrentPdf] = useState([]);
- // const [allPdfs, setAllPdfs] = useState([]);
+ const [allPdfs, setAllPdfs] = useState([]);
   const [bookType, setBookType] = useState({
     Handouts: [],
     TextBooks: [],
@@ -56,20 +56,20 @@ const [pdfDetails, setPdfDetails] =  useState({
   })
   useEffect(() => {
     localStorage.setItem('bookCat', JSON.stringify(bookCat))
-    // const fetchPdf = async () => {
-    //   const pdfStore = collection(db, 'learningResources');
-    //   try {
-    //     const pdfS = await getDocs(pdfStore);
-    //     const allPdfData = pdfS.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-    //     setAllPdfs(allPdfData);
+    const fetchPdf = async () => {
+      const pdfStore = collection(db, 'learningResources');
+      try {
+        const pdfS = await getDocs(pdfStore);
+        const allPdfData = pdfS.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        setAllPdfs(allPdfData);
 
-    //   } catch (error) {
-    //     alert(error)
-    //   }
-    // }
-    // if (allPdfs.length == 0) {
-    //   fetchPdf();
-    //}
+      } catch (error) {
+        alert(error)
+      }
+    }
+    if (allPdfs.length == 0) {
+      fetchPdf();
+    }
    
         const filterClickedCourse = () => {
           const coursePdf = allPdfs.filter(pdf => {
@@ -95,7 +95,7 @@ const [pdfDetails, setPdfDetails] =  useState({
       })
     }
     filterBookType();
-  }, [])
+  }, [bookType])
   
   const deleteBook = async (pdfInfo) => {
     const confirmFirst = window.confirm(`Are you want to delete ${pdfInfo.topic}?`);
@@ -104,14 +104,13 @@ const [pdfDetails, setPdfDetails] =  useState({
     }
     setSpinC(true);
     try {
-      const pdfStore = doc(db, 'learningResources', pdfInfo.id);
-      deleteDoc(pdfStore);
+       const pdfStore = doc(db, 'learningResources', pdfInfo.id);
+       deleteDoc(pdfStore);
      const pdfPath = pdfInfo.link.split('/');
       const pdfToBeDeleted = pdfPath[pdfPath.length - 1];
       const pdfName = pdfToBeDeleted.split('?')[0];
-      console.log(pdfName.replace('learningResources%2F', ''));
-
-      const deletingPdf = ref(storage, `learningResources/${pdfName.replace('learningResources%2F', '')}`);
+      const sanitizename = pdfName.replace('learningResources%2F', '')
+      const deletingPdf = ref(storage, `learningResources/${sanitizename.replace(/%20/g, ' ')}`);
       await deleteObject(deletingPdf);
       setSpinC(false);
       const notify = () => toast(`${pdfInfo.topic} successfully deleted`);
@@ -119,6 +118,7 @@ const [pdfDetails, setPdfDetails] =  useState({
 
     } catch (error) {
       alert(error);
+      setSpinC(false);
     }
   }
     

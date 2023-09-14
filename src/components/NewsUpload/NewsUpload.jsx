@@ -195,8 +195,9 @@ useEffect(() => {
            {spinC && <div className="fixed bg-tpr w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><RotateLoader className="relative z-[600]" color="#36d7b7"
            size={30}
            width={10}
-            /></div> }
-            <div className="grid grid-cols-1 gap-5">
+        /></div>}
+        <div className="grid grid-cols-1 gap-5">
+          
               <div className="flex flex-col gap-5 md:flex-row  ">
                 <div className="flex flex-col gap-0 ">
                     <label className="capitalize font-[600] text-[13px] " htmlFor="headline">headline :</label>
