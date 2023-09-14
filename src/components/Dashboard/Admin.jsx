@@ -189,7 +189,7 @@ const [logoutB, setLogoutB] = useState(false);
                         viewEditNews: false,
                         pdfViewColor: 'text-green-500',
                         viewDashboardColor: 'text-slate-700',
-                        viewProfileColor: 'text-green-500',
+                        viewProfileColor: 'text-slate-700',
                         pdfPostColor: 'text-slate-700',
                         newsPostColor: 'text-slate-500',
                       userViewColor: 'text-slate-700',

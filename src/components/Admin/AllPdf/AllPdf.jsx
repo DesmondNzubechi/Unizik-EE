@@ -92,7 +92,7 @@ const [pdfDetails, setPdfDetails] =  useState({
     
       console.log(clickedCoursePdf); 
     return(
-        <div className="pt-[150px] px-[30px]  pb-[50px] ">
+        <div className="pt-[50px] px-[30px]  pb-[50px] ">
         <div className="text-center my-[20px] ">
                 <h1 className="font-bold uppercase text-slate-900 text-[20px] md:text-[30px] "> All Books</h1>
                 <div className=" flex  flex-row justify-center    gap-1 ">
