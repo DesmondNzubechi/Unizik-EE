@@ -30,7 +30,9 @@ export const NewsContext = (props) => {
   userViewColor: 'text-slate-700',
   viewAllNewsColor: 'text-slate-700',
   viewEditNewsColor: 'text-slate-700',
-});
+  });
+  const [userList, setUserList] = useState([]);
+  const [allPdfs, setAllPdfs] = useState([]);
   // const [courseName, setCourseName] = useState('');
   const [logOut, setLogOut] = useState(false);
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
@@ -116,7 +118,7 @@ export const NewsContext = (props) => {
   }
     //const getCourseName = (courses) => {
     //}
-    return <fullNewsContext.Provider value={{getFullNews, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

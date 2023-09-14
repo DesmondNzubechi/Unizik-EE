@@ -14,7 +14,7 @@ import { AiFillDelete } from 'react-icons/ai';
 export const AllPdf = () => {
     const [courseName, setCourseName] = useState("");
 const [level, setLevel] = useState([]);
-const [getSemester, setGetSemester] = useState(null);
+const [getSemester, setGetSemester] = useState('');
 const [selectedCourse, setSelectedCourse] = useState('select');
 const [selectedUnit, setSelectedUnit] = useState(null);
     const [courses, setCourses] = useState([]);
@@ -28,7 +28,7 @@ const [pdfDetails, setPdfDetails] =  useState({
       
 });
   // const {allPdfs} = useContext(fullNewsContext);
-  const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
+ // const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
     handoutBg: 'bg-yellow-500',
@@ -50,7 +50,9 @@ const [pdfDetails, setPdfDetails] =  useState({
     pastQuestions: [],
   })
   useEffect(() => {
-        
+    // localStorage.setItem('level', json.stringify(level));
+    // localStorage.setItem('selectedCourse', selectedCourse));
+    // localStorage.setItem('getSemester', getSemester);
     const fetchPdf = async () => {
       const pdfStore = collection(db, 'learningResources');
       try {
@@ -244,7 +246,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+                <a download={pdf.link} href={pdf.link}> <AiFillDelete className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
               </div>
              }
             )
@@ -257,7 +259,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a download={pdf.link} href={pdf.link}> <HiDocumentDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+                <a> <AiFillDelete className="text-[35px] cursor-pointer hover:text-red-700  text-red-500" /></a>
               </div>
              }
             )

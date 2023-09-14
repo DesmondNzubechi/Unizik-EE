@@ -8,7 +8,7 @@ import { HiDocumentDownload } from 'react-icons/hi';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 export const DownloadPdfs = () => {
-  // const {allPdfs} = useContext(fullNewsContext);
+  const {allPdfs, setAllPdfs} = useContext(fullNewsContext);
   const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
@@ -24,7 +24,6 @@ export const DownloadPdfs = () => {
     const [getLevelPdf, setGetLevelPdf] = useState([]);
     const {clickedCoursePdf} = useContext(fullNewsContext);
   const [currentPdf, setCurrentPdf] = useState([]);
-  const [allPdfs, setAllPdfs] = useState([]);
   const [bookType, setBookType] = useState({
     Handouts: [],
     TextBooks: [],

@@ -45,11 +45,14 @@ import {BsNewspaper, BsFillCalendarEventFill} from 'react-icons/bs';
 import {MdPictureAsPdf} from 'react-icons/md';
 import {FaUsers} from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import {BsFillChatQuoteFill, BsBookHalf} from 'react-icons/bs';
 import { MdReviews } from 'react-icons/md';
+import { fullNewsContext } from "../context/Context";
+import { useContext } from "react";
+
 
 export const DashboardView = () => {
+  const { userList, setUserList, allPdfs, allNews, allEvents } = useContext(fullNewsContext);
     return( 
         <div className="flex overflow-x-hidden flex-col gap-[50px]">
             {/*<div>
@@ -67,25 +70,25 @@ export const DashboardView = () => {
                 <div className="text-center bg-gradient-to-r  py-[25px] md:min-w-[300px] from-gray-200 to-gray-200 gap-2 px-[50px] rounded py-[10px] flex flex-col items-center">
                     <FaUsers className=" text-[50px] "/>
                   <h1 className="uppercase font-bold ">Total Users</h1>
-                  <p className="text-[20px] font-semibold ">2</p>
+            <p className="text-[20px] font-semibold ">{ userList.length}</p>
                 </div>
 
                 <div className="text-center bg-gradient-to-r  gap-2 py-[25px] md:min-w-[300px] from-gray-200 to-gray-200 px-[50px] rounded py-[10px] flex flex-col items-center">
                     <BsNewspaper className=" text-[50px] "/>
                   <h1 className="uppercase font-bold ">Total news</h1>
-                  <p className="text-[20px] font-semibold ">0</p>
+            <p className="text-[20px] font-semibold ">{ allNews.length}</p>
                 </div>
 
                 <div className="text-center bg-gradient-to-r  py-[25px] md:min-w-[300px] from-gray-200 to-gray-200 px-[50px] gap-2 rounded py-[10px] flex flex-col items-center">
                     <BsFillCalendarEventFill className=" text-[50px] "/>
                   <h1 className="uppercase font-bold ">Total Events</h1>
-                  <p className="text-[20px] font-semibold ">1</p>
+            <p className="text-[20px] font-semibold ">{ allEvents.length}</p>
                 </div>
 
                 <div className="text-center bg-gradient-to-r  py-[25px] md:min-w-[300px] from-gray-200 to-gray-200 gap-2 px-[50px] rounded py-[10px] flex flex-col items-center">
                     <BsBookHalf className=" text-[50px] "/>
                   <h1 className="uppercase font-bold ">learning resources</h1>
-                  <p className="text-[20px] font-semibold ">3</p>
+            <p className="text-[20px] font-semibold ">{ allPdfs.length}</p>
                 </div>
 
              </div>

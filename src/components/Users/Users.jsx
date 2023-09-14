@@ -34,8 +34,7 @@ const usersInfo = [
 
 
 export const Users = () => {
-    const {signedIn } = useContext(fullNewsContext);
-    const [userList, setUserList] = useState([]);
+    const {signedIn, userList, setUserList } = useContext(fullNewsContext);
     useEffect(() => {
         const getUsers = async () => {
             const userStore = collection(db, 'allUser');
