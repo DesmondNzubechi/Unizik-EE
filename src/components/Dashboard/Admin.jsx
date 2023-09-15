@@ -41,6 +41,7 @@ const [logoutB, setLogoutB] = useState(false);
         textSize: 'text-[8px]',
         flexType: 'flex-col'
     });
+  const [showBar, setShowBar] = useState('hidden');
     const [sideLinkState, setSideLinkState] = useState('hidden');
     // useEffect(() => {
     //     localStorage.setItem('displaying', JSON.stringify(displaying))
@@ -56,12 +57,13 @@ const [logoutB, setLogoutB] = useState(false);
                     <div >
             {sideLinks.prevIc && <HiXMark  onClick={() => {
                 setSideLinkState('hidden');
-                setSideLinks({
-                    nextIc: true,
-                    prevIc: false,
-                    textSize: 'text-[8px]',
-                    flexType: 'flex-col'
-                })
+                    setSideLinks({
+                      nextIc: true,
+                      prevIc: false,
+                      textSize: 'text-[8px]',
+                      flexType: 'flex-col'
+                    });
+                    setShowBar('hidden');
             }} className={`bg-slate-50  p-1 rounded-[2px] text-[20px] md:text-[30px]`}/>}
 
              {sideLinks.nextIc && <AiOutlineMenu onClick={() => {
@@ -72,6 +74,7 @@ const [logoutB, setLogoutB] = useState(false);
                                         textSize: 'text-[13px]',
                                         flexType: 'flex-row'
                                     })
+                    setShowBar('flex')
             }} className={`bg-slate-50  p-1 rounded-[2px] text-[20px] md:text-[30px]`}/>}
             </div>
           {  /*<img className="max-w-[50px]" src={logo} alt="" />*/}
@@ -84,7 +87,7 @@ const [logoutB, setLogoutB] = useState(false);
            {/* <button className="flex items-center text-slate-50 gap-2 md:text-[20px] bg-yellow-500 text-[15px]  p-2 h-fit rounded ">Logout <AiOutlineLogout/></button>*/}
            </div>
           </div>
-             <div className="bg-slate-50 shadow z-[10] bottom-0 p-1 md:p-5 fixed  top-0 left-0 h-[100%]">
+            <div className={`bg-slate-50 lg:flex ${showBar} shadow z-[10] bottom-0 p-1 md:p-5 fixed  top-0 left-0 h-[100%]`}>
              <div>
                 <ul className="flex flex-col px-[5px] pt-[100px] gap-[30px]">
                                 <li ><Link onClick={() => setDisplaying({
@@ -221,7 +224,7 @@ const [logoutB, setLogoutB] = useState(false);
             </div>
             </div>
             
-            <div className="py-[10px] relative flex justify-center  ml-[30px] ">
+            <div className="py-[10px] relative flex justify-center  lg:ml-[30px] ">
               <div>
                     
                         {displaying.viewDashboard && <DashboardView />}
