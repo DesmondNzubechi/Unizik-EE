@@ -12,6 +12,7 @@ import { Navdesktop } from './components/Home/navdesktop';
 import { Contact } from './components/contact/contact';
 import { Courses } from './components/courses/courses';
 import { Events } from './components/Events/Events';
+import { CourseReps } from './components/CourseReps/CourseReps';
 /*========100 Level ======================*/
 
 import { Level100 } from './components/courses/100level/level100';
@@ -295,6 +296,7 @@ function App() {
      <Route path='/dashboard' element={<Admindashboard/>} />
      <Route path='/profile' element={<UserProfile/>} />
      <Route path='/students leaders' element={<ExcosProfile/>} />
+     <Route path='/Students/Class-Representative' element={<CourseReps/>} />
     </Routes>
    <Footer/>
 </BrowserRouter>

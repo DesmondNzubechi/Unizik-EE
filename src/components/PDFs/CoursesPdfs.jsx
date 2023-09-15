@@ -29,6 +29,7 @@ export const DownloadPdfs = () => {
     TextBooks: [],
     pastQuestions: [],
   })
+  
   useEffect(() => {
         
     const fetchPdf = async () => {
@@ -39,7 +40,7 @@ export const DownloadPdfs = () => {
         setAllPdfs(allPdfData);
 
       } catch (error) {
-        alert(error)
+       alert(error)
       }
     }
     fetchPdf();
@@ -68,7 +69,7 @@ export const DownloadPdfs = () => {
       })
     }
     filterBookType();
-      }, [allPdfs])
+      }, [])
     
       console.log(clickedCoursePdf); 
     return(
