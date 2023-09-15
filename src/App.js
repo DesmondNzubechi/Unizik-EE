@@ -158,6 +158,7 @@ import { ToastContainer } from 'react-toastify';
 import { fullNewsContext } from './components/context/Context';
 import { useContext } from 'react';
 import { LogOut } from './components/Logout/logout';
+import { DeptExcos } from './components/DeptExcos/DeptExco';
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
@@ -297,6 +298,7 @@ function App() {
      <Route path='/profile' element={<UserProfile/>} />
      <Route path='/students leaders' element={<ExcosProfile/>} />
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
+     <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
     </Routes>
    <Footer/>
 </BrowserRouter>

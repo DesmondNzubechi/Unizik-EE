@@ -12,44 +12,65 @@ const courseRepInfo = [
         email: 'nonsononyelu@gmail.com',
         number: '09081996708',
         picture: samPic,
-        level: 'Final Year'
+        level: 'Final Year',
+        position: 'President'
     },
     {
         name: 'Ezeadu Dabere Asumpta',
         email: 'Dabere@gmail.com',
-        number: '08035011681',
+        number: '+2348035011681',
         picture: daberePic,
-        level: '400l'
+        level: '400l',
+        position: 'Vice President'
     },
     {
         name: 'Abugu Desmond Nzubechukwu',
         email: 'desmondnzubechukwu1@gmail.com',
         number: '07084183611',
         picture: nzubechukwuPic,
-        level: '300l'
+        level: '300l',
+        position: 'Secretary General'
     },
     {
         name: 'OKOLI WISDOM CHUKWUEMEKA',
         email: 'okoliwisdom35@gmail.com',
         number: '08126169285',
         picture: samPic,
-        level: '200l'
+        level: '200l',
+        position: 'President'
     },
     {
         name: 'ARINZE CHINECHEREM JUSTUS',
         email: ' arinzejustus59@gmail.com',
         number: '09072106809',
         picture: justusPic,
-        level: '100l'
+        level: '100l',
+        position: 'President'
+    },
+    {
+        name: 'ARINZE CHINECHEREM JUSTUS',
+        email: ' arinzejustus59@gmail.com',
+        number: '09072106809',
+        picture: justusPic,
+        level: '100l',
+        position: 'President'
+    },
+    {
+        name: 'ARINZE CHINECHEREM JUSTUS',
+        email: ' arinzejustus59@gmail.com',
+        number: '09072106809',
+        picture: justusPic,
+        level: '100l',
+        position: 'President'
     },
 ];
 
-export const CourseReps = () => {
+export const DeptExcos = () => {
     return (
         <div className="py-[100px] flex justify-center bg-slate-50 px-[20px]">
             <div>
                 <div>
-                    <h1 className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Meet our class reps</h1>
+                    <h1 className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Departmental Students Executives</h1>
                     <div className="grid grid-cols-1 gap-[40px] md:grid-cols-2 lg:grid-cols-3">
                         {
                             courseRepInfo.map(info => {
