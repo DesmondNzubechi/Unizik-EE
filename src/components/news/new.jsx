@@ -87,9 +87,9 @@ export const AboutNews = () => {
   return(
       <div className="px-[20px] flex pt-[50px]  justify-around   flex-col rounded-[30px] bg-slate-100 gap-[40px] md:flex-row md:flex-row ... items-center py-[100px] ">
       <div className="flex flex-col max-w-[700px] gap-[20px] ">
-          <h1 className="text-[30px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">News</h1>
-          <p className="md:text-[17px] text-[15px] font-[400] ">We are your ultimate destination for cutting-edge news in electrical engineering. Stay ahead with our comprehensive coverage of technological advancements, research breakthroughs, and industry trends. Our expert team delivers curated articles on renewable energy, electric vehicles, robotics, and more. Trust our accurate, reliable, and balanced content to make informed decisions. Join our vibrant community of enthusiasts and professionals to engage in discussions and exchange knowledge. Fuel your curiosity, imagination, and success in this dynamic field.</p>
-      <p><Link to='/news' className="bg-slate-900 hover:text-slate-50 text-[20px] text-yellow-500 px-[10px] py-[5px] mt-[60px] font-semibold rounded-[3px]  ">Read News</Link>
+          <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">News</h1>
+          <p className="md:text-[15px] text-[12px] font-[400] ">We are your ultimate destination for cutting-edge news in electrical engineering. Stay ahead with our comprehensive coverage of technological advancements, research breakthroughs, and industry trends. Our expert team delivers curated articles on renewable energy, electric vehicles, robotics, and more. Trust our accurate, reliable, and balanced content to make informed decisions. Join our vibrant community of enthusiasts and professionals to engage in discussions and exchange knowledge. Fuel your curiosity, imagination, and success in this dynamic field.</p>
+      <p><Link to='/news' className="bg-slate-900 hover:text-slate-50 text-[15px] text-yellow-500 px-[10px] py-[5px] mt-[60px] font-semibold rounded-[3px]  ">Read News</Link>
       </p>
       </div>
       <div className=" max-w-[500px]">

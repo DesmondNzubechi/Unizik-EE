@@ -62,7 +62,7 @@ const newsAndEvent = [...allNews, ...allEvents]
     return(
         <div className="flex flex-row  font-poppins justify-center px-[40px] py-[50px]">
         <div>
-            <h1 className="text-center uppercase text-[30px] underline  mb-[20px] font-bold">all news and events</h1>
+            <h1 className="text-center uppercase text-[12px] md:text-[25px] underline  mb-[20px] font-bold">all news and events</h1>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {newsAndEvent.length === 0  && <div className="py-[40px] md:ml-[70px] text-center w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center">< ClipLoader className="relative z-[600]" color="black"
            size={70}
@@ -95,9 +95,9 @@ const newsAndEvent = [...allNews, ...allEvents]
                         viewAllNews: false,
                       viewEditNews:true,
                     })
-                 }} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-slate-700  bg-gray-100 ">Edit </Link>
-                 <Link key={news?.date} to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-green-500 bg-green-100 ">View</Link>
-                 <Link onClick={() => deleteNews(news)} className="px-3 py-1 text-slate-700 hover:text-white rounded font-[600] hover:bg-red-500 bg-red-100 ">Delete</Link>
+                 }} className="px-3 py-1 text-slate-700 hover:text-white rounded md:text-[15px] text-[12px] font-[600] hover:bg-slate-700  bg-gray-100 ">Edit </Link>
+                 <Link key={news?.date} to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="px-3 py-1 md:text-[15px] text-[12px] text-slate-700 hover:text-white rounded font-[600] hover:bg-green-500 bg-green-100 ">View</Link>
+                 <Link onClick={() => deleteNews(news)} className="px-3 py-1 md:text-[15px] text-[12px] text-slate-700 hover:text-white rounded font-[600] hover:bg-red-500 bg-red-100 ">Delete</Link>
                 </div>
                </div>
              })}

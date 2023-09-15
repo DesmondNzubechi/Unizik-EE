@@ -41,8 +41,8 @@ export const Courses = () => {
         <div className="">
             <div className="flex flex-row my-[30px] justify-center">
             <div className="text-center  max-w-[600px] ">
-            <h1 className="uppercase font-bold md:col-span-2  text-center text-[20px] md:text-[30px] ">View each level courseoutline</h1>
-            <p className="text-center text-slate-700 font-semibold ">Here, you will find detailed information about the courses offered at the 100 level, providing you with a clear understanding of the curriculum and learning objectives for each subject.</p>
+            <h1 className="uppercase font-bold md:col-span-2  text-center text-[20px] md:text-[30px] ">courseoutlines</h1>
+            <p className="text-center nd:text-[20px] text-[15px]  text-slate-700 font-semibold ">Here, you will find detailed information about the courses offered at the each level, providing you with a clear understanding of the curriculum and learning objectives for each subject.</p>
             </div>
             </div>
             <div className="flex flex-row justify-center">
@@ -52,7 +52,7 @@ export const Courses = () => {
  return <Link to={courseOutline.levelLink} className="flex flex-row justify-center">
  <div data-aos='zoom-in-up' className="max-w-[450px] bg-white shadow-xl hover:shadow-2xl hover:border flex flex-col justify-center items-center gap-2 rounded text-center  p-5 ">
 <div className="max-w-[150px]"><img src={courseOutline.levelImg} alt="" /></div>
-  <h1 className="font-bold uppercase text-[23px] md:text-[27px] ">{courseOutline.level}Level <br /> course outline</h1>
+  <h1 className="font-bold uppercase text-[15px] md:text-[20px] ">{courseOutline.level}Level <br /> course outline</h1>
   <p className="font-fonty text-[12px] md:text-[15px] ">we have compiled a collection of course outlines specifically tailored to {courseOutline.level}  level students, ensuring that you have all the information you need to make informed decisions about your academic journey.</p>
 </div>
  {/* <BsFillFolderSymlinkFill className="text-[40px] text-yellow-500 font-semibold "/>*/}
