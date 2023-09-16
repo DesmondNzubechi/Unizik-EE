@@ -59,11 +59,11 @@ export const Sign = () => {
 <div className="flex flex-col md:flex-row gap-5">
                     <div className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">First name:</label>
-                <input onChange={(e) => setUserDetails({...userDetails, firstName: e.target.value})} value={userDetails.firstName} placeholder="Input First Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, firstName: e.target.value})} value={userDetails.firstName} placeholder="Input First Name" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
             </div>
             <div className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Last name:</label>
-                <input onChange={(e) => setUserDetails({...userDetails, lastName: e.target.value})} value={userDetails.lastName} placeholder="Input Last Name" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, lastName: e.target.value})} value={userDetails.lastName} placeholder="Input Last Name" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
             </div>
             
 </div>
@@ -71,16 +71,16 @@ export const Sign = () => {
 <div className="flex flex-col md:flex-row gap-5">
                  { /*  <div className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Username:</label>
-                <input placeholder="Input Username" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
+                <input placeholder="Input Username" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="text" name="email" id="" />
     </div>*/} 
             <div  className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Email Address:</label>
-                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="email" placeholder="Input Email" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} className="border-yellow-500 bg-yellow-500 w-full border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="email" placeholder="Input Email" name="email" id="" />
             </div>
 
             <div  className="flex w-full flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Level:</label>
-                <select onChange={(e) => setUserDetails({...userDetails, level: e.target.value})} value={userDetails.level} name="" id="" className="border-yellow-500 bg-yellow-500 border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
+                <select onChange={(e) => setUserDetails({...userDetails, level: e.target.value})} value={userDetails.level} name="" id="" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
     <option className="text-[20px] " >select level</option>
     <option value="500l"  className="text-[20px] " >Aspirant</option>
    <option value="500l"  className="text-[20px] " >100level</option>
@@ -88,6 +88,7 @@ export const Sign = () => {
    <option value="300l"  className="text-[20px] " >300level</option>
    <option value="400l"  className="text-[20px] " >400level</option>
    <option value="500l"  className="text-[20px] " >500level</option>
+   <option value="Alumni"  className="text-[20px] " >Alumni</option>
    
           
                 </select>
@@ -96,17 +97,17 @@ export const Sign = () => {
                  <div className="flex flex-col md:flex-row gap-3">
             <div className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Password:</label>
-                <input onChange={(e) => setUserDetails({...userDetails, password: e.target.value})} value={userDetails.password} placeholder="Input Password" className="border-yellow-500 bg-yellow-500 border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="password" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, password: e.target.value})} value={userDetails.password} placeholder="Input Password" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] " type="password" name="email" id="" />
             </div>
          
             
 
             <div  className="flex flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Confirm Password:</label>
-                <input onChange={(e) => setUserDetails({...userDetails, confirmPassword: e.target.value})} value={userDetails.confirmPassword} className="border-yellow-500 bg-yellow-500 border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="password" placeholder="Confirm Password" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, confirmPassword: e.target.value})} value={userDetails.confirmPassword} className="border-yellow-500 bg-yellow-500 w-full border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="password" placeholder="Confirm Password" name="email" id="" />
             </div>
             </div>
-            <button onClick={signUserUp} className="hover:bg-slate-50 border py-[3px] w-full  rounded shadow-2xl text-white text-[17px] text-slate-400 font-[400] " type="button">Sign Up</button>
+            <button onClick={signUserUp} className="hover:bg-slate-50 border py-[3px] w-full bg-white  rounded shadow-2xl  text-[17px] text-slate-500 font-[400] " type="button">Sign Up</button>
             </div>
             <div className="flex flex-row items-center gap-2">
                 <span className="h-[4px] bg-yellow-500 w-full "></span>
