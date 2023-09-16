@@ -7,7 +7,8 @@ import { auth } from "../config/firebase";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { fullNewsContext } from "../context/Context";
-
+import {AiOutlineMail} from 'react-icons/ai';
+import {RiLockPasswordFill} from 'react-icons/ri';
 
 export const Login = () => {
     const { signedIn, mainUser } = useContext(fullNewsContext);
@@ -35,35 +36,31 @@ export const Login = () => {
     const navig = useNavigate();
     return (
         signedIn? navig('/') : //&& mainUser[0]?.stats == 'user'? navig('/profile') :  signedIn && mainUser[0]?.stats == 'admin'? navig('/dashboard') : !signedIn &&
-        <div className="py-[70px] px-[20px] pt-[150px] ">
-            <div className="flex flex-row justify-center">
-            { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"
+        <div className="py-[150px] px-[20px]  ">
+             { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"
            size={100}
-                    /></div>}
-                    <div className="bg-slate-100 px-[50px] rounded-xl py-[60px]">
-                    <h1 className="font-myfont my-[20px] text-center font-bold text-[30px] ">Login Here</h1>
-                <form className="flex justify-center   flex-col gap-[20px]">
-                    <div className="flex flex-col gap-[10px] ">
-                    <div className="flex flex-col ">
-                <label className="text-[15px] font-semibold" htmlFor="">Email</label>
-                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} placeholder="Input email" className="shadow bg-white border-[2px]  rounded text-slate-900 placeholder:text-slate-700 outline-0 px-[20px] py-[5px] " type="email" name="email" id="" />
-            </div>
-            <div  className="flex flex-col ">
-                <label className="text-[15px] font-semibold" htmlFor="">Password</label>
-                <input onChange={(e) => setUserDetails({...userDetails, password: e.target.value})} value={userDetails.password} className=" shadow text-slate-900 placeholder:text-slate-500 rounded outline-0 px-[20px] py-[5px] " type="password" placeholder="Input password" name="email" id="" />
-            </div>
-            <button onClick={signUserIn} className="bg-slate-900 py-[3px]  hover:bg-slate-500 rounded shadow-2xl text-white text-[15px] md:text-[20px]  " type="button">login</button>
-            <div className="flex flex-row items-center gap-2">
-                <span className="h-[4px] bg-yellow-500 w-full "></span>
-                <h1 className="uppercase font-bold">OR</h1>
-                <span  className="h-[4px] bg-yellow-500 w-full "></span>
-            </div>
-           <p className="text-slate-800 font-[500] text-[12px] md:text-[15px] ">Don't have an account yet? <Link to='/signup' className="text-yellow-600">Sign Up</Link></p>
+            /></div> }
+            <div className="flex flex-row justify-center">
+             <div data-aos='zoom-in' className="bg-slate-900 md:px-[70px]  flex flex-col  p-[20px] rounded shadow-2xl">
+              <div>
+                <h1 className="text-center text-slate-50 font-semibold text-[20px] capitalize    mb-3">Welcome back!</h1>
+               {/* <button onClick={signInWithgoogleE} className="flex text-center justify-center items-center my-5 gap-x-2 text-[20px] bg-pink-500 p-2 capitalize text-white rounded-[2px] font-[300]"><FcGoogle/> Sign in with your google accout </button>*/}
+               {/* <p className="text-center text-slate-300 capitalize mb-[20px]  text-[17px]">login with your email</p>*/}
+              </div>
+                <form action="" className="flex  flex-col gap-5">
+                    <div className="flex flex-col items-start">
+                        <label htmlFor="email" className="flex font-semibold items-center text-slate-900 text-[15px]"><AiOutlineMail/>Email</label>
+                        <input onChange={(e) => setUserDetails({...userDetails,  emailAddress: e.target.value })} value={userDetails.emailAddress} type="email" placeholder="nzubechukwu@gmail.com"  className="p-3 shadow rounded w-full outline-0 "/>
                     </div>
-          
+                    <div>
+                    <label htmlFor="password" className="flex font-semibold items-center text-slate-900 text-[15px] "><RiLockPasswordFill/>Password</label>
+                        <input  onChange={(e) => setUserDetails({...userDetails, password: e.target.value })} value={userDetails.password} type="password" placeholder="******"  className="p-3 rounded outline-0 w-full shadow "/>
+                    </div>
+                  <button onClick={signUserIn} type="button"  className="bg-green-500 rounded text-[17px] font-semibold p-3">Login</button>
+                  <p className="text-center text-[17px] text-slate-100 ">Don't have account yet? <Link to='/signup' className="text-slate-50 uppercase font-bold">Sign Up</Link></p>
                 </form>
-                    </div>
-                    </div>
+             </div>
+            </div>
         </div>
     )
 }
