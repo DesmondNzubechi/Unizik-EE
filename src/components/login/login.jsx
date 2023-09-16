@@ -17,8 +17,23 @@ export const Login = () => {
         emailAddress: '',
         password: '',
     })
-
+    const [errorMessage, setErroMessage] = useState('');
     const signUserIn = async () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (userDetails.emailAddress === '') {
+            setErroMessage('Please input your email');
+            return;
+        } else if (!emailRegex.test(userDetails.emailAddress)) {
+            setErroMessage('Invalid email address')
+            return;
+        }
+        else if (userDetails.password === '') {
+            setErroMessage('Please input your password');
+            return;
+        } else {
+            setErroMessage("Please input password and Email")
+            return;
+        }
         setSpinnerJs(true);
         try {
             await signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);
@@ -30,7 +45,9 @@ export const Login = () => {
           }
         } catch (error) {
             setSpinnerJs(false)
-            alert(error);
+            const errorM = error.message;
+            setErroMessage(errorM.replace('Firebase:', ''));
+         
         }
     }
     const navig = useNavigate();
@@ -45,19 +62,24 @@ export const Login = () => {
               <div>
                 <h1 className="text-center text-slate-50 font-semibold text-[20px] uppercase font-myfont    mb-3">Welcome back!</h1>
                {/* <button onClick={signInWithgoogleE} className="flex text-center justify-center items-center my-5 gap-x-2 text-[20px] bg-pink-500 p-2 capitalize text-white rounded-[2px] font-[300]"><FcGoogle/> Sign in with your google accout </button>*/}
-               {/* <p className="text-center text-slate-300 capitalize mb-[20px]  text-[17px]">login with your email</p>*/}
+                            {/* <p className="text-center text-slate-300 capitalize mb-[20px]  text-[17px]">login with your email</p>*/}
+                            <p className="text-center text-red-500 font-semibold text-[15px]">{ errorMessage}</p>
               </div>
                 <form action="" className="flex  flex-col gap-5">
                     <div className="flex flex-col gap-1 items-start">
                         <label htmlFor="email" className="flex  items-center gap-1 text-slate-50 text-[15px]"><AiOutlineMail/>Email:</label>
-                        <input onChange={(e) => setUserDetails({...userDetails,  emailAddress: e.target.value })} value={userDetails.emailAddress} type="email" placeholder="nzubechukwu@gmail.com"  className="p-3 shadow rounded w-full outline-0 "/>
+                        <input onChange={(e) => setUserDetails({...userDetails,  emailAddress: e.target.value })} value={userDetails.emailAddress} type="email" placeholder="nzubechukwu@gmail.com"  className="p-3 shadow bg-yellow-500 rounded w-full outline-0 "/>
                     </div>
                     <div className="flex flex-col gap-1 items-start">
                     <label htmlFor="password" className="flex gap-1 items-center text-slate-50 text-[15px] "><RiLockPasswordFill/>Password</label>
-                        <input  onChange={(e) => setUserDetails({...userDetails, password: e.target.value })} value={userDetails.password} type="password" placeholder="******"  className="p-3 rounded outline-0 w-full shadow "/>
+                                <input onChange={(e) => {
+
+                                    setUserDetails({ ...userDetails, password: e.target.value })
+
+                                }} value={userDetails.password} type="password" placeholder="******" className="p-3 rounded bg-yellow-500 outline-0 w-full shadow " />
                     </div>
-                  <button onClick={signUserIn} type="button"  className="bg-yellow-500 hover:bg-yellow-700 rounded text-[17px] font-semibold p-3">Login</button>
-                  <p className="text-center text-[17px] text-slate-100 ">Don't have account yet? <Link to='/signup' className="text-slate-50 uppercase font-bold">Sign Up</Link></p>
+                  <button onClick={signUserIn} type="button"  className="bg-white hover:bg-slate-500 rounded text-[17px] font-semibold p-3">Login</button>
+                  <p className="text-center text-[17px] text-slate-100 ">Don't have account yet? <Link to='/signup' className="text-yellow-500 text-[15px]">Sign Up</Link></p>
                 </form>
              </div>
             </div>

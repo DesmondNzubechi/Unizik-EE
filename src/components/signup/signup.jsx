@@ -10,6 +10,7 @@ import { fullNewsContext } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 export const Sign = () => {
     const [spinnerJs, setSpinnerJs] = useState(false);
+    const [showOthers, setOthers] = useState(false);
     const [userDetails, setUserDetails] = useState({
         firstName: '',
         lastName: '',
@@ -19,8 +20,37 @@ export const Sign = () => {
         confirmPassword: '',
     })
     const { signedIn, mainUser } = useContext(fullNewsContext);
-
+    const [errorMessage, setErroMessage] = useState('');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const signUserUp = async () => {
+      if (userDetails.firstName === '') {
+          setErroMessage("Please input first name");
+          return;
+      } else if (userDetails.lastName === '') {
+          setErroMessage('Please input last name');
+          return;
+      } else if (userDetails.email === '') {
+          setErroMessage('Please input email');
+          return;
+      } else if (!emailRegex.test(userDetails.emailAddress)) {
+          setErroMessage('Invalid email address');
+          return;
+      } else if (userDetails.level === '') {
+          setErroMessage('Please input level')
+          return;
+      } else if (userDetails.password === '') {
+          setErroMessage('Please input password');
+          return;
+      } else if (userDetails.confirmPassword === '') {
+          setErroMessage('Please confirm password');
+          return;
+      } else if (userDetails.password !== userDetails.confirmPassword ) {
+          setErroMessage('Password does not match')
+          return;
+      } else {
+          setErroMessage('Please input the fields');
+          return;
+      }
         const userRef = collection(db, 'allUser')
         setSpinnerJs(true);
         try {
@@ -50,7 +80,8 @@ export const Sign = () => {
                     /></div>}
                      <div className="flex flex-row justify-center">
              <div data-aos='zoom-in' className="bg-slate-900 shadow-2xl md:px-[70px]  flex flex-col  p-[20px] rounded shadow-2xl">
-                <h1 className="text-center text-slate-50 font-semibold text-[20px] uppercase font-myfont    mb-3">Sign up here</h1>
+                            <h1 className="text-center text-slate-50 font-semibold text-[20px] uppercase font-myfont    mb-3">Sign up here</h1>
+                            <p className="text-center text-red-500 font-semibold text-[15px]">{ errorMessage}</p>
               {<form action=""  className="flex  my-5  p-5 rounded flex-col gap-[20px]">
                     <div >
 
@@ -78,9 +109,13 @@ export const Sign = () => {
                 <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} className="border-yellow-500 bg-yellow-500 w-full border-[2px] border text-white placeholder:text-white rounded outline-0 px-[20px] py-[5px] " type="email" placeholder="Input Email" name="email" id="" />
             </div>
 
-            <div  className="flex w-full flex-col ">
+            <div  className="flex w-full  flex-col ">
                 <label className="text-[17px] text-slate-400 font-[400]" htmlFor="">Level:</label>
-                <select onChange={(e) => setUserDetails({...userDetails, level: e.target.value})} value={userDetails.level} name="" id="" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
+                                                <select onChange={(e) => {
+                                                    e.target.value === 'Tell Us About it' ? setOthers(true) : setOthers(false);
+                                                    setUserDetails({ ...userDetails, level: e.target.value });
+                                                    
+                    }} value={userDetails.level} name="" id="" className="border-yellow-500 bg-yellow-500 w-full border-[2px] border flex  flex-col gap-[20px] rounded text-white placeholder:text-white outline-0 px-[20px] py-[5px] ">
     <option className="text-[20px] " >select level</option>
     <option value="500l"  className="text-[20px] " >Aspirant</option>
    <option value="500l"  className="text-[20px] " >100level</option>
@@ -89,9 +124,9 @@ export const Sign = () => {
    <option value="400l"  className="text-[20px] " >400level</option>
    <option value="500l"  className="text-[20px] " >500level</option>
    <option value="Alumni"  className="text-[20px] " >Alumni</option>
-   
-          
-                </select>
+   <option value="Tell Us About it"  className="text-[20px] " >Other</option>
+                                                </select>
+  {showOthers && <input onChange={(e) => setUserDetails({...userDetails, level: e.target.value})} value={userDetails.level} placeholder="Others" className="border-yellow-500 mt-1 bg-yellow-500 w-full border-[2px] border rounded text-white placeholder:text-white outline-0 px-[20px] py-[1px] " type="text" name="others" id="" />}
                  </div>
                  </div>
                  <div className="flex flex-col md:flex-row gap-3">
