@@ -95,7 +95,7 @@ const [pdfDetails, setPdfDetails] =  useState({
       })
     }
     filterBookType();
-  }, [bookType])
+  }, [])
   
   const deleteBook = async (pdfInfo) => {
     const confirmFirst = window.confirm(`Are you want to delete ${pdfInfo.topic}?`);

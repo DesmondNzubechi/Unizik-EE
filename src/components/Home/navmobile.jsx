@@ -108,7 +108,7 @@ const abooutUs = () => {
                             
                               <li><Link onClick={hidenavF} to='/mission'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Our Mission</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/admission requirements'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
+                              <li><Link onClick={hidenavF} to='/admission requirement'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
                             </ul>}
                         </li>
            {/* <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>

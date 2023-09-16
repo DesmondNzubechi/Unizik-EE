@@ -48,7 +48,7 @@ const [logoutB, setLogoutB] = useState(false);
     // }, [displaying])
     const navig = useNavigate();
     return (
-        mainUser[0]?.stats !== 'admin' ? navig('/login'):
+       // mainUser[0]?.stats !== 'admin' ? navig('/login'):
         <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[70px] bottom-0 "
         >
           <div className="flex flex-row items-center justify-center">
