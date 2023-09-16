@@ -51,7 +51,6 @@ export const Navdesktop = () => {
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
           <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
           <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
-          <li  className="  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
         <li className="  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
                             <Link onClick={acedF}  className=" text-[17px] relative hover:text-textBlack font-[700] text-slate-50 flex  items-center " >
                           Acedemics { !acedemicsDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}

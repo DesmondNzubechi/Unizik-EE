@@ -43,7 +43,7 @@ export const Sign = () => {
 
     return (
         signedIn && mainUser[0]?.stats == 'user'? navig('/profile') :  signedIn && mainUser[0]?.stats == 'admin'? navig('/dashboard') : !signedIn &&
-        <div className="py-[70px] pt-[150px]">
+        <div className="py-[70px] px-[20px] pt-[150px]">
             <div className="flex flex-row justify-center">
            { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"
            size={100}
