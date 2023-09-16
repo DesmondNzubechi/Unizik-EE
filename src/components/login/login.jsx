@@ -39,15 +39,14 @@ export const Login = () => {
             <div className="flex flex-row justify-center">
             { spinnerJs &&  <div className="fixed bg-Tp w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><BounceLoader color="#ffb700"
            size={100}
-            /></div> }
-                <form action="" method="post" className="flex bg-slate-100 px-[50px] rounded-xl py-[60px] flex-col gap-[20px]">
-                    <div>
-                        <h1 className="font-myfont text-center font-bold text-[30px] ">Login Here</h1>
-                    </div>
+                    /></div>}
+                    <div className="bg-slate-100 px-[50px] rounded-xl py-[60px]">
+                    <h1 className="font-myfont my-[20px] text-center font-bold text-[30px] ">Login Here</h1>
+                <form className="flex justify-center   flex-col gap-[20px]">
                     <div className="flex flex-col gap-[10px] ">
                     <div className="flex flex-col ">
                 <label className="text-[15px] font-semibold" htmlFor="">Email</label>
-                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} placeholder="Input email" className="shadow bg-white border-[2px]  rounded text-slate-900 placeholder:text-white outline-0 px-[20px] py-[5px] " type="email" name="email" id="" />
+                <input onChange={(e) => setUserDetails({...userDetails, emailAddress: e.target.value})} value={userDetails.emailAddress} placeholder="Input email" className="shadow bg-white border-[2px]  rounded text-slate-900 placeholder:text-slate-700 outline-0 px-[20px] py-[5px] " type="email" name="email" id="" />
             </div>
             <div  className="flex flex-col ">
                 <label className="text-[15px] font-semibold" htmlFor="">Password</label>
@@ -63,7 +62,8 @@ export const Login = () => {
                     </div>
           
                 </form>
-            </div>
+                    </div>
+                    </div>
         </div>
     )
 }
