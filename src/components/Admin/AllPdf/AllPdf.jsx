@@ -32,7 +32,7 @@ const [pdfDetails, setPdfDetails] =  useState({
     resourcesType: ''
       
 });
-  //const {allPdfs} = useContext(fullNewsContext);
+  const {allPdfs,  bookType, currentPdf, filterClickedCourse, clickedCoursePdf} = useContext(fullNewsContext);
  // const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
@@ -45,51 +45,51 @@ const [pdfDetails, setPdfDetails] =  useState({
     pastQuestionBg: 'bg-slate-100',
     pastQuestion: false,
   })
-    const [getLevelPdf, setGetLevelPdf] = useState([]);
-    const {clickedCoursePdf} = useContext(fullNewsContext);
-  const [currentPdf, setCurrentPdf] = useState([]);
- const [allPdfs, setAllPdfs] = useState([]);
-  const [bookType, setBookType] = useState({
-    Handouts: [],
-    TextBooks: [],
-    pastQuestions: [],
-  })
+//     const [getLevelPdf, setGetLevelPdf] = useState([]);
+//     const {clickedCoursePdf} = useContext(fullNewsContext);
+//   const [currentPdf, setCurrentPdf] = useState([]);
+//  const [allPdfs, setAllPdfs] = useState([]);
+//   const [bookType, setBookType] = useState({
+//     Handouts: [],
+//     TextBooks: [],
+//     pastQuestions: [],
+//   })
 
-  const filterClickedCourse = () => {
-    const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
-    setCurrentPdf(coursePdf);
-  };
+//   const filterClickedCourse = () => {
+//     const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
+//     setCurrentPdf(coursePdf);
+//   };
 
-  const filterBookType = () => {
-    const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
-    const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
-    const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
+//   const filterBookType = () => {
+//     const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
+//     const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
+//     const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
 
-    setBookType({
-      Handouts: getHandout,
-      TextBooks: getTextbook,
-      pastQuestions: getPastquestion,
-    });
-  };
+//     setBookType({
+//       Handouts: getHandout,
+//       TextBooks: getTextbook,
+//       pastQuestions: getPastquestion,
+//     });
+//   };
  
-  useEffect(() => {
-    const pdfStore = collection(db, 'learningResources');
+//   useEffect(() => {
+//     const pdfStore = collection(db, 'learningResources');
 
-    // Set up a real-time listener to fetch and update data when changes occur
-    const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
-      const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      setAllPdfs(allPdfData);
+//     // Set up a real-time listener to fetch and update data when changes occur
+//     const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
+//       const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+//       setAllPdfs(allPdfData);
 
-      // Call your filtering functions here after updating allPdfs
-      filterClickedCourse();
-      filterBookType();
-    });
+//       // Call your filtering functions here after updating allPdfs
+//       filterClickedCourse();
+//       filterBookType();
+//     });
 
-    return () => {
-      // Unsubscribe from the listener when the component unmounts
-      unsubscribe();
-    };
-  },[selectedCourse]); // Re-run the effect only when clickedCoursePdf changes
+//     return () => {
+//       // Unsubscribe from the listener when the component unmounts
+//       unsubscribe();
+//     };
+//   },[selectedCourse]); // Re-run the effect only when clickedCoursePdf changes
 
   const deleteBook = async (pdfInfo) => {
     const confirmFirst = window.confirm(`Are you want to delete ${pdfInfo.topic}?`);
@@ -187,7 +187,8 @@ const [pdfDetails, setPdfDetails] =  useState({
              return currentCourse.Course == e.target.value;
             });
             setSelectedUnit(getCreditUnit.Credit);
-            setSelectedCourse(e.target.value);
+                setSelectedCourse(e.target.value);
+                filterClickedCourse(e.target.value);
             }}
             value={selectedCourse}
             className="outline-0 p-1  text-[10px] bg-slate-50 rounded-[2px] shadow text-slate-900 placeholder:text-slate-400 font-[500] capitalize " name="" id="">
@@ -243,9 +244,9 @@ const [pdfDetails, setPdfDetails] =  useState({
             })
           }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.pastQuestionBg}  ${bookCat.pastQuestionText} capitalize font-semibold`}>Past Question</button>
         </div>
-       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  handouts is not available now. </h1>  }
-       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  textbook is not available now. </h1>  }
-        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  past exam questions is not available now. </h1>}  
+       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  handouts is not available now. </h1>  }
+       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  textbook is not available now. </h1>  }
+        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  past exam questions is not available now. </h1>}  
         
        <div className="grid md:grid-cols-3 my-[50px] lg:grid-cols-4 gap-5 grid-cols-1 ">
       

@@ -4,7 +4,7 @@ import { CoursesOffered } from "../CourseOffered/CourseOffered";
 import { allPdfs } from "../PDFs/PDFs";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 export const fullNewsContext = createContext();
 
@@ -32,14 +32,21 @@ export const NewsContext = (props) => {
   viewEditNewsColor: 'text-slate-700',
   });
   const [userList, setUserList] = useState([]);
-  const [allPdfs, setAllPdfs] = useState([]);
+  const [allPdfs, setAllPdfs] = useState(JSON.parse(localStorage.getItem('allPdfs')) || []);
   // const [courseName, setCourseName] = useState('');
   const [logOut, setLogOut] = useState(false);
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
   const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
   const [allEvents, setAllEvents] = useState(JSON.parse(localStorage.getItem('allEvents')) || []);
   const [editNews, setEditNews] = useState(JSON.parse(localStorage.getItem('editNews')) || {});
+  const [currentPdf, setCurrentPdf] = useState([]);
+  const [bookType, setBookType] = useState({
+    Handouts: [],
+    TextBooks: [],
+    pastQuestions: [],
+  })
   useEffect(() => {
+    localStorage.setItem('allPdfs', JSON.stringify(allPdfs));
     localStorage.setItem('editNews', JSON.stringify(editNews))  
     localStorage.setItem('displaying', JSON.stringify(displaying))
       localStorage.setItem('eleCourses', JSON.stringify(eleCourses));
@@ -50,6 +57,43 @@ export const NewsContext = (props) => {
     }, [eleCourses, clickedCoursePdf, clickedLevel,  displaying]);
     const [fullNews, setFullNews] = useState(JSON.parse(localStorage.getItem('fullNews')) || []);
     
+  
+  const filterClickedCourse = (courses) => {
+    setClickedCoursePdf(courses);
+      const coursePdf = allPdfs?.filter(pdf => pdf.course === courses);
+      setCurrentPdf(coursePdf);
+    };
+  
+  console.log('currents', currentPdf)
+    const filterBookType = () => {
+        const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
+        const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
+        const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
+    
+        setBookType({
+          Handouts: getHandout,
+          TextBooks: getTextbook,
+          pastQuestions: getPastquestion,
+     
+      })
+    };
+    
+    useEffect(() => {
+      const pdfStore = collection(db, 'learningResources');
+      // Set up a real-time listener to fetch and update data when changes occur
+      const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
+        const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+        setAllPdfs(allPdfData);
+        // Call your filtering functions here after updating allPdfs
+      // filterClickedCourse();
+        filterBookType();
+      });
+      return () => {
+        // Unsubscribe from the listener when the component unmounts
+        unsubscribe();
+      };
+    },[clickedCoursePdf]);
+  
     useEffect(() => {
         localStorage.setItem('anotherNews', JSON.stringify(anotherNews))
     }, [anotherNews]);
@@ -72,7 +116,7 @@ export const NewsContext = (props) => {
     const getPdf = (pdf) => {
       setClickedCoursePdf(pdf);
     }
-
+console.log('pdf man', allPdfs)
   const [signedIn, setSignedIn] = useState({});
   const userInfoStore = collection(db, 'allUser');
   const [registeredUser, setRegisteredUser] = useState([]);
@@ -118,7 +162,7 @@ export const NewsContext = (props) => {
   }
     //const getCourseName = (courses) => {
     //}
-    return <fullNewsContext.Provider value={{getFullNews, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews, bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

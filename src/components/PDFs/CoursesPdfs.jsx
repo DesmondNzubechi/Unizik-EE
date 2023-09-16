@@ -8,7 +8,7 @@ import { HiDocumentDownload } from 'react-icons/hi';
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 export const DownloadPdfs = () => {
-  const {allPdfs, setAllPdfs} = useContext(fullNewsContext);
+  const {allPdfs, setAllPdfs, bookType, currentPdf, clickedCoursePdf} = useContext(fullNewsContext);
   const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
@@ -21,54 +21,51 @@ export const DownloadPdfs = () => {
     pastQuestionBg: 'bg-slate-100',
     pastQuestion: false,
   })
-    const [getLevelPdf, setGetLevelPdf] = useState([]);
-    const {clickedCoursePdf} = useContext(fullNewsContext);
-  const [currentPdf, setCurrentPdf] = useState([]);
-  const [bookType, setBookType] = useState({
-    Handouts: [],
-    TextBooks: [],
-    pastQuestions: [],
-  })
-console.log('clicked course', clickedCoursePdf)
-  const filterClickedCourse = () => {
-    const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
-    setCurrentPdf(coursePdf);
-  };
+//     const [getLevelPdf, setGetLevelPdf] = useState([]);
+//     const {clickedCoursePdf} = useContext(fullNewsContext);
+//   const [currentPdf, setCurrentPdf] = useState([]);
+//   const [bookType, setBookType] = useState({
+//     Handouts: [],
+//     TextBooks: [],
+//     pastQuestions: [],
+//   })
+// console.log('clicked course', clickedCoursePdf)
+//   const filterClickedCourse = () => {
+//     const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
+//     setCurrentPdf(coursePdf);
+//   };
 
-  const filterBookType = () => {
-    const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
-    const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
-    const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
+//   const filterBookType = () => {
+//     const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
+//     const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
+//     const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
 
-    setBookType({
-      Handouts: getHandout,
-      TextBooks: getTextbook,
-      pastQuestions: getPastquestion,
-    });
-  };
+//     setBookType({
+//       Handouts: getHandout,
+//       TextBooks: getTextbook,
+//       pastQuestions: getPastquestion,
+//     });
+//   };
 
-console.log('all pdf', allPdfs )
-  useEffect(() => {
-    const pdfStore = collection(db, 'learningResources');
-
-    // Set up a real-time listener to fetch and update data when changes occur
-    const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
-      const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      setAllPdfs(allPdfData);
-
-      // Call your filtering functions here after updating allPdfs
-      filterClickedCourse();
-      filterBookType();
-    });
-
-    return () => {
-      // Unsubscribe from the listener when the component unmounts
-      unsubscribe();
-    };
-  },[clickedCoursePdf]); // Re-run the effect only when clickedCoursePdf changes
+// console.log('all pdf', allPdfs )
+//   useEffect(() => {
+//     const pdfStore = collection(db, 'learningResources');
+//     // Set up a real-time listener to fetch and update data when changes occur
+//     const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
+//       const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+//       setAllPdfs(allPdfData);
+//       // Call your filtering functions here after updating allPdfs
+//       filterClickedCourse();
+//       filterBookType();
+//     });
+//     return () => {
+//       // Unsubscribe from the listener when the component unmounts
+//       unsubscribe();
+//     };
+//   },[clickedCoursePdf]); // Re-run the effect only when clickedCoursePdf changes
 
   
-      console.log(clickedCoursePdf); 
+//       console.log(clickedCoursePdf); 
     return(
         <div className="pt-[150px] px-[30px]  pb-[50px] ">
         <div className="text-center my-[20px] ">
