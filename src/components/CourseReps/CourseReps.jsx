@@ -2,7 +2,8 @@ import React from "react";
 import  samPic from '../../assets/CRImages/Samuel.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
 import nzubechukwuPic from '../../assets/CRImages/B2R.png';
-import daberePic  from '../../assets/CRImages/Dabere.png';
+import daberePic from '../../assets/CRImages/Dabere.png';
+import wisdomPic from  '../../assets/CRImages/wisdom.jpg'
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
 
@@ -32,7 +33,7 @@ const courseRepInfo = [
         name: 'OKOLI WISDOM CHUKWUEMEKA',
         email: 'okoliwisdom35@gmail.com',
         number: '08126169285',
-        picture: samPic,
+        picture: wisdomPic,
         level: '200l'
     },
     {

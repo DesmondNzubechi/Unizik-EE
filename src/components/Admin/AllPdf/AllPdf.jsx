@@ -5,7 +5,7 @@ import { fullNewsContext } from "../../context/Context";
 import {MdAllInbox, MdOutlineFileDownload} from  'react-icons/md';
 import { FaFileDownload } from 'react-icons/fa';
 import { HiDocumentDownload } from 'react-icons/hi';
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, onSnapshot } from "firebase/firestore";
 import { db, storage } from "../../config/firebase";
 import { CoursesOffered } from "../../CourseOffered/CourseOffered";
 import { AiFillDelete } from 'react-icons/ai';
@@ -54,49 +54,43 @@ const [pdfDetails, setPdfDetails] =  useState({
     TextBooks: [],
     pastQuestions: [],
   })
-  useEffect(() => {
-    localStorage.setItem('bookCat', JSON.stringify(bookCat))
-    const fetchPdf = async () => {
-      const pdfStore = collection(db, 'learningResources');
-      try {
-        const pdfS = await getDocs(pdfStore);
-        const allPdfData = pdfS.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-        setAllPdfs(allPdfData);
 
-      } catch (error) {
-        alert(error)
-      }
-    }
-    if (allPdfs.length == 0) {
-      fetchPdf();
-    }
-   
-        const filterClickedCourse = () => {
-          const coursePdf = allPdfs.filter(pdf => {
-            return pdf.course === selectedCourse;
-          });
-          setCurrentPdf(coursePdf);
-        };
-    filterClickedCourse();
-    const filterBookType = () => {
-      const getHandout = currentPdf.filter(handout => {
-        return handout.bookType === 'handout';
-      })
-      const getTextbook = currentPdf.filter(handout => {
-        return handout.bookType === 'textbook';
-      })
-      const getPastquestion = currentPdf.filter(handout => {
-        return handout.bookType === 'past question';
-      })
-      setBookType({
-        Handouts: getHandout,
-        TextBooks: getTextbook,
-        pastQuestions:getPastquestion,
-      })
-    }
-    filterBookType();
-  }, [])
-  
+  const filterClickedCourse = () => {
+    const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
+    setCurrentPdf(coursePdf);
+  };
+
+  const filterBookType = () => {
+    const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
+    const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
+    const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
+
+    setBookType({
+      Handouts: getHandout,
+      TextBooks: getTextbook,
+      pastQuestions: getPastquestion,
+    });
+  };
+ 
+  useEffect(() => {
+    const pdfStore = collection(db, 'learningResources');
+
+    // Set up a real-time listener to fetch and update data when changes occur
+    const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
+      const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setAllPdfs(allPdfData);
+
+      // Call your filtering functions here after updating allPdfs
+      filterClickedCourse();
+      filterBookType();
+    });
+
+    return () => {
+      // Unsubscribe from the listener when the component unmounts
+      unsubscribe();
+    };
+  },[selectedCourse]); // Re-run the effect only when clickedCoursePdf changes
+
   const deleteBook = async (pdfInfo) => {
     const confirmFirst = window.confirm(`Are you want to delete ${pdfInfo.topic}?`);
     if (!confirmFirst) {

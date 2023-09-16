@@ -5,63 +5,96 @@ import nzubechukwuPic from '../../assets/CRImages/Nzubechukwu.png';
 import daberePic  from '../../assets/CRImages/Dabere.png';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
-
+import presidoImg from '../../assets/ExcoImages/ezekiel.jpg';
+import VpImg from '../../assets/ExcoImages/obikc.jpg';
+import secGenImg from '../../assets/ExcoImages/Elvisio.jpg';
+import finSecImg from '../../assets/ExcoImages/odinaka.jpg';
+import treasurerImg from '../../assets/ExcoImages/emeka.jpg';
+import assistSecGenImg from '../../assets/ExcoImages/onyeulo.jpg';
+import dos1Img from '../../assets/ExcoImages/uzoekwe chinaza.jpg';
+import dos2Img from '../../assets/ExcoImages/onuoha chiamaka.jpg';
+import PROImg from '../../assets/ExcoImages/sammie.jpg';
+import provostImg from '../../assets/ExcoImages/sobenna.jpg';
 const courseRepInfo = [
     {
-        name: 'Samuel Nonso Nonyelu',
-        email: 'nonsononyelu@gmail.com',
-        number: '09081996708',
-        picture: samPic,
+        name: 'Comr. Agina Ezekiel Soupluchi ',
+        email: 'agina.ezekiel@gmail.com',
+        number: '08098066766',
+        picture: presidoImg,
         level: 'Final Year',
-        position: 'President'
+        position: 'Departmental President'
     },
     {
-        name: 'Ezeadu Dabere Asumpta',
-        email: 'Dabere@gmail.com',
-        number: '+2348035011681',
-        picture: daberePic,
-        level: '400l',
+        name: 'Comr. Obi Kenechukwu',
+        email: 'obikene316@gmail.com',
+        number: '08039881477',
+        picture: VpImg,
+        level: '300l',
         position: 'Vice President'
     },
     {
-        name: 'Abugu Desmond Nzubechukwu',
-        email: 'desmondnzubechukwu1@gmail.com',
-        number: '07084183611',
-        picture: nzubechukwuPic,
+        name: 'Comr. Onunwa Ebere Elvis',
+        email: 'eo.elvis@stu.unizik.edu.ng',
+        number: '07052065354',
+        picture: secGenImg,
         level: '300l',
         position: 'Secretary General'
     },
     {
-        name: 'OKOLI WISDOM CHUKWUEMEKA',
-        email: 'okoliwisdom35@gmail.com',
-        number: '08126169285',
-        picture: samPic,
+        name: 'Comr. Okafor Odinakachukwu Desmond',
+        email: 'desmondchef999@gmail.com',
+        number: '08117512508',
+        picture: finSecImg,
         level: '200l',
-        position: 'President'
+        position: 'Financial Secretary'
     },
     {
-        name: 'ARINZE CHINECHEREM JUSTUS',
-        email: ' arinzejustus59@gmail.com',
-        number: '09072106809',
-        picture: justusPic,
-        level: '100l',
-        position: 'President'
+        name: 'Comr. Okafor Emeka',
+        email: 'Emmyfresh999@gmail.com',
+        number: '09134039101',
+        picture: treasurerImg,
+        level: '300l',
+        position: 'Treasurer'
     },
     {
-        name: 'ARINZE CHINECHEREM JUSTUS',
-        email: ' arinzejustus59@gmail.com',
-        number: '09072106809',
-        picture: justusPic,
-        level: '100l',
-        position: 'President'
+        name: 'Comr. ONYEULO PERPETUAL CHINAZA',
+        email: 'onyeperpetual83@gmail.com',
+        number: '09061701409',
+        picture: assistSecGenImg,
+        level: '200l',
+        position: 'Assistant Secretary General'
     },
     {
-        name: 'ARINZE CHINECHEREM JUSTUS',
-        email: ' arinzejustus59@gmail.com',
-        number: '09072106809',
-        picture: justusPic,
+        name: 'Comr. UZOEKWE CHINAZA HENRY',
+        email: 'chinazauzoekwe5@gmail.com',
+        number: '07015740619',
+        picture: dos1Img,
+        level: '200l',
+        position: 'Director Of Sports (DOS1)'
+    },
+    {
+        name: 'Comr. ONUOHA FAVOUR CHIAMAKA',
+        email: 'fchiamaka2002@gmail.com',
+        number: '09159108915',
+        picture: dos2Img,
+        level: '200l',
+        position: 'Director Of Socials(DOS2)'
+    },
+    {
+        name: 'Comr. Samuel .C. Uzoamaka',
+        email: 'nechesamuel114@gmail.com',
+        number: '08085805925',
+        picture: PROImg,
         level: '100l',
-        position: 'President'
+        position: 'Public Relation Officer (PRO)'
+    },
+    {
+        name: 'Comr. EKWUEME SOBENNA SYBIL',
+        email: 'provost@gmail.com',
+        number: '09156414196',
+        picture: provostImg,
+        level: '100l',
+        position: 'Provost'
     },
 ];
 
@@ -80,9 +113,10 @@ export const DeptExcos = () => {
                                     </div>
                                     <div className="py-[10px] px-[10px] " >
                                         <span className="flex flex-row text-[12px] font-semibold  text-slate-700 items-center gap-2"><h1 className="font-bold text-slate-900 text-[13px] uppercase md:text-[15px]">{info.name}</h1> </span>
+                                        <h1 className="font-semibold text-slate-500 text-[15px]">{info.position}</h1>
                                         <span className="flex flex-row text-[12px] font-semibold  text-slate-700 items-center gap-2"><h1 className="font-bold text-slate-900 text-[13px] md:text-[15px]"><AiOutlineMail/></h1> {info.email}</span>
                                         <span className="flex flex-row text-[12px] font-semibold  text-slate-700 items-center gap-2"><h1 className="font-bold text-slate-900 text-[13px] md:text-[15px]"><AiFillPhone/></h1> {info.number}</span>
-                                        <span className="flex flex-row text-[12px] font-semibold  text-slate-700 items-center gap-2"><h1 className="font-bold text-slate-900 text-[13px] md:text-[15px]"><IoSchoolSharp/></h1> {info.level} Course Rep</span>
+                                        <span className="flex flex-row text-[12px] font-semibold  text-slate-700 items-center gap-2"><h1 className="font-bold text-slate-900 text-[13px] md:text-[15px]"><IoSchoolSharp/></h1> {info.level} student</span>
 
                                     </div>
                                 </div>

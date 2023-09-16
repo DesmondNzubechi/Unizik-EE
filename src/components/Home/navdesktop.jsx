@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import img from '../../assets/images/eesalogor.png';
+import logo from "../../assets/images/logo.jpg";
 import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
@@ -44,7 +45,7 @@ export const Navdesktop = () => {
     return (
         <div className="lg:flex hidden  shadow-2xl bg-black z-[60] py-[5px] px-[20px] fixed top-0 left-0 right-0 w-full flex-row justify-around items-center">
   <div >
-   <a href=""><img className=" w-[120px] " src={img} alt="logo" /></a>
+  <a href=""><img className=" w-[60px] rounded-full relative z-[20] " src={logo} alt="logo" /></a>
         </div>
 
         <ul className="flex uppercase items-center flex-row justify-center gap-x-[25px]">

@@ -101,7 +101,7 @@ export const NewsContext = (props) => {
         // Set the main user
         setMainUser(personalInfo);
       } catch (error) {
-        console.error(error);
+        console.error(error); 
       }
     };
     // Call the function to get user information

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import img from '../../assets/images/eesalogor.png';
+import logo from "../../assets/images/logo.jpg";
 import tools from '../../assets/images/ee.avif';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {HiXMark} from 'react-icons/hi2';
@@ -65,7 +66,7 @@ const abooutUs = () => {
         
         <div className="flex lg:hidden shadow-2xl bg-black z-[60] py-[5px] px-[20px] fixed top-0 left-0 right-0 w-full flex-row justify-between items-center">
   <div  >
-   <a href=""><img className=" w-[100px] relative z-[20] " src={img} alt="logo" /></a>
+   <a href=""><img className=" w-[60px] rounded-full relative z-[20] " src={logo} alt="logo" /></a>
         </div>
 
         {showNav &&

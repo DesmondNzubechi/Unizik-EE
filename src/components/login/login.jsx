@@ -30,10 +30,7 @@ export const Login = () => {
         else if (userDetails.password === '') {
             setErroMessage('Please input your password');
             return;
-        } else {
-            setErroMessage("Please input password and Email")
-            return;
-        }
+        } 
         setSpinnerJs(true);
         try {
             await signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);

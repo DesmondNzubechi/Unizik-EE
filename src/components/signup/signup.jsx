@@ -47,9 +47,6 @@ export const Sign = () => {
       } else if (userDetails.password !== userDetails.confirmPassword ) {
           setErroMessage('Password does not match')
           return;
-      } else {
-          setErroMessage('Please input the fields');
-          return;
       }
         const userRef = collection(db, 'allUser')
         setSpinnerJs(true);
