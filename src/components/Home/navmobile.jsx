@@ -119,10 +119,10 @@ const abooutUs = () => {
         </ul>
 
        {!signedIn && <div className="flex relative z-2 flex-col gap-2">
-            <button className="border-yellow-500 w-fit border text-white px-[20px] text-center py-[4px] text-[20px] rounded capitaliz font-semibold ">
+            <button className="border-yellow-500 hover:bg-slate-700 hover:border-slate-50 w-fit border text-white px-[20px] text-center py-[4px] text-[20px] rounded capitaliz font-semibold ">
             <Link onClick={hidenavF} to='/login'>Login</Link>
             </button>
-            <button className="bg-yellow-500 px-[20px] text-center py-[4px] text-[17px] rounded w-fit capitaliz font-semibold ">
+            <button className="bg-yellow-500 hover:bg-yellow-300 px-[20px] text-center py-[4px] text-[17px] rounded w-fit capitaliz font-semibold ">
             <Link onClick={hidenavF} to='/signup'>Signup</Link>
             </button>
                     </div>}

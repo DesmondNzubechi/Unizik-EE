@@ -20,12 +20,11 @@ export const Footer = () => {
             <div className="flex flex-col md:justify-center md:items-center">
                 <h1 className="uppercase text-white font-bold md:text-[20px] ">Important Links</h1>
             <div className="flex flex-col gap-2">
-            <Link to='/about' className="text-slate-300 md:text-[15px] text-[15px]   ">About EE Unizik</Link>
-            <Link to='/mission' className="text-slate-300 md:text-[15px] text-[15px]   ">Mission</Link>
-            <Link to='/contact' className="text-slate-300 md:text-[15px] text-[15px]   ">Contact</Link>
+            <Link to='/about' className="text-slate-300 md:text-[15px] text-[15px]   ">About Us</Link>
             <Link to='/admission requirement' className="text-slate-300 md:text-[15px] text-[15px]   ">Admission</Link>
+            <Link to='/contact' className="text-slate-300 md:text-[15px] text-[15px]   ">Contact</Link>
+            <Link to='/Learning-resources' className="text-slate-300 md:text-[15px] text-[15px]   ">Learning Resources</Link>
             <Link  to='/news' className="text-slate-300 md:text-[15px] text-[15px]   ">News</Link>
-            <Link to='/students leaders' className="text-slate-300 md:text-[15px] text-[15px]   ">Student Leader</Link>
             </div>
             </div>
             <div>

@@ -95,11 +95,11 @@ export const Navdesktop = () => {
         </ul>
 
        {!signedIn && <div className="flex flex-row gap-2">
-            <button className="border-yellow-500 border text-white px-[10px] text-center py-[4px] text-[17px] rounded capitaliz font-semibold ">
+            <button className="border-yellow-500 hover:bg-slate-700 hover:border-slate-50 border text-white px-[10px] text-center py-[4px] text-[17px] rounded capitaliz font-semibold ">
             <Link to='/login'>Login</Link>
             
             </button>
-            <button className="bg-yellow-500 px-[10px] text-center py-[4px] text-[17px] rounded capitaliz font-semibold ">
+            <button className="bg-yellow-500 px-[10px]  hover:bg-yellow-300 text-center py-[4px] text-[17px] rounded capitaliz font-semibold ">
             <Link to='/signup'>Signup</Link>
         
             </button>
