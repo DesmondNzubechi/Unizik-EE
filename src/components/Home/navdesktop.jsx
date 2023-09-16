@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import { FaUserCircle } from 'react-icons/fa';
-import {IoIosArrowDropdownCircle, IoIosArrowDropupCircle, IoMdArrowDropdown} from 'react-icons/io';
+import {IoIosArrowDropdownCircle, IoIosArrowDropupCircle} from 'react-icons/io';
 export const Navdesktop = () => {
   const { signedIn, mainUser } = useContext(fullNewsContext);
   

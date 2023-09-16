@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { FaUserCircle } from 'react-icons/fa';
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
+import {IoIosArrowDropdownCircle, IoIosArrowDropupCircle} from 'react-icons/io';
 
 export const Navmobile = () => {
     const { signedIn, mainUser } = useContext(fullNewsContext);
@@ -28,6 +29,38 @@ const hidenavF = () => {
     setShowBtn(true);
 }
 
+const [studentDisplay, setstudentDisplay] = useState(false);
+const [acedemicsDisplay, setAcedemicDisplay] = useState(false);
+const [aboutDisplay, setAboutDisplay] = useState(false);
+const showstudents = () => {
+  setAcedemicDisplay(false);
+  setAboutDisplay(false);
+    if (!studentDisplay) {
+      setstudentDisplay(true)
+    } else {
+      setstudentDisplay(false);
+    }
+}
+
+const acedF = () => {
+  setAboutDisplay(false);
+  setstudentDisplay(false);
+  if (!acedemicsDisplay) {
+    setAcedemicDisplay(true)
+  } else {
+    setAcedemicDisplay(false);
+  }
+}
+
+const abooutUs = () => {
+  setAcedemicDisplay(false);
+  setstudentDisplay(false);
+  if (!aboutDisplay) {
+    setAboutDisplay(true)
+  } else {
+    setAboutDisplay(false);
+  }
+}
     return(
         
         <div className="flex lg:hidden shadow-2xl bg-black z-[60] py-[5px] px-[20px] fixed top-0 left-0 right-0 w-full flex-row justify-between items-center">
@@ -37,19 +70,53 @@ const hidenavF = () => {
 
         {showNav &&
         <div className="fixed flex flex-col  gap-5 transition ease-out duration-500 left-0 px-[30px] w-[60%] bottom-0 top-0 pt-[100px] bg-slate-900 h-[100vh]">
-         <ul className={`flex uppercase  flex-col justify-center gap-x-[25px]`}>
+         <ul className={`flex uppercase  flex-col justify-center gap-y-[10px] gap-x-[25px]`}>
        
             <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
-            <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
-            <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/cgpa'>Calculate cgpa</Link></li>
                         <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
                         <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
-            <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/courses'>courses outline</Link></li>
-           {/* <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Admission'>Student Leaders</Link></li>}
-          {/*  <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/Admission'>Excos</Link></li> */}
+        <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
+                            <Link onClick={acedF}  className=" text-[17px] relative hover:text-textBlack font-[700] text-slate-50 flex  items-center " >
+                          Acedemics { !acedemicsDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
+                            </Link>
+                           {acedemicsDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl z-1  font-poppins    p-2 text-slate-900 bg-slate-50 flex flex-col gap-2">
+                              <li><Link onClick={hidenavF} to='/Learning-resources' className="text-[15px] text-slate-900 hover:text-slate-700 ">Learning Resources</Link></li>
+                            
+                              <li><Link onClick={hidenavF} to='/Course-outlines'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Course outlines</Link></li>
+                            
+                              <li><Link onClick={hidenavF} to='/calculate-cgpa'  className="text-[15px] text-slate-900 hover:text-slate-700  ">CGPA calculator</Link></li>
+                            </ul>}
+          </li>
+          <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
+                            <Link onClick={showstudents}  className=" text-[17px] hover:text-textBlack font-[700] relative text-slate-50 flex  items-center " >
+                          Students { !studentDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
+                            </Link>
+                           {studentDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl   font-poppins    p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
+                              <li><Link onClick={hidenavF} to='/Students/Departmental-Executives' className="text-[15px] text-slate-900 hover:text-slate-700 ">Student Executives</Link></li>
+                            
+                              <li><Link onClick={hidenavF} to='/Students/Class-Representative'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Class Representatives</Link></li>
+                            
+                              <li><Link onClick={hidenavF}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                            </ul>}
+          </li>
+          <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
+                            <Link onClick={abooutUs}  className=" text-[17px] hover:text-textBlack font-[700] relative text-slate-50 flex  items-center " >
+                          About { !aboutDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
+                            </Link>
+                           {aboutDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
+                              <li><Link onClick={hidenavF} to='/about' className="text-[15px] text-slate-900 hover:text-slate-700 ">About Us</Link></li>
+                            
+                              <li><Link onClick={hidenavF} to='/mission'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Our Mission</Link></li>
+                            
+                              <li><Link onClick={hidenavF} to='/admission requirements'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
+                            </ul>}
+                        </li>
+           {/* <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
+            <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/cgpa'>Calculate cgpa</Link></li>
+            <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/courses'>course Outlines</Link></li>*/}
+          {/*  <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Admission'>Student Leaders</Link></li>*/}
         
-
-         </ul>
+        </ul>
 
        {!signedIn && <div className="flex relative z-2 flex-col gap-2">
             <button className="border-yellow-500 w-fit border text-white px-[20px] text-center py-[4px] text-[20px] rounded capitaliz font-semibold ">

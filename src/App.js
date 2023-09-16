@@ -181,7 +181,7 @@ function App() {
       <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<Sign/>} />
       <Route path='/contact' element={<Contact/>} />
-      <Route path='/courses' element={<Courses/>} />
+      <Route path='/course-outlines' element={<Courses/>} />
       <Route path='/level100' element={<Level100/>} />
       <Route path='/level200' element={<Level200/>} />
 
@@ -287,9 +287,9 @@ function App() {
       <Route path='/fullAim' element={<FullAim/>} />
       <Route path='/fullAbout' element={<FullAbout/>} />
       <Route path='/Admission' element={<Admission/>} />
-      <Route path='/Book' element={<Book/>} />
+      <Route path='/Learning-resources' element={<Book/>} />
 
-      <Route path='/cgpa' element={<CGPACalculator/>} />
+      <Route path='/calculate-cgpa' element={<CGPACalculator/>} />
      <Route path={`/${cat}/${headline}`} element={<FullNewsDetails/>}/>
       <Route path='/level-courses' element={<LevelCourses/>} />
       <Route path='/download pdf' element={<DownloadPdfs/>} />
