@@ -139,8 +139,8 @@ const abooutUs = () => {
           </div>
 }
           <div className="flex gap-2 ">
-           { hideBtn && <HiXMark onClick={hidenavF} className="text-white text-[40px] "/>}
-           { showBtn && <AiOutlineMenu onClick={shownavF} className="text-white text-[40px]"/>}
+           { hideBtn && <HiXMark onClick={hidenavF} className="text-white text-[25px] "/>}
+           { showBtn && <AiOutlineMenu onClick={shownavF} className="text-white text-[25px]"/>}
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import  samPic from '../../assets/CRImages/Samuel.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
-import nzubechukwuPic from '../../assets/CRImages/Nzubechukwu.png';
+import nzubechukwuPic from '../../assets/CRImages/B2R.png';
 import daberePic  from '../../assets/CRImages/Dabere.png';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
@@ -15,8 +15,8 @@ const courseRepInfo = [
         level: 'Final Year'
     },
     {
-        name: 'Ezeadu Dabere Asumpta',
-        email: 'Dabere@gmail.com',
+        name: 'Ezeadu Dabere Assumpta',
+        email: 'ezeadudabere@gmail.com',
         number: '08035011681',
         picture: daberePic,
         level: '400l'
