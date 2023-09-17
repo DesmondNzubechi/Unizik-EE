@@ -45,10 +45,14 @@ export const Navdesktop = () => {
     return (
         <div className="lg:flex hidden  shadow-2xl bg-black z-[60] py-[5px] px-[20px] fixed top-0 left-0 right-0 w-full flex-row justify-around items-center">
   <div >
-  <a href=""><img className=" w-[60px] rounded-full relative z-[20] " src={logo} alt="logo" /></a>
+          <a href="" className="flex items-center flex- gap-1">
+            <img className=" w-[60px] rounded-full relative z-[20] " src={logo} alt="logo" />
+            <h1 className="uppercase text-[25px] text-slate-50 "><span className="font-myfont">ee</span><span className="font-[900] text-yellow-500">-</span><span className="font-myfont">unizik</span></h1>
+          
+          </a>
         </div>
 
-        <ul className="flex uppercase items-center flex-row justify-center gap-x-[25px]">
+        <ul className="flex capitalize items-center flex-row justify-center gap-x-[25px]">
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
           <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
           <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>

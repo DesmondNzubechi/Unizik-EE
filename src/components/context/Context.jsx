@@ -142,20 +142,20 @@ export const NewsContext = (props) => {
 console.log('pdf man', allPdfs)
   const [signedIn, setSignedIn] = useState({});
   const [mainUser, setMainUser] = useState(JSON.parse(localStorage.getItem('mainUser')) || [])
-
+console.log('main user', mainUser)
   useEffect(() => {
     localStorage.setItem('mainUser', JSON.stringify(mainUser));
     onAuthStateChanged(auth, (currentUser) => {
       setSignedIn(currentUser)
     });
     // Function to get user information
-    const getUserInfo = async () => {
-        const personalInfo = userList.filter((user) => user.email === signedIn.email);
+    const getUserInfo = () => {
+        const personalInfo = userList.filter((user) => user.email === signedIn?.email);
         setMainUser(personalInfo);
     };
     // Call the function to filter user information
     getUserInfo();
-  }, [userList]); // Trigger this effect when signedIn changes
+  }, [userList, signedIn]); // Trigger this effect when signedIn changes
 
   const signOutUser = async () => {
     try {
