@@ -162,8 +162,8 @@ import { DeptExcos } from './components/DeptExcos/DeptExco';
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
-      const cat = getDetails.category;
-      const headline = getDetails.newsHeadline.replace(' ', '-');
+      const cat = getDetails?.category;
+      const headline = getDetails?.newsHeadline?.replace(' ', '-');
   return (
         <div className='overflow-x-hidden font-fonty'>
 <>
