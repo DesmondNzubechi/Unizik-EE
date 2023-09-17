@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect } from "react";
 import { fullNewsContext } from "../../context/Context";
 import { Link } from "react-router-dom";
-import { deleteDoc, collection, doc, getDocs } from "firebase/firestore";
+import { deleteDoc, collection, doc, getDocs, onSnapshot } from "firebase/firestore";
 import { EditNews } from "../EditNews/EditNews";
 import { db, storage } from "../../config/firebase";
 import { toast } from "react-toastify";
@@ -14,35 +14,43 @@ import { deleteObject, ref } from "firebase/storage";
 export const AllNews = () => {
     const {  editNews, displaying,  allNews, allEvents, setAllEvents, getFullNews, setAllNews, setDisplaying, setEditNews, } = useContext(fullNewsContext);
     console.log('all news', allNews)
-    useEffect(() => {
-        const fetchEvents = async () => {
-            const eventStore = collection(db, 'Event');
-            try {
-              const eventsDoc = await getDocs(eventStore);
-              const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-             setAllEvents(fetchingEvents);
-             } catch (error) {
-              console.log('events:', error)
-            }
-          }
-        const fetchNews = async () => {
-          const newsStore = collection(db, 'News');
-          try {
-            const newsDoc = await getDocs(newsStore);
-            const fetchingNews =  newsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-           setAllNews(fetchingNews);
-           } catch (error) {
+  //   useEffect(() => {
+  //       const fetchEvents = async () => {
+  //           const eventStore = collection(db, 'Event');
+  //           try {
+  //             const eventsDoc = await getDocs(eventStore);
+  //             const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+  //            setAllEvents(fetchingEvents);
+  //            } catch (error) {
+  //             console.log('events:', error)
+  //           }
+  //         }
+  //       const fetchNews = async () => {
+  //         const newsStore = collection(db, 'News');
+  //         try {
+  //           const newsDoc = await getDocs(newsStore);
+  //           const fetchingNews =  newsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+  //          setAllNews(fetchingNews);
+  //          } catch (error) {
             
-          }
-        }
-        fetchNews();
-        fetchEvents();
-      }, [])
+  //         }
+  //       }
+  //       fetchNews();
+  //       fetchEvents();
+  //   }, [])
+  // useEffect(() => {
+  //   const allNewsStore = collection(db, 'News');
+  //   const newsUnsub = onSnapshot(allNewsStore, (news) => {
+  //     const getNews = news.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      
+  //   })
+  //  })
+  
     const deleteNews = async (news) => {
-//     const deleteConfirmation = confirm('Are you sure you want to delete this news, Kindly note that you can\'t undo this action after being processed')
-// if(!deleteConfirmation) {
-//    return;
-// } 
+    const deleteConfirmation = window.confirm('Are you sure you want to delete this news, Kindly note that you can\'t undo this action after being processed')
+if(!deleteConfirmation) {
+   return;
+} 
 try {
     const newsIn = doc(db, `${news.category}`, news.id);
     await deleteDoc(newsIn);
@@ -66,7 +74,7 @@ const newsAndEvent = [...allNews, ...allEvents]
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {newsAndEvent.length === 0  && <div className="py-[40px] md:ml-[70px] text-center w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center">< ClipLoader className="relative z-[600]" color="black"
            size={70}
-           width={10}
+           width={10} 
             /></div> } 
              {newsAndEvent?.map(news => {
               

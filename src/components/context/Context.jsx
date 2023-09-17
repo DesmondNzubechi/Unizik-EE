@@ -77,7 +77,32 @@ export const NewsContext = (props) => {
      
       })
     };
+  //fetching users
+    useEffect(() => {
+      const userStore = collection(db, 'allUser');
+      const usersUnsub = onSnapshot(userStore, (users) => {
+          const getUsers = users.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+          setUserList(getUsers);
+      });
+
+      return () => {
+          usersUnsub();
+      }
+  }, []);
+  
+  //FETCHING NEWS
+  useEffect(() => {
+    const newsStore = collection(db, 'News');
+    const unsubscribe = onSnapshot(newsStore, (news) => {
+      const getAllNews = news.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setAllNews(getAllNews);
+    });
+    return () => {
+      unsubscribe();
+    }
+  }, [])
     
+  //FETCHING PDFS
     useEffect(() => {
       const pdfStore = collection(db, 'learningResources');
       // Set up a real-time listener to fetch and update data when changes occur
@@ -103,7 +128,7 @@ export const NewsContext = (props) => {
     const getFullNews = (news) => {
         setFullNews([news]);
     };
-    console.log(fullNews);
+    //console.log(fullNews);
 
     const getClickedlevel = (level) => {
     const filterLevelCourses =  CoursesOffered.filter(courses => {
@@ -118,39 +143,22 @@ export const NewsContext = (props) => {
     }
 console.log('pdf man', allPdfs)
   const [signedIn, setSignedIn] = useState({});
-  const userInfoStore = collection(db, 'allUser');
-  const [registeredUser, setRegisteredUser] = useState([]);
-  const [mainUser, setMainUser] = useState([])
+  const [mainUser, setMainUser] = useState(JSON.parse(localStorage.getItem('mainUser')) || [])
 
   useEffect(() => {
-
+    localStorage.setItem('mainUser', JSON.stringify(mainUser));
     onAuthStateChanged(auth, (currentUser) => {
       setSignedIn(currentUser)
     });
     // Function to get user information
     const getUserInfo = async () => {
-      try {
-        // Fetch user information
-        const userInfo = await getDocs(userInfoStore);
-        const allUsers = userInfo.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        // Set registered users
-        setRegisteredUser(allUsers);
-        // Find the current user based on email
-        const personalInfo = allUsers.filter((user) => user.email === signedIn.email);
-        console.log('personalInfo:', personalInfo);
-        console.log('signedIn?.email:', signedIn?.email);
-        // Set the main user
+        const personalInfo = userList.filter((user) => user.email === signedIn.email);
         setMainUser(personalInfo);
-      } catch (error) {
-        console.error(error); 
-      }
     };
-    // Call the function to get user information
+    // Call the function to filter user information
     getUserInfo();
-  }, [signedIn]); // Trigger this effect when signedIn changes
+  }, [userList]); // Trigger this effect when signedIn changes
+
   const signOutUser = async () => {
     try {
       setMainUser(0)

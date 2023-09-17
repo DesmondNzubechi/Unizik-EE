@@ -106,18 +106,18 @@ export const UserProfile = () => {
     }
 
   }
-  const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/ee-unizik-18128.appspot.com/o/profilePictures%2FaccountManagement.avif?alt=media&token=8bf2e4fb-0748-49b8-8bda-a294046fa465';
+//   const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/ee-unizik-18128.appspot.com/o/profilePictures%2FaccountManagement.avif?alt=media&token=8bf2e4fb-0748-49b8-8bda-a294046fa465';
 
-// Split the URL by '/' to get an array of segments
-const urlSegments = imageUrl.split('/');
+// // Split the URL by '/' to get an array of segments
+// const urlSegments = imageUrl.split('/');
 
-// The last segment (after the last '/') contains the image name
-const imageNameWithQuery = urlSegments[urlSegments.length - 1];
+// // The last segment (after the last '/') contains the image name
+// const imageNameWithQuery = urlSegments[urlSegments.length - 1];
 
-// To get just the image name without the query parameters, split by '?' and take the first part
-const imageName = imageNameWithQuery.split('?')[0];
+// // To get just the image name without the query parameters, split by '?' and take the first part
+// const imageName = imageNameWithQuery.split('?')[0];
 
-console.log('Image Name:', imageName);
+// console.log('Image Name:', imageName);
 
   return (
       !signedIn? navig('/login') : signedIn &&

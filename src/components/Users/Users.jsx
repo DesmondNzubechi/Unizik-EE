@@ -1,53 +1,10 @@
-import { collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../config/firebase";
 import { fullNewsContext } from "../context/Context";
 
-const usersInfo = [
-    {
-        Name: 'Desmond ',
-        email: 'Nzubechukwu@gmail.com',
-        level: '100',
-    },
-    {
-        Name: 'Nzubechukwu Abugu',
-        email: 'Nzubechukwuabugu@gmail.com',
-        level: '300',
-    },
-    {
-        Name: 'Elvis onunwa',
-        email: 'elvisio@gmail.com',
-        level: '400',
-    },
-    {
-        Name: 'Nzubechukwu Abugu',
-        email: 'Nzubechukwuabugu@gmail.com',
-        level: '300',
-    },
-    {
-        Name: 'Nzubechukwu Abugu',
-        email: 'men@gmail.com',
-        level: '500',
-    }
-
-]
-
-
 export const Users = () => {
     const {signedIn, userList, setUserList } = useContext(fullNewsContext);
-    useEffect(() => {
-        const getUsers = async () => {
-            const userStore = collection(db, 'allUser');
-        try {
-            const users = await getDocs(userStore);
-            const fetchUsers = users.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-            setUserList(fetchUsers);
-        } catch (error) {
-            
-        }
-        }
-        getUsers();
-}, [userList])
      const [searchUser, setSearchedUser] = useState([]);
     console.log(searchUser);
 

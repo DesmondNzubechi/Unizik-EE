@@ -6,27 +6,12 @@ import tools3 from '../../assets/images/eebook1.jpg';
 import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 const apikey = 'b9a46b1958145632d73edfcb3ca65284';
 export const News = () => {
   const {getFullNews, anotherNews, allNews, setAllNews, setAnotherNews} = useContext(fullNewsContext);
-  useEffect(() => {
-    const fetchNews = async () => {
-      const newsStore = collection(db, 'News');
-      try {
-        const newsDoc = await getDocs(newsStore);
-        const fetchingNews =  newsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-       setAllNews(fetchingNews);
-       } catch (error) {
-        
-      }
-    }
-    fetchNews();
-  }, [])
-   
-
     return(
         <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
          <div className="flex flex-col justify-center gap-[20px]">

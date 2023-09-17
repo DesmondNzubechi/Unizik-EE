@@ -6,7 +6,7 @@ import tools3 from '../../assets/images/eebook1.jpg';
 import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 
@@ -14,20 +14,31 @@ import { db } from "../config/firebase";
 export const Events = () => {
   
   const {getFullNews, anotherNews, allEvents, setAllEvents, setAnotherNews} = useContext(fullNewsContext);
-  useEffect(() => {
+  // useEffect(() => {
     
-    const fetchEvents = async () => {
-      const newsStore = collection(db, 'Event');
-      try {
-        const eventsDoc = await getDocs(newsStore);
-        const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-       setAllEvents(fetchingEvents);
-       } catch (error) {
-        console.log('events:', error)
-      }
+  //   const fetchEvents = async () => {
+  //     const newsStore = collection(db, 'Event');
+  //     try {
+  //       const eventsDoc = await getDocs(newsStore);
+  //       const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+  //      setAllEvents(fetchingEvents);
+  //      } catch (error) {
+  //       console.log('events:', error)
+  //     }
+  //   }
+  //   fetchEvents();
+  // }, [allEvents])
+
+  useEffect(() => {
+    const eventsStore = collection(db, 'Event');
+    const eventUnsub = onSnapshot(eventsStore, (event) => {
+      const getEvent = event.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setAllEvents(getEvent)
+    });
+    return () => {
+      eventUnsub();
     }
-    fetchEvents();
-  }, [allEvents])
+  }, [])
    
 console.log('events:', allEvents)
     return(
