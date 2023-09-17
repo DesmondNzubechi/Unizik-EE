@@ -12,40 +12,7 @@ import { deleteObject, ref } from "firebase/storage";
 
 
 export const AllNews = () => {
-    const {  editNews, displaying,  allNews, allEvents, setAllEvents, getFullNews, setAllNews, setDisplaying, setEditNews, } = useContext(fullNewsContext);
-    console.log('all news', allNews)
-  //   useEffect(() => {
-  //       const fetchEvents = async () => {
-  //           const eventStore = collection(db, 'Event');
-  //           try {
-  //             const eventsDoc = await getDocs(eventStore);
-  //             const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-  //            setAllEvents(fetchingEvents);
-  //            } catch (error) {
-  //             console.log('events:', error)
-  //           }
-  //         }
-  //       const fetchNews = async () => {
-  //         const newsStore = collection(db, 'News');
-  //         try {
-  //           const newsDoc = await getDocs(newsStore);
-  //           const fetchingNews =  newsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-  //          setAllNews(fetchingNews);
-  //          } catch (error) {
-            
-  //         }
-  //       }
-  //       fetchNews();
-  //       fetchEvents();
-  //   }, [])
-  // useEffect(() => {
-  //   const allNewsStore = collection(db, 'News');
-  //   const newsUnsub = onSnapshot(allNewsStore, (news) => {
-  //     const getNews = news.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      
-  //   })
-  //  })
-  
+    const {allNews, allEvents, getFullNews, setDisplaying, setEditNews, } = useContext(fullNewsContext);
     const deleteNews = async (news) => {
     const deleteConfirmation = window.confirm('Are you sure you want to delete this news, Kindly note that you can\'t undo this action after being processed')
 if(!deleteConfirmation) {

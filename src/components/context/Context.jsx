@@ -77,7 +77,7 @@ export const NewsContext = (props) => {
      
       })
     };
-  //fetching users
+  //FETCHING USERS
     useEffect(() => {
       const userStore = collection(db, 'allUser');
       const usersUnsub = onSnapshot(userStore, (users) => {
@@ -128,8 +128,6 @@ export const NewsContext = (props) => {
     const getFullNews = (news) => {
         setFullNews([news]);
     };
-    //console.log(fullNews);
-
     const getClickedlevel = (level) => {
     const filterLevelCourses =  CoursesOffered.filter(courses => {
     return  level == courses.Session[0];

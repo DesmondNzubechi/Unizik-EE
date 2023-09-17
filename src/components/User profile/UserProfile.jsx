@@ -27,7 +27,6 @@ export const UserProfile = () => {
   const notification = () => toast('Profile Info Succesfully Updated');
   const {signedIn, mainUser, logOut, setLogOut, setMainUser, signOutUser} = useContext(fullNewsContext)
   const [profileImg, setProfileImg] = useState([]);
-  //const [mainUserInfo, setMainUserInfo] = useState({ ...mainUser[0]})
   const uid = mainUser[0]?.id;
       //view edit profile page
         const viewEditProfile = () => {
@@ -106,18 +105,6 @@ export const UserProfile = () => {
     }
 
   }
-//   const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/ee-unizik-18128.appspot.com/o/profilePictures%2FaccountManagement.avif?alt=media&token=8bf2e4fb-0748-49b8-8bda-a294046fa465';
-
-// // Split the URL by '/' to get an array of segments
-// const urlSegments = imageUrl.split('/');
-
-// // The last segment (after the last '/') contains the image name
-// const imageNameWithQuery = urlSegments[urlSegments.length - 1];
-
-// // To get just the image name without the query parameters, split by '?' and take the first part
-// const imageName = imageNameWithQuery.split('?')[0];
-
-// console.log('Image Name:', imageName);
 
   return (
       !signedIn? navig('/login') : signedIn &&

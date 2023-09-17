@@ -73,14 +73,6 @@ searchUser.length !== 0 &&     searchUser.map((user, index) => {
         <td class="  text-[10px] md:text-[14px] w-fit  text-slate-500 py-1 px-2 "><img className="max-w-[60px] max-h-[60px] rounded " src={user?.profilePic} alt="" />
             
         </td>
-       { /*<td class="  flex flex-col  text-slate-500 py-1 px-2 ">
-                       {user.stats == 'user' && <button className="bg-green-500 w-full  px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Make Admin</button>}
-                       {user.stats == 'admin' && <button className="bg-red-500 px-2 text-[7px] md:text-[12px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>}
-</td>*/}
-      { /* <td class=" text-[10px] md:text-[14px]  text-slate-500 py-1 px-2 ">
-        <button className="bg-red-500 px-2 text-[7px] md:text-[13px]   font-semibold rounded-[2px] py-1 text-slate-50">Disable Account</button>
-</td>*/}
-       {/* <button className="bg-red-500 px-2 text-[10px] md:text-[17px]   font-semibold rounded-[2px] py-1 text-slate-50">Remove As Admin</button>*/}   
     </tr>
     
 })

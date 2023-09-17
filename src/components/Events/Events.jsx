@@ -14,21 +14,6 @@ import { db } from "../config/firebase";
 export const Events = () => {
   
   const {getFullNews, anotherNews, allEvents, setAllEvents, setAnotherNews} = useContext(fullNewsContext);
-  // useEffect(() => {
-    
-  //   const fetchEvents = async () => {
-  //     const newsStore = collection(db, 'Event');
-  //     try {
-  //       const eventsDoc = await getDocs(newsStore);
-  //       const fetchingEvents =  eventsDoc.docs.map(doc => ({ ...doc.data(), id: doc.id }))
-  //      setAllEvents(fetchingEvents);
-  //      } catch (error) {
-  //       console.log('events:', error)
-  //     }
-  //   }
-  //   fetchEvents();
-  // }, [allEvents])
-
   useEffect(() => {
     const eventsStore = collection(db, 'Event');
     const eventUnsub = onSnapshot(eventsStore, (event) => {
