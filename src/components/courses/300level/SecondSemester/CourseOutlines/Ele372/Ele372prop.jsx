@@ -12,4 +12,4 @@ export const Ele372props = (props) => {
     </div>
        
     );
-}
+} 

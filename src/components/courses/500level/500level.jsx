@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 export const Level500 = () => {
 const [isFirst, setIsFirst] = useState('First');
 const [isFirstSemester, setIsFirstSemester] = useState(true);
@@ -8,18 +8,45 @@ const [isSecondSemester, setIsSecondSemester] = useState(false);
 const [isCourse, setIsCourse] = useState(6);
 
 
-const show1stSemesterC = () => {
-    setIsFirstSemester(true);
-    setIsSecondSemester(false);
-    setIsFirst('First')
-    setIsCourse(6);
+// const show1stSemesterC = () => {
+//     setIsFirstSemester(true);
+//     setIsSecondSemester(false);
+//     setIsFirst('First')
+//     setIsCourse(6);
+// };
+
+// const show2ndSemesterC = () => {
+//     setIsFirstSemester(false);
+//     setIsSecondSemester(true);
+//     setIsFirst('Second');
+//     setIsCourse(5);
+// };
+    
+    
+const [showSemester, setshowSemester] = useState(JSON.parse(localStorage.getItem('showSemester')) || {
+    first: true,
+    second:false,
+})
+
+useEffect(() => {
+    localStorage.setItem('showSemester', JSON.stringify(showSemester));
+})
+    const show1stSemesterC = () => {
+        setIsCourse(6);
+    setshowSemester({
+        first: true,
+        second:false
+})
+setIsFirst('First')
 };
 
-const show2ndSemesterC = () => {
-    setIsFirstSemester(false);
-    setIsSecondSemester(true);
-    setIsFirst('Second');
-    setIsCourse(5);
+    const show2ndSemesterC = () => {
+        setIsCourse(5);
+    setshowSemester({
+        first: false,
+        second:true
+})
+setIsFirst('Second');
 };
 
     return (
@@ -35,7 +62,7 @@ const show2ndSemesterC = () => {
             <button onClick={show2ndSemesterC} className="bg-slate-900  px-[10px] py-[5px] font-semibold uppercase text-white text-[14px] ">Second Semester</button>
         </div>
         </div>
-       { isFirstSemester &&
+       { showSemester.first &&
         <div className="my-[30px] gap-[20px] grid  grid-cols-1 md:grid-cols-3 ">
      
        <div className=" rounded  shadow-2xl p-[10px] border-t-[5px] w-full border- border-t flex flex-col items-start  gap-1 ">
@@ -131,7 +158,7 @@ const show2ndSemesterC = () => {
       </div>
 }
 
-{ isSecondSemester &&
+{showSemester.second &&
         <div className="my-[30px] gap-[20px] grid  grid-cols-1 md:grid-cols-3 ">
        <div className=" rounded  shadow-2xl p-[10px]  border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">

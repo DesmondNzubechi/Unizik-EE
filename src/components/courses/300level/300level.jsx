@@ -1,33 +1,45 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 export const Level300 = () => {
 const [isFirst, setIsFirst] = useState('First');
 const [isFirstSemester, setIsFirstSemester] = useState(true);
 const [isSecondSemester, setIsSecondSemester] = useState(false);
 const [isCourse, setIsCourse] = useState(10);
 
+const [showSemester, setshowSemester] = useState(JSON.parse(localStorage.getItem('showSemester')) || {
+    first: true,
+    second:false,
+})
 
-const show1stSemesterC = () => {
-    setIsFirstSemester(true);
-    setIsSecondSemester(false);
-    setIsFirst('First')
-    setIsCourse(10);
+useEffect(() => {
+    localStorage.setItem('showSemester', JSON.stringify(showSemester));
+})
+    const show1stSemesterC = () => {
+        setIsCourse(10);
+    setshowSemester({
+        first: true,
+        second:false
+})
+setIsFirst('First')
 };
 
-const show2ndSemesterC = () => {
-    setIsFirstSemester(false);
-    setIsSecondSemester(true);
-    setIsFirst('Second');
-    setIsCourse(10);
+    const show2ndSemesterC = () => {
+        setIsCourse(10);
+    setshowSemester({
+        first: false,
+        second:true
+})
+setIsFirst('Second');
 };
+
 
     return (
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[20px] ">
      <div>
         <div className="text-center flex flex-col gap-[10px] ">
             <h1 className="uppercase text-slate-900 font-bold text-[15px] md:text-[25px] ">Courses offered in 300 level</h1>
-            <p className="text-slate-700  capitalize font-semibold text-[12px] md:text-[20px]  ">Electrical Engineering offers {isCourse} courses in 200Level {isFirst} Semester</p>
+            <p className="text-slate-700  capitalize font-semibold text-[12px] md:text-[20px]  ">Electrical Engineering offers {isCourse} courses in 300Level {isFirst} Semester</p>
         </div>
         <div className="flex justify-center my-5">
         <div className="flex flex-row rounded  px-0 gap-5 bg-slate-900 ">
@@ -35,7 +47,7 @@ const show2ndSemesterC = () => {
             <button onClick={show2ndSemesterC} className="bg-slate-900  px-[10px] py-[5px] font-semibold uppercase text-white text-[14px] ">Second Semester</button>
         </div>
         </div>
-       { isFirstSemester &&
+       { showSemester.first &&
         <div className="my-[30px] gap-[20px] grid  grid-cols-1 md:grid-cols-3 ">
        <div className=" rounded  shadow-2xl p-[10px]  border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">
@@ -176,7 +188,7 @@ const show2ndSemesterC = () => {
         </div>
 }
 
-{ isSecondSemester &&
+{ showSemester.second &&
         <div className="my-[30px] gap-[20px] grid  grid-cols-1 md:grid-cols-3 ">
        <div className=" rounded  shadow-2xl p-[10px]  border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">
@@ -201,7 +213,7 @@ const show2ndSemesterC = () => {
         </span>
         <span  className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Code:</h1>
-            <p className="text-[12px] text-slate-700 ">Ece328</p>
+            <p className="text-[12px] text-slate-700 ">Ele328</p>
         </span>
         <span className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Credit Unit:</h1>
@@ -247,12 +259,12 @@ const show2ndSemesterC = () => {
         <span  className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Code:</h1>
             <p className="text-[12px] text-slate-700 ">Ece382</p>
-        </span>
+        </span> 
         <span className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Credit Unit:</h1>
             <p className="text-[12px] text-slate-700 ">2</p>
         </span>
-        <Link to='/Ece382courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
+        <Link to='/Ece328courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
        </div>
        
        <div className=" rounded  shadow-2xl p-[10px] border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
@@ -262,13 +274,13 @@ const show2ndSemesterC = () => {
         </span>
         <span  className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Code:</h1>
-            <p className="text-[12px] text-slate-700 ">Ece372</p>
+            <p className="text-[12px] text-slate-700 ">Ele372</p>
         </span>
         <span className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Credit Unit:</h1>
             <p className="text-[12px] text-slate-700 ">2</p>
         </span>
-        <Link to='/Ece372courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
+        <Link to='/Ele372courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
        </div>
        <div className=" rounded  shadow-2xl p-[10px] border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">
@@ -292,13 +304,13 @@ const show2ndSemesterC = () => {
         </span>
         <span  className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Code:</h1>
-            <p className="text-[12px] text-slate-700 ">Ece344</p>
+            <p className="text-[12px] text-slate-700 ">Ele344</p>
         </span>
         <span className="flex flex-row items-center justify-around gap-[10px] ">
             <h1 className="font-semibold text-[12px]    ">Course Credit Unit:</h1>
             <p className="text-[12px] text-slate-700 ">2</p>
         </span>
-        <Link to='/Ece344courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
+        <Link to='/Ele344courseoutline' className="bg-slate-900 w-full text-center text-white my-[10px] rounded hover:bg-yellow-500 py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
        </div>
        
        <div className=" rounded  shadow-2xl p-[10px] border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">

@@ -259,7 +259,7 @@ function App() {
       <Route path='/Ece322courseoutline' element={<Ece322/>} />
       <Route path='/Ele314courseoutline' element={<Ele314/>} />
 
-            <Route path='/level400' element={<Level400 />} />
+       <Route path='/level400' element={<Level400 />} />
             
       <Route path='/Ele403courseoutline' element={<Ele403/>} />
       <Route path='/Cve423courseoutline' element={<Cve423/>} />

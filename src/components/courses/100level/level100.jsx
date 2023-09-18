@@ -25,7 +25,7 @@ const [isFirst, setIsFirst] = useState('First');
             second:true
     })
     setIsFirst('Second');
-};
+}; 
 
     return (
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[20px] ">
