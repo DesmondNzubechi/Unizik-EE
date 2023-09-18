@@ -13,9 +13,22 @@ export const Navdesktop = () => {
   const [studentDisplay, setstudentDisplay] = useState(false);
   const [acedemicsDisplay, setAcedemicDisplay] = useState(false);
   const [aboutDisplay, setAboutDisplay] = useState(false);
+  const [alumniDisplay, setAlumniDisplay] = useState(false);
+
+  const showAlumni = () => {
+    setAcedemicDisplay(false);
+    setAboutDisplay(false);
+    setstudentDisplay(false)
+      if (!alumniDisplay) {
+       setAlumniDisplay(true)
+      } else {
+       setAlumniDisplay(false);
+      }
+  }
   const showstudents = () => {
     setAcedemicDisplay(false);
     setAboutDisplay(false);
+    setAlumniDisplay(false);
       if (!studentDisplay) {
         setstudentDisplay(true)
       } else {
@@ -26,6 +39,7 @@ export const Navdesktop = () => {
   const acedF = () => {
     setAboutDisplay(false);
     setstudentDisplay(false);
+    setAlumniDisplay(false);
     if (!acedemicsDisplay) {
       setAcedemicDisplay(true)
     } else {
@@ -90,6 +104,18 @@ export const Navdesktop = () => {
                               <li><Link onClick={abooutUs} to='/mission'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Our Mission</Link></li>
                             
                               <li><Link onClick={abooutUs} to='/admission requirement'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
+                            </ul>}
+                        </li>
+                        <li className=" text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
+                            <Link onClick={showAlumni}  className=" text-[17px] hover:text-textBlack font-[700] relative text-slate-50 flex  items-center " >
+                          Alumni { !alumniDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
+                            </Link>
+                           {alumniDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
+                              <li><Link onClick={showAlumni} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
+                            
+                              <li><Link onClick={showAlumni} to='/Alumni/first-class-graduates'  className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
+                            
+                              <li><Link onClick={showAlumni} to='/Alumni/Best-graduating-students'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
                         </li>
            {/* <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>

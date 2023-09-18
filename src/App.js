@@ -159,6 +159,7 @@ import { fullNewsContext } from './components/context/Context';
 import { useContext } from 'react';
 import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
+import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
@@ -299,6 +300,7 @@ function App() {
      <Route path='/students leaders' element={<ExcosProfile/>} />
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
      <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
+     <Route path='/Alumni/Ex-students-leaders' element={<ExDeptExcos/>} />
     </Routes>
    <Footer/>
 </BrowserRouter>
