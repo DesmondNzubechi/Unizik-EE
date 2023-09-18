@@ -37,8 +37,8 @@ const show2ndSemesterC = () => {
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[20px] ">
      <div>
         <div className="text-center flex flex-col gap-[10px] ">
-            <h1 className="uppercase text-slate-900 font-bold text-[20px] md:text-[30px] ">Courses offered in 200 level</h1>
-            <p className="text-slate-700  capitalize text-[18px] md:text-[25px] ">Electrical Engineering offers {isCourse} courses in 200Level {isFirst} Semester</p>
+            <h1 className="uppercase text-slate-900 font-bold text-[15px] md:text-[20px] ">Courses offered in 200 level</h1>
+            <p className="text-slate-700  capitalize font-semibold text-[12px] md:text-[20px]  ">Electrical Engineering offers {isCourse} courses in 200Level {isFirst} Semester</p>
         </div>
         <div className="flex justify-center my-5">
         <div className="flex flex-row rounded  px-0 gap-5 bg-slate-900 ">
@@ -264,7 +264,7 @@ const show2ndSemesterC = () => {
             <p className="text-[12px] text-slate-700 ">2</p>
         </span>
         <Link to='/Feg242courseoutline' className="bg-slate-900 hover:bg-yellow-500 w-full text-center text-white my-[10px] rounded py-[5px] text-[14px] font-semibold ">View Course Outline</Link>
-       </div>
+       </div> 
        
        <div className=" rounded  shadow-2xl p-[10px] border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">

@@ -31,8 +31,8 @@ const [isFirst, setIsFirst] = useState('First');
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[20px] ">
      <div>
         <div className="text-center flex flex-col gap-[10px] ">
-            <h1 className="uppercase text-slate-900 font-bold text-[20px] md:text-[30px] ">Courses offered in 100 level</h1>
-            <p className="text-slate-700  capitalize text-[15px] md:text-[20px] ">Electrical Engineering offers 11 courses in 100Level {isFirst} Semester</p>
+            <h1 className="uppercase text-slate-900 font-bold text-[15px] md:text-[25px] ">Courses offered in 100 level</h1>
+            <p className="text-slate-700  capitalize font-semibold text-[12px] md:text-[20px] ">Electrical Engineering offers 11 courses in 100Level {isFirst} Semester</p>
         </div>
         <div className="flex justify-center my-5">
         <div className="flex flex-row rounded  px-0 gap-5 bg-slate-900 ">
