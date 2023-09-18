@@ -142,17 +142,20 @@ export const NewsContext = (props) => {
 console.log('pdf man', allPdfs)
   const [signedIn, setSignedIn] = useState({});
   const [mainUser, setMainUser] = useState(JSON.parse(localStorage.getItem('mainUser')) || [])
-console.log('main user', mainUser)
+  console.log('main user', mainUser)
+
   useEffect(() => {
     localStorage.setItem('mainUser', JSON.stringify(mainUser));
     onAuthStateChanged(auth, (currentUser) => {
       setSignedIn(currentUser)
     });
-    // Function to get user information
     const getUserInfo = () => {
-        const personalInfo = userList.filter((user) => user.email === signedIn?.email);
-        setMainUser(personalInfo);
-    };
+      const personalInfo = userList.filter((user) => {
+        return user.email.toLocaleLowerCase() == signedIn?.email.toLocaleLowerCase()
+      });
+      setMainUser(personalInfo);
+  };
+    // Function to get user information
     // Call the function to filter user information
     getUserInfo();
   }, [userList, signedIn]); // Trigger this effect when signedIn changes
@@ -168,7 +171,7 @@ console.log('main user', mainUser)
   }
     //const getCourseName = (courses) => {
     //}
-    return <fullNewsContext.Provider value={{getFullNews, bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+    return <fullNewsContext.Provider value={{getFullNews,  bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

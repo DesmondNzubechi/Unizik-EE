@@ -11,7 +11,8 @@ import {AiOutlineMail} from 'react-icons/ai';
 import {RiLockPasswordFill} from 'react-icons/ri';
 import { Home } from "../Home/home";
 export const Login = () => {
-    const { signedIn, mainUser } = useContext(fullNewsContext);
+    const navig = useNavigate();
+    const { signedIn, mainUser,  } = useContext(fullNewsContext);
     const [spinnerJs, setSpinnerJs] = useState(false);
     const [userDetails, setUserDetails] = useState({
         emailAddress: '',
@@ -34,11 +35,12 @@ export const Login = () => {
         setSpinnerJs(true);
         try {
             await signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);
-          if (mainUser[0].stats == 'user') {
+          if (mainUser[0].stats === 'user') {
             navig('/profile')
           } else {
             navig('/dashboard')
             };
+           
           setSpinnerJs(false);
         } catch (error) {
             setSpinnerJs(false)
@@ -47,7 +49,6 @@ export const Login = () => {
          
         }
     }
-    const navig = useNavigate();
     if (signedIn) {
         return <Home />
     } else {
