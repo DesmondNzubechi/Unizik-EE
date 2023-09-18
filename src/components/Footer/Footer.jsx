@@ -36,7 +36,7 @@ you from time to time when we make updates to serve you better.</p>
 </div>
             </div>
             </div>
-            <p className="text-center text-slate-200 pb-[30px] md:text-[15px] text-[12px]">&copy; EEUNIZIK 2023</p>
+            <p className="text-center text-slate-200 pb-[30px] md:text-[15px] text-[12px]">&copy; Electrical Engineering UNIZIK 2023</p>
             </div>
     )
 }
