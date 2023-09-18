@@ -1,20 +1,12 @@
 import React from "react";
 import tools from '../../assets/images/library.avif';
-import { About } from "../About/About";
-import { News } from "../news/new";
 import { Aim } from "../our-aim/aim";
-import CGPACalculator from "../cgpa-calc/CgpaCalc";
-import { ExcosProfile } from "../Excos/Excos";
 import { CalculateGp } from "../cgpa-calc/CgpaCalc";
 import { StartLearning } from "../Books/Book";
 import { AboutNews } from "../news/new";
-import { UserProfile } from "../User profile/UserProfile";
-import { NewsUpload } from "../NewsUpload/NewsUpload";
-import { PdfUpload } from "../PdfUpload/PdfUpload";
-import { Users } from "../Users/Users";
 import { SchoolEvents } from "../Aims/Aims";
 import { Link } from "react-router-dom";
-
+import { CourseOutline } from "../CourseOutlines/CourseOutlines";
 export const Home = () => {
     return( 
         <>
@@ -38,6 +30,7 @@ export const Home = () => {
  <Aim/>
  <StartLearning/>
  <CalculateGp/>
+ <CourseOutline/>
  <AboutNews/>
  <SchoolEvents/>
  </>

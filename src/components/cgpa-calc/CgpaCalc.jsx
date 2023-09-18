@@ -113,9 +113,12 @@ const addCourse = () => {
 }
 
 return(
-  <div className='py-[150px] px-[30px]'>
+  <div className='py-[120px] px-[30px]'>
     
-    <div><p className=' text-center uppercase font-bold my-[30px] text-[20px] md:text-[30px]'>Calculate your cgpa here!</p></div>
+    <div className='flex flex-col mb-[30px] '>
+      <p className=' text-center font-myfont uppercase font-bold  text-[20px] md:text-[40px]'>cgpa calculator</p>
+      <p className='text-center text-slate-500 font-semibold text-[12px] md:text-[15px] '>Our CGPA Calculator is here to empower you on acedemic journey</p>
+    </div>
   <div className=' flex flex-row justify-center '>
     <div className='rounded flex items-center flex-col gap-[30px]  bg-slate-200'>
    
@@ -351,8 +354,8 @@ export const CalculateGp = () => {
     <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[20px] md:flex-row-reverse md:flex-row ... items-center py-[50px] ">
 <div className="flex flex-col max-w-[600px] gap-[20px] ">
     <h1 className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-semibold ">Calculate your <span className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-bold uppercase">cgpa</span> </h1>
-    <p className="md:text-[15px] text-[12px] font-[400] ">The aim of the Department is to train students who are willing to become Electrical Engineers to become sound in the field. The trained students should be confident, self-reliant and be able to execute what they have learnt and strive to be the best among equals and to be able to do this independently. Other aims are:  </p>
-<p><Link to='/cgpa' className="bg-slate-500 text-[15px] text-slate-50 px-[10px] py-[5px] mt-[60px] font-semibold hover:bg-slate-900 rounded-[3px]  ">Calculate</Link>
+    <p className="md:text-[15px] text-[12px] font-[400] ">CGPA Calculator, your personalized tool for tracking your academic progress and planning your educational journey at Electrical Engineering UNIZIK. Understanding and managing your Cumulative Grade Point Average (CGPA) is vital. Your CGPA is a numerical representation of your overall academic performance. It's a measure of how well you've performed in your courses over a given period. At Electrical Engineering Unizik, we take pride in fostering an environment of academic excellence, and your CGPA reflects your commitment to learning and growth.</p>
+<p><Link to='/cgpa' className="bg-slate-500 text-[15px] text-slate-50 px-[10px] py-[5px] mt-[60px] font-semibold hover:bg-slate-900 rounded-[3px]  ">Start calculating</Link>
 </p>
 </div>
 <div className=" max-w-[600px]">
