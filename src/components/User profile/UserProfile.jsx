@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import userImg from '../../assets/images/ee.avif';
-import {AiOutlineLogout, AiOutlineMenu} from 'react-icons/ai';
-import {FaUserCircle, FaWarehouse} from 'react-icons/fa'; 
-import {RiLockPasswordFill} from 'react-icons/ri';
-import {AiFillEdit} from 'react-icons/ai'; 
-import  { HiOutlineBars3, HiXMark } from 'react-icons/hi2';
+import  {  HiXMark } from 'react-icons/hi2';
 import { useState } from "react";
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { fullNewsContext } from "../context/Context";
@@ -64,7 +60,7 @@ export const UserProfile = () => {
   const updateUserInfo = async (userId) => {
 
     const userInfoStore = doc(db, 'allUser', userId);
-
+  
     try {
       await updateDoc(userInfoStore, {
         email: mainUser[0]?.email,
@@ -106,6 +102,7 @@ export const UserProfile = () => {
     }
 
   }
+  console.log('main man', mainUser[0])
   if (!signedIn) {
     return <Login />
   } else {
@@ -125,7 +122,7 @@ export const UserProfile = () => {
                   
                 <div className="flex flex-col text-start md:text-start gap-[20px] ">
                   <h1 className="uppercase font-myfont  text-[25px] ">My Profile</h1>
-                  <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.lastName}</span></p>
+                <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.firstName} {  mainUser[0]?.lastName}</span></p>
                   <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Email:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{signedIn?.email}</span></p>
                   <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Level:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.userLevel}</span></p>
                   <div className="flex items-center  text-center   gap-1">

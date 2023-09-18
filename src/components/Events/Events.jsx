@@ -1,8 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import tools from '../../assets/images/eebook.jpg';
-import tools1 from '../../assets/images/eestudent.avif';
-import tools2 from '../../assets/images/eestudent1.avif';
-import tools3 from '../../assets/images/eebook1.jpg';
 import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';

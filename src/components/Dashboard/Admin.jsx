@@ -12,8 +12,6 @@ import {GrNext, GrPrevious} from 'react-icons/gr';
 import { useState } from "react";
 import {FaUserCircle, FaWarehouse} from 'react-icons/fa';
 import {AiOutlineLogout, AiOutlineMenu} from 'react-icons/ai';
-import logo from '../../assets/images/eesalogor.png'
-import bgImg from '../../assets/images/admin.avif';
 import { NewsUpload } from "../NewsUpload/NewsUpload"; 
 import { Users } from "../Users/Users";
 import {BsNewspaper} from 'react-icons/bs';

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 export const SchoolEvents = () => {
-    return(
+    return( 
       <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[20px] md:flex-row md:flex-row ... items-center py-[50px] ">
   <div className="flex flex-col max-w-[600px] gap-[20px] ">
       <h1 className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-semibold ">Events<span className="text-[30px]  w-fit  rounded-[15px] text-slate-900 font-bold uppercase"></span> </h1>

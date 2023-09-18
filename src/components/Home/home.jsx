@@ -8,7 +8,7 @@ import { SchoolEvents } from "../Aims/Aims";
 import { Link } from "react-router-dom";
 import { CourseOutline } from "../CourseOutlines/CourseOutlines";
 export const Home = () => {
-    return( 
+    return(  
         <>
         <div className="px-[20px]">
 <div className=" flex flex-col overflow-x-hidden  md:flex-row justify-center gap-5 items-center pt-[120px]  ">

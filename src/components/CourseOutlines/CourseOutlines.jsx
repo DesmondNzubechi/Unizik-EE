@@ -2,7 +2,7 @@ import cOutlineImg from '../../assets/images/cOutline5.avif'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const CourseOutline = () => {
+export const CourseOutline = () => { 
     return(
         <div className="px-[20px] flex pt-[50px]  justify-around   flex-col rounded-[30px] bg-white gap-[40px] md:flex-row md:flex-row ... items-center py-[100px] ">
         <div className="flex flex-col max-w-[700px] gap-[20px] ">

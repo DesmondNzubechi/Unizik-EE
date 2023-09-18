@@ -9,7 +9,7 @@ import learningImg2 from '../../assets/images/reading6.avif';
 import learningImg3 from '../../assets/images/reading5.avif';
 import learningImg4 from '../../assets/images/reading7.avif';
 import learningImg5 from '../../assets/images/reading8.avif';
-
+ 
 
 const levels = [
       {

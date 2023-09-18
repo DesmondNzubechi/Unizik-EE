@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {IoTrashBin} from 'react-icons/io5';
 import {BsFillTrash3Fill} from 'react-icons/bs';
 import { CoursesOffered } from '../CourseOffered/CourseOffered';
 import cgpaImg from '../../assets/images/cgpa.jpg';
@@ -355,7 +354,7 @@ export const CalculateGp = () => {
 <div className="flex flex-col max-w-[600px] gap-[20px] ">
     <h1 className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-semibold ">Calculate your <span className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-bold uppercase">cgpa</span> </h1>
     <p className="md:text-[15px] text-[12px] font-[400] ">CGPA Calculator, your personalized tool for tracking your academic progress and planning your educational journey at Electrical Engineering UNIZIK. Understanding and managing your Cumulative Grade Point Average (CGPA) is vital. Your CGPA is a numerical representation of your overall academic performance. It's a measure of how well you've performed in your courses over a given period. At Electrical Engineering Unizik, we take pride in fostering an environment of academic excellence, and your CGPA reflects your commitment to learning and growth.</p>
-<p><Link to='/cgpa' className="bg-slate-500 text-[15px] text-slate-50 px-[10px] py-[5px] mt-[60px] font-semibold hover:bg-slate-900 rounded-[3px]  ">Start calculating</Link>
+<p><Link to='/calculate-cgpa' className="bg-slate-500 text-[15px] text-slate-50 px-[10px] py-[5px] mt-[60px] font-semibold hover:bg-slate-900 rounded-[3px]  ">Start calculating</Link>
 </p>
 </div>
 <div className=" max-w-[600px]">

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import img from '../../assets/images/eesalogor.png';
 import logo from "../../assets/images/logo.jpg";
-import tools from '../../assets/images/ee.avif';
 import {AiOutlineMenu} from 'react-icons/ai';
 import {HiXMark} from 'react-icons/hi2';
 import { Link } from "react-router-dom";

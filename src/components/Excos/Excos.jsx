@@ -1,8 +1,4 @@
 import React from "react";
-import excoP1 from '../../assets/images/nau.jpg';
-import excoP2 from '../../assets/images/bookandbulb.avif';
-import excoP3 from '../../assets/images/ee.avif';
-import excoP4 from '../../assets/images/eestudent1.avif';
 import { Link } from "react-router-dom";
 import { Excop } from "./ExcosProfile";
 

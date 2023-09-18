@@ -1,5 +1,6 @@
 import React from "react";
 import Nzubechukwu from '../../assets/CRImages/B2R.png';
+import dave from '../../assets/dave.jpg';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
 import { BiWorld } from 'react-icons/bi';
@@ -18,7 +19,7 @@ const ExStudentLeaders = [
         name: 'okonkwo david uchenna',
         email: 'daviscarlos2404@gmail.com',
         number: '09154064012',
-        picture: Nzubechukwu,
+        picture: dave,
         level: '300l student',
         position: 'Web Developer',
         link: '/',

@@ -1,13 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import tools from '../../assets/images/eebook.jpg';
-import tools1 from '../../assets/images/eestudent.avif';
-import tools2 from '../../assets/images/eestudent1.avif';
-import tools3 from '../../assets/images/eebook1.jpg';
 import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
-import { db } from "../config/firebase";
 
 const apikey = 'b9a46b1958145632d73edfcb3ca65284';
 export const News = () => {
@@ -42,31 +36,6 @@ export const News = () => {
     )
 }
 
-
-{ /*<div className="flex flex-col gap-5">
-<div className="flex flex-col w-fit ">
-  <h1 className="uppercase text-[30px] font-bold">Other News</h1>
-  <span className="w-[150px] h-[7px] bg-yellow-500 self-end"></span>
-  </div>
-  <div>
- {newsList.map((news, newsIndex) => {
- 
-   return <div className="flex flex-col items-start w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
-   <div>
-   <img className="md:max-w-[300px]   rounded " src={news.newsImg} alt="" />
-   </div>
-   <div className="flex flex-col  max-w-[400px] ">
-   <h1 className="font-bold text-[15px] md:max-w-[300px] md:text-[15px] capitalize ">{news.newsHeadline}</h1>
-   <span className="font-semibold text-[15px] md:text-[17px] text-slate-700 ">{news.date}</span>
-   <p className="text-slate-500    text-[14px] md:text-[13px] font-[400] ">{news.newsOverview}</p>
-   <Link to='/news-details' onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
-   </div>
-   </div>
-  
- }) }
-
-  </div>
-</div>*/}
 
 export const AboutNews = () => {
   return(

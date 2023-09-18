@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import image from '../../assets/images/1682585228090.png';
 import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
 
