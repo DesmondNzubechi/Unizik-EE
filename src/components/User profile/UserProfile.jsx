@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, db, storage } from "../config/firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { Login } from "../login/login";
 const levels = [
@@ -74,7 +75,20 @@ export const UserProfile = () => {
       console.log(error)
     }
   };
-  
+  const resetPassword = async () => {
+    const resetPass = window.confirm('Are you sure you want to reset your password??');
+    if (!resetPass) {
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, signedIn.email);
+      hideChangePassword();
+      alert('successful! Kindly check your email for reset password link');
+     
+    } catch (error) {
+      alert('Something went wrong❌ try again!')
+    }
+  }
   const updateProfilePic = async (uid) => {
     const picFolderRef = ref(storage, 'profilePictures');
     try {
@@ -194,13 +208,11 @@ export const UserProfile = () => {
                 <h1 className="text-[20px] font-bold uppercase text-slate-100 ">Change Password</h1>
                 <div className="flex flex-col">
                   <label className="text-slate-900 font-[400] text-[20px]" htmlFor="email">Email:</label>
-                  <input type="email" className="border outline-0  p-2 rounded" placeholder="nzubechukwu1@gmail.com" />
+                  <input value={signedIn?.email} type="email" className="border outline-0  p-2 rounded" placeholder="nzubechukwu1@gmail.com" />
                 </div>
-           
                 <div className="flex flex-col">
-                  <button className="bg-slate-900 text-slate-50 p-2 my-[20px] rounded text-[20px] capitalize">Send Link</button>
+                  <button type="button" onClick={resetPassword} className="bg-slate-900 text-slate-50 p-2 my-[20px] rounded text-[20px] capitalize">Reset Password</button>
                 </div>
-          
               </form>
             </span>
           </div>

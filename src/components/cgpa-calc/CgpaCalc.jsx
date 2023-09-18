@@ -116,7 +116,7 @@ return(
     
     <div className='flex flex-col mb-[30px] '>
       <p className=' text-center font-myfont uppercase font-bold  text-[20px] md:text-[40px]'>cgpa calculator</p>
-      <p className='text-center text-slate-500 font-semibold text-[12px] md:text-[15px] '>Our CGPA Calculator is here to empower you on acedemic journey</p>
+      <p className='text-center text-slate-500 font-semibold text-[12px] md:text-[15px] '>Our CGPA Calculator is here to empower you on your academic journey</p>
     </div>
   <div className=' flex flex-row justify-center '>
     <div className='rounded flex items-center flex-col gap-[30px]  bg-slate-200'>

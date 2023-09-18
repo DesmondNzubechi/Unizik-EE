@@ -40,7 +40,7 @@ export const StartLearning = () => {
         <div className="flex flex-col max-w-[700px] gap-[20px] ">
             <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">Learning Resources</h1>
             <p className="md:text-[15px] text-[12px] font-[400] ">Dive into a vast repository of learning materials curated by experts in the field. Whether you prefer textbooks, lecture notes, video tutorials, or interactive simulations, our platform has you covered. Enhance your understanding of complex concepts and reinforce your knowledge through engaging and immersive learning experiences.</p>
-        <p><Link to='/book' className="bg-slate-900 hover:text-slate-50 text-[15px] text-yellow-500 px-[10px] py-[5px] mt-[60px] font-semibold rounded-[3px]  ">Start Learning</Link>
+        <p><Link to='/Learning-Resources' className="bg-slate-900 hover:text-slate-50 text-[15px] text-yellow-500 px-[10px] py-[5px] mt-[60px] font-semibold rounded-[3px]  ">Start Learning</Link>
         </p>
         </div>
         <div className=" max-w-[500px]">
