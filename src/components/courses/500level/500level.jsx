@@ -26,7 +26,7 @@ const show2ndSemesterC = () => {
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[20px] ">
      <div>
         <div className="text-center flex flex-col gap-[10px] ">
-            <h1 className="uppercase text-slate-900 font-bold text-[15px] md:text-[25px] ">Courses offered in 500level/Final Year</h1>
+            <h1 className="uppercase text-slate-900 font-bold text-[15px] md:text-[25px] ">Courses offered in Final Year</h1>
             <p className="text-slate-700  capitalize font-semibold text-[12px] md:text-[20px] ">Electrical Engineering offers {isCourse} courses in 500Level {isFirst} Semester</p>
         </div>
         <div className="flex justify-center my-5">

@@ -50,6 +50,7 @@ export const Navdesktop = () => {
   const abooutUs = () => {
     setAcedemicDisplay(false);
     setstudentDisplay(false);
+    setAlumniDisplay(false);
     if (!aboutDisplay) {
       setAboutDisplay(true)
     } else {
@@ -91,7 +92,7 @@ export const Navdesktop = () => {
                             
                               <li><Link onClick={showstudents} to='/Students/Class-Representative'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Class Representatives</Link></li>
                             
-                              <li><Link onClick={showstudents}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link onClick={showstudents} to='/Students/Project-Team'  className="text-[15px] text-slate-900 hover:text-slate-700  ">our Project Team</Link></li>
                             </ul>}
           </li>
           <li className="  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
@@ -115,10 +116,11 @@ export const Navdesktop = () => {
                             
                               <li><Link onClick={showAlumni} to='/Alumni/first-class-graduates'  className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
                             
-                              <li><Link onClick={showAlumni} to='/Alumni/Best-graduating-students'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
-                        </li>
-           {/* <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
+          </li>
+          
+           {/* to='/Alumni/first-class-graduates' to='/Alumni/Best-graduating-students' <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/cgpa'>Calculate cgpa</Link></li>
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/courses'>course Outlines</Link></li>*/}
           {/*  <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Admission'>Student Leaders</Link></li>*/}

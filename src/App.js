@@ -160,6 +160,7 @@ import { useContext } from 'react';
 import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
 import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
+import { ProjectTeam } from './components/ProjectTeam/ProjectTeam';
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
@@ -301,6 +302,7 @@ function App() {
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
      <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
      <Route path='/Alumni/Ex-students-leaders' element={<ExDeptExcos/>} />
+     <Route path='/Students/Project-Team' element={<ProjectTeam/>} />
     </Routes>
    <Footer/>
 </BrowserRouter>

@@ -40,7 +40,6 @@ export const Home = () => {
  <CalculateGp/>
  <AboutNews/>
  <SchoolEvents/>
-<ExcosProfile/>
  </>
     )
 }

@@ -91,19 +91,19 @@ const abooutUs = () => {
         <div className="fixed flex flex-col  gap-5 transition ease-out duration-500 left-0 px-[30px] w-[60%] bottom-0 top-0 pt-[100px] bg-slate-900 h-[100vh]">
          <ul className={`flex capitalize  flex-col justify-center gap-y-[10px] gap-x-[25px]`}>
        
-            <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
-                        <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
-                        <li onClick={hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
+            <li onClick={() => hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
+                        <li onClick={() => hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
+                        <li onClick={() => hidenavF} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
         <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
                             <Link onClick={acedF}  className=" text-[17px] relative hover:text-textBlack font-[700] text-slate-50 flex  items-center " >
                           Acedemics { !acedemicsDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
                             </Link>
                            {acedemicsDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl z-1  font-poppins    p-2 text-slate-900 bg-slate-50 flex flex-col gap-2">
-                              <li><Link onClick={hidenavF} to='/Learning-resources' className="text-[15px] text-slate-900 hover:text-slate-700 ">Learning Resources</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/Learning-resources' className="text-[15px] text-slate-900 hover:text-slate-700 ">Learning Resources</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/Course-outlines'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Course outlines</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/Course-outlines'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Course outlines</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/calculate-cgpa'  className="text-[15px] text-slate-900 hover:text-slate-700  ">CGPA calculator</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/calculate-cgpa'  className="text-[15px] text-slate-900 hover:text-slate-700  ">CGPA calculator</Link></li>
                             </ul>}
           </li>
           <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
@@ -111,11 +111,11 @@ const abooutUs = () => {
                           Students { !studentDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
                             </Link>
                            {studentDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl   font-poppins    p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
-                              <li><Link onClick={hidenavF} to='/Students/Departmental-Executives' className="text-[15px] text-slate-900 hover:text-slate-700 ">Student Executives</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/Students/Departmental-Executives' className="text-[15px] text-slate-900 hover:text-slate-700 ">Student Executives</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/Students/Class-Representative'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Class Representatives</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/Students/Class-Representative'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Class Representatives</Link></li>
                             
-                              <li><Link onClick={hidenavF}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link onClick={() => hidenavF}  to='/Students/Project-Team' className="text-[15px] text-slate-900 hover:text-slate-700  ">Our project Team</Link></li>
                             </ul>}
           </li>
           <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
@@ -123,11 +123,11 @@ const abooutUs = () => {
                           About { !aboutDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
                             </Link>
                            {aboutDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
-                              <li><Link onClick={hidenavF} to='/about' className="text-[15px] text-slate-900 hover:text-slate-700 ">About Us</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/about' className="text-[15px] text-slate-900 hover:text-slate-700 ">About Us</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/mission'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Our Mission</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/mission'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Our Mission</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/admission requirement'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/admission requirement'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Admission</Link></li>
                             </ul>}
               </li>
               <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
@@ -135,14 +135,14 @@ const abooutUs = () => {
                           Alumni { !aboutDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
                             </Link>
                            {alumniDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
-                              <li><Link onClick={hidenavF} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
+                              <li><Link onClick={() => hidenavF} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/Alumni/first-class-graduates'  className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
+                              <li><Link onClick={() => hidenavF}   className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
                             
-                              <li><Link onClick={hidenavF} to='/Alumni/Best-graduating-students'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link onClick={() => hidenavF}  className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
                         </li>
-           {/* <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
+           {/* to='/Alumni/first-class-graduates' to='/Alumni/Best-graduating-students' <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/cgpa'>Calculate cgpa</Link></li>
             <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/courses'>course Outlines</Link></li>*/}
           {/*  <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Admission'>Student Leaders</Link></li>*/}
@@ -151,10 +151,10 @@ const abooutUs = () => {
 
        {!signedIn && <div className="flex relative z-2 flex-col gap-2">
             <button className="border-yellow-500 hover:bg-slate-700 hover:border-slate-50 w-fit border text-white px-[20px] text-center py-[4px] text-[20px] rounded capitaliz font-semibold ">
-            <Link onClick={hidenavF} to='/login'>Login</Link>
+            <Link onClick={() => hidenavF} to='/login'>Login</Link>
             </button>
             <button className="bg-yellow-500 hover:bg-yellow-300 px-[20px] text-center py-[4px] text-[17px] rounded w-fit capitaliz font-semibold ">
-            <Link onClick={hidenavF} to='/signup'>Signup</Link>
+            <Link onClick={() => hidenavF} to='/signup'>Signup</Link>
             </button>
             </div>}
             
@@ -171,7 +171,7 @@ const abooutUs = () => {
           </div>
 }
           <div className="flex gap-2 ">
-           { hideBtn && <HiXMark onClick={hidenavF} className="text-white text-[25px] "/>}
+           { hideBtn && <HiXMark onClick={() => hidenavF} className="text-white text-[25px] "/>}
            { showBtn && <AiOutlineMenu onClick={shownavF} className="text-white text-[25px]"/>}
           </div>
         </div>

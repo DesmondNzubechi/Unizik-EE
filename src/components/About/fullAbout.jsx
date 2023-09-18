@@ -35,12 +35,12 @@ export const FullAbout = () => {
   
     <div className="flex flex-col gap-5">
         <div>
-        <h1 className="font-semibold uppercase text-[25px] ">Philosophy of the Department</h1>
-        <p>The Department is founded on the philosophy that knowledge should be propagated and disseminated to individuals without hindrance. Teaching and research are anchored on the need of the immediate environment and the Nigeria society in general.  </p>
+        <h1 className="font-semibold uppercase text-[20px] ">Philosophy of the Department</h1>
+        <p className="md:text-[15px] text-[12px] font-[400] ">The Department is founded on the philosophy that knowledge should be propagated and disseminated to individuals without hindrance. Teaching and research are anchored on the need of the immediate environment and the Nigeria society in general.  </p>
         </div>
 <div className="flex flex-col gap-1">
-    <h1 className="font-semibold uppercase text-[25px] ">Mission</h1>
-    <p>The mission of the Department is thus to use teaching, research and public service to solve societal problems. In the process of learning, students are oriented to use education in the solution of practical problems confronting them and the Nigeria society. It is hoped that the graduates of the Department will be able to use their knowledge to lift the society out of its problems in Science and Technology example, technological backwardness, poor health delivery services, agricultural under-production, environmental degradation, misapplication and or under-utilisation of human and material resources, cultural disorientation etc. </p>
+    <h1 className="font-semibold uppercase text-[20px] ">Mission</h1>
+    <p className="md:text-[15px] text-[12px] font-[400] ">The mission of the Department is thus to use teaching, research and public service to solve societal problems. In the process of learning, students are oriented to use education in the solution of practical problems confronting them and the Nigeria society. It is hoped that the graduates of the Department will be able to use their knowledge to lift the society out of its problems in Science and Technology example, technological backwardness, poor health delivery services, agricultural under-production, environmental degradation, misapplication and or under-utilisation of human and material resources, cultural disorientation etc. </p>
 <p className="text-[15px] md:text-[20px] capitalize  mt-[20px] mb-[10px] font-semibold">In totality, the mission of the Department is to produce graduates who shall possess the following attributes: </p>
 <p className="md:text-[15px] text-[12px] font-[400] ">1.A wide and ordered knowledge in a discipline area. </p>
 <p className="md:text-[15px] text-[12px] font-[400] ">2. Ability to reason logically. </p>
