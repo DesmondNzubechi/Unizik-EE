@@ -1,5 +1,5 @@
 import React from "react";
-import tools from '../../assets/images/eebook.jpg';
+import tools from '../../assets/images/ee.avif';
 
 
 export const FullAim = () => {

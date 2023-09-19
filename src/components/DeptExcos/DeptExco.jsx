@@ -1,7 +1,6 @@
 import React from "react";
 import  samPic from '../../assets/CRImages/Samuel.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
-import nzubechukwuPic from '../../assets/CRImages/Nzubechukwu.png';
 import daberePic  from '../../assets/CRImages/Dabere.png';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';

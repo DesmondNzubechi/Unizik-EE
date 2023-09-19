@@ -3,10 +3,6 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { AiOutlineUser } from 'react-icons/ai';
 import { useEffect } from "react";
-import excoP1 from '../../assets/images/nau.jpg';
-import excoP2 from '../../assets/images/nau.jpg';
-import excoP3 from '../../assets/images/ee.avif';
-import excoP4 from '../../assets/images/eestudent1.avif';
 import { Link } from "react-router-dom";
 
 // Import Swiper styles
@@ -21,7 +17,7 @@ import { Pagination } from "swiper";
 
 const presidentProfile = [
     {
-        picture: excoP1,
+      
         name: 'Ose Peps Jeremiah',
         year: ' 2020/2021',
         phone: '07084183611',
@@ -29,7 +25,7 @@ const presidentProfile = [
         fullP : 'Lorem ipsum dolor sit amet. Eum veniam voluptate vel quia vero et ipsum earum aut perspiciatis odio. Ea quibusdam harum id magni eaque et cupiditate dolorem ut repudiandae enim ut Quis molestiae qui deleniti autem id nesciunt molestias. Et dignissimos saepe in maxime eius ut voluptatem dicta sit sunt reiciendis.Aut eveniet molestiae aut cupiditate tempora sit sint quia et adipisci nihil ut numquam quaerat. Eum enim dignissimos qui corrupti alias nam iure sint est nulla animi ea iste quam. Qui facilis quaerat ea ipsum magnam est illo blanditiis et suscipit consectetur ut quisquam quasi est maiores animi ut magnam nihil. Qui modi illum ut odio quae eos porro reiciendis ut possimus dolor. Et quasi nobis eum dolores expedita est nihil consectetur et veritatis quas. Aut sunt eligendi sit sunt commodi a deleniti doloribus. Eos inventore internos aut nostrum maxime ad sapiente sint et sunt delectus est consequuntur aperiam est consequatur aspernatur.'
     },
     {
-        picture: excoP2,
+      
         name: 'Ose Peps Jeremiah',
         year: ' 2020/2021',
         phone: '07084183611',
@@ -37,7 +33,7 @@ const presidentProfile = [
         fullP : 'Lorem ipsum dolor sit amet. Eum veniam voluptate vel quia vero et ipsum earum aut perspiciatis odio. Ea quibusdam harum id magni eaque et cupiditate dolorem ut repudiandae enim ut Quis molestiae qui deleniti autem id nesciunt molestias. Et dignissimos saepe in maxime eius ut voluptatem dicta sit sunt reiciendis.Aut eveniet molestiae aut cupiditate tempora sit sint quia et adipisci nihil ut numquam quaerat. Eum enim dignissimos qui corrupti alias nam iure sint est nulla animi ea iste quam. Qui facilis quaerat ea ipsum magnam est illo blanditiis et suscipit consectetur ut quisquam quasi est maiores animi ut magnam nihil. Qui modi illum ut odio quae eos porro reiciendis ut possimus dolor. Et quasi nobis eum dolores expedita est nihil consectetur et veritatis quas. Aut sunt eligendi sit sunt commodi a deleniti doloribus. Eos inventore internos aut nostrum maxime ad sapiente sint et sunt delectus est consequuntur aperiam est consequatur aspernatur.'
     },
     {
-        picture: excoP3,
+      
         name: 'Ose Peps Jeremiah',
         year: ' 2020/2021',
         phone: '07084183611',
@@ -45,7 +41,7 @@ const presidentProfile = [
         fullP : 'Lorem ipsum dolor sit amet. Eum veniam voluptate vel quia vero et ipsum earum aut perspiciatis odio. Ea quibusdam harum id magni eaque et cupiditate dolorem ut repudiandae enim ut Quis molestiae qui deleniti autem id nesciunt molestias. Et dignissimos saepe in maxime eius ut voluptatem dicta sit sunt reiciendis.Aut eveniet molestiae aut cupiditate tempora sit sint quia et adipisci nihil ut numquam quaerat. Eum enim dignissimos qui corrupti alias nam iure sint est nulla animi ea iste quam. Qui facilis quaerat ea ipsum magnam est illo blanditiis et suscipit consectetur ut quisquam quasi est maiores animi ut magnam nihil. Qui modi illum ut odio quae eos porro reiciendis ut possimus dolor. Et quasi nobis eum dolores expedita est nihil consectetur et veritatis quas. Aut sunt eligendi sit sunt commodi a deleniti doloribus. Eos inventore internos aut nostrum maxime ad sapiente sint et sunt delectus est consequuntur aperiam est consequatur aspernatur.'
     },
     {
-        picture: excoP4,
+      
         name: 'Ose Peps Jeremiah',
         year: ' 2020/2021',
         phone: '07084183611',
@@ -95,7 +91,7 @@ export const Excop = () => {
                     return  <SwiperSlide className=" flex items-center justify-center pb-[30px] ">
                       <div className="flex h-[280px] border-slate-200 border-2 flex-col gap-4 items-center py-[10px] px-[50px] shadow-xl  rounded ">
                     <div className="max-w-[100px]  ">
-                     <img className="rounded-full  shadow-lg" src={presido.picture} alt="" />
+                     <img className="rounded-full  shadow-lg" src={presido?.picture} alt="" />
                     </div>
                     <div className="flex flex-col gap-1 items-start">
                      <p className="text-slate-700 text-[13px] "><span className="text-[13px] font-bold text-slate-900 ">Name:</span> {presido.name}</p>
@@ -127,7 +123,7 @@ export const Excop = () => {
     <div className="flex flex-col md:flex-row gap-5 ">
     <div className="flex flex-col text-start items-start">
     <div className="max-w-[300px] ">
-      <img src={fullProfile.picture} alt="" />
+      <img src={fullProfile?.picture} alt="" />
     </div>
     <div>
                      <p className="text-slate-700 text-[13px] "><span className="text-[13px] font-bold text-slate-900 ">Name:</span> {fullProfile.name}</p>
