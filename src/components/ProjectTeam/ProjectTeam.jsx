@@ -1,5 +1,5 @@
 import React from "react";
-import Nzubechukwu from '../../assets/CRImages/B2R.png';
+import Nzubechukwu from '../../assets/CRImages/B2R1.jpg';
 import dave from '../../assets/dave.jpg';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';

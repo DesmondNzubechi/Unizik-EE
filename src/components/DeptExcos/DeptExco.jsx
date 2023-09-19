@@ -1,12 +1,9 @@
 import React from "react";
-import  samPic from '../../assets/CRImages/Samuel.jpg';
-import  justusPic  from '../../assets/CRImages/Justice.jpg';
-import daberePic  from '../../assets/CRImages/Dabere.png';
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
-import presidoImg from '../../assets/ExcoImages/ezekiel.jpg';
+import presidoImg from '../../assets/ExcoImages/ezekiel1.jpg';
 import VpImg from '../../assets/ExcoImages/obikc.jpg';
-import secGenImg from '../../assets/ExcoImages/Elvisio.jpg';
+import secGenImg from '../../assets/ExcoImages/Elvisio1.jpg';
 import finSecImg from '../../assets/ExcoImages/odinaka.jpg';
 import treasurerImg from '../../assets/ExcoImages/emeka.jpg';
 import assistSecGenImg from '../../assets/ExcoImages/onyeulo.jpg';

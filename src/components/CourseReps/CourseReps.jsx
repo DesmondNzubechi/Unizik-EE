@@ -1,8 +1,8 @@
 import React from "react";
-import  samPic from '../../assets/CRImages/Samuel.jpg';
+import  samPic from '../../assets/CRImages/Samuel1.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
-import nzubechukwuPic from '../../assets/CRImages/B2R.png';
-import daberePic from '../../assets/CRImages/Dabere.png';
+import nzubechukwuPic from '../../assets/CRImages/B2R1.jpg';
+import daberePic from '../../assets/CRImages/Dabere1.jpg';
 import wisdomPic from  '../../assets/CRImages/wisdom.jpg'
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
