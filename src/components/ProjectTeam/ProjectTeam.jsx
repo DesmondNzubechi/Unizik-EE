@@ -23,7 +23,7 @@ const ExStudentLeaders = [
         level: '300l student',
         position: 'Web Developer',
         link: '/',
-        linkName: 'www.daviduchenna.com'
+        linkName: 'https://github.com/Davheed2'
     },
 ];
 
