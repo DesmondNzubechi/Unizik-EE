@@ -17,7 +17,7 @@ const ExStudentLeaders = [
     },
     {
         name: 'okonkwo david uchenna',
-        email: 'daviscarlos2404@gmail.com',
+        email: 'davheeduchenna@gmail.com',
         number: '09154064012',
         picture: dave,
         level: '300l student',
