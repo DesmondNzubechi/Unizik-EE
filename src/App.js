@@ -13,6 +13,8 @@ import { Contact } from './components/contact/contact';
 import { Courses } from './components/courses/courses';
 import { Events } from './components/Events/Events';
 import { CourseReps } from './components/CourseReps/CourseReps';
+import { redirect } from 'react-router-dom';
+import NotFound from './components/NotFoundPage/NotFound';
 /*========100 Level ======================*/
 
 import { Level100 } from './components/courses/100level/level100';
@@ -303,6 +305,13 @@ function App() {
      <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
      <Route path='/Alumni/Ex-students-leaders' element={<ExDeptExcos/>} />
      <Route path='/Students/Project-Team' element={<ProjectTeam/>} />
+     <Route path='/not-found' element={<NotFound/>} />
+     <Route
+          path="*"
+          element={
+            <NotFound />
+          }
+        />
     </Routes>
    <Footer/>
 </BrowserRouter>
