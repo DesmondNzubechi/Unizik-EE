@@ -90,7 +90,7 @@ const abooutUs = () => {
          <ul className={`flex capitalize  flex-col justify-center gap-y-[10px] gap-x-[25px]`}>
        
             <li onClick={() => hidenavF()} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>
-                        <li onClick={() => hidenavF()} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>News</Link></li>
+                        <li onClick={() => hidenavF()} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/news'>Blog</Link></li>
                         <li onClick={() => hidenavF()} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/events'>Events</Link></li>
         <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
                             <Link onClick={acedF}  className=" text-[17px] relative hover:text-textBlack font-[700] text-slate-50 flex  items-center " >

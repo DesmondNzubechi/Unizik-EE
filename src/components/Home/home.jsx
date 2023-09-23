@@ -16,8 +16,8 @@ export const Home = () => {
     <h1 className="uppercase font-bold text-yellow-400 text-[20px] md:text-[43px] ">Electrical <span className="text-slate-900"> engineering </span></h1>
  <h2 className="uppercase font-bold text-slate-900 text-[20px] md:text-[43px] "> <span className="text-slate-900">Department</span> <span className="text-yellow-400">unizik</span></h2>
  <p className="font-[700] text-[15px] md:text-[23px] text-slate-700 ">Nnamdi Azikiwe University, Awka.</p>
- <p className="text-[12px] text-slate-700 md:text-[20px] font-[400] "> Access course outlines, learning materials, calculate CGPA, stay informed with news, and connect with a vibrant community. Welcome to the future of electrical engineering education</p>
-<Link to='/login' className="bg-slate-900  hover:bg-slate-700 mt-[20px] text-slate-50 rounded-[3px] shadow-2xl px-[7px] font-semibold text-[15px] md:text-[20px] py-[2px] ">
+ <p className="text-[12px] text-slate-700 md:text-[20px] font-[400] ">Here, you can access course outlines, learning materials, calculate your CGPA, stay updated with the latest news, and connect with a thriving community.</p>
+<Link to='/login' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">
     Get started
 </Link>
     </div>
