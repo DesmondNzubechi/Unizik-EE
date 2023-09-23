@@ -53,7 +53,6 @@ export const Excop = () => {
   const [fullProfile, setFullProfile] = useState({});
   const [fullProfileVisibility, setFullProfileVisibility] = useState('top-[-4000px]');
 
-  console.log(fullProfile);
   return (
     <>
       <div className="flex p-5 justify-center flex-row items-center">

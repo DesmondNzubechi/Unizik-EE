@@ -15,7 +15,6 @@ import { Login } from "../login/login";
 const levels = [
    100, 200, 300, 400, 500
 ];
-
 export const UserProfile = () => {
   
     const [form, setForm] = useState({
