@@ -33,7 +33,6 @@ export const NewsContext = (props) => {
   });
   const [userList, setUserList] = useState([]);
   const [allPdfs, setAllPdfs] = useState(JSON.parse(localStorage.getItem('allPdfs')) || []);
-  // const [courseName, setCourseName] = useState('');
   const [logOut, setLogOut] = useState(false);
     const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
   const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
@@ -169,8 +168,7 @@ console.log('pdf man', allPdfs)
       
     }
   }
-    //const getCourseName = (courses) => {
-    //}
+    
     return <fullNewsContext.Provider value={{getFullNews,  bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
