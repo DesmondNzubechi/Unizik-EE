@@ -11,7 +11,8 @@ module.exports = {
       },
      colors: {  
        "Tp": "rgba(0, 0, 0, 0.9)",
-       'tpr'  : 'rgba(250, 250, 250, .8)',
+       'tpr': 'rgba(250, 250, 250, .8)',
+       'tPop'  : 'rgba(0, 0, 0, .5)',
       }
   },
   plugins: [],

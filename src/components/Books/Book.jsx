@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {BsFillFolderSymlinkFill} from 'react-icons/bs';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -51,8 +51,9 @@ export const StartLearning = () => {
 }
 
 export const Book = () => {
-    const {getClickedlevel} = useContext(fullNewsContext);
-    return(
+    const { getClickedlevel } = useContext(fullNewsContext);
+    return (
+        <>
         <div className="flex justify-center items-center flex-row ">
         <div className="pt-[150px] px-[30px] pb-[50px] ">
        <div className="text-center my-[20px] ">
@@ -76,6 +77,7 @@ export const Book = () => {
        }
        </div>
         </div>
-        </div>
+            </div>
+            </>
     )
 }
