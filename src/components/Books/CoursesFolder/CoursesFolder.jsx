@@ -23,7 +23,7 @@ export const LevelCourses = () => {
         filteringCourses();
         const messageAlert = setTimeout(() => {
             setPopMsg(true);
-        }, 1000);
+        }, 300);
           
           return () => {
               clearTimeout(messageAlert);
