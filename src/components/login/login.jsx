@@ -69,7 +69,7 @@ export const Login = () => {
                         <form action="" className="flex  flex-col gap-5">
                             <div className="flex flex-col gap-1 items-start">
                                 <label htmlFor="email" className="flex  items-center gap-1 text-slate-50 text-[15px]"><AiOutlineMail />Email:</label>
-                                <input onChange={(e) => setUserDetails({ ...userDetails, emailAddress: e.target.value })} value={userDetails.emailAddress} type="email" placeholder="nzubechukwu@gmail.com" className="p-3 shadow bg-yellow-500 rounded w-full outline-0 " />
+                                <input onChange={(e) => setUserDetails({ ...userDetails, emailAddress: e.target.value })} value={userDetails.emailAddress} type="email" placeholder="nzubechukwu@gmail.com" className="p-3 text shadow bg-slate-50 text-slate-900 rounded w-full outline-0 " />
                             </div>
                             <div className="flex flex-col gap-1 items-start">
                                 <label htmlFor="password" className="flex gap-1 items-center text-slate-50 text-[15px] "><RiLockPasswordFill />Password</label>
@@ -77,9 +77,9 @@ export const Login = () => {
 
                                     setUserDetails({ ...userDetails, password: e.target.value })
 
-                                }} value={userDetails.password} type="password" placeholder="******" className="p-3 rounded bg-yellow-500 outline-0 w-full shadow " />
+                                }} value={userDetails.password} type="password" placeholder="******" className="p-3 rounded bg-slate-50 text-slate-900 outline-0 w-full shadow " />
                             </div>
-                            <button onClick={signUserIn} type="button" className="bg-white hover:bg-slate-500 rounded text-[17px] font-semibold p-3">Login</button>
+                            <button onClick={signUserIn} type="button" className="bg-yellow-500 hover:bg-yellow-700 text-slate-50 rounded text-[17px] font-semibold p-3">Login</button>
                             <p className="text-center text-[17px] text-slate-100 ">Don't have account yet? <Link to='/signup' className="text-yellow-500 text-[15px]">Sign Up</Link></p>
                         </form>
                     </div>
