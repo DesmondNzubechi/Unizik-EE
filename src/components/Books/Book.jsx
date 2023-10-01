@@ -44,7 +44,7 @@ export const StartLearning = () => {
         </p>
         </div>
         <div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] "  src={learningImg} alt="" />
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={learningImg} alt="" />
         </div>
                 </div>
     ) 

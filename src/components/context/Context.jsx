@@ -5,9 +5,8 @@ import { allPdfs } from "../PDFs/PDFs";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
-export const fullNewsContext = createContext();
 
+export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
     const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
@@ -117,7 +116,7 @@ export const NewsContext = (props) => {
         unsubscribe();
       };
     },[clickedCoursePdf]);
-  
+   
     useEffect(() => {
         localStorage.setItem('anotherNews', JSON.stringify(anotherNews))
     }, [anotherNews]);

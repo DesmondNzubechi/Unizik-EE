@@ -12,7 +12,7 @@ export const CourseOutline = () => {
         </p>
         </div>
         <div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] "  src={cOutlineImg} alt="" />
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={cOutlineImg} alt="" />
         </div>
                 </div>
     )

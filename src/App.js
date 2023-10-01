@@ -171,7 +171,7 @@ function App() {
   return (
         <div className='overflow-x-hidden font-fonty'>
 <>
-<BrowserRouter>
+<BrowserRouter> 
 <ScrollToTop/>
 <Navmobile/>
 <Navdesktop/>

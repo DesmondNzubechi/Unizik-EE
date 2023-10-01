@@ -11,9 +11,9 @@ export const SchoolEvents = () => {
       <p className="md:text-[20px] text-[12px] font-[400] ">At Electrical Engineering Unizik, we believe in learning beyond the classroom. Explore our diverse range of events, connecting passions and curiosities</p>
   <p><Link to='/events' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">Checkout Events</Link>
   </p>
-  </div>
+  </div> 
   <div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] "  src={eventImg} alt="" />
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={eventImg} alt="" />
   </div>
           </div>
     )

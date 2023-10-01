@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
-
+import { useLocation } from "react-router-dom";
 
 export const FullNewsDetails = () => {
     const { fullNews, allNews, allEvent, anotherNews, getFullNews } = useContext(fullNewsContext);
     const [moreNews, setMoreNews] = useState([]);
+    // const location = useLocation();
+    // const locate = location.pathname;
+    // const sep = locate.split('/');
+    // const first = sep[0];
+    // const sec = sep.slice(1).join('/');
+    // console.log('location', first, sec);
     useEffect(() => {
-        const filterNews = () => {
+        const filterNews = () => { 
             const getNewsFiltered = allNews?.filter(news => {
                 return news.fullNews !== fullNews[0].fullNews
             })

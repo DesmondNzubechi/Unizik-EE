@@ -358,7 +358,7 @@ export const CalculateGp = () => {
 </p>
 </div>
 <div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] "  src={cgpaImg} alt="" />
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={cgpaImg} alt="" />
 </div>
         </div>
   )

@@ -9,8 +9,8 @@ export const Aim = () => {
     <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">Our Mission</h1>
     <p className="md:text-[15px] text-[12px] font-[400] ">Empowering electrical engineering students through a comprehensive and dynamic educational experience. We're your one-stop solution for course outlines, learning materials, CGPA calculations, school news, and industry insights. </p>
 </div>
-<div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] " src={tools} alt="" />
+<div className=" ">  
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] " src={tools} alt="" />
 </div>
         </div>
     )

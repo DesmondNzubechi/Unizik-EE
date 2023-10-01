@@ -46,7 +46,7 @@ export const AboutNews = () => {
       </p>
       </div>
       <div className=" "> 
-    <img className="rounded-[20px] max-w-[500px] "  src={AboutNewsImg} alt="" />
+    <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={AboutNewsImg} alt="" />
       </div>
               </div>
   )
