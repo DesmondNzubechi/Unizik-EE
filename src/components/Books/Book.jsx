@@ -37,14 +37,14 @@ const levels = [
 export const StartLearning = () => {
     return(
         <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[30px] bg-slate-50 gap-[40px] md:flex-row md:flex-row ... items-center py-[50px] ">
-        <div className="flex flex-col max-w-[700px] gap-[20px] ">
+        <div className="flex flex-col max-w-[600px] gap-[20px] ">
             <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">Learning Resources</h1>
             <p className="md:text-[15px] text-[12px] font-[400] ">Explore expert-curated learning materials, including textbooks, notes,  and handouts. Enhance understanding with immersive experiences and reinforce knowledge. Your go-to resource for comprehensive learning.</p>
         <p><Link to='/Learning-Resources' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">Start Learning</Link>
         </p>
         </div>
-        <div className=" max-w-[500px]">
-            <img className="rounded-[20px] " src={learningImg} alt="" />
+        <div className=" "> 
+    <img className="rounded-[20px] max-w-[500px] "  src={learningImg} alt="" />
         </div>
                 </div>
     ) 

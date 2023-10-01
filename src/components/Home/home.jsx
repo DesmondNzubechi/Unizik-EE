@@ -7,7 +7,7 @@ import { AboutNews } from "../news/new";
 import { SchoolEvents } from "../Aims/Aims";
 import { Link } from "react-router-dom";
 import { CourseOutline } from "../CourseOutlines/CourseOutlines";
-export const Home = () => {
+export const Home = () => { 
     return(  
         <>
         <div className="px-[20px]">

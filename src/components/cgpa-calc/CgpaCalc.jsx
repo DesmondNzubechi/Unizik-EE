@@ -350,15 +350,15 @@ case 'D':
 
 export const CalculateGp = () => {
   return(
-    <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[20px] md:flex-row-reverse md:flex-row ... items-center py-[50px] ">
+    <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[40px] md:flex-row-reverse md:flex-row ... items-center py-[50px] ">
 <div className="flex flex-col max-w-[600px] gap-[20px] ">
     <h1 className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-semibold ">Calculate your <span className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-bold uppercase">cgpa</span> </h1>
     <p className="md:text-[15px] text-[12px] font-[400] ">CGPA Calculator: Track your academic progress and plan your journey at Electrical Engineering UNIZIK. Your CGPA is key, reflecting your academic performance and commitment to excellence.</p>
 <p><Link to='/calculate-cgpa' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">Start calculating</Link>
 </p>
 </div>
-<div className=" max-w-[600px]">
-    <img className="rounded-[20px] " src={cgpaImg} alt="" />
+<div className=" "> 
+    <img className="rounded-[20px] max-w-[500px] "  src={cgpaImg} alt="" />
 </div>
         </div>
   )

@@ -38,15 +38,15 @@ export const News = () => {
 
 export const AboutNews = () => {
   return(
-      <div className="px-[20px] flex pt-[50px]  justify-around   flex-col rounded-[30px] bg-slate-100 gap-[40px] md:flex-row-reverse  items-center py-[100px] ">
-      <div className="flex flex-col max-w-[700px] gap-[20px] ">
+      <div className="px-[20px] flex pt-[50px]  justify-around   flex-col rounded-[30px] bg-slate-100 gap-[40px] md:flex-row-reverse  items-center py-[50px] ">
+      <div className="flex flex-col max-w-[600px] gap-[20px] ">
           <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">News</h1>
           <p className="md:text-[15px] text-[12px] font-[400] ">Your go-to source for cutting-edge electrical engineering news. Stay ahead with our coverage of tech advances, research, and industry trends. Our expert team curates articles on renewables, EVs, robotics, and more. Trust our accurate, reliable content for informed decisions. Join our vibrant community to fuel your success.</p>
       <p><Link to='/news' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">Read News</Link>
       </p>
       </div>
-      <div className=" max-w-[500px]">
-          <img className="rounded-[20px] " src={AboutNewsImg} alt="" />
+      <div className=" "> 
+    <img className="rounded-[20px] max-w-[500px] "  src={AboutNewsImg} alt="" />
       </div>
               </div>
   )
