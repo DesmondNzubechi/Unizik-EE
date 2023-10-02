@@ -16,7 +16,7 @@ export const News = () => {
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
           {allNews?.map(news => {
-            return <div className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
+            return <div key={news.id} className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
             <div>
             <img className="md:max-w-[180px] max-w-[120px]  rounded " src={news.newsImg} alt="" />
             </div>
@@ -24,7 +24,7 @@ export const News = () => {
             <div className="flex flex-col gap-1   max-w-[400px] ">
             <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{news.newsHeadline}</h1>
             <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{news.date}</span>
-         <Link to={`/${news.category}/${news.newsHeadline/*replace(' ', '-')*/}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-1 w-fit rounded hover:bg-slate-700 text-[10px] font-bold my-1">Read More...</Link>
+         <Link to={`/blog/${news.id/*replace(' ', '-')*/}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-1 w-fit rounded hover:bg-slate-700 text-[10px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 

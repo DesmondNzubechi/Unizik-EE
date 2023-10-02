@@ -295,7 +295,7 @@ function App() {
       <Route path='/Learning-resources' element={<Book/>} />
 
       <Route path='/calculate-cgpa' element={<CGPACalculator/>} />
-     <Route path={`/${cat}/${headline}`} element={<FullNewsDetails/>}/>
+     <Route path='/blog/:id' element={<FullNewsDetails/>}/>
       <Route path='/level-courses' element={<LevelCourses/>} />
       <Route path='/download pdf' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
@@ -323,5 +323,7 @@ autoClose={2000}
    </div>
   );
 }
+
+//path={`/${cat}/${headline}`}
 
 export default App;
