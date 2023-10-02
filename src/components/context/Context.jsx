@@ -173,24 +173,24 @@ console.log('pdf man', allPdfs)
     }
   }
     
-  useEffect(() => {
-    const getLoadedNews = () => {
-      if (getCat === 'News') {
-        const filterNews = allNews?.filter(news => {
-          return news.newsHeadline === getHeadline;
-        })
-        setFullNews(filterNews);
-      } else if (getCat === 'Event') {
-       const filterEvent = allEvents?.filter(event => {
-         return event.newsHeadline === getHeadline;
-       })
-       setFullNews(filterEvent);
-      }
-    }
-    return () => {
-      getLoadedNews();
-   }
-  }, [getLoc])
+  // useEffect(() => {
+  //   const getLoadedNews = () => {
+  //     if (getCat === 'News') {
+  //       const filterNews = allNews?.filter(news => {
+  //         return news.newsHeadline === getHeadline;
+  //       })
+  //       setFullNews(filterNews);
+  //     } else if (getCat === 'Event') {
+  //      const filterEvent = allEvents?.filter(event => {
+  //        return event.newsHeadline === getHeadline;
+  //      })
+  //      setFullNews(filterEvent);
+  //     }
+  //   }
+  //   return () => {
+  //     getLoadedNews();
+  //  }
+  // }, [getHeadline])
     return <fullNewsContext.Provider value={{getFullNews,  bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>
