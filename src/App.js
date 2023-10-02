@@ -295,7 +295,7 @@ function App() {
       <Route path='/Learning-resources' element={<Book/>} />
 
       <Route path='/calculate-cgpa' element={<CGPACalculator/>} />
-     <Route path='/blog/:id' element={<FullNewsDetails/>}/>
+     <Route path='/blog/:newsHeadline' element={<FullNewsDetails/>}/>
       <Route path='/level-courses' element={<LevelCourses/>} />
       <Route path='/download pdf' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />

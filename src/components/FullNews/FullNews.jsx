@@ -7,8 +7,8 @@ import { useParams } from "react-router-dom";
 export const FullNewsDetails = () => {
     const { fullNews, allNews, allEvent, anotherNews, getFullNews } = useContext(fullNewsContext);
     const [moreNews, setMoreNews] = useState([]);
-    const { id } = useParams();
-    const post = allNews.find(post => post.id === id)
+    const { newsHeadline } = useParams();
+    const post = allNews.find(post => post?.newsHeadline === newsHeadline)
     console.log(post);
     // const location = useLocation();
     // const locate = location.pathname;
@@ -58,7 +58,7 @@ export const FullNewsDetails = () => {
           </div> 
           <div className="flex flex-col  max-w-[400px] ">
           <h1 className="font-bold text-[10px] md:max-w-[300px] capitalize ">{news.newsOverview}</h1>
-          <Link to={`/blog/${news.id/*.replace(' ', '-')*/}`} onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
+          <Link to={`/blog/${news.newsHeadline}`} onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
           </div>
           </div>
         }) }
