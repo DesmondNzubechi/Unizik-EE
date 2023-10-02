@@ -163,16 +163,17 @@ import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
 import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
 import { ProjectTeam } from './components/ProjectTeam/ProjectTeam';
+
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
       const getDetails = fullNews[0];
       const cat = getDetails?.category;
-      const headline = getDetails?.newsHeadline?.replace(' ', '-');
+      const headline = getDetails?.newsHeadline;
   return (
         <div className='overflow-x-hidden font-fonty'>
 <>
-<BrowserRouter> 
-<ScrollToTop/>
+
+<ScrollToTop/> 
 <Navmobile/>
 <Navdesktop/>
 <LogOut/>
@@ -314,7 +315,7 @@ function App() {
         />
     </Routes>
    <Footer/>
-</BrowserRouter>
+
 <ToastContainer
 autoClose={2000}
 />

@@ -109,7 +109,7 @@ export const UserProfile = () => {
       const oldImgRef = ref(storage, `profilePictures/${oldImgName.replace('profilePictures%2F', '')}`);
       await deleteObject(oldImgRef);
     }
-      alert('su')
+      alert('successful')
     } catch (error) {
       alert(error)
     }
@@ -118,7 +118,7 @@ export const UserProfile = () => {
   console.log('main man', mainUser[0])
   if (!signedIn) {
     return <Login />
-  } else {
+  } else { 
     return (
       !signedIn ? navig('/login') : signedIn &&
         <>

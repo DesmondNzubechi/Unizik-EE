@@ -6,12 +6,12 @@ import { useLocation } from "react-router-dom";
 export const FullNewsDetails = () => {
     const { fullNews, allNews, allEvent, anotherNews, getFullNews } = useContext(fullNewsContext);
     const [moreNews, setMoreNews] = useState([]);
-    // const location = useLocation();
-    // const locate = location.pathname;
-    // const sep = locate.split('/');
-    // const first = sep[0];
-    // const sec = sep.slice(1).join('/');
-    // console.log('location', first, sec);
+    const location = useLocation();
+    const locate = location.pathname;
+    const sep = locate.split('/');
+    const first = sep[2].replace(/%20/g, ' ');
+    const sec = sep.slice(1).join('/');
+    console.log('location',  first);
     useEffect(() => {
         const filterNews = () => { 
             const getNewsFiltered = allNews?.filter(news => {
@@ -55,7 +55,7 @@ export const FullNewsDetails = () => {
           </div>
           <div className="flex flex-col  max-w-[400px] ">
           <h1 className="font-bold text-[10px] md:max-w-[300px] capitalize ">{news.newsOverview}</h1>
-          <Link to={`/${news.category}/${news.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
+          <Link to={`/${news.category}/${news.newsHeadline/*.replace(' ', '-')*/}`} onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
           </div>
           </div>
         }) }

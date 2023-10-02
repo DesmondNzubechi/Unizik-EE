@@ -5,7 +5,7 @@ import { allPdfs } from "../PDFs/PDFs";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
-
+import { useLocation } from "react-router-dom";
 export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
@@ -43,6 +43,11 @@ export const NewsContext = (props) => {
     TextBooks: [],
     pastQuestions: [],
   })
+  const getLoc = useLocation();
+  const getPath = getLoc.pathname.split('/');
+  const getCat = getPath[1];
+  const getHeadline = getPath[2]?.replace(/%20/g, ' ');
+  console.log('cat and head', getCat, getHeadline)
   useEffect(() => {
     localStorage.setItem('allPdfs', JSON.stringify(allPdfs));
     localStorage.setItem('editNews', JSON.stringify(editNews))  
@@ -168,6 +173,24 @@ console.log('pdf man', allPdfs)
     }
   }
     
+  useEffect(() => {
+    const getLoadedNews = () => {
+      if (getCat === 'News') {
+        const filterNews = allNews?.filter(news => {
+          return news.newsHeadline === getHeadline;
+        })
+        setFullNews(filterNews);
+      } else if (getCat === 'Event') {
+       const filterEvent = allEvents?.filter(event => {
+         return event.newsHeadline === getHeadline;
+       })
+       setFullNews(filterEvent);
+      }
+    }
+    return () => {
+      getLoadedNews();
+   }
+  }, [getLoc])
     return <fullNewsContext.Provider value={{getFullNews,  bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
          {props.children}
     </fullNewsContext.Provider>

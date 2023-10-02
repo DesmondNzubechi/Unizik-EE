@@ -3,7 +3,8 @@ import {BsFillFolderSymlinkFill} from 'react-icons/bs';
 import { Link,} from "react-router-dom";
 import { useContext } from "react";
 import { fullNewsContext } from "../../context/Context";
-import {FcOpenedFolder} from 'react-icons/fc';
+import { FcOpenedFolder } from 'react-icons/fc';
+
 export const LevelCourses = () => {
     const {eleCourses, getPdf , filterClickedCourse, clickedLevel} = useContext(fullNewsContext);
     const [firstSemesterCourses, setFirstSemesterCourse] = useState([]);

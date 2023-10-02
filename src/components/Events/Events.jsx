@@ -41,7 +41,7 @@ console.log('events:', allEvents)
             <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{event.newsHeadline}</h1>
             <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{event.date}</span>
            {/* <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{event.newsOverview} </p>*/}
-            <Link to={`/${event.category}/${event.newsHeadline.replace(' ', '-')}`} onClick={() => getFullNews(event)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
+            <Link to={`/${event.category}/${event.newsHeadline/*.replace(' ', '-')*/}`} onClick={() => getFullNews(event)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 
