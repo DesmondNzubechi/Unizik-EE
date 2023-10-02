@@ -10,12 +10,7 @@ export const FullNewsDetails = () => {
     const { newsHeadline } = useParams();
     const post = allNews.find(post => post?.newsHeadline === newsHeadline)
     console.log(post);
-    // const location = useLocation();
-    // const locate = location.pathname;
-    // const sep = locate.split('/');
-    // const first = sep[2].replace(/%20/g, ' ');
-    // const sec = sep.slice(1).join('/');
-    // console.log('location',  first);
+   
     useEffect(() => {
         const filterNews = () => { 
             const getNewsFiltered = allNews?.filter(news => {
