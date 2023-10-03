@@ -3,7 +3,7 @@
 
 
 export const CoursesOffered = [
-    {Course: "FEG 103", CourseTitle:'Basic Electricity I', Credit:2, Session: [100, 2], 
+    {Course: "FEG103", CourseTitle:'Basic Electricity I', Credit:2, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'Introductory concepts',
@@ -30,7 +30,7 @@ export const CoursesOffered = [
             descrip: 'waveform generation: angular measure, frequency and period, average and mean square values, phasors and phase angles. ',
         },
 ]},
-    {Course: "FEG 101", CourseTitle:'Engineering Mathematics I', Credit:3, Session: [100, 1],  
+    {Course: "FEG101", CourseTitle:'Engineering Mathematics I', Credit:3, Session: [100, 1],  
     courseOutlines: [
         {
             title: 'Trigonometry Graphs of sin x',
@@ -58,7 +58,7 @@ export const CoursesOffered = [
         },
       
 ]},
-    {Course: "FEG 102", CourseTitle:'Engineering Mathematics II', Credit:2, Session: [100, 2], 
+    {Course: "FEG102", CourseTitle:'Engineering Mathematics II', Credit:2, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'Integration',
@@ -91,7 +91,7 @@ export const CoursesOffered = [
       
 ]},
     {
-        Course: "BUS 101", CourseTitle: 'Introduction To Business', Credit: 2, Session: [100, 1], 
+        Course: "BUS101", CourseTitle: 'Introduction To Business', Credit: 2, Session: [100, 1], 
         courseOutlines: [
             {
                 title: 'Introduction ',
@@ -114,14 +114,14 @@ export const CoursesOffered = [
                 descrip: 'Purpose of accounting. Principles of accounting. Double entry bookkeeping. Day books. Ledger account. The trial balance. Profit and loss account, and the balance sheet. ',
             },
     ]},
-    {Course: "GSS 101", CourseTitle:'Use Of English', Credit:1, Session: [100, 1], 
+    {Course: "GSS101", CourseTitle:'Use Of English', Credit:1, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Use of English I',
             descrip: 'Use of English is a course designed to equip participating students with the language skills required for excellent communication in all fields of human endeavour. It contains inter alia the following: Oral English, Parts of Speech, Phrases and clauses, Sentence construction, Direct and indirect speech, Passive and active construction and capitalization, Listening, Speaking and Reading skills, Pre-writing skills, Use of Library, Use of dictionary, Skills for examination.. ',
         },    
 ]},
-    {Course: "GSS 102", CourseTitle:'Use Of English II', Credit:1, Session: [100, 2] , 
+    {Course: "GSS102", CourseTitle:'Use Of English II', Credit:1, Session: [100, 2] , 
     courseOutlines: [
         {
             title: 'Use of English II',
@@ -129,7 +129,7 @@ export const CoursesOffered = [
         },
        
 ]},
-    {Course: "GSS 105", CourseTitle:'Humanity', Credit:2, Session: [100, 1] , 
+    {Course: "GSS105", CourseTitle:'Humanity', Credit:2, Session: [100, 1] , 
     courseOutlines: [
         {
             title: 'Humanities - Appreciation of the cultural content',
@@ -137,14 +137,14 @@ export const CoursesOffered = [
         },
        
 ]},
-    {Course: "GSS 106", CourseTitle:'Social Science', Credit:2, Session: [100, 2],  
+    {Course: "GSS106", CourseTitle:'Social Science', Credit:2, Session: [100, 2],  
     courseOutlines: [
         {
             title: 'Social Science',
             descrip: 'You will be given the all the Gst textbook once you register for them.',
         },      
 ] },
-    {Course: "GSS 107", CourseTitle:'Nigeria Peoples And Culture', Credit:2, Session: [100, 1], 
+    {Course: "GSS107", CourseTitle:'Nigeria Peoples And Culture', Credit:2, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Study of Nigerian history and culture in pre-colonial times',
@@ -152,21 +152,21 @@ export const CoursesOffered = [
         },
        
 ]},
-    {Course: "GSS 108", CourseTitle:'Omenala Igbo', Credit:1, Session: [100, 1],  
+    {Course: "GSS108", CourseTitle:'Omenala Igbo', Credit:1, Session: [100, 1],  
     courseOutlines: [
         {
             title: 'Omenala Igbo',
             descrip: 'You will be given the all the Gst textbook once you register for them.',
         },      
 ]},
-    {Course: "GSS 109", CourseTitle:'Asusu Igbo', Credit:1, Session: [100, 2] ,  
+    {Course: "GSS109", CourseTitle:'Asusu Igbo', Credit:1, Session: [100, 2] ,  
     courseOutlines: [
         {
             title: 'Asusu Igbo ',
             descrip: 'You will be given the all the Gst textbook once you register for them.',
         },      
 ]},
-    {Course: "ICH 101", CourseTitle:'Organic Chemistry I', Credit:2, Session: [100, 1], 
+    {Course: "ICH101", CourseTitle:'Organic Chemistry I', Credit:2, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Introduction ',
@@ -177,7 +177,7 @@ export const CoursesOffered = [
             descrip: 'IUPAC Nomenclature of the following family of organic compounds: alkanes, alkenes, alkynes, halogenoalkanes, alkanols, alkanals, alkanones, alkanoates, acid amides, nitrites and amines, alkanoic acids acid chlorides and acid anhydrides.  Preparation, physical and chemical properties of the families listed above.',
         },
 ]},
-    {Course: "ICH 102", CourseTitle:'Organic Chemistry II', Credit:2, Session: [100, 2], 
+    {Course: "ICH102", CourseTitle:'Organic Chemistry II', Credit:2, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'The Gas Laws',
@@ -209,7 +209,7 @@ export const CoursesOffered = [
         },
       
 ]},
-    {Course: "ICH 111", CourseTitle:'General Basic Inorganic Chemistry I', Credit:2, Session: [100, 1], 
+    {Course: "ICH111", CourseTitle:'General Basic Inorganic Chemistry I', Credit:2, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Matter',
@@ -224,14 +224,14 @@ export const CoursesOffered = [
             descrip: 'Natural and artificial radioactivity. Stability of nucleus. Fission and fusion. Differences between radioactivity and ordinary chemical reactions. Measurements of radioactivity. Decay constant and calculation involving radioactivity. ',
         },     
 ]},
-    {Course: "ICH 112", CourseTitle:' Basic Practical Chemistry ', Credit:2, Session: [100, 2] , 
+    {Course: "ICH112", CourseTitle:' Basic Practical Chemistry ', Credit:2, Session: [100, 2] , 
     courseOutlines: [
         {
             title: 'Theory and Practice of volumetric and qualitative inorganic analysis',
             descrip: 'Theory and Practice of volumetric and qualitative inorganic analysis. Preparation of standard solutions. Calculation of molarity and concentrations. Method of dilution of solution and calculation. Redox titration and calculations involved. Test for common anions and identification of: SO42-, SO32-, NO3–, CO32-, CL–, Br–,  I–, NO2–. Test common cations: Fe2+, Fe3+, NH4+, , Zn2+, Pb2+, Al3+, alkali and alkaline earth metals. Test for common ions in the first transition series eg. Mn, Cr, Ni, Cu, etc. Group separation of cations. ',
         },    
 ]},
-    {Course: "MAT 101", CourseTitle:'General Mathematics I', Credit:3, Session: [100, 1], 
+    {Course: "MAT101", CourseTitle:'General Mathematics I', Credit:3, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Number system',
@@ -242,7 +242,7 @@ export const CoursesOffered = [
             descrip: ' circular measure, elementary properties of trigonometric functions, radian measure, addition formulae and other trigonometric identities. Sine and cosine laws. Solution of triangles, heights and distances. ',
         }   
 ]},
-    {Course: "MAT 102", CourseTitle:'General Mathematics II', Credit:3, Session: [100, 2], 
+    {Course: "MAT102", CourseTitle:'General Mathematics II', Credit:3, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'Functions concept and definition: examples',
@@ -257,7 +257,7 @@ export const CoursesOffered = [
             descrip: 'Natural and artificial radioactivity. Stability of nucleus. Fission and fusion. Differences between radioactivity and ordinary chemical reactions. Measurements of radioactivity. Decay constant and calculation involving radioactivity. ',
         },     
 ]},
-    {Course: "PHY 101", CourseTitle:'General Physics I', Credit:3, Session: [100, 1], 
+    {Course: "PHY101", CourseTitle:'General Physics I', Credit:3, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'Space and time frames of reference',
@@ -272,7 +272,7 @@ export const CoursesOffered = [
             descrip: 'Newton’s gravitation law. Kepler’s laws. Gravitational potential. Earth’s satellite. Velocity of escape and weightlessness. Work and energy. Rotational dynamics and angular momentum. Moment of inertia. Kinetic energy of rotation. Conservation laws. Oscillatory motion – simple harmonic motion, damped and forced oscillation.',
         },     
 ]},
-    {Course: "PHY 102", CourseTitle:'General Physics II', Credit:3, Session: [100, 2], 
+    {Course: "PHY102", CourseTitle:'General Physics II', Credit:3, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'Electricity and Magnetism, Optics',
@@ -283,14 +283,14 @@ export const CoursesOffered = [
             descrip: ' Coulumb’s, Gauss’s law. Capacitors. Electric Fields and potentials. Energy in electric field. Conductors and currents. Ohm’s law. Temperature dependence of resistance. Combination of resistances. Measurement of resistances, e.m.f. Dielectrics (qualitative treatment only). Magnetic fields and induction. Faraday’s and Lenz’s laws. Earth’s field. Ampere’s law. Maxwell’s equations (qualitative treatment only). Electromagnetic oscillations and waves, types, properties. Mirrors and lenses. Reflection, refraction, applications. Optical instruments. ',
         },     
 ]},
-    {Course: "PHY 107", CourseTitle:'General Physics Practical I', Credit:1, Session: [100, 1], 
+    {Course: "PHY107", CourseTitle:'General Physics Practical I', Credit:1, Session: [100, 1], 
     courseOutlines: [
         {
             title: 'This introductory course emphasizes qualitative measurements',
             descrip: 'This introductory course emphasizes qualitative measurements, the treatment of measurement, errors and graphical analysis. A variety of experimental techniques will be employed. The experiments include studies of mechanical systems and mechanical resonant systems, light, heat, viscosity, etc. Covered in PHY 101.  ',
         },   
 ]},
-    {Course: "PHY 108", CourseTitle:'General Physics Practical II', Credit:1, Session: [100, 2], 
+    {Course: "PHY108", CourseTitle:'General Physics Practical II', Credit:1, Session: [100, 2], 
     courseOutlines: [
         {
             title: 'Basic experiments on electricity and magnetism covered in PHY 102',
@@ -298,7 +298,7 @@ export const CoursesOffered = [
         },   
 ]},
     {
-        Course: "BUS 204", CourseTitle: 'Principles of Management', Credit: 2, Session: [200, 2],
+        Course: "BUS204", CourseTitle: 'Principles of Management', Credit: 2, Session: [200, 2],
         courseOutlines: [
         {
             title: 'Basic Concepts in Management',
@@ -318,7 +318,7 @@ export const CoursesOffered = [
         }
 ]},
     {
-        Course: "FEG 221", CourseTitle: 'Fluid Mechanics  ', Credit: 2, Session: [200, 1],
+        Course: "FEG221", CourseTitle: 'Fluid Mechanics  ', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Hydrostatics ',
@@ -338,7 +338,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 242", CourseTitle: 'Thermodynamics', Credit: 2, Session: [200, 2],
+        Course: "FEG242", CourseTitle: 'Thermodynamics', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Basic concepts',
@@ -370,7 +370,7 @@ export const CoursesOffered = [
             },
     ]},
     {
-        Course: "FEG 211", CourseTitle: 'Applied Mechanics I (Statics)', Credit: 2, Session: [200, 1],
+        Course: "FEG211", CourseTitle: 'Applied Mechanics I (Statics)', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Fundamental principles and permissible operations with forces acting on a rigid body',
@@ -378,7 +378,7 @@ export const CoursesOffered = [
             },
     ]},
     {
-        Course: "FEG 212", CourseTitle: 'Applied Mechanics II (Dynamics)', Credit: 2, Session: [200, 2],
+        Course: "FEG212", CourseTitle: 'Applied Mechanics II (Dynamics)', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Coordinate systems and position vectors',
@@ -390,7 +390,7 @@ export const CoursesOffered = [
             },
     ]},
     {
-        Course: "FEG 215", CourseTitle: 'Strength of Materials', Credit: 2, Session: [200, 2],
+        Course: "FEG215", CourseTitle: 'Strength of Materials', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Subject matter of strength of materials',
@@ -422,7 +422,7 @@ export const CoursesOffered = [
             },
     ]},
     {
-        Course: "FEG 201", CourseTitle: 'Basic Electricity I', Credit: 3, Session: [200, 1],
+        Course: "FEG201", CourseTitle: 'Basic Electricity I', Credit: 3, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Revision on network theorems.',
@@ -446,7 +446,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 202", CourseTitle: 'Basic Electricity II', Credit: 3, Session: [200, 2],
+        Course: "FEG202", CourseTitle: 'Basic Electricity II', Credit: 3, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Poly-phase Systems',
@@ -470,7 +470,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "CSC 201", CourseTitle: 'Computer Programming I', Credit: 2, Session: [200, 1],
+        Course: "CSC201", CourseTitle: 'Computer Programming I', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Introduction',
@@ -478,7 +478,7 @@ export const CoursesOffered = [
             },
     ]},
     {
-        Course: "CSC 202", CourseTitle: 'Computer Programming II', Credit: 2, Session: [200, 2],
+        Course: "CSC202", CourseTitle: 'Computer Programming II', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Java',
@@ -487,7 +487,7 @@ export const CoursesOffered = [
         
     ]},
     {
-        Course: "ICH 221", CourseTitle: 'General Physical Chemistry', Credit: 2, Session: [200, 1],
+        Course: "ICH221", CourseTitle: 'General Physical Chemistry', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Kinetic Theory',
@@ -511,7 +511,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "MAT 201", CourseTitle: 'Linear Algebra I', Credit: 3, Session: [200, 1],
+        Course: "MAT201", CourseTitle: 'Linear Algebra I', Credit: 3, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Vector and Vector algebra',
@@ -519,7 +519,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "MAT 202", CourseTitle: 'Elementary Differential Equation', Credit: 3, Session: [200, 2],
+        Course: "MAT202", CourseTitle: 'Elementary Differential Equation', Credit: 3, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Methods of integration',
@@ -527,7 +527,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 213", CourseTitle: 'Engineering Drawing I', Credit: 2, Session: [200, 1],
+        Course: "FEG213", CourseTitle: 'Engineering Drawing I', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Use of engineering drawing tools/equipment',
@@ -535,7 +535,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 214", CourseTitle: 'Engineering Drawing II', Credit: 2, Session: [200, 2],
+        Course: "FEG214", CourseTitle: 'Engineering Drawing II', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Use of engineering drawing tools/equipment',
@@ -559,7 +559,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 280", CourseTitle: 'Engineering in Society', Credit: 2, Session: [200, 2],
+        Course: "FEG280", CourseTitle: 'Engineering in Society', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Philosophy of Science and Technology',
@@ -583,7 +583,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 281", CourseTitle: 'Workshop Practice I', Credit: 2, Session: [200, 1],
+        Course: "FEG281", CourseTitle: 'Workshop Practice I', Credit: 2, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Elementary introduction to types and organization of engineering workshop, covering, jobbing, batch, mass production.',
@@ -607,7 +607,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 282", CourseTitle: 'Workshop Practice II', Credit: 2, Session: [200, 2],
+        Course: "FEG282", CourseTitle: 'Workshop Practice II', Credit: 2, Session: [200, 2],
         courseOutlines: [
             {
                 title: 'Standard measuring tools used in workshops',
@@ -623,7 +623,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 250", CourseTitle: 'Principles of Materials Science', Credit: 3, Session: [200, 1],
+        Course: "FEG250", CourseTitle: 'Principles of Materials Science', Credit: 3, Session: [200, 1],
         courseOutlines: [
             {
                 title: 'Atomic structure',
@@ -631,7 +631,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "ECE 321", CourseTitle: 'elecommunications I', Credit: 2, Session: [300, 1],
+        Course: "ECE321", CourseTitle: 'elecommunications I', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Elements of Communications System',
@@ -659,7 +659,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "FEG 303", CourseTitle: 'Engineering Mathematics III', Credit: 3, Session: [300, 1],
+        Course: "FEG303", CourseTitle: 'Engineering Mathematics III', Credit: 3, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Further Matrices ',
@@ -687,7 +687,7 @@ export const CoursesOffered = [
             }
     ]},
     {
-        Course: "ELE 311", CourseTitle: 'Circuit Theory II', Credit: 2, Session: [300, 1],
+        Course: "ELE311", CourseTitle: 'Circuit Theory II', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Network Theorems and Network Topology ',
@@ -703,7 +703,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ECE 323", CourseTitle: 'Electrical Devices and Circuits', Credit: 2, Session: [300, 1],
+        Course: "ECE323", CourseTitle: 'Electrical Devices and Circuits', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Bipolar transistor',
@@ -735,7 +735,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ECE 333", CourseTitle: 'Digital System Design', Credit: 2, Session: [300, 1],
+        Course: "ECE333", CourseTitle: 'Digital System Design', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Introduction',
@@ -763,7 +763,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ELE 341", CourseTitle: 'Electromagnetic Field and Waves', Credit: 3, Session: [300, 1],
+        Course: "ELE341", CourseTitle: 'Electromagnetic Field and Waves', Credit: 3, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Energy and Potentials',
@@ -791,7 +791,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ECE 331", CourseTitle: 'Signals and Systems', Credit: 2, Session: [300, 1],
+        Course: "ECE331", CourseTitle: 'Signals and Systems', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Models of physical systems',
@@ -819,7 +819,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ELE 343", CourseTitle: 'Electromechanical Devices and Machines I', Credit: 2, Session: [300, 1],
+        Course: "ELE343", CourseTitle: 'Electromechanical Devices and Machines I', Credit: 2, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Magnetic Circuits',
@@ -851,7 +851,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ELE 353", CourseTitle: 'Power Systems', Credit: 3, Session: [300, 1],
+        Course: "ELE353", CourseTitle: 'Power Systems', Credit: 3, Session: [300, 1],
         courseOutlines: [
             {
                 title: 'Introduction to conventional and renewable energy resources for power generation',
@@ -875,7 +875,7 @@ export const CoursesOffered = [
             }
 ]},
     {
-        Course: "ECE 322", CourseTitle: 'Telecommunication II', Credit: 2, Session: [300, 2],
+        Course: "ECE322", CourseTitle: 'Telecommunication II', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Transmitters and Receivers',
@@ -899,7 +899,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 312", CourseTitle: 'Circuit Theory II', Credit: 2, Session: [300, 2],
+        Course: "ELE312", CourseTitle: 'Circuit Theory II', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Frequency domain analysis of network',
@@ -915,7 +915,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE 328", CourseTitle: 'Electronic Devices and Circuits', Credit: 2, Session: [300, 2],
+        Course: "ECE328", CourseTitle: 'Electronic Devices and Circuits', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Feedback Amplifiers',
@@ -939,7 +939,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE 326", CourseTitle: 'Physical Electronics', Credit: 2, Session: [300, 2],
+        Course: "ECE326", CourseTitle: 'Physical Electronics', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Energy Band in Solids',
@@ -955,7 +955,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE 334", CourseTitle: 'Digital System Design II', Credit: 2, Session: [300, 2],
+        Course: "ECE334", CourseTitle: 'Digital System Design II', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Interfacing',
@@ -971,7 +971,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 382", CourseTitle: 'Feedback and Control Systems', Credit: 3, Session: [300, 2],
+        Course: "ELE382", CourseTitle: 'Feedback and Control Systems', Credit: 3, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Introduction',
@@ -1003,7 +1003,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 372", CourseTitle: 'Instrumentation And Measurement I', Credit: 2, Session: [300, 2],
+        Course: "ELE372", CourseTitle: 'Instrumentation And Measurement I', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Introduction',
@@ -1039,7 +1039,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 342", CourseTitle: 'Electrodynamic', Credit: 3, Session: [300, 2],
+        Course: "ELE342", CourseTitle: 'Electrodynamic', Credit: 3, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Basic subject in electrodynamics with emphasis on phenomena associated with waves propagation and radiation.',
@@ -1047,7 +1047,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 344", CourseTitle: 'Electromechanical Devices and Machines', Credit: 2, Session: [300, 2],
+        Course: "ELE344", CourseTitle: 'Electromechanical Devices and Machines', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Three Phase System',
@@ -1067,7 +1067,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 314", CourseTitle: 'Electrical Services Design', Credit: 2, Session: [300, 2],
+        Course: "ELE314", CourseTitle: 'Electrical Services Design', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Lighting installation',
@@ -1075,7 +1075,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 403", CourseTitle: 'Circuit Theory III', Credit: 3, Session: [400, 1],
+        Course: "ELE403", CourseTitle: 'Circuit Theory III', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Laplace Transforms in circuit analysis',
@@ -1099,7 +1099,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 445", CourseTitle: 'Dynamics of Electrical Machine', Credit: 3, Session: [400, 1],
+        Course: "ELE445", CourseTitle: 'Dynamics of Electrical Machine', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Industrial Rotating Machines',
@@ -1131,7 +1131,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 453", CourseTitle: 'Alternative Energy Studies', Credit: 3, Session: [400, 1],
+        Course: "ELE453", CourseTitle: 'Alternative Energy Studies', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Conventional Energy Sources',
@@ -1148,7 +1148,7 @@ export const CoursesOffered = [
            ]
     },
     {
-        Course: "CVE 423", CourseTitle: 'Engineering Contracts and Specification', Credit: 2, Session: [400, 1],
+        Course: "CVE423", CourseTitle: 'Engineering Contracts and Specification', Credit: 2, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Business and professional relations in Engineering.',
@@ -1156,7 +1156,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 473", CourseTitle: 'Instrumentation and Measurement II', Credit: 3, Session: [400, 1],
+        Course: "ELE473", CourseTitle: 'Instrumentation and Measurement II', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Functional description of Instruments',
@@ -1192,7 +1192,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE 427", CourseTitle: 'Advanced Circuit Techniques', Credit: 3, Session: [400, 1],
+        Course: "ECE427", CourseTitle: 'Advanced Circuit Techniques', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Fundamental of Operational Amplifiers',
@@ -1228,7 +1228,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "FEG 404", CourseTitle: 'Engineering Mathematics IV', Credit: 3, Session: [400, 1],
+        Course: "FEG404", CourseTitle: 'Engineering Mathematics IV', Credit: 3, Session: [400, 1],
         courseOutlines: [
             {
                 title: 'Vector analysis',
@@ -1264,7 +1264,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE 505", CourseTitle: 'Computer Aided Circuit Design', Credit: 3, Session: [500, 1],
+        Course: "ECE505", CourseTitle: 'Computer Aided Circuit Design', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'Network Design by Computer',
@@ -1292,7 +1292,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 549", CourseTitle: 'Design of electromechanical Devices and Electrical Machines', Credit: 3, Session: [500, 1],
+        Course: "ELE549", CourseTitle: 'Design of electromechanical Devices and Electrical Machines', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'Design of transformers',
@@ -1312,7 +1312,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 547", CourseTitle: 'Power Electronics and Drives', Credit: 3, Session: [500, 1],
+        Course: "ELE547", CourseTitle: 'Power Electronics and Drives', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'Telectric and thermal characteristics and ratings of power semiconductor devices including diodes, transistors, triacs, thyristors.',
@@ -1332,7 +1332,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 553", CourseTitle: 'Power System Analysis', Credit: 3, Session: [500, 1],
+        Course: "ELE553", CourseTitle: 'Power System Analysis', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'Introduction to power system Engineering.',
@@ -1348,7 +1348,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE 557", CourseTitle: 'Electric Power Transmission', Credit: 3, Session: [500, 1],
+        Course: "ELE557", CourseTitle: 'Electric Power Transmission', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'General layout of power transmission system',
@@ -1361,7 +1361,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ECE 517", CourseTitle: 'Real Time Computing and Control', Credit: 3, Session: [500, 1],
+        Course: "ECE517", CourseTitle: 'Real Time Computing and Control', Credit: 3, Session: [500, 1],
         courseOutlines: [
             {
                 title: 'Real Time Control Concepts',
@@ -1382,7 +1382,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ELE 554", CourseTitle: 'Power System Planning and Control', Credit: 3, Session: [500, 2],
+        Course: "ELE554", CourseTitle: 'Power System Planning and Control', Credit: 3, Session: [500, 2],
         courseOutlines: [
             {
                 title: 'Network load prediction',
@@ -1395,7 +1395,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ELE 556", CourseTitle: 'Power Plant Protection and Control', Credit: 3, Session: [500, 2],
+        Course: "ELE556", CourseTitle: 'Power Plant Protection and Control', Credit: 3, Session: [500, 2],
         courseOutlines: [
             {
                 title: 'Wave propagation along power transmission lines',
@@ -1404,7 +1404,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ELE 558", CourseTitle: 'High Voltage Engineering', Credit: 3, Session: [500, 2],
+        Course: "ELE558", CourseTitle: 'High Voltage Engineering', Credit: 3, Session: [500, 2],
         courseOutlines: [
             {
                 title: 'Generation of high voltages',
@@ -1413,7 +1413,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ELE 574", CourseTitle: 'Control Systems', Credit: 3, Session: [500, 2],
+        Course: "ELE574", CourseTitle: 'Control Systems', Credit: 3, Session: [500, 2],
         courseOutlines: [
             {
                 title: 'Non Linear Control Systems',
@@ -1426,7 +1426,7 @@ export const CoursesOffered = [
         ]
     },
     {
-        Course: "ELE 504", CourseTitle: 'Network Analysis and Synthesis', Credit: 3, Session: [500, 2],
+        Course: "ELE504", CourseTitle: 'Network Analysis and Synthesis', Credit: 3, Session: [500, 2],
         courseOutlines: [
             {
                 title: 'Network parameters of a two port network, image and iterative parameters of a two port network. ',

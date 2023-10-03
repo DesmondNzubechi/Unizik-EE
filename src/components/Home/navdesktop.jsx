@@ -77,7 +77,7 @@ export const Navdesktop = () => {
                            {acedemicsDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl z-1  font-poppins    p-2 text-slate-900 bg-slate-50 flex flex-col gap-2">
                               <li><Link onClick={acedF} to='/Learning-resources' className="text-[15px] text-slate-900 hover:text-slate-700 ">Learning Resources</Link></li>
                             
-                              <li><Link onClick={acedF} to='/Course-outlines'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Course outlines</Link></li>
+                              <li><Link onClick={acedF} to='/Academics/course-outlines'  className="text-[15px] text-slate-900 hover:text-slate-700  ">Course outlines</Link></li>
                             
                               <li><Link onClick={acedF} to='/calculate-cgpa'  className="text-[15px] text-slate-900 hover:text-slate-700  ">CGPA calculator</Link></li>
                             </ul>}

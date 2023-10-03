@@ -10,7 +10,7 @@ export const FullNewsDetails = () => {
     const { newsHeadline } = useParams();
     const post = allNews.find(post => post?.newsHeadline === newsHeadline)
     console.log(post);
-   
+     
     useEffect(() => {
         const filterNews = () => { 
             const getNewsFiltered = allNews?.filter(news => {

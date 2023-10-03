@@ -7,7 +7,7 @@ import learningImg2 from '../../assets/images/reading6.avif';
 import learningImg3 from '../../assets/images/reading5.avif';
 import learningImg4 from '../../assets/images/reading7.avif';
 import learningImg5 from '../../assets/images/reading8.avif';
-
+import { CoursesOffered } from "../CourseOffered/CourseOffered";
 const levelCourseoutline = [
 {
     level : 100,
@@ -49,7 +49,7 @@ export const Courses = () => {
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] ">
             {levelCourseoutline.map(courseOutline => {
 
- return <Link to={courseOutline.levelLink} className="flex flex-row justify-center">
+ return <Link to={`/Academics/Course-outlines/${courseOutline.level}`} className="flex flex-row justify-center">
  <div data-aos='zoom-in-up' className="max-w-[450px] bg-white shadow-xl hover:shadow-2xl hover:border flex flex-col justify-center items-center gap-2 rounded text-center  p-5 ">
 <div className="max-w-[150px]"><img src={courseOutline.levelImg} alt="" /></div>
   <h1 className="font-bold uppercase text-[15px] md:text-[20px] ">{courseOutline.level} Level <br /> course outlines</h1>

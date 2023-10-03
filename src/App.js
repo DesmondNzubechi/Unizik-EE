@@ -163,6 +163,8 @@ import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
 import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
 import { ProjectTeam } from './components/ProjectTeam/ProjectTeam';
+import { LevelCourseoutlines } from './components/CourseOffered/level';
+import { FullcourseOutline } from './components/CourseOffered/course';
 
 function App() {
       const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
@@ -186,7 +188,7 @@ function App() {
       <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<Sign/>} />
       <Route path='/contact' element={<Contact/>} />
-      <Route path='/course-outlines' element={<Courses/>} />
+      <Route path='/Academics/course-outlines' element={<Courses/>} />
       <Route path='/level100' element={<Level100/>} />
       <Route path='/level200' element={<Level200/>} />
 
@@ -307,10 +309,12 @@ function App() {
      <Route path='/Alumni/Ex-students-leaders' element={<ExDeptExcos/>} />
      <Route path='/Students/Project-Team' element={<ProjectTeam/>} />
      <Route path='/not-found' element={<NotFound/>} />
+     <Route path='/Academics/Course-outlines/:Session' element={<LevelCourseoutlines/>} />
+     <Route path='/Academics/Course-outlines/:Session/:Course' element={<FullcourseOutline/>} />
      <Route
           path="*"
           element={
-            <NotFound />
+            <NotFound /> 
           }
         />
     </Routes>
