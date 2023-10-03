@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { Route,  Routes } from 'react-router-dom';
 import { Home } from './components/Home/home';
 import { Navmobile } from './components/Home/navmobile';
 import { About } from './components/About/About';
@@ -10,12 +10,10 @@ import { Login } from './components/login/login';
 import { Sign } from './components/signup/signup';
 import { Navdesktop } from './components/Home/navdesktop';
 import { Contact } from './components/contact/contact';
-import { Courses } from './components/courses/courses';
+import { Courses } from './components/CourseOffered/CourseOutlines';
 import { Events } from './components/Events/Events';
 import { CourseReps } from './components/CourseReps/CourseReps';
-import { redirect } from 'react-router-dom';
 import NotFound from './components/NotFoundPage/NotFound';
-/*========100 Level ======================*/
 import { FullAim } from './components/our-aim/fullAim';
 import { FullAbout } from './components/About/fullAbout';
 import { Admission } from './components/Admission/Admission';
@@ -33,8 +31,8 @@ import { Footer } from './components/Footer/Footer';
 import { Admindashboard } from './components/Dashboard/Admin';
 import { UserProfile } from './components/User profile/UserProfile';
 import { ToastContainer } from 'react-toastify';
-import { fullNewsContext } from './components/context/Context';
-import { useContext } from 'react';
+// import { fullNewsContext } from './components/context/Context';
+// import { useContext } from 'react';
 import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
 import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
@@ -43,10 +41,10 @@ import { LevelCourseoutlines } from './components/CourseOffered/level';
 import { FullcourseOutline } from './components/CourseOffered/course';
 
 function App() {
-      const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
-      const getDetails = fullNews[0];
-      const cat = getDetails?.category;
-      const headline = getDetails?.newsHeadline;
+      // const { fullNews, anotherNews, getFullNews } = useContext(fullNewsContext);
+      // const getDetails = fullNews[0];
+      // const cat = getDetails?.category;
+      // const headline = getDetails?.newsHeadline;
   return (
         <div className='overflow-x-hidden font-fonty'>
 <>

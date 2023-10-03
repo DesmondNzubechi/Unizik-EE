@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { CoursesOffered } from "./CourseOffered";
+
 export const LevelCourseoutlines = () => {
     const { Session } = useParams();
     const getLevel = CoursesOffered.filter(course => {

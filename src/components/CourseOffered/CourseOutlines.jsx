@@ -1,13 +1,11 @@
 import React from "react";
 import {AiFillEye} from 'react-icons/ai';
 import { Link } from "react-router-dom";
-import learningImg from '../../assets/images/reading.avif';
 import learningImg1 from '../../assets/images/reading.avif';
 import learningImg2 from '../../assets/images/reading6.avif';
 import learningImg3 from '../../assets/images/reading5.avif';
 import learningImg4 from '../../assets/images/reading7.avif';
 import learningImg5 from '../../assets/images/reading8.avif';
-import { CoursesOffered } from "../CourseOffered/CourseOffered";
 const levelCourseoutline = [
 {
     level : 100,
