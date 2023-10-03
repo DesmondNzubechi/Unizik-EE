@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
-    const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
+   // const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
     const [clickedCoursePdf, setClickedCoursePdf] = useState(localStorage.getItem("clickedCoursePdf") ||  '');
   const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
   const [displaying, setDisplaying] = useState(JSON.parse(localStorage.getItem('displaying')) || {
@@ -125,27 +125,23 @@ export const NewsContext = (props) => {
     useEffect(() => {
         localStorage.setItem('anotherNews', JSON.stringify(anotherNews))
     }, [anotherNews]);
-    useEffect(() => {
-    localStorage.setItem('fullNews', JSON.stringify(fullNews))
-    }, [fullNews]);
-    const getFullNews = (news) => {
-        setFullNews([news]);
-    };
-    const getClickedlevel = (level) => {
-    const filterLevelCourses =  CoursesOffered.filter(courses => {
-    return  level == courses.Session[0];
-      })
-      setEleCourses(filterLevelCourses);
-      setClickedLevel(level)
-    }
+    // useEffect(() => {
+    // localStorage.setItem('fullNews', JSON.stringify(fullNews))
+    // }, [fullNews]);
+    // const getFullNews = (news) => {
+    //     setFullNews([news]);
+    // };
+    // const getClickedlevel = (level) => {
+    // const filterLevelCourses =  CoursesOffered.filter(courses => {
+    // return  level == courses.Session[0];
+    //   })
+    //   setEleCourses(filterLevelCourses);
+    //   setClickedLevel(level)
+    // }
 
-    const getPdf = (pdf) => {
-      setClickedCoursePdf(pdf);
-    }
-console.log('pdf man', allPdfs)
+
   const [signedIn, setSignedIn] = useState({});
   const [mainUser, setMainUser] = useState(JSON.parse(localStorage.getItem('mainUser')) || [])
-  console.log('main user', mainUser)
 
   useEffect(() => {
     localStorage.setItem('mainUser', JSON.stringify(mainUser));
@@ -158,8 +154,6 @@ console.log('pdf man', allPdfs)
       });
       setMainUser(personalInfo);
   };
-    // Function to get user information
-    // Call the function to filter user information
     getUserInfo();
   }, [userList, signedIn]); // Trigger this effect when signedIn changes
 
@@ -172,26 +166,8 @@ console.log('pdf man', allPdfs)
       
     }
   }
-    
-  // useEffect(() => {
-  //   const getLoadedNews = () => {
-  //     if (getCat === 'News') {
-  //       const filterNews = allNews?.filter(news => {
-  //         return news.newsHeadline === getHeadline;
-  //       })
-  //       setFullNews(filterNews);
-  //     } else if (getCat === 'Event') {
-  //      const filterEvent = allEvents?.filter(event => {
-  //        return event.newsHeadline === getHeadline;
-  //      })
-  //      setFullNews(filterEvent);
-  //     }
-  //   }
-  //   return () => {
-  //     getLoadedNews();
-  //  }
-  // }, [getHeadline])
-    return <fullNewsContext.Provider value={{getFullNews,  bookType, filterClickedCourse, currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf, clickedCoursePdf }}>
+  
+    return <fullNewsContext.Provider value={{getFullNews,  currentPdf, allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn, eleCourses, getClickedlevel, fullNews, anotherNews, setAnotherNews, clickedLevel, getPdf }}>
          {props.children}
     </fullNewsContext.Provider>
 }

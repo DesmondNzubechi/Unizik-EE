@@ -10,7 +10,7 @@ export const LevelCourseoutlines = () => {
     });
     const [courseStore, setCourseStore] = useState({
         first: [],
-        second: [],
+        second: [], 
     }) 
     useEffect(() => {
         localStorage.setItem('showSemester', JSON.stringify(showSemester));

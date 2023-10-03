@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from "react";
-import {BsFillFolderSymlinkFill} from 'react-icons/bs';
 import { Link,} from "react-router-dom";
 import { useContext } from "react";
 import { fullNewsContext } from "../../context/Context";
 import { FcOpenedFolder } from 'react-icons/fc';
+import { useParams } from "react-router-dom";
+import { CoursesOffered } from "../../CourseOffered/CourseOffered";
 
 export const LevelCourses = () => {
-    const {eleCourses, getPdf , filterClickedCourse, clickedLevel} = useContext(fullNewsContext);
+    const { Session } = useParams();
+
+    const filterLevelCoursess = CoursesOffered.filter(course => {
+        return course.Session[0] === Number(Session)
+    });
+    const firstSemester = filterLevelCoursess.filter(course => {
+        return course.Session[1] === 1
+    });
+    const secondSemester = filterLevelCoursess.filter(course => {
+        return course.Session[1] === 2
+    })
+    const { eleCourses, getPdf, filterClickedCourse, clickedLevel } = useContext(fullNewsContext);
+    
     const [firstSemesterCourses, setFirstSemesterCourse] = useState([]);
     const [secondSemesterCourses, setsecondSemesterCourse] = useState([]);
     const [popMsg, setPopMsg] = useState(false);
-    useEffect(() => {
+    useEffect(() => { 
         const filteringCourses = () => {
             const filterFirstSemesterCourse = eleCourses.filter(firstSemester => {
              return  firstSemester.Session[1] == 1;
@@ -23,7 +36,7 @@ export const LevelCourses = () => {
         };
         filteringCourses();
         const messageAlert = setTimeout(() => {
-            setPopMsg(true);
+            setPopMsg(false);
         }, 300);
           
           return () => {
@@ -58,8 +71,8 @@ export const LevelCourses = () => {
  <h1 className="uppercase text-slate-900 font-bold md:col-span-1 text-[15px] md:text-[25px]  md:text-start ">First semester</h1>
  
        <div className="grid grid-cols-2  gap-2 md:grid-cols-3 my-[10px] ">
-        {firstSemesterCourses.map(courses => {
-            return <Link onClick={() => filterClickedCourse(courses.Course)} to='/download pdf' className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
+        {firstSemester.map(courses => {
+            return <Link onClick={() => filterClickedCourse(courses.Course)} to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
                   <FcOpenedFolder className="md:text-[50px] text-[30px]  font-semibold "/>
               <h1 className="md:text-[18px] text-[15px] font-semibold text-slate-100 ">{courses.Course}</h1>
         </Link >
@@ -70,8 +83,8 @@ export const LevelCourses = () => {
 <div className="w-full ">
        <h1 className="uppercase text-slate-900 font-bold md:col-span-1 text-[15px] md:text-[25px] md:text-start ">Second semester</h1>
        <div className="grid grid-cols-2  gap-2 md:grid-cols-3 my-[10px] ">
-       {secondSemesterCourses.map(courses => {
-            return <Link onClick={() => filterClickedCourse(courses.Course)} to='/download pdf' className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
+       {secondSemester.map(courses => {
+            return <Link onClick={() => filterClickedCourse(courses.Course)} to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
             <FcOpenedFolder className="md:text-[50px] text-[30px] text-yellow-500 font-semibold "/>
       <h1 className="md:text-[18px] text-[15px] font-semibold text-slate-100 ">{courses.Course}</h1>
   </Link >

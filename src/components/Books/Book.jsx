@@ -43,7 +43,7 @@ export const StartLearning = () => {
         <p><Link to='/Learning-Resources' className="bg-slate-900  hover:bg-slate-700 mt-[10px] text-slate-50 rounded-[3px] shadow-2xl p-[10px] font-semibold text-[15px] md:text-[20px]  ">Start Learning</Link>
         </p>
         </div>
-        <div className=" "> 
+        <div className=" ">  
     <img className="rounded-[20px] max-w-[300px] md:max-w-[500px] "  src={learningImg} alt="" />
         </div>
                 </div>
@@ -65,7 +65,7 @@ export const Book = () => {
  
        {
         levels.map(level => {
-            return <Link to='/level-courses' className="flex flex-row justify-center" onClick={() => getClickedlevel(level.level)}>
+            return <Link to={`/Academics/Learning-Resources/${level.level}`} className="flex flex-row justify-center" onClick={() => getClickedlevel(level.level)}>
                <div data-aos='zoom-in-up' className="max-w-[350px] bg-white shadow-xl hover:shadow-2xl hover:border flex flex-col justify-center items-center gap-2 rounded text-center  p-5 ">
               <div className="max-w-[150px]"><img src={level.levelImg} alt="" /></div>
                 <h1 className="font-bold uppercase text-[23px] md:text-[27px] ">{level.level} Level</h1>
