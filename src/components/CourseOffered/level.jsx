@@ -26,9 +26,9 @@ export const LevelCourseoutlines = () => {
                 second: secondS,
             })
         }
-        return () => {
+      
             filterSemester();
-        }
+    
      }, [])    
     const [isFirst, setIsFirst] = useState('First');
     const [showSemester, setshowSemester] = useState(JSON.parse(localStorage.getItem('showSemester')) || {
@@ -72,7 +72,7 @@ export const LevelCourseoutlines = () => {
 
        { showSemester.first  &&
         <div className="my-[30px] gap-[20px] grid  grid-cols-1 md:grid-cols-3 ">
-                        {courseStore.first.map(courses => 
+                        {courseStore.first?.map(courses => 
                            { return <div className=" rounded  shadow-2xl p-[10px]  border-t-[5px] border- border-t flex flex-col items-start  gap-1 ">
         <span className="flex flex-row justify-around items-center gap-[10px] ">
             <h1 className="font-semibold text-[12px]  ">Course Title:</h1>
