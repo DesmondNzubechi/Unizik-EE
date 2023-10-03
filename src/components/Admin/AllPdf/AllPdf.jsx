@@ -45,52 +45,6 @@ const [pdfDetails, setPdfDetails] =  useState({
     pastQuestionBg: 'bg-slate-100',
     pastQuestion: false,
   })
-//     const [getLevelPdf, setGetLevelPdf] = useState([]);
-//     const {clickedCoursePdf} = useContext(fullNewsContext);
-//   const [currentPdf, setCurrentPdf] = useState([]);
-//  const [allPdfs, setAllPdfs] = useState([]);
-//   const [bookType, setBookType] = useState({
-//     Handouts: [],
-//     TextBooks: [],
-//     pastQuestions: [],
-//   })
-
-//   const filterClickedCourse = () => {
-//     const coursePdf = allPdfs.filter(pdf => pdf.course === clickedCoursePdf);
-//     setCurrentPdf(coursePdf);
-//   };
-
-//   const filterBookType = () => {
-//     const getHandout = currentPdf.filter(handout => handout.bookType === 'handout');
-//     const getTextbook = currentPdf.filter(handout => handout.bookType === 'textbook');
-//     const getPastquestion = currentPdf.filter(handout => handout.bookType === 'past question');
-
-//     setBookType({
-//       Handouts: getHandout,
-//       TextBooks: getTextbook,
-//       pastQuestions: getPastquestion,
-//     });
-//   };
- 
-//   useEffect(() => {
-//     const pdfStore = collection(db, 'learningResources');
-
-//     // Set up a real-time listener to fetch and update data when changes occur
-//     const unsubscribe = onSnapshot(pdfStore, (snapshot) => {
-//       const allPdfData = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-//       setAllPdfs(allPdfData);
-
-//       // Call your filtering functions here after updating allPdfs
-//       filterClickedCourse();
-//       filterBookType();
-//     });
-
-//     return () => {
-//       // Unsubscribe from the listener when the component unmounts
-//       unsubscribe();
-//     };
-//   },[selectedCourse]); // Re-run the effect only when clickedCoursePdf changes
-
   const deleteBook = async (pdfInfo) => {
     const confirmFirst = window.confirm(`Are you want to delete ${pdfInfo.topic}?`);
     if (!confirmFirst) {

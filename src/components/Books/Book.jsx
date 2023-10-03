@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {BsFillFolderSymlinkFill} from 'react-icons/bs';
+import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { fullNewsContext } from "../context/Context";
 import learningImg from '../../assets/images/reading.avif';
 import learningImg1 from '../../assets/images/reading.avif';
 import learningImg2 from '../../assets/images/reading6.avif';
@@ -51,7 +48,6 @@ export const StartLearning = () => {
 }
 
 export const Book = () => {
-    const { getClickedlevel } = useContext(fullNewsContext);
     return (
         <>
         <div className="flex justify-center items-center flex-row ">
@@ -65,7 +61,7 @@ export const Book = () => {
  
        {
         levels.map(level => {
-            return <Link to={`/Academics/Learning-Resources/${level.level}`} className="flex flex-row justify-center" onClick={() => getClickedlevel(level.level)}>
+            return <Link to={`/Academics/Learning-Resources/${level.level}`} className="flex flex-row justify-center">
                <div data-aos='zoom-in-up' className="max-w-[350px] bg-white shadow-xl hover:shadow-2xl hover:border flex flex-col justify-center items-center gap-2 rounded text-center  p-5 ">
               <div className="max-w-[150px]"><img src={level.levelImg} alt="" /></div>
                 <h1 className="font-bold uppercase text-[23px] md:text-[27px] ">{level.level} Level</h1>
