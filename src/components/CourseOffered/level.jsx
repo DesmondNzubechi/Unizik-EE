@@ -29,7 +29,7 @@ export const LevelCourseoutlines = () => {
       
             filterSemester();
     
-     }, [])    
+     }, [courseStore])    
     const [isFirst, setIsFirst] = useState('First');
     const [showSemester, setshowSemester] = useState(JSON.parse(localStorage.getItem('showSemester')) || {
         first: true,
