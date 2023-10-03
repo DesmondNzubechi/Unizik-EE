@@ -8,6 +8,10 @@ export const LevelCourseoutlines = () => {
     const getLevel = CoursesOffered.filter(course => {
         return course.Session[0] === Number(Session)
     });
+    const [courseStore, setCourseStore] = useState({
+        first: [],
+        second: [],
+    }) 
     useEffect(() => {
         localStorage.setItem('showSemester', JSON.stringify(showSemester));
         const filterSemester = () => {
@@ -49,10 +53,6 @@ export const LevelCourseoutlines = () => {
     })
     setIsFirst('Second');
     }; 
-    const [courseStore, setCourseStore] = useState({
-        first: [],
-        second: [],
-    })
    
 
     return (
