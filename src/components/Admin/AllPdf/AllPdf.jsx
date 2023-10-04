@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { fullNewsContext } from "../../context/Context";
-//import { allPdfs } from "./PDFs";
-import {MdAllInbox, MdOutlineFileDownload} from  'react-icons/md';
-import { FaFileDownload } from 'react-icons/fa';
-import { HiDocumentDownload } from 'react-icons/hi';
-import { collection, deleteDoc, doc, getDocs, onSnapshot } from "firebase/firestore";
+import {  deleteDoc, doc} from "firebase/firestore";
 import { db, storage } from "../../config/firebase";
 import { CoursesOffered } from "../../CourseOffered/CourseOffered";
 import { AiFillDelete } from 'react-icons/ai';
 import { deleteObject, ref } from "firebase/storage";
-import { ClipLoader, FadeLoader, MoonLoader, RotateLoader } from "react-spinners";
+import { RotateLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,7 +19,6 @@ const [getSemester, setGetSemester] = useState('');
 const [selectedCourse, setSelectedCourse] = useState('select');
 const [selectedUnit, setSelectedUnit] = useState(null);
     const [courses, setCourses] = useState([]);
-   // const [pdfDatas, setpdfDatas] = useState(null)
 const [pdfDetails, setPdfDetails] =  useState({
       level: '',
       semester: '',
@@ -32,8 +27,7 @@ const [pdfDetails, setPdfDetails] =  useState({
     resourcesType: ''
       
 });
-  const {allPdfs,  bookType, currentPdf, filterClickedCourse, clickedCoursePdf} = useContext(fullNewsContext);
- // const bookCategories = ['Handouts', 'Textbooks', 'Past Questions'];
+  const {allPdfs} = useContext(fullNewsContext);
   const [bookCat, setBookCat] = useState(JSON.parse(localStorage.getItem('bookCat')) || {
     handoutText: 'text-slate-50',
     handoutBg: 'bg-yellow-500',
@@ -69,8 +63,20 @@ const [pdfDetails, setPdfDetails] =  useState({
       setSpinC(false);
     }
   }
-    
-      console.log('all pdfs', allPdfs); 
+
+  const filterCourseAllPdf = allPdfs.filter(course => {
+    return course.course.replace(" ", "") === selectedCourse
+  });
+  const filterHandouts = filterCourseAllPdf.filter(handout => {
+    return handout.bookType === 'handout'
+  })
+  const filterTextbook = filterCourseAllPdf.filter(textbook => {
+    return textbook.bookType === 'textbook'
+  })
+  const filterPastQ = filterCourseAllPdf.filter(pastQ => {
+    return pastQ.bookType === 'past question'
+  })
+
     return(
       <div className="pt-[50px] px-[30px]  pb-[50px] ">
           {spinC && <div className="fixed bg-tpr w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><RotateLoader className="relative z-[600]" color="#36d7b7"
@@ -142,7 +148,7 @@ const [pdfDetails, setPdfDetails] =  useState({
             });
             setSelectedUnit(getCreditUnit.Credit);
                 setSelectedCourse(e.target.value);
-                filterClickedCourse(e.target.value);
+              //  filterClickedCourse(e.target.value);
             }}
             value={selectedCourse}
             className="outline-0 p-1  text-[10px] bg-slate-50 rounded-[2px] shadow text-slate-900 placeholder:text-slate-400 font-[500] capitalize " name="" id="">
@@ -198,14 +204,14 @@ const [pdfDetails, setPdfDetails] =  useState({
             })
           }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.pastQuestionBg}  ${bookCat.pastQuestionText} capitalize font-semibold`}>Past Question</button>
         </div>
-       {   bookType.Handouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  handouts is not available now. </h1>  }
-       {   bookType.TextBooks.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  textbook is not available now. </h1>  }
-        {  bookType.pastQuestions.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{clickedCoursePdf}  past exam questions is not available now. </h1>}  
+       {   filterHandouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  handouts is not available now. </h1>  }
+       {   filterTextbook.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  textbook is not available now. </h1>  }
+        {  filterPastQ.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{selectedCourse}  past exam questions is not available now. </h1>}  
         
        <div className="grid md:grid-cols-3 my-[50px] lg:grid-cols-4 gap-5 grid-cols-1 ">
       
           {
-        bookCat.handoutState &&   bookType.Handouts.map((pdf, index) => {
+        bookCat.handoutState &&   filterHandouts.map((pdf, index) => {
               return <div key={index} className="flex flex-row shadow p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
                 <div className="flex flex-col gap-2">
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
@@ -219,7 +225,7 @@ const [pdfDetails, setPdfDetails] =  useState({
           
           {
             
-         bookCat.textBookState &&    bookType.TextBooks.map((pdf, index) => {
+         bookCat.textBookState &&    filterTextbook.map((pdf, index) => {
           return <div key={index} className="flex flex-row shadow  p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
                 <div className="flex flex-col gap-2">
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
@@ -232,7 +238,7 @@ const [pdfDetails, setPdfDetails] =  useState({
           }
           {
             
-           bookCat.pastQuestion &&  bookType.pastQuestions.map((pdf, index) => {
+           bookCat.pastQuestion &&  filterPastQ.map((pdf, index) => {
             return <div key={index} className="flex flex-row shadow  p-2  hover:bg-slate-100  gap-2 justify-between p-2 border items-center rounded ">
                 <div className="flex flex-col gap-2">
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
