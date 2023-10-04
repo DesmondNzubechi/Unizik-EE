@@ -6,9 +6,6 @@ import { collection, getDocs, onSnapshot } from "firebase/firestore";
 export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
-   // const [anotherNews, setAnotherNews] = useState(JSON.parse(localStorage.getItem('anotherNews')) || []);
-  //   const [clickedCoursePdf, setClickedCoursePdf] = useState(localStorage.getItem("clickedCoursePdf") ||  '');
-  // const [clickedLevel, setClickedLevel] = useState(localStorage.getItem("clickedLevel") || '');
   const [displaying, setDisplaying] = useState(JSON.parse(localStorage.getItem('displaying')) || {
     pdfView: false,
     viewDashboard: true,
@@ -30,22 +27,17 @@ export const NewsContext = (props) => {
   const [userList, setUserList] = useState([]);
   const [allPdfs, setAllPdfs] = useState(JSON.parse(localStorage.getItem('allPdfs')) || []);
   const [logOut, setLogOut] = useState(false);
-  //const [eleCourses, setEleCourses] = useState(JSON.parse(localStorage.getItem('eleCourses')) || []);
   const [allNews, setAllNews] = useState(JSON.parse(localStorage.getItem('allNews')) || []);
   const [allEvents, setAllEvents] = useState(JSON.parse(localStorage.getItem('allEvents')) || []);
   const [editNews, setEditNews] = useState(JSON.parse(localStorage.getItem('editNews')) || {});
-  //const [currentPdf, setCurrentPdf] = useState([]);
-  
   useEffect(() => {
     localStorage.setItem('allPdfs', JSON.stringify(allPdfs));
     localStorage.setItem('editNews', JSON.stringify(editNews))  
     localStorage.setItem('displaying', JSON.stringify(displaying))
-      // localStorage.setItem('eleCourses', JSON.stringify(eleCourses));
-      localStorage.setItem('allNews', JSON.stringify(allNews));
+     localStorage.setItem('allNews', JSON.stringify(allNews));
       localStorage.setItem('allEvents', JSON.stringify(allEvents));
     }, [displaying]);
-    //const [fullNews, setFullNews] = useState(JSON.parse(localStorage.getItem('fullNews')) || []);
-    
+  
 
   //FETCHING USERS
     useEffect(() => {

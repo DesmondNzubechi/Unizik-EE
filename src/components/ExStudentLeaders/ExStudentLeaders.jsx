@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
 import ose from '../../assets/alumni/ose.jpg';
+import michael from '../../assets/alumni/michael.jpg';
 import { useState  } from "react";
 
 const ExStudentLeaders = [
@@ -14,13 +15,26 @@ const ExStudentLeaders = [
         state: 'Ebonyi',
         lga: 'Ngbo/Ohaukwu',
         position: 'Departmental President - 2020/2021',
-        message: {
-            first: 'Dear Students and Future Leaders, As proud alumni of this esteemed Department, I stand before you as living testaments to the transformative power of education and resilience. I understand the challenges and opportunities that lie ahead, and I am here to offer guidance and support on your journey.',
-            second: 'Focus: A Key to Achieving Your Dreams. In your pursuit of knowledge and personal growth, remember that success often hinges on your ability to maintain unwavering focus. The world is brimming with distractions, and it is easy to lose sight of your goals. However, it is our shared belief that by concentrating your efforts, nurturing your passions, and sidestepping the allure of momentary distractions, you can achieve greatness. Embrace focus as your ally, and watch as it illuminates the path to your dreams.',
-            third: 'Hard Work: The Foundation of Excellence. In the grand tapestry of life, hard work is the thread that binds success. It is through diligence, dedication, and the pursuit of excellence that we achieve remarkable feats. As alumni, I can attest that kindness and compassion also flow naturally from a heart dedicated to hard work. As you labor towards your aspirations, remember that every ounce of effort you invest contributes to your growth, your character, and the incredible future that awaits you.',
-            fouth: 'Hope: The Eternal Light in Your Journey. In the face of adversity, uncertainty, and the challenges that may seem insurmountable, I encourage you to hold onto hope. It is hope that fuels our spirits when darkness looms, and it is hope that reminds us that even in the most trying moments, a brighter day awaits. Your efforts, late nights, and sacrifices are not in vain; they are stepping stones toward your goals. With hope as your guiding star, you will continue to evolve and eventually shine with the brilliance of your potential. Welcome the challenges that lie ahead, for they are opportunities in disguise. Embrace your education, harness your passion, and stay dedicated to your dreams. In unity and determination, you will carve a future filled with success and purpose.',
-            conclusion: 'In Conclusion, As alumni of this institution, we are committed to supporting your journey towards excellence. I share these principles of focus, hard work, and hope not as mere words but as guiding lights to illuminate your path. I believe in your potential, and I look forward to witnessing your achievements and contributions to our shared community and the world at large.'
-        }
+         message: ['Dear Students and Future Leaders, As proud alumni of this esteemed Department, I stand before you as living testaments to the transformative power of education and resilience. I understand the challenges and opportunities that lie ahead, and I am here to offer guidance and support on your journey.', 'Focus: A Key to Achieving Your Dreams. In your pursuit of knowledge and personal growth, remember that success often hinges on your ability to maintain unwavering focus. The world is brimming with distractions, and it is easy to lose sight of your goals. However, it is our shared belief that by concentrating your efforts, nurturing your passions, and sidestepping the allure of momentary distractions, you can achieve greatness. Embrace focus as your ally, and watch as it illuminates the path to your dreams.','Hard Work: The Foundation of Excellence. In the grand tapestry of life, hard work is the thread that binds success. It is through diligence, dedication, and the pursuit of excellence that we achieve remarkable feats. As alumni, I can attest that kindness and compassion also flow naturally from a heart dedicated to hard work. As you labor towards your aspirations, remember that every ounce of effort you invest contributes to your growth, your character, and the incredible future that awaits you.', 'Hope: The Eternal Light in Your Journey. In the face of adversity, uncertainty, and the challenges that may seem insurmountable, I encourage you to hold onto hope. It is hope that fuels our spirits when darkness looms, and it is hope that reminds us that even in the most trying moments, a brighter day awaits. Your efforts, late nights, and sacrifices are not in vain; they are stepping stones toward your goals. With hope as your guiding star, you will continue to evolve and eventually shine with the brilliance of your potential. Welcome the challenges that lie ahead, for they are opportunities in disguise. Embrace your education, harness your passion, and stay dedicated to your dreams. In unity and determination, you will carve a future filled with success and purpose.', 'In Conclusion, As alumni of this institution, we are committed to supporting your journey towards excellence. I share these principles of focus, hard work, and hope not as mere words but as guiding lights to illuminate your path. I believe in your potential, and I look forward to witnessing your achievements and contributions to our shared community and the world at large.']
+        //     fouth: 'Hope: The Eternal Light in Your Journey. In the face of adversity, uncertainty, and the challenges that may seem insurmountable, I encourage you to hold onto hope. It is hope that fuels our spirits when darkness looms, and it is hope that reminds us that even in the most trying moments, a brighter day awaits. Your efforts, late nights, and sacrifices are not in vain; they are stepping stones toward your goals. With hope as your guiding star, you will continue to evolve and eventually shine with the brilliance of your potential. Welcome the challenges that lie ahead, for they are opportunities in disguise. Embrace your education, harness your passion, and stay dedicated to your dreams. In unity and determination, you will carve a future filled with success and purpose.',]
+        //     first: 'Dear Students and Future Leaders, As proud alumni of this esteemed Department, I stand before you as living testaments to the transformative power of education and resilience. I understand the challenges and opportunities that lie ahead, and I am here to offer guidance and support on your journey.',
+        //     second: 'Focus: A Key to Achieving Your Dreams. In your pursuit of knowledge and personal growth, remember that success often hinges on your ability to maintain unwavering focus. The world is brimming with distractions, and it is easy to lose sight of your goals. However, it is our shared belief that by concentrating your efforts, nurturing your passions, and sidestepping the allure of momentary distractions, you can achieve greatness. Embrace focus as your ally, and watch as it illuminates the path to your dreams.',
+        //     third: 'Hard Work: The Foundation of Excellence. In the grand tapestry of life, hard work is the thread that binds success. It is through diligence, dedication, and the pursuit of excellence that we achieve remarkable feats. As alumni, I can attest that kindness and compassion also flow naturally from a heart dedicated to hard work. As you labor towards your aspirations, remember that every ounce of effort you invest contributes to your growth, your character, and the incredible future that awaits you.',
+        //     fouth: 'Hope: The Eternal Light in Your Journey. In the face of adversity, uncertainty, and the challenges that may seem insurmountable, I encourage you to hold onto hope. It is hope that fuels our spirits when darkness looms, and it is hope that reminds us that even in the most trying moments, a brighter day awaits. Your efforts, late nights, and sacrifices are not in vain; they are stepping stones toward your goals. With hope as your guiding star, you will continue to evolve and eventually shine with the brilliance of your potential. Welcome the challenges that lie ahead, for they are opportunities in disguise. Embrace your education, harness your passion, and stay dedicated to your dreams. In unity and determination, you will carve a future filled with success and purpose.',
+        //     conclusion: 'In Conclusion, As alumni of this institution, we are committed to supporting your journey towards excellence. I share these principles of focus, hard work, and hope not as mere words but as guiding lights to illuminate your path. I believe in your potential, and I look forward to witnessing your achievements and contributions to our shared community and the world at large.'
+        // }
+    },
+    {
+        name: 'Engr. Michael Ikechukwu Michael',
+        email: 'ikechukwumichael1122@gmail.com',
+        number: '08161219798',
+        picture: michael,
+        year: 'Class of 2022',
+        state: 'Anambra',
+        lga: '',
+        position: 'Departmental President - 2021/2022',
+        message: []
+       
     },
 ];
 
@@ -91,11 +105,7 @@ export const ExDeptExcos = () => {
     <div className="max-w-[450px] flex-col gap-4  ">
       <h1 className="font-semibold uppercase text-[20px] ">Message and encouragement to our students</h1>
       <div className="text-slate-700 flex flex-col gap-3 py-[30px] ">
-                                <p className="md:text-[15px] text-[12px]" >{fullProfile.message?.first}</p>
-                                <p className="md:text-[15px] text-[12px]" >{fullProfile.message?.second}</p>
-                                <p className="md:text-[15px] text-[12px]" >{fullProfile.message?.third}</p>
-                                <p className="md:text-[15px] text-[12px]" >{fullProfile.message?.fouth}</p>
-                                <p className="md:text-[15px] text-[12px]" >{ fullProfile.message?.conclusion}</p>
+                              {fullProfile?.message?.map(msg => { return  <p className="md:text-[15px] text-[12px]" >{msg}</p>})}
       </div>
     </div>
     </div>
