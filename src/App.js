@@ -36,6 +36,7 @@ import { LevelCourseoutlines } from './components/CourseOffered/level';
 import { FullcourseOutline } from './components/CourseOffered/course';
 import { FirstClassGraduates } from './components/FirstClassStudents/FirstClassStudents';
 import { BestGraduates } from './components/BestGraduatingStudents/BestGraduating';
+import { UserDashboard } from './components/UserDashboard/UserDashboard';
 function App() {
   return (
         <div className='overflow-x-hidden font-fonty'>
@@ -76,6 +77,7 @@ function App() {
      <Route path='/Academics/Course-outlines/:Session/:Course' element={<FullcourseOutline/>} />
      <Route path='/Alumni/First-Class-Graduates' element={<FirstClassGraduates/>} />
      <Route path='/Alumni/Best-Graduating-students' element={<BestGraduates/>} />
+     <Route path='/user-dashboard' element={<UserDashboard/>} />
      <Route path='/not-found' element={<NotFound/>} />
      <Route path="*" element={ <NotFound />} />
     </Routes>
