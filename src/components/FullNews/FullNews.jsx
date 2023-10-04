@@ -5,24 +5,10 @@ import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 export const FullNewsDetails = () => {
-    const { fullNews, allNews, allEvent, anotherNews, getFullNews } = useContext(fullNewsContext);
-    const [moreNews, setMoreNews] = useState([]);
+    const {  allNews} = useContext(fullNewsContext);
     const { newsHeadline } = useParams();
     const post = allNews.find(post => post?.newsHeadline === newsHeadline)
-    console.log(post);
-     
-    useEffect(() => {
-        const filterNews = () => { 
-            const getNewsFiltered = allNews?.filter(news => {
-                return news.fullNews !== fullNews[0].fullNews
-            })
-            const getEventFiltered = allEvent?.filter(event => {
-                return event.fullNews !== fullNews[0].fullNews
-            })
-          setMoreNews(getNewsFiltered, getEventFiltered)
-        }
-        filterNews();
-    },[fullNews])
+
     return(
         <div className="flex flex-col  py-[50px] justify-between items-start md:flex-row">
           
@@ -45,7 +31,7 @@ export const FullNewsDetails = () => {
       <div className="px-[20px] md:pt-[50px]">
         <p className="text-start uppercase text-[25px] font-bold my-[10px] ">More news</p>
       <div className="grid grid-col-1 gap-5 ">
-      {moreNews?.map((news, newsIndex) => {
+      {allNews?.map((news, newsIndex) => {
           
           return <div key={news.id} className="flex w-full  items-start  rounded shadow-2xl px-[20px] py-5  gap-4">
           <div className="">
@@ -53,7 +39,7 @@ export const FullNewsDetails = () => {
           </div> 
           <div className="flex flex-col  max-w-[400px] ">
           <h1 className="font-bold text-[10px] md:max-w-[300px] capitalize ">{news.newsOverview}</h1>
-          <Link to={`/blog/${news.newsHeadline}`} onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
+          <Link to={`/blog/${news.newsHeadline}`}  className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
           </div>
           </div>
         }) }

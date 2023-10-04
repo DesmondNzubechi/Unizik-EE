@@ -9,7 +9,7 @@ import { db } from "../config/firebase";
 
 export const Events = () => {
   
-  const {getFullNews, anotherNews, allEvents, setAllEvents, setAnotherNews} = useContext(fullNewsContext);
+  const {allEvents, setAllEvents} = useContext(fullNewsContext);
   useEffect(() => {
     const eventsStore = collection(db, 'Event');
     const eventUnsub = onSnapshot(eventsStore, (event) => {
@@ -21,7 +21,6 @@ export const Events = () => {
     }
   }, [])
    
-console.log('events:', allEvents)
     return(
         <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
          <div className="flex flex-col justify-center gap-[20px]">
@@ -41,7 +40,7 @@ console.log('events:', allEvents)
             <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{event.newsHeadline}</h1>
             <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{event.date}</span>
            {/* <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{event.newsOverview} </p>*/}
-            <Link to={`/${event.category}/${event.newsHeadline/*.replace(' ', '-')*/}`} onClick={() => getFullNews(event)} className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
+            <Link to={`/event/${event.newsHeadline}`}  className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 
@@ -52,31 +51,6 @@ console.log('events:', allEvents)
     )
 }
 
-
-{ /*<div className="flex flex-col gap-5">
-<div className="flex flex-col w-fit ">
-  <h1 className="uppercase text-[30px] font-bold">Other News</h1>
-  <span className="w-[150px] h-[7px] bg-yellow-500 self-end"></span>
-  </div>
-  <div>
- {newsList.map((news, newsIndex) => {
- 
-   return <div className="flex flex-col items-start w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
-   <div>
-   <img className="md:max-w-[300px]   rounded " src={news.newsImg} alt="" />
-   </div>
-   <div className="flex flex-col  max-w-[400px] ">
-   <h1 className="font-bold text-[15px] md:max-w-[300px] md:text-[15px] capitalize ">{news.newsHeadline}</h1>
-   <span className="font-semibold text-[15px] md:text-[17px] text-slate-700 ">{news.date}</span>
-   <p className="text-slate-500    text-[14px] md:text-[13px] font-[400] ">{news.newsOverview}</p>
-   <Link to='/news-details' onClick={() => getFullNews(news)} className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
-   </div>
-   </div>
-  
- }) }
-
-  </div>
-</div>*/}
 
 export const AboutNews = () => {
   return(

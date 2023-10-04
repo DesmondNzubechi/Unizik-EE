@@ -24,7 +24,7 @@ export const News = () => {
             <div className="flex flex-col gap-1   max-w-[400px] ">
             <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{news.newsHeadline}</h1>
             <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{news.date}</span>
-         <Link to={`/blog/${news.newsHeadline}`} onClick={() => getFullNews(news)} className="text-slate-50 bg-slate-900 p-1 w-fit rounded hover:bg-slate-700 text-[10px] font-bold my-1">Read More...</Link>
+         <Link to={`/blog/${news.newsHeadline}`}  className="text-slate-50 bg-slate-900 p-1 w-fit rounded hover:bg-slate-700 text-[10px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 

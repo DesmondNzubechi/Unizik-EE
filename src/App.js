@@ -20,6 +20,7 @@ import { Book } from './components/Books/Book';
 import CGPACalculator from './components/cgpa-calc/CgpaCalc';
 import { ExcosProfile } from './components/Excos/Excos';
 import { FullNewsDetails } from './components/FullNews/FullNews';
+import { FullEvent } from './components/Events/FullEvent';
 import { LevelCourses } from './components/Books/CoursesFolder/CoursesFolder';
 import { DownloadPdfs } from './components/PDFs/CoursesPdfs';
 import { ScrollToTop } from './components/ScrollTop/ScrollTop';
@@ -60,6 +61,7 @@ function App() {
       <Route path='/Academics/Learning-resources' element={<Book/>} />
       <Route path='/calculate-cgpa' element={<CGPACalculator/>} />
      <Route path='/blog/:newsHeadline' element={<FullNewsDetails/>}/>
+     <Route path='/event/:newsHeadline' element={<FullEvent/>}/>
       <Route path='/Academics/Learning-Resources/:Session' element={<LevelCourses/>} />
       <Route path='/Academics/Learning-Resources/:Session/:Course' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
