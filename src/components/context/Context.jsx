@@ -63,6 +63,18 @@ export const NewsContext = (props) => {
       unsubscribe();
     }
   }, [])
+
+  //FETCHING EVENTS
+  useEffect(() => {
+    const eventsStore = collection(db, 'Event');
+    const eventUnsub = onSnapshot(eventsStore, (event) => {
+      const getEvent = event.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setAllEvents(getEvent)
+    });
+    return () => {
+      eventUnsub();
+    }
+  }, [])
     
   //FETCHING PDFS
     useEffect(() => {

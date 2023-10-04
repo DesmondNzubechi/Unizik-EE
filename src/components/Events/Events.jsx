@@ -8,18 +8,7 @@ import { db } from "../config/firebase";
 
 
 export const Events = () => {
-  
-  const {allEvents, setAllEvents} = useContext(fullNewsContext);
-  useEffect(() => {
-    const eventsStore = collection(db, 'Event');
-    const eventUnsub = onSnapshot(eventsStore, (event) => {
-      const getEvent = event.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      setAllEvents(getEvent)
-    });
-    return () => {
-      eventUnsub();
-    }
-  }, [])
+  const {allEvents} = useContext(fullNewsContext);
    
     return(
         <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
@@ -39,8 +28,7 @@ export const Events = () => {
             <div className="flex flex-col gap-1   max-w-[400px] ">
             <h1 className="font-bold text-[10px] uppercase md:text-[14px]  ">{event.newsHeadline}</h1>
             <span className="font-semibold text-[8px] md:text-[10px] text-slate-500 ">{event.date}</span>
-           {/* <p className="text-slate-500  md:flex hidden  text-[10px] md:text-[12px] font-[400] ">{event.newsOverview} </p>*/}
-            <Link to={`/event/${event.newsHeadline}`}  className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
+          <Link to={`/event/${event.newsHeadline}`}  className="text-slate-50 bg-slate-900 p-2 w-fit rounded hover:bg-slate-700 text-[12px] font-bold my-1">Read More...</Link>
             </div>
             </div>
           }) 

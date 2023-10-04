@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';
 
-const apikey = 'b9a46b1958145632d73edfcb3ca65284';
 export const News = () => {
-  const {getFullNews, anotherNews, allNews, setAllNews, setAnotherNews} = useContext(fullNewsContext);
+  const {allNews} = useContext(fullNewsContext);
     return(
         <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
          <div className="flex flex-col justify-center gap-[20px]">
