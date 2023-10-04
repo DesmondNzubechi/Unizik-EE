@@ -33,7 +33,8 @@ import { ExDeptExcos } from './components/ExStudentLeaders/ExStudentLeaders';
 import { ProjectTeam } from './components/ProjectTeam/ProjectTeam';
 import { LevelCourseoutlines } from './components/CourseOffered/level';
 import { FullcourseOutline } from './components/CourseOffered/course';
-
+import { FirstClassGraduates } from './components/FirstClassStudents/FirstClassStudents';
+import { BestGraduates } from './components/BestGraduatingStudents/BestGraduating';
 function App() {
   return (
         <div className='overflow-x-hidden font-fonty'>
@@ -71,6 +72,8 @@ function App() {
      <Route path='/Students/Project-Team' element={<ProjectTeam/>} />
      <Route path='/Academics/Course-outlines/:Session' element={<LevelCourseoutlines/>} />
      <Route path='/Academics/Course-outlines/:Session/:Course' element={<FullcourseOutline/>} />
+     <Route path='/Alumni/First-Class-Graduates' element={<FirstClassGraduates/>} />
+     <Route path='/Alumni/Best-Graduating-students' element={<BestGraduates/>} />
      <Route path='/not-found' element={<NotFound/>} />
      <Route path="*" element={ <NotFound />} />
     </Routes>

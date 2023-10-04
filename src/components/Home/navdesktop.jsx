@@ -113,9 +113,9 @@ export const Navdesktop = () => {
                            {alumniDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
                               <li><Link onClick={showAlumni} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
                             
-                              <li><Link onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
+                              <li><Link to='/Alumni/First-Class-Graduates' onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
                             
-                              <li><Link onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link to='/Alumni/Best-Graduating-students' onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
           </li>
           

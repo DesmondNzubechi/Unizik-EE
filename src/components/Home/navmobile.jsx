@@ -135,9 +135,9 @@ const abooutUs = () => {
                            {alumniDisplay && <ul className="absolute z-[1000] capitalize rounded shadow-2xl  font-poppins   p-2 text-textWhite bg-slate-50 flex flex-col gap-2">
                               <li><Link onClick={() => hidenavF()} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
                             
-                              <li><Link onClick={() => hidenavF()}   className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
+                              <li><Link onClick={() => hidenavF()} to='/Alumni/First-Class-Graduates'  className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
                             
-                              <li><Link onClick={() => hidenavF()}  className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
+                              <li><Link onClick={() => hidenavF()} to='/Alumni/Best-Graduating-students' className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
                         </li>
            {/* to='/Alumni/first-class-graduates' to='/Alumni/Best-graduating-students' <li className=" hover:bg-slate-50 hover:text-slate-900  text-slate-50 px-[5px] py-[5px] text-[17px] rounded capitaliz font-[700] "><Link to='/Book'>Learning Material</Link></li>
