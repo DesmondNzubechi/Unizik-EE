@@ -16,7 +16,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 
 export const UserDashboard = () => {
-    const { userDisplay, setUserDisplay,  mainUser } = useContext(fullNewsContext); 
+    const { userDisplay, setUserDisplay,  mainUser, logOut, setLogOut} = useContext(fullNewsContext); 
     const [showText, setShowText] = useState(false);
     const [showTopBar, setTopBar] = useState(false);
     const showTopFx = () => {
@@ -38,11 +38,25 @@ export const UserDashboard = () => {
                 </li>
                 <h1 className="font-semibold uppercase">My Dashboard</h1>
                 <div className="relative">
-                 {!mainUser[0].profilePic? <FaUserCircle onClick={showTopFx} className="text-[40px]"/> :  <img src={mainUser[0]?.profilePic} onClick={showTopFx} className="w-[50px] hover:shadow-2xl rounded-full" alt="" />}
+                 {!mainUser[0]?.profilePic? <FaUserCircle onClick={showTopFx} className="text-[40px]"/> :  <img src={mainUser[0]?.profilePic} onClick={showTopFx} className="w-[50px] hover:shadow-2xl rounded-full" alt="" />}
                    {showTopBar && <div className="flex flex-col absolute px-[50px] py-[20px] right-[-15px]    gap-5 bg-white rounded shadow-2xl">
-                        <Link className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineHome className="text-[20px] text-slate-500"/>Home</Link>
-                        <Link className="font-semibold hover:text-green-500 flex items-center gap-2"><CgProfile className="text-[20px] text-slate-500"/>Profile</Link>
-                        <Link className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineLogout className="text-[20px] text-slate-500"/>Logout</Link>
+                        <Link to='/' className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineHome className="text-[20px] text-slate-500"/>Home</Link>
+                        <Link  onClick={() => {
+                      setTopBar(false);
+                    setUserDisplay({
+                        courseOutline: false,
+                        viewDashboard: false,
+                        viewProfile: true,
+                        learningResources: false,
+                        cgpaCalc: false,
+                        courseOutlineColor: 'text-slate-700',
+                        viewDashboardColor: 'text-slate-700',
+                        viewProfileColor: 'text-green-500',
+                        learningResourcesColor: 'text-slate-700',
+                        cgpaCalcColor: 'text-slate-700',
+                    })
+                }} className="font-semibold hover:text-green-500 flex items-center gap-2"><CgProfile className="text-[20px] text-slate-500"/>Profile</Link>
+                        <Link  onClick={() => setLogOut(true)} className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineLogout className="text-[20px] text-slate-500"/>Logout</Link>
                     </div>}
                 </div>
             </ul>

@@ -1,6 +1,6 @@
 import React from "react";
-import {BsNewspaper, BsFillCalendarEventFill, BsCalculator} from 'react-icons/bs';
-import {BsFillChatQuoteFill, BsBookHalf} from 'react-icons/bs';
+import { BsCalculator} from 'react-icons/bs';
+import {BsBookHalf} from 'react-icons/bs';
 import { SiBookstack } from 'react-icons/si';
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
@@ -13,15 +13,14 @@ export const UserDashboardView = () => {
         weekday: 'long', // 'short' for abbreviated name, 'long' for full name
       };
       const fullDate = currentDate.toLocaleString(undefined, options);
-    const { userDisplay, setUserDisplay } = useContext(fullNewsContext);
+    const { userDisplay, setUserDisplay, mainUser } = useContext(fullNewsContext);
    return ( 
         <div>
               <div className="pt-[120px]">
                 <div className="flex flex-col gap-2 text-center items-center">
                    <p className="text-slate-700 text-[15px] md:text-[20px]">{fullDate}</p>
-                <h1 className="font-semibold text-slate-900 text-[20px] md:text-[30px] ">Hello, Desmond Nzubechukwu</h1>
+                   <h1 className="font-semibold text-slate-900 text-[20px] md:text-[30px] ">Hello, {mainUser[0]?.firstName} {mainUser[0]?.lastName}</h1>
                 </div>
-
                 <div>
                 </div>
             </div>
