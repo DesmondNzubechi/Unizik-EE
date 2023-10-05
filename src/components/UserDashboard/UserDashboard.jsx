@@ -8,6 +8,8 @@ import logo from '../../assets/images/logo.jpg';
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 import { UserDashboardView } from "./UserDashboardView";
 import { UserLearningResources } from "./UserLearningResources";
+import { UserCourseOutlines } from "./UserCourseOutline";
+import CGPACalculator from "../cgpa-calc/CgpaCalc";
 export const UserDashboard = () => {
     const sideLink = [
         {
@@ -68,7 +70,9 @@ export const UserDashboard = () => {
                 }
             </ul>
             <UserDashboardView />
-            <UserLearningResources/>
+            <UserLearningResources />
+            <UserCourseOutlines />
+            <CGPACalculator/>
         </div>
     </div>
 }
