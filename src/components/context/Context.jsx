@@ -24,6 +24,18 @@ export const NewsContext = (props) => {
   viewAllNewsColor: 'text-slate-700',
   viewEditNewsColor: 'text-slate-700',
   });
+  const [UserDisplay, setUserDisplay] = useState(JSON.parse(localStorage.getItem('userDisplay')) || {
+    courseOutline: false,
+    viewDashboard: true,
+    viewProfile: false,
+    learningResources: false,
+    cgpaCalc: false,
+    courseOutlineColor: 'text-slate-700',
+    viewDashboardColor: 'text-green-500',
+    viewProfileColor: 'text-slate-700',
+    learningResourcesColor: 'text-slate-700',
+    cgpaCalcColor: 'text-slate-700',
+  });
   const [userList, setUserList] = useState([]);
   const [allPdfs, setAllPdfs] = useState(JSON.parse(localStorage.getItem('allPdfs')) || []);
   const [logOut, setLogOut] = useState(false);
@@ -34,6 +46,7 @@ export const NewsContext = (props) => {
     localStorage.setItem('allPdfs', JSON.stringify(allPdfs));
     localStorage.setItem('editNews', JSON.stringify(editNews))  
     localStorage.setItem('displaying', JSON.stringify(displaying))
+    localStorage.setItem('userDisplay', JSON.stringify(UserDisplay))
      localStorage.setItem('allNews', JSON.stringify(allNews));
       localStorage.setItem('allEvents', JSON.stringify(allEvents));
     }, [displaying]);

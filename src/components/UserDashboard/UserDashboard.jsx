@@ -10,6 +10,7 @@ import { UserDashboardView } from "./UserDashboardView";
 import { UserLearningResources } from "./UserLearningResources";
 import { UserCourseOutlines } from "./UserCourseOutline";
 import CGPACalculator from "../cgpa-calc/CgpaCalc";
+import { UserProfile } from "../User profile/UserProfile";
 export const UserDashboard = () => {
     const sideLink = [
         {
@@ -42,7 +43,7 @@ export const UserDashboard = () => {
             setTopBar(true)
         }
     }
-    return <div className="min-h-[100vh]  pt-[170px] pl-[50px] absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
+    return <div className="min-h-[100vh]  pt-[170px] px-[100px] absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
         <div className="">
             <ul className="flex items-center px-[15px] bg-slate-50 py-[20px] justify-between fixed top-0 left-0 right-0 shadow-xl z-[200]">
                 <li className="flex items-center gap-2">
@@ -72,7 +73,8 @@ export const UserDashboard = () => {
             <UserDashboardView />
             <UserLearningResources />
             <UserCourseOutlines />
-            <CGPACalculator/>
+            <CGPACalculator />
+            <UserProfile/>
         </div>
     </div>
 }
