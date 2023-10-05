@@ -41,7 +41,7 @@ export const UserDashboard = () => {
                     </li>
                     <h1 className="font-semibold uppercase">My Dashboard</h1>
                     <div className="relative">
-                        {!mainUser[0]?.profilePic ? <FaUserCircle onClick={showTopFx} className="text-[40px]" /> : <img src={mainUser[0]?.profilePic} onClick={showTopFx} className="w-[50px] hover:shadow-2xl rounded-full" alt="" />}
+                        {!mainUser[0]?.profilePic ? <FaUserCircle onClick={showTopFx} className="text-[40px]" /> : <img src={mainUser[0]?.profilePic} onClick={showTopFx} className="w-[50px] h-[50px] hover:shadow-2xl rounded-full" alt="" />}
                         {showTopBar && <div className="flex flex-col absolute px-[50px] py-[20px] right-[-15px]    gap-5 bg-white rounded shadow-2xl">
                             <Link to='/' className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineHome className="text-[20px] text-slate-500" />Home</Link>
                             <Link onClick={() => {
