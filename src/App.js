@@ -26,7 +26,6 @@ import { DownloadPdfs } from './components/PDFs/CoursesPdfs';
 import { ScrollToTop } from './components/ScrollTop/ScrollTop';
 import { Footer } from './components/Footer/Footer';
 import { Admindashboard } from './components/Dashboard/Admin';
-import { UserProfile } from './components/User profile/UserProfile';
 import { ToastContainer } from 'react-toastify';
 import { LogOut } from './components/Logout/logout';
 import { DeptExcos } from './components/DeptExcos/DeptExco';
@@ -67,7 +66,6 @@ function App() {
       <Route path='/Academics/Learning-Resources/:Session/:Course' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
      <Route path='/admin-dashboard' element={<Admindashboard/>} />
-     <Route path='/profile' element={<UserProfile/>} />
      <Route path='/students leaders' element={<ExcosProfile/>} />
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
      <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
