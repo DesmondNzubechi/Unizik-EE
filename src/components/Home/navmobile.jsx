@@ -103,7 +103,7 @@ const abooutUs = () => {
                             
                               <li><Link onClick={() => hidenavF()} to='/calculate-cgpa'  className="text-[15px] text-slate-900 hover:text-slate-700  ">CGPA calculator</Link></li>
                             </ul>}
-          </li>
+          </li> 
           <li className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] ">
                             <Link onClick={showstudents}  className=" text-[17px] hover:text-textBlack font-[700] relative text-slate-50 flex  items-center " >
                           Students { !studentDisplay? <IoIosArrowDropdownCircle/> : <IoIosArrowDropupCircle/>}
@@ -158,12 +158,12 @@ const abooutUs = () => {
             
                     {signedIn && mainUser[0]?.stats == 'user' &&
         <button className=" p-[10px] border w-fit shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
-            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/my-dashboard'>My Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
           </button>}
           {signedIn && mainUser[0]?.stats !== 'user' &&
         <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz w-fit font-semibold ">
-            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/dashboard'>Dashboard<FaUserCircle className="text-[20px]"/></Link>
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/admin-dashboard'>Admin Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
             </button>}
           </div>

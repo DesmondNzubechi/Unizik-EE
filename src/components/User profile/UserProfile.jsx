@@ -115,7 +115,6 @@ export const UserProfile = () => {
     }
 
   }
-  console.log('main man', mainUser[0])
   if (!signedIn) {
     return <Login />
   } else { 

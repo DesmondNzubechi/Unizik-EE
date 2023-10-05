@@ -7,7 +7,7 @@ import { deleteObject, ref } from "firebase/storage";
 import { RotateLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { ImDownload } from 'react-icons/im';
 
 export const UserLearningResources = () => {
   const [spinC, setSpinC] = useState(false);
@@ -191,7 +191,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a > <AiFillDelete className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+                <a href={pdf.link} download={pdf.link}> <ImDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
               </div>
              }
             )
@@ -205,7 +205,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a> <AiFillDelete className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
+                <a href={pdf.link} download={pdf.link}> <ImDownload className="text-[35px] cursor-pointer hover:text-green-500  text-slate-900" /></a>
               </div>
              }
             )
@@ -218,7 +218,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                   <h1 className="md:text-[17x] text-[14px] font-bold  ">{pdf.topic}</h1>
                   <p className="md:text-[15px] text-[12px]">{pdf.size}</p>
                 </div>
-                <a > <AiFillDelete className="text-[35px] cursor-pointer hover:text-red-700  text-red-500" /></a>
+                <a href={pdf.link} download={pdf.link}> <ImDownload className="text-[35px] cursor-pointer hover:text-red-700  text-red-500" /></a>
               </div>
              }
             )

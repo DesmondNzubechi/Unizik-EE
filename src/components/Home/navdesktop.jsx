@@ -114,7 +114,7 @@ export const Navdesktop = () => {
                               <li><Link onClick={showAlumni} to='/Alumni/Ex-students-leaders' className="text-[15px] text-slate-900 hover:text-slate-700 ">Ex-student leaders</Link></li>
                             
                               <li><Link to='/Alumni/First-Class-Graduates' onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">First class graduates</Link></li>
-                            
+                             
                               <li><Link to='/Alumni/Best-Graduating-students' onClick={showAlumni}   className="text-[15px] text-slate-900 hover:text-slate-700  ">Best Graduating Students</Link></li>
                             </ul>}
           </li>
@@ -138,12 +138,12 @@ export const Navdesktop = () => {
         </div>}
        {signedIn && mainUser[0]?.stats == 'user' &&
         <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
-            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/profile'>My Profile<FaUserCircle className="text-[20px]"/></Link>
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/my-dashboard'>My Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
           </button>}
           {signedIn && mainUser[0]?.stats !== 'user' &&
         <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
-            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/dashboard'>Dashboard<FaUserCircle className="text-[20px]"/></Link>
+            <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/admin-dashboard'>Admin Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
             </button>}
        

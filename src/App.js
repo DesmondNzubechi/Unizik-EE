@@ -66,7 +66,7 @@ function App() {
       <Route path='/Academics/Learning-Resources/:Session' element={<LevelCourses/>} />
       <Route path='/Academics/Learning-Resources/:Session/:Course' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
-     <Route path='/dashboard' element={<Admindashboard/>} />
+     <Route path='/admin-dashboard' element={<Admindashboard/>} />
      <Route path='/profile' element={<UserProfile/>} />
      <Route path='/students leaders' element={<ExcosProfile/>} />
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
@@ -77,7 +77,7 @@ function App() {
      <Route path='/Academics/Course-outlines/:Session/:Course' element={<FullcourseOutline/>} />
      <Route path='/Alumni/First-Class-Graduates' element={<FirstClassGraduates/>} />
      <Route path='/Alumni/Best-Graduating-students' element={<BestGraduates/>} />
-     <Route path='/user-dashboard' element={<UserDashboard/>} />
+     <Route path='/my-dashboard' element={<UserDashboard/>} />
      <Route path='/not-found' element={<NotFound/>} />
      <Route path="*" element={ <NotFound />} />
     </Routes>
