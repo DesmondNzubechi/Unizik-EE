@@ -1,17 +1,22 @@
 import React from "react";
 import {BsNewspaper, BsFillCalendarEventFill, BsCalculator} from 'react-icons/bs';
-import {MdPictureAsPdf} from 'react-icons/md';
-import {FaUsers} from 'react-icons/fa';
-import { Link } from "react-router-dom";
 import {BsFillChatQuoteFill, BsBookHalf} from 'react-icons/bs';
 import { SiBookstack } from 'react-icons/si';
 export const UserDashboardView = () => {
-    
+    const currentDate = new Date();
+    const options = {
+        year: 'numeric',
+        month: 'long', // 'short' for abbreviated name, 'long' for full name
+        day: 'numeric',
+        weekday: 'long', // 'short' for abbreviated name, 'long' for full name
+      };
+      const fullDate = currentDate.toLocaleString(undefined, options);
+
    return ( 
         <div>
               <div className="pt-[120px]">
                 <div className="flex flex-col gap-2 text-center items-center">
-                    <p className="text-slate-700 text-[15px] md:text-[20px]">Thursday, October 5, 2023.</p>
+                   <p className="text-slate-700 text-[15px] md:text-[20px]">{fullDate}</p>
                 <h1 className="font-semibold text-slate-900 text-[20px] md:text-[30px] ">Hello, Desmond Nzubechukwu</h1>
                 </div>
 
