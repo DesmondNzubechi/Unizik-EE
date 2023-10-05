@@ -24,7 +24,7 @@ export const NewsContext = (props) => {
   viewAllNewsColor: 'text-slate-700',
   viewEditNewsColor: 'text-slate-700',
   });
-  const [UserDisplay, setUserDisplay] = useState(JSON.parse(localStorage.getItem('userDisplay')) || {
+  const [userDisplay, setUserDisplay] = useState(JSON.parse(localStorage.getItem('userDisplay')) || {
     courseOutline: false,
     viewDashboard: true,
     viewProfile: false,
@@ -46,10 +46,10 @@ export const NewsContext = (props) => {
     localStorage.setItem('allPdfs', JSON.stringify(allPdfs));
     localStorage.setItem('editNews', JSON.stringify(editNews))  
     localStorage.setItem('displaying', JSON.stringify(displaying))
-    localStorage.setItem('userDisplay', JSON.stringify(UserDisplay))
+    localStorage.setItem('userDisplay', JSON.stringify(userDisplay))
      localStorage.setItem('allNews', JSON.stringify(allNews));
       localStorage.setItem('allEvents', JSON.stringify(allEvents));
-    }, [displaying]);
+    }, [displaying, userDisplay]);
   
 
   //FETCHING USERS
@@ -130,7 +130,7 @@ export const NewsContext = (props) => {
     }
   }
   
-    return <fullNewsContext.Provider value={{ allPdfs, setAllPdfs, userList, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn}}>
+    return <fullNewsContext.Provider value={{ allPdfs, setUserDisplay, setAllPdfs, userList, userDisplay, setUserList, logOut, setLogOut, displaying, editNews, setEditNews, setDisplaying, allNews, allEvents, setAllEvents, setAllNews, setMainUser, signOutUser, mainUser, signedIn}}>
          {props.children}
     </fullNewsContext.Provider>
 }

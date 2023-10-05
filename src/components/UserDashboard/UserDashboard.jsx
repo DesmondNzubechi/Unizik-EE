@@ -11,29 +11,11 @@ import { UserLearningResources } from "./UserLearningResources";
 import { UserCourseOutlines } from "./UserCourseOutline";
 import CGPACalculator from "../cgpa-calc/CgpaCalc";
 import { UserProfile } from "../User profile/UserProfile";
+import { fullNewsContext } from "../context/Context";
+import { useContext } from "react";
+
 export const UserDashboard = () => {
-    const sideLink = [
-        {
-            icon: <AiFillDashboard/>,
-            text: 'Dashboard',
-        },
-        {
-            icon: <BsBookHalf />,
-            text: 'Learning Resources',
-        },
-        {
-            icon: <BsFillCalculatorFill />,
-            text: 'CGPA Calculator',
-        },
-        {
-            icon: <GrResources/>,
-            text: 'Course Outlines',
-        },
-        {
-            icon: <CgProfile />,
-            text: 'Profile',
-        },
-    ]
+    const { userDisplay, setUserDisplay } = useContext(fullNewsContext); 
     const [showText, setShowText] = useState(false);
     const [showTopBar, setTopBar] = useState(false);
     const showTopFx = () => {
@@ -43,7 +25,7 @@ export const UserDashboard = () => {
             setTopBar(true)
         }
     }
-    return <div className="min-h-[100vh]  pt-[170px] px-[100px] absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
+    return <div className="min-h-[100vh] overflow-x-hidden  pt-[50px] px-[100px] absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
         <div className="">
             <ul className="flex items-center px-[15px] bg-slate-50 py-[20px] justify-between fixed top-0 left-0 right-0 shadow-xl z-[200]">
                 <li className="flex items-center gap-2">
@@ -63,18 +45,85 @@ export const UserDashboard = () => {
                     </div>}
                 </div>
             </ul>
-            <ul className="fixed left-0 top-0 shadow-2xl bottom-0 flex flex-col bg-slate-50 px-[10px] gap-y-[50px] justify-center">
-            {
-                sideLink.map(text => {
-                    return <li><NavLink className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] ">{text.icon}</span> {showText && <span className={` capitalize `}>{text.text}</span>}</NavLink></li>
-                })
-                }
+            <ul className="fixed left-0 top-0 shadow-2xl bottom-0 flex flex-col bg-slate-50 px-[10px] gap-y-[40px] pt-[120px]">
+                <li><NavLink onClick={() => {
+                    setUserDisplay({
+                        courseOutline: false,
+                        viewDashboard: true,
+                        viewProfile: false,
+                        learningResources: false,
+                        cgpaCalc: false,
+                        courseOutlineColor: 'text-slate-700',
+                        viewDashboardColor: 'text-green-500',
+                        viewProfileColor: 'text-slate-700',
+                        learningResourcesColor: 'text-slate-700',
+                        cgpaCalcColor: 'text-slate-700',
+                 })
+                }} className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] "><AiFillDashboard className={`${userDisplay.viewDashboardColor}`} /></span> {showText && <span className={` capitalize  `}>Dashboard</span>}</NavLink></li>
+                <li><NavLink onClick={() => {
+                    setUserDisplay({
+                        courseOutline: false,
+                        viewDashboard: false,
+                        viewProfile: false,
+                        learningResources: true,
+                        cgpaCalc: false,
+                        courseOutlineColor: 'text-slate-700',
+                        viewDashboardColor: 'text-slate-700',
+                        viewProfileColor: 'text-slate-700',
+                        learningResourcesColor: 'text-green-500',
+                        cgpaCalcColor: 'text-slate-700',
+                 })
+                }} className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] "><BsBookHalf className={`${userDisplay.learningResourcesColor}`}/></span> {showText && <span className={` capitalize `}>Learning Resources</span>}</NavLink></li>
+                <li><NavLink
+                onClick={() => {
+                    setUserDisplay({
+                        courseOutline: false,
+                        viewDashboard: false,
+                        viewProfile: false,
+                        learningResources: false,
+                        cgpaCalc: true,
+                        courseOutlineColor: 'text-slate-700',
+                        viewDashboardColor: 'text-slate-700',
+                        viewProfileColor: 'text-slate-700',
+                        learningResourcesColor: 'text-slate-700',
+                        cgpaCalcColor: 'text-green-500',
+                 })
+                }}    className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] "><BsFillCalculatorFill className={`${userDisplay.cgpaCalcColorColor}`} /></span> {showText && <span className={` capitalize `}>CGPA Calculator</span>}</NavLink></li>
+                <li><NavLink onClick={() => {
+                    setUserDisplay({
+                        courseOutline: true,
+                        viewDashboard: false,
+                        viewProfile: false,
+                        learningResources: false,
+                        cgpaCalc: false,
+                        courseOutlineColor: 'text-green-500',
+                        viewDashboardColor: 'text-slate-700',
+                        viewProfileColor: 'text-slate-700',
+                        learningResourcesColor: 'text-slate-700',
+                        cgpaCalcColor: 'text-slate-700',
+                 })
+                }} className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] "><GrResources className={`${userDisplay.courseOutlineColorColor}`}/></span> {showText && <span className={` capitalize `}>Course Outlines</span>}</NavLink></li>
+                <li><NavLink onClick={() => {
+                    setUserDisplay({
+                        courseOutline: false,
+                        viewDashboard: false,
+                        viewProfile: true,
+                        learningResources: false,
+                        cgpaCalc: false,
+                        courseOutlineColor: 'text-slate-700',
+                        viewDashboardColor: 'text-slate-700',
+                        viewProfileColor: 'text-green-500',
+                        learningResourcesColor: 'text-slate-700',
+                        cgpaCalcColor: 'text-slate-700',
+                 })
+                }} className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] "><CgProfile className={`${userDisplay.viewProfileColorColor}`}/></span> {showText && <span className={` capitalize `}>Profile</span>}</NavLink></li>
+                
             </ul>
-            <UserDashboardView />
-            <UserLearningResources />
-            <UserCourseOutlines />
-            <CGPACalculator />
-            <UserProfile/>
+          {userDisplay.viewDashboard && <UserDashboardView />}
+          {userDisplay.learningResources &&  <UserLearningResources />}
+          {userDisplay.courseOutline &&  <UserCourseOutlines />}
+          {userDisplay.cgpaCalc &&  <CGPACalculator />}
+            {userDisplay.viewProfile && <UserProfile/>}
         </div>
     </div>
 }
