@@ -59,10 +59,10 @@ export const UserDashboard = () => {
                     </div>}
                 </div>
             </ul>
-            <ul className="fixed left-0 top-0 shadow-2xl bottom-0 flex flex-col px-[15px] gap-y-[50px] justify-center">
+            <ul className="fixed left-0 top-0 shadow-2xl bottom-0 flex flex-col bg-slate-50 px-[10px] gap-y-[50px] justify-center">
             {
                 sideLink.map(text => {
-                    return <li><NavLink className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[20px] ">{text.icon}</span> {showText && <span className={` capitalize `}>{text.text}</span>}</NavLink></li>
+                    return <li><NavLink className='flex hover:text-green-700 items-center text-slate-700 gap-2'><span className="text-[15px] md:text-[25px] ">{text.icon}</span> {showText && <span className={` capitalize `}>{text.text}</span>}</NavLink></li>
                 })
                 }
             </ul>
