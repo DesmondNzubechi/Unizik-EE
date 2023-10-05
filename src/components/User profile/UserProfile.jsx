@@ -122,8 +122,8 @@ export const UserProfile = () => {
     return (
       !signedIn ? navig('/login') : signedIn &&
         <>
-          <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center bg-white">
-            <div className="bg-gradient-to-b  from-white to-white p-5 rounded ">
+          <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
+            <div className=" p-5 rounded ">
               <div className="flex flex-col items-start md:items-start md:flex-row gap-5 md:gap-[150px]">
                 <div className="flex flex-col items-center ">
                   <img className="w-[100px] shadow-2xl h-[100px] rounded-full" src={!mainUser[0]?.profilePic ? userImg : mainUser[0].profilePic} alt="" />

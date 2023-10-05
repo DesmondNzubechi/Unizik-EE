@@ -16,7 +16,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 
 export const UserDashboard = () => {
-    const { userDisplay, setUserDisplay } = useContext(fullNewsContext); 
+    const { userDisplay, setUserDisplay,  mainUser } = useContext(fullNewsContext); 
     const [showText, setShowText] = useState(false);
     const [showTopBar, setTopBar] = useState(false);
     const showTopFx = () => {
@@ -26,7 +26,7 @@ export const UserDashboard = () => {
             setTopBar(true)
         }
     }
-    return <div className="min-h-[100vh] overflow-x-hidden  pt-[50px] px-[50px] absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
+    return <div className="min-h-[100vh] overflow-x-hidden  pt-[50px]  absolute  w-full bo z-[200] flex justify-center bg-slate-50 px-[30px]">
         <div className="">
             <ul className="flex items-center px-[15px] bg-slate-50 py-[20px] justify-between fixed top-0 left-0 right-0 shadow-xl z-[200]">
                 <li className="flex items-center gap-2">
@@ -38,7 +38,7 @@ export const UserDashboard = () => {
                 </li>
                 <h1 className="font-semibold uppercase">My Dashboard</h1>
                 <div className="relative">
-                    <img src={logo} onClick={showTopFx} className="w-[50px] hover:shadow-2xl rounded-full" alt="" />
+                 {!mainUser[0].profilePic? <FaUserCircle onClick={showTopFx} className="text-[40px]"/> :  <img src={mainUser[0]?.profilePic} onClick={showTopFx} className="w-[50px] hover:shadow-2xl rounded-full" alt="" />}
                    {showTopBar && <div className="flex flex-col absolute px-[50px] py-[20px] right-[-15px]    gap-5 bg-white rounded shadow-2xl">
                         <Link className="font-semibold hover:text-green-500 flex items-center gap-2"><AiOutlineHome className="text-[20px] text-slate-500"/>Home</Link>
                         <Link className="font-semibold hover:text-green-500 flex items-center gap-2"><CgProfile className="text-[20px] text-slate-500"/>Profile</Link>
