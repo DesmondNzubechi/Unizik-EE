@@ -7,6 +7,7 @@ import { NavLink, Link } from "react-router-dom";
 import logo from '../../assets/images/logo.jpg';
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from 'react-icons/io';
 import { UserDashboardView } from "./UserDashboardView";
+import { UserLearningResources } from "./UserLearningResources";
 export const UserDashboard = () => {
     const sideLink = [
         {
@@ -67,7 +68,7 @@ export const UserDashboard = () => {
                 }
             </ul>
             <UserDashboardView />
-            
+            <UserLearningResources/>
         </div>
     </div>
 }

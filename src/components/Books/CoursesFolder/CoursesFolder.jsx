@@ -16,16 +16,6 @@ export const LevelCourses = () => {
         return course.Session[1] === 2
     })
     const [popMsg, setPopMsg] = useState(false);
-    // useEffect(() => { 
-    //     const messageAlert = setTimeout(() => {
-    //         setPopMsg(false);
-    //     }, 300);
-          
-    //       return () => {
-    //           clearTimeout(messageAlert);
-    //       }
-    //     }, []);
- 
     return(
         <div className="pt-[150px] px-[30px] pb-[50px] ">
              {  popMsg &&
