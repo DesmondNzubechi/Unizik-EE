@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { fullNewsContext } from "../context/Context";
 //import { allPdfs } from "./PDFs";
 import { HiDocumentDownload } from 'react-icons/hi';
-import { useParams } from "react-router-dom";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { Login } from "../login/login";
 export const DownloadPdfs = () => {
   const { Course } = useParams(); 
-  const { allPdfs} = useContext(fullNewsContext);
+  const navig = useNavigate();
+  const { allPdfs, signedIn} = useContext(fullNewsContext);
   const filterPdfs = allPdfs.filter(course => {
     return course.course.replace(' ', '') === Course
   })
@@ -33,7 +34,10 @@ export const DownloadPdfs = () => {
     pastQuestionBg: 'bg-slate-100',
     pastQuestion: false,
   })
-    return(
+  if (!signedIn) {
+return <Login/> 
+  }
+  return (
         <div className="pt-[150px] px-[30px]  pb-[50px] ">
         <div className="text-center my-[20px] ">
               <h1 className="font-bold uppercase text-slate-900 text-[20px] md:text-[30px] "> {Course}  e-book Download</h1>
@@ -81,10 +85,6 @@ export const DownloadPdfs = () => {
             })
           }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.pastQuestionBg}  ${bookCat.pastQuestionText} capitalize font-semibold`}>Past Question</button>
         </div>
-
-       
-      
-        
        {   filterHandouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  handouts is not available now. </h1>  }
        {   filterTextbook.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  textbook is not available now. </h1>  }
         {  filterPastQ.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  past exam questions is not available now. </h1>}  

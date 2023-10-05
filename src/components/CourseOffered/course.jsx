@@ -1,10 +1,18 @@
 import React from "react";
 import { CoursesOffered } from "./CourseOffered";
 import { useParams } from "react-router-dom";
-
+import { fullNewsContext } from "../context/Context";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { Login } from "../login/login";
 export const FullcourseOutline = () => {
+    const navig = useNavigate();
+    const { signedIn } = useContext(fullNewsContext);
     const { Course } = useParams();
     const fullOutline = CoursesOffered.find(course => course.Course === Course);
+    if (!signedIn) {
+        return <Login/>
+    }
     return (
         <div className="pt-[120px] pb-[50px] flex  justify-center  px-[30px] ">
             <div>
@@ -22,7 +30,7 @@ export const FullcourseOutline = () => {
                             <hr />
                         </div>
                     })}
-   </div>
+        </div>
         </div>
         </div>
         

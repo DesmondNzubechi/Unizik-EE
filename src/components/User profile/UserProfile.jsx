@@ -7,6 +7,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { RotateLoader } from "react-spinners";
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, db, storage } from "../config/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -16,7 +17,7 @@ const levels = [
    100, 200, 300, 400, 500
 ];
 export const UserProfile = () => {
-  
+  const [spinC, setSpinC] = useState(false);
     const [form, setForm] = useState({
         changePassword : 'top-[-2000px]', 
         editProfile : 'top-[-2000px]',
@@ -71,7 +72,7 @@ export const UserProfile = () => {
       hideEditProfile();
       notification();
     } catch (error) {
-      console.log(error)
+     
     }
   };
   const resetPassword = async () => {
@@ -89,7 +90,14 @@ export const UserProfile = () => {
     }
   }
   const updateProfilePic = async (uid) => {
+    if (profileImg.length === 0) {
+      const noti = () => toast('Please select image');
+      noti();
+      return;
+    }
     const picFolderRef = ref(storage, 'profilePictures');
+    setSpinC(true);
+
     try {
       const picRef = ref(picFolderRef, profileImg.name);
       const uploadImg = await uploadBytes(picRef, profileImg);
@@ -109,9 +117,14 @@ export const UserProfile = () => {
       const oldImgRef = ref(storage, `profilePictures/${oldImgName.replace('profilePictures%2F', '')}`);
       await deleteObject(oldImgRef);
     }
-      alert('successful')
+    setSpinC(false);
+    const noti = () => toast('Profile Picture successfully updated');
+      noti();
+      setProfileImg([0]);
     } catch (error) {
-      alert(error)
+      setSpinC(false);
+      const noti = () => toast('An error occured please try again');
+      noti();
     }
 
   }
@@ -121,6 +134,10 @@ export const UserProfile = () => {
     return (
       !signedIn ? navig('/login') : signedIn &&
         <>
+           {spinC && <div className="fixed bg-tpr w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><RotateLoader className="relative z-[600]" color="#36d7b7"
+           size={30}
+           width={10}
+        /></div>}
           <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
             <div className=" p-5 rounded ">
               <div className="flex flex-col items-start md:items-start md:flex-row gap-5 md:gap-[150px]">
