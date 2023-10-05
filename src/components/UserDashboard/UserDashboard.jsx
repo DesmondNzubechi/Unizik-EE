@@ -132,7 +132,7 @@ export const UserDashboard = () => {
                             viewDashboard: false,
                             viewProfile: true,
                             learningResources: false,
-                            cgpaCalc: false,
+                            cgpaCalc: false, 
                             courseOutlineColor: 'text-slate-700',
                             viewDashboardColor: 'text-slate-700',
                             viewProfileColor: 'text-green-500',

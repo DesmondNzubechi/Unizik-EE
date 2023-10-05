@@ -157,12 +157,12 @@ const abooutUs = () => {
             </div>}
             
                     {signedIn && mainUser[0]?.stats == 'user' &&
-        <button className=" p-[10px] border w-fit shadow-2xl text-center  text-[17px] rounded capitaliz font-semibold ">
+        <button className=" p-[10px] border w-fit shadow-2xl text-center  text-center text-[12px]  md:text-[17px] rounded capitaliz font-semibold ">
             <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/my-dashboard'>My Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
           </button>}
           {signedIn && mainUser[0]?.stats !== 'user' &&
-        <button className=" p-[10px] border shadow-2xl text-center  text-[17px] rounded capitaliz w-fit font-semibold ">
+        <button className=" p-[10px] border shadow-2xl text-center text-[12px]  md:text-[17px] rounded capitaliz w-fit font-semibold ">
             <Link  className="flex gap-2 text-slate-100 flex-row items-center" to='/admin-dashboard'>Admin Dashboard<FaUserCircle className="text-[20px]"/></Link>
         
             </button>}
