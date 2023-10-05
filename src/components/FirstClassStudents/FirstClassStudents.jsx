@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
 import Chukwuma from '../../assets/alumni/Chukwuma.jpg';
 import michael from '../../assets/alumni/michael.jpg';
 import { useState  } from "react";
+import Aos from "aos";
 
 const FirstClassStudents = [
     {
@@ -33,17 +34,20 @@ const FirstClassStudents = [
 
 export const FirstClassGraduates = () => {
     const [fullProfile, setFullProfile] = useState({});
-  const [fullProfileVisibility, setFullProfileVisibility] = useState('top-[-4000px]');
+    const [fullProfileVisibility, setFullProfileVisibility] = useState('top-[-4000px]');
+    useEffect(() => {
+        Aos.init({duration: 1000})
+    }, [])
     return (
         <>
         <div className="py-[100px] flex justify-center bg-slate-50 px-[20px]">
             <div>
                 <div>
-                    <h1 className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Past students with first class honour🏅</h1>
+                    <h1 data-aos='fade-up' aos-data-duration='2000' className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Past students with first class honour🏅</h1>
                     <div className="grid grid-cols-1 gap-[40px] md:grid-cols-2 lg:grid-cols-3">
                         {
                             FirstClassStudents.map(info => {
-                                return <div className="shadow-xl w-fit relative   rounded-[10px]">
+                                return <div data-aos='fade-up' aos-data-duration='2000' className="shadow-xl w-fit relative   rounded-[10px]">
                                     <div className="max-w-[350px] relative">
                                         <img src={info.picture} className="rounded-[10px]" alt="" />
                                         <button onClick={() => {

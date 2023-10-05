@@ -3,6 +3,7 @@ import { Link,} from "react-router-dom";
 import { FcOpenedFolder } from 'react-icons/fc';
 import { useParams } from "react-router-dom";
 import { CoursesOffered } from "../../CourseOffered/CourseOffered";
+import Aos from "aos";
 
 export const LevelCourses = () => {
     const { Session } = useParams();
@@ -16,6 +17,9 @@ export const LevelCourses = () => {
         return course.Session[1] === 2
     })
     const [popMsg, setPopMsg] = useState(false);
+    useEffect(() => {
+        Aos.init({duration: 1000})
+    }, [])
     return(
         <div className="pt-[150px] px-[30px] pb-[50px] ">
              {  popMsg &&
@@ -43,7 +47,7 @@ export const LevelCourses = () => {
  
        <div className="grid grid-cols-2  gap-2 md:grid-cols-3 my-[10px] ">
         {firstSemester.map(courses => {
-            return <Link  to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
+            return <Link data-aos='fade-up' aos-data-duration='2000'  to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
                   <FcOpenedFolder className="md:text-[50px] text-[30px]  font-semibold "/>
               <h1 className="md:text-[18px] text-[15px] font-semibold text-slate-100 ">{courses.Course}</h1>
         </Link >
@@ -54,7 +58,7 @@ export const LevelCourses = () => {
        <h1 className="uppercase text-slate-900 font-bold md:col-span-1 text-[15px] md:text-[25px] md:text-start ">Second semester</h1>
        <div className="grid grid-cols-2  gap-2 md:grid-cols-3 my-[10px] ">
        {secondSemester.map(courses => {
-            return <Link  to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
+            return <Link  data-aos='fade-up' aos-data-duration='2000' to={`/Academics/Learning-Resources/${courses.Session[0]}/${courses.Course}`} className="flex flex-col  items-center shadow-2xl hover:bg-slate-900 min-h-[100px] justify-between bg-slate-700 rounded-[2px] px-[10px] py-[20px] ">
             <FcOpenedFolder className="md:text-[50px] text-[30px] text-yellow-500 font-semibold "/>
       <h1 className="md:text-[18px] text-[15px] font-semibold text-slate-100 ">{courses.Course}</h1>
   </Link >

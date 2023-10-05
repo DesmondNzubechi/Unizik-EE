@@ -4,23 +4,26 @@ import { fullNewsContext } from "../context/Context";
 import AboutNewsImg from '../../assets/images/news2.png';
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
+import Aos from "aos";
 
 
 
 export const Events = () => {
   const {allEvents} = useContext(fullNewsContext);
-   
+  useEffect(() => {
+     Aos.init({duration: 1000})
+   }, [])
     return(
         <div className=" py-[100px] pt-[150px] flex  w gap-[20px] justify-around items-start px-[20px] ">
          <div className="flex flex-col justify-center gap-[20px]">
-           <div className="flex flex-col ">
+           <div data-aos='fade-up' aos-data-duration='2000' className="flex flex-col ">
            <h1 className="uppercase text-[30px] font-bold">Events </h1>
            <span className="w-[70px] h-[7px] bg-yellow-500 "></span>
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
           {allEvents?.map(event => {
-            return <div className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
+            return <div data-aos='fade-up' aos-data-duration='2000' className="flex fle md:flex-row items-end w-fit rounded shadow-2xl px-[20px] py-5  gap-4">
             <div>
             <img className="md:max-w-[180px] max-w-[120px]  rounded " src={event.newsImg} alt="" />
             </div>

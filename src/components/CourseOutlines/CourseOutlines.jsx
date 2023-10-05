@@ -1,10 +1,15 @@
 import cOutlineImg from '../../assets/images/cOutline5.avif'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
+import Aos from 'aos'
+import 'aos/dist/aos.css';
 export const CourseOutline = () => { 
+
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+    }, [])
     return(
-        <div className="px-[20px] flex pt-[50px]  justify-around   flex-col rounded-[30px] bg-white gap-[40px] md:flex-row md:flex-row ... items-center py-[50px] ">
+        <div data-aos='fade-up' aos-data-duration='2000' className="px-[20px] flex pt-[50px]   justify-around   flex-col rounded-[30px] bg-white gap-[40px] md:flex-row md:flex-row ... items-center py-[50px] ">
         <div className="flex flex-col max-w-[600px] gap-[20px] ">
             <h1 className="text-[20px]  w-fit  rounded-[15px] border-slate-900 text-slate-900 font-bold uppercase ">Course outlines</h1>
             <p className="md:text-[15px] text-[12px] font-[400] ">Our commitment to UNIZIK's electrical engineering students includes providing a carefully curated collection of course outlines. These materials are specifically designed to empower students with the information they need to make well-informed decisions about their academic journey.</p>

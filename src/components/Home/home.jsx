@@ -6,11 +6,18 @@ import { StartLearning } from "../Books/Book";
 import { AboutNews } from "../news/new";
 import { SchoolEvents } from "../Aims/Aims";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import Aos from "aos";
+
 import { CourseOutline } from "../CourseOutlines/CourseOutlines";
 export const Home = () => { 
+    useEffect(() => {
+        Aos.init({ duration: 1000 });
+    }, [])
+    
     return(  
         <>
-        <div className="px-[20px]">
+        <div data-aos='fade-up' aos-data-duration='2000' className="px-[20px]">
 <div className=" flex flex-col overflow-x-hidden  md:flex-row justify-center gap-5 items-center pt-[120px]  ">
     <div className="flex items-start flex-col gap-1 max-w-[600px] ">
     <h1 className="uppercase font-bold text-yellow-400 text-[20px] md:text-[43px] ">Electrical <span className="text-slate-900"> engineering </span></h1>

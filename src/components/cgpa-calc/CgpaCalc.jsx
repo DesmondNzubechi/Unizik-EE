@@ -5,6 +5,7 @@ import cgpaImg from '../../assets/images/cgpa.jpg';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Aos from 'aos';
 let indexd = 1;
 let totalGrad = 0;
   let totalUnit = 0;
@@ -111,18 +112,20 @@ const addCourse = () => {
   };
 }
 
+  useEffect(() => {
+    Aos.init();
+  })
 return(
   <div className='py-[120px] px-[30px]'>
     
-    <div className='flex flex-col mb-[30px] '>
+    <div data-aos='fade-up' aos-data-duration='2000' className='flex flex-col mb-[30px] '>
       <p className=' text-center font-myfont uppercase font-bold  text-[20px] md:text-[40px]'>cgpa calculator</p>
       <p className='text-center text-slate-500 font-semibold text-[12px] md:text-[15px] '>Our CGPA Calculator is here to empower you on your academic journey</p>
     </div>
-  <div className=' flex flex-row justify-center '>
+  <div data-aos='fade-up' aos-data-duration='2000' className=' flex flex-row justify-center '>
     <div className='rounded flex items-center flex-col gap-[30px]  bg-slate-200'>
    
-    <table className='  '>
-   
+    <table className=''>
       <thead className='bg-slate-900'>
        <tr className='flex flex-row items-end rounded-t border-yellow-500  shadow-2xl bg-slate-900 gap-2 md:gap-[20px] p-2 '>
         <th className='flex flex-col items-start ... '>
@@ -349,8 +352,11 @@ case 'D':
 
 
 export const CalculateGp = () => {
+  useEffect(() => {
+    Aos.init({duration: 1000})
+  }, [])
   return(
-    <div className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[40px] md:flex-row-reverse md:flex-row ... items-center py-[50px] ">
+    <div data-aos='fade-up' aos-data-duration='2000' className="px-[20px] flex pt-[50px] py-[20px] justify-around   flex-col rounded-[60px] bg-white gap-[40px] md:flex-row-reverse md:flex-row ... items-center py-[50px] ">
 <div className="flex flex-col max-w-[600px] gap-[20px] ">
     <h1 className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-semibold ">Calculate your <span className="text-[20px]  w-fit  rounded-[15px] text-slate-900 font-bold uppercase">cgpa</span> </h1>
     <p className="md:text-[15px] text-[12px] font-[400] ">CGPA Calculator: Track your academic progress and plan your journey at Electrical Engineering UNIZIK. Your CGPA is key, reflecting your academic performance and commitment to excellence.</p>

@@ -3,6 +3,8 @@ import { createContext } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 export const fullNewsContext = createContext();
 
 export const NewsContext = (props) => {
@@ -48,7 +50,9 @@ export const NewsContext = (props) => {
     localStorage.setItem('displaying', JSON.stringify(displaying))
     localStorage.setItem('userDisplay', JSON.stringify(userDisplay))
      localStorage.setItem('allNews', JSON.stringify(allNews));
-      localStorage.setItem('allEvents', JSON.stringify(allEvents));
+    localStorage.setItem('allEvents', JSON.stringify(allEvents));
+    
+    Aos.init({ duration: 1000 });
     }, [displaying, userDisplay]);
   
 

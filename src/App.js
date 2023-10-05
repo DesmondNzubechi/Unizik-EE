@@ -2,13 +2,11 @@ import './App.css';
 import { Route,  Routes } from 'react-router-dom';
 import { Home } from './components/Home/home';
 import { Navmobile } from './components/Home/navmobile';
-//import { About } from './components/About/About';
 import { Aim } from './components/our-aim/aim';
 import { News } from './components/news/new';
 import { Login } from './components/login/login';
 import { Sign } from './components/signup/signup';
 import { Navdesktop } from './components/Home/navdesktop';
-import { Contact } from './components/contact/contact';
 import { Courses } from './components/CourseOffered/CourseOutlines';
 import { Events } from './components/Events/Events';
 import { CourseReps } from './components/CourseReps/CourseReps';
@@ -53,7 +51,6 @@ function App() {
       <Route path='/mission' element={<Aim/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<Sign/>} />
-      <Route path='/contact' element={<Contact/>} />
       <Route path='/Academics/course-outlines' element={<Courses/>} />
       <Route path='/fullAim' element={<FullAim/>} />
       <Route path='/fullAbout' element={<FullAbout/>} />

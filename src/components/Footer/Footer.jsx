@@ -22,8 +22,7 @@ export const Footer = () => {
             <div className="flex flex-col gap-2">
             <Link to='/about' className="text-slate-300 md:text-[15px] text-[15px]   ">About Us</Link>
             <Link to='/admission requirement' className="text-slate-300 md:text-[15px] text-[15px]   ">Admission</Link>
-            <Link to='/contact' className="text-slate-300 md:text-[15px] text-[15px]   ">Contact</Link>
-            <Link to='/Learning-resources' className="text-slate-300 md:text-[15px] text-[15px]   ">Learning Resources</Link>
+            <Link to='/Academics/Learning-resources' className="text-slate-300 md:text-[15px] text-[15px]   ">Learning Resources</Link>
             <Link  to='/news' className="text-slate-300 md:text-[15px] text-[15px]   ">News</Link>
             </div>
             </div>

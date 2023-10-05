@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import  samPic from '../../assets/CRImages/Samuel1.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
 import nzubechukwuPic from '../../assets/CRImages/B2R1.jpg';
@@ -6,6 +6,7 @@ import daberePic from '../../assets/CRImages/Dabere1.jpg';
 import wisdomPic from  '../../assets/CRImages/wisdom.jpg'
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
+import Aos from "aos";
 
 const courseRepInfo = [
     {
@@ -46,15 +47,18 @@ const courseRepInfo = [
 ];
 
 export const CourseReps = () => {
+    useEffect(() => {
+        Aos.init({ duration: 1000 })
+    }, []);
     return (
         <div className="py-[100px] flex justify-center bg-slate-50 px-[20px]">
             <div>
                 <div>
-                    <h1 className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Meet our class reps</h1>
+                    <h1 data-aos='fade-up' aos-data-duration='2000' className="text-center uppercase text-[20px] md:text-[25px] font-bold my-[30px] ">Meet our class reps</h1>
                     <div className="grid grid-cols-1 gap-[40px] md:grid-cols-2 lg:grid-cols-3">
                         {
                             courseRepInfo.map(info => {
-                                return <div className="shadow-xl w-fit   rounded-[10px]">
+                                return <div data-aos='fade-up' aos-data-duration='2000' className="shadow-xl w-fit   rounded-[10px]">
                                     <div className="max-w-[350px]">
                                     <img src={info.picture} className="rounded-[10px]" alt="" />
                                     </div>
