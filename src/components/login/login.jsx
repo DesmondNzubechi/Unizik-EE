@@ -36,9 +36,9 @@ export const Login = () => {
         try {
             await signInWithEmailAndPassword(auth, userDetails.emailAddress, userDetails.password);
           if (mainUser[0].stats === 'user') {
-            navig('/profile')
+            navig('/my-dashboard')
           } else {
-            navig('/dashboard')
+            navig('/admin-dashboard')
             };
            
           setSpinnerJs(false);

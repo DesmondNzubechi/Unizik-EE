@@ -62,7 +62,7 @@ export const Sign = () => {
                 }
             )
             setSpinnerJs(false);
-            navig('/profile')
+            navig('/my-dashboard')
         } catch (error) {
             alert(error);
         }
