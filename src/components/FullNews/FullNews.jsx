@@ -23,6 +23,22 @@ export const FullNewsDetails = () => {
   const [commentInput, setCommentInput] = useState('');
   const postId = post.id;
 
+  const deleteComment = async (comment, postId, indexx) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
+    if (!confirmDelete) return;
+   const  commentStore = doc(db, 'News', postId);
+    const updatedComment = post.comments.filter((com, index) => index !== indexx)
+    try {
+      await updateDoc(commentStore, {
+        comments: [...updatedComment]
+      });
+      const notification = () => toast('Comment successfully deleted');
+      notification();
+    } catch (error) {
+      const notification = () => toast('An error occured');
+      notification();
+    }
+  }
   const addComment = async (postId) => {
     if (commentInput === '') {
       const notification = () => toast('Please input your comment below')
@@ -80,9 +96,10 @@ export const FullNewsDetails = () => {
               <div className="flex flex-col gap-5">
               {post?.comments?.length == 0 &&  <h1 className="my-[30px] text-center text-[20px] text-slate-700">No comment under this post</h1> }
                 {
-                post?.comments?.map((comment, index )=> {
+                post?.comments?.map((comment, indexx )=> {
                   return <div className="shadow p-2 rounded flex relative flex-col gap-2">
-  
+                
+ {mainUser[0]?.stats === 'admin' && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 top-2 text-red-500 text-[20px] hover:text-red-900"/>}
   <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>User</h1>
   <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment}</p>
                   </div>
