@@ -10,7 +10,7 @@ import { db } from "../config/firebase";
 import { toast } from "react-toastify";
 import { RotateLoader } from "react-spinners";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { MdDeleteForever } from 'react-icons/md';
 export const FullNewsDetails = () => {
   const [spinC, setSpinC] = useState(false); 
     const {  allNews, mainUser} = useContext(fullNewsContext);
@@ -81,7 +81,8 @@ export const FullNewsDetails = () => {
               {post?.comments?.length == 0 &&  <h1 className="my-[30px] text-center text-[20px] text-slate-700">No comment under this post</h1> }
                 {
                 post?.comments?.map((comment, index )=> {
-return    <div className="shadow p-2 rounded flex flex-col gap-2">
+                  return <div className="shadow p-2 rounded flex relative flex-col gap-2">
+  
   <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>User</h1>
   <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment}</p>
                   </div>
@@ -102,7 +103,7 @@ return    <div className="shadow p-2 rounded flex flex-col gap-2">
           <img className=" max-w-[100px]   rounded " src={news.newsImg} alt="" />
           </div> 
           <div className="flex flex-col  max-w-[400px] ">
-          <h1 className="font-bold text-[10px] md:max-w-[300px] capitalize ">{news.newsOverview}</h1>
+          <h1 className="font-bold text-[10px] md:max-w-[300px] capitalize ">{news.newsHeadline}</h1>
           <Link to={`/blog/${news.newsHeadline}`}  className="text-yellow-500 text-[13px] font-bold my-1">Read More...</Link>
           </div>
           </div>
