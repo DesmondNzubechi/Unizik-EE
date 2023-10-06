@@ -149,7 +149,7 @@ export const UserProfile = () => {
                   </div>
                 </div>
                   
-                <div className="flex flex-col text-start md:text-start gap-[20px] ">
+                <div className="flex flex-col text-start md:text-start gap-[20px] "> 
                   <h1 className="uppercase font-myfont  text-[25px] ">My Profile</h1>
                 <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.firstName} {  mainUser[0]?.lastName}</span></p>
                   <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Email:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{signedIn?.email}</span></p>

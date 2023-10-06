@@ -3,17 +3,56 @@ import { fullNewsContext } from "../context/Context";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Aos from "aos";
+import { FaUserAlt } from 'react-icons/fa';
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import { toast } from "react-toastify";
+import { RotateLoader } from "react-spinners";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const FullNewsDetails = () => {
-    const {  allNews} = useContext(fullNewsContext);
+  const [spinC, setSpinC] = useState(false); 
+    const {  allNews, mainUser} = useContext(fullNewsContext);
     const { newsHeadline } = useParams();
     const post = allNews.find(post => post?.newsHeadline === newsHeadline)
+  useEffect(() => {
+    Aos.init();
+  }, [])
+  
+  const [commentInput, setCommentInput] = useState('');
+  const postId = post.id;
 
+  const addComment = async (postId) => {
+    if (commentInput === '') {
+      const notification = () => toast('Please input your comment below')
+      notification();
+      return;
+    };
+    const storageRef = doc(db, 'News', postId);
+    setSpinC(true);
+    try {
+      await updateDoc(storageRef, {
+        comments: [...post.comments, commentInput],
+      })
+      const notification = () => toast('You have successfully added a comment');
+      notification();
+      setSpinC(false);
+      setCommentInput('');
+    } catch (error) {
+      setSpinC(false);
+      const notification = () => toast('An error occured please try again')
+      notification();
+    }
+  }
     return(
-        <div className="flex flex-col  py-[50px] justify-between items-start md:flex-row">
-          
+        <div className=" px-[30px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-[50px] justify-between items-start md:flex-row">
+            {spinC && <div className="fixed bg-tpr w-full z-[500] left-0 right-0 flex justify-center h-full top-0 bottom-0 items-center"><RotateLoader className="relative z-[600]" color="#36d7b7"
+           size={30}
+           width={10}
+        /></div>}
             
-                  <div  className="   flex items-center justify-around flex-col  px-[30px] py-[100px] lg:min-h-[100vh] from-slate-50 bg-white rounded-t-[50px] gap-5 to-slate-50">
+                  <div  className=" lg:col-span-2   flex items-center justify-around flex-col   py-[100px] lg:min-h-[100vh] from-slate-50 bg-white rounded-t-[50px] gap-5 to-slate-50">
             
                     <div data-aos='zoom-in-down' aos-data-duration='2000' className="max-w-[700px] flex flex-col gap-3 ">
                             <h1 className="uppercase font-bold text-[20px] md:text-[30px] text-slate-900">{post.newsHeadline}</h1>
@@ -28,15 +67,29 @@ export const FullNewsDetails = () => {
                     </div>
             
       
-        <div className="px-[20px] md:pt-[50px]">
+        <div className="px-[20px]  md:pt-[50px]">
           <div className="flex flex-col gap-5 pb-[100px]">
             <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">Comments</h1>
             <form className="flex flex-col gap-3">
-              <textarea placeholder="drop your comment here" className="bg-slate-50 capitalize text-[20px] w-full border-none p-2 outline-0 h-[30vh] rounded shadow-2xl " name="" id="" ></textarea>
-              <button className="capitalize w-fit p-2 rounded text-slate-50 hover:bg-slate-700 font-semibold bg-slate-900  ">add comment</button>
+              <textarea value={commentInput} onChange={(e) => setCommentInput(e.target.value)} placeholder="drop your comment here" className="bg-slate-50 capitalize text-[20px] w-full border-none p-2 outline-0 h-[30vh] rounded shadow-2xl " name="" id="" ></textarea>
+              <button type="button" onClick={() => addComment(postId)} className="capitalize w-fit p-2 rounded text-slate-50 hover:bg-slate-700 font-semibold bg-slate-900  ">add comment</button>
           </form>
-            <div>
+            <div className="flex flex-col gap-5">
               <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">all comments</h1>
+
+              <div className="flex flex-col gap-5">
+              {post?.comments?.length == 0 &&  <h1 className="my-[30px] text-center text-[20px] text-slate-700">No comment under this post</h1> }
+                {
+                post?.comments?.map((comment, index )=> {
+return    <div className="shadow p-2 rounded flex flex-col gap-2">
+  <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>User</h1>
+  <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment}</p>
+                  </div>
+                  
+                  })
+                }
+             
+              </div>
             </div>
             
           </div>
