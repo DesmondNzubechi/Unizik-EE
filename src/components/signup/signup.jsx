@@ -117,8 +117,8 @@ export const Sign = () => {
                                                     
                                                 }} value={userDetails.level} name="" id="" className=" bg-slate-50 text-slate-900 w-full border-[2px] border flex  flex-col gap-[20px] rounded  placeholder:text-slate-500 outline-0 px-[20px] py-[5px] ">
                                                     <option className="text-[20px] " >select level</option>
-                                                    <option value="500l" className="text-[20px] " >Aspirant</option>
-                                                    <option value="500l" className="text-[20px] " >100level</option>
+                                                    <option value="Aspirant" className="text-[20px] " >Aspirant</option>
+                                                    <option value="100l" className="text-[20px] " >100level</option>
                                                     <option value="200l" className="text-[20px] " >200level</option>
                                                     <option value="300l" className="text-[20px] " >300level</option>
                                                     <option value="400l" className="text-[20px] " >400level</option>

@@ -28,7 +28,18 @@ export const FullNewsDetails = () => {
                     </div>
             
       
-      <div className="px-[20px] md:pt-[50px]">
+        <div className="px-[20px] md:pt-[50px]">
+          <div className="flex flex-col gap-5 pb-[100px]">
+            <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">Comments</h1>
+            <form className="flex flex-col gap-3">
+              <textarea placeholder="drop your comment here" className="bg-slate-50 capitalize text-[20px] w-full border-none p-2 outline-0 h-[30vh] rounded shadow-2xl " name="" id="" ></textarea>
+              <button className="capitalize w-fit p-2 rounded text-slate-50 hover:bg-slate-700 font-semibold bg-slate-900  ">add comment</button>
+          </form>
+            <div>
+              <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">all comments</h1>
+            </div>
+            
+          </div>
         <p className="text-start uppercase text-[25px] font-bold my-[10px] ">More news</p>
       <div className="grid grid-col-1 gap-5 ">
       {allNews?.map((news, newsIndex) => {
