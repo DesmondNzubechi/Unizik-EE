@@ -8,7 +8,7 @@ import Aos from "aos";
 
 const FirstClassStudents = [
     {
-        name: 'Engr. Chukwuma Ebube Miracle',
+        name: 'Chukwuma Ebube Miracle',
         email: 'chukwuma258@gmail.com',
         number: '09050426383',
         picture: Chukwuma,
@@ -19,7 +19,7 @@ const FirstClassStudents = [
          message: []
     },
     {
-        name: 'Engr. Michael Ikechukwu Michael',
+        name: 'Michael Ikechukwu Michael',
         email: 'ikechukwumichael1122@gmail.com',
         number: '08161219798',
         picture: michael,

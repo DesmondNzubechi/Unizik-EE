@@ -20,7 +20,7 @@ const ExStudentLeaders = [
        
     },
     {
-        name: 'Engr. Michael Ikechukwu Michael',
+        name: 'Michael Ikechukwu Michael',
         email: 'ikechukwumichael1122@gmail.com',
         number: '08161219798',
         picture: michael,
