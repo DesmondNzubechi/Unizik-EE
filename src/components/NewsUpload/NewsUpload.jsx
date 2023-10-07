@@ -81,6 +81,7 @@ useEffect(() => {
             fullNews:  newsContents.fullNews,
             date: fullDate,
             category: newsContents.category,
+            comments: [],
             createTime: new Date().getTime(),
            })
         
