@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { fullNewsContext } from "../context/Context";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Aos from "aos";
 import { FaUserAlt } from 'react-icons/fa';
@@ -13,14 +12,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import { MdDeleteForever } from 'react-icons/md';
 export const FullNewsDetails = () => {
   const [spinC, setSpinC] = useState(false); 
-    const {  allNews, mainUser} = useContext(fullNewsContext);
+    const {  allNews, mainUser, signedIn} = useContext(fullNewsContext);
     const { newsHeadline } = useParams();
     const post = allNews.find(post => post?.newsHeadline === newsHeadline)
   useEffect(() => {
     Aos.init();
   }, [])
   
-  const [commentInput, setCommentInput] = useState('');
+  const navig = useNavigate();
+  const [commentInput, setCommentInput] = useState({
+    name: `${mainUser[0]?.firstName} ${mainUser[0]?.lastName}`,
+    comment: '',
+  });
   const postId = post.id;
 
   const deleteComment = async (comment, postId, indexx) => {
@@ -45,6 +48,13 @@ export const FullNewsDetails = () => {
       notification();
       return;
     };
+
+    if (!signedIn) {
+      const notification = () => toast('Kindly login before you can make any comment under post')
+      notification();
+      navig('/login')
+      return;
+    }
     const storageRef = doc(db, 'News', postId);
     setSpinC(true);
     try {
@@ -54,7 +64,7 @@ export const FullNewsDetails = () => {
       const notification = () => toast('You have successfully added a comment');
       notification();
       setSpinC(false);
-      setCommentInput('');
+      setCommentInput({...commentInput, comment: ''});
     } catch (error) {
       setSpinC(false);
       const notification = () => toast('An error occured please try again')
@@ -87,21 +97,21 @@ export const FullNewsDetails = () => {
           <div className="flex flex-col gap-5 pb-[100px]">
             <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">Comments</h1>
             <form className="flex flex-col gap-3">
-              <textarea value={commentInput} onChange={(e) => setCommentInput(e.target.value)} placeholder="drop your comment here" className="bg-slate-50 capitalize text-[20px] w-full border-none p-2 outline-0 h-[30vh] rounded shadow-2xl " name="" id="" ></textarea>
+              <textarea value={commentInput.comment} onChange={(e) => setCommentInput({...commentInput, comment: e.target.value})} placeholder="drop your comment here" className="bg-slate-50 capitalize text-[20px] w-full border-none p-2 outline-0 h-[30vh] rounded shadow-2xl " name="" id="" ></textarea>
               <button type="button" onClick={() => addComment(postId)} className="capitalize w-fit p-2 rounded text-slate-50 hover:bg-slate-700 font-semibold bg-slate-900  ">add comment</button>
           </form>
             <div className="flex flex-col gap-5">
               <h1 className="uppercase font-myfont text-[20px] md:text-[30px]">all comments</h1>
 
               <div className="flex flex-col gap-5">
-              {post?.comments?.length == 0 &&  <h1 className="my-[30px] text-center text-[20px] text-slate-700">No comment under this post</h1> }
+              {post?.comments?.length === 0 &&  <h1 className="my-[30px] text-center text-[20px] text-slate-700">No comment under this post</h1> }
                 {
                 post?.comments?.map((comment, indexx )=> {
                   return <div className="shadow p-2 rounded flex relative flex-col gap-2">
                 
  {mainUser[0]?.stats === 'admin' && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 top-2 text-red-500 text-[20px] hover:text-red-900"/>}
-  <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>User</h1>
-  <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment}</p>
+  <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>{comment?.name}</h1>
+  <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment?.comment}</p>
                   </div>
                   
                   })
