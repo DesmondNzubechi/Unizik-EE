@@ -86,7 +86,7 @@ const abooutUs = () => {
           </div>
 
         {showNav &&
-        <div className="fixed flex flex-col  gap-5 transition ease-out duration-500 left-0 px-[30px] w-[60%] bottom-0 top-0 pt-[100px] bg-slate-900 h-[100vh]">
+        <div className="fixed flex flex-col  gap-5 transition ease-out duration-500 left-0 px-[30px] w-[80%] bottom-0 top-0 pt-[100px] bg-slate-900 h-[100vh]">
          <ul className={`flex capitalize  flex-col justify-center gap-y-[10px] gap-x-[25px]`}>
        
            { /*<li onClick={() => hidenavF()} className="bg-slate-900  text-slate-50 px-[5px] py-[5px] text-[15px] rounded capitaliz font-[700] "><Link to='/'>Home</Link></li>*/}

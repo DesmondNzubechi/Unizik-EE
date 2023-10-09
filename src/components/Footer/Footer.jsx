@@ -11,7 +11,7 @@ export const Footer = () => {
             <div className="flex flex-row-reverse items-start gap-2 ">
                 <div>
                 <h1 className="uppercase text-white font-bold text-[15px] md:text-[20px] ">Electrical Engineering</h1>
-           <p className="text-slate-200 md:text-[15px] text-[12px] ">Anambra State University of Technology (ASUTECH) was established by law in July, 1980 as the first indigenous University of Technology in Nigeria. From the onset, two campuses were opened simultaneously at Enugu and Awka.</p>
+           <p className="text-slate-200 md:text-[15px] text-[12px] ">Empowering electrical engineering students through a comprehensive and dynamic educational experience. We're your one-stop solution for course outlines, learning materials, CGPA calculations, school news, and industry insights.</p>
                 </div>
                 <div className=" max-w-[100px] ">
                 <img src={footerImg} className="rounded " alt="" />
