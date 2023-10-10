@@ -18,10 +18,22 @@ export const FullNewsDetails = () => {
   useEffect(() => {
     Aos.init();
   }, [])
-  
+  const currentDate = new Date();
+const options = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    //weekday: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+   // second: 'numeric'
+};
+const fullDate = currentDate.toLocaleString(undefined, options);
+
   const navig = useNavigate();
   const [commentInput, setCommentInput] = useState({
     name: `${mainUser[0]?.firstName} ${mainUser[0]?.lastName}`,
+    date: fullDate,
     comment: '',
   });
   const postId = post.id;
@@ -89,7 +101,7 @@ export const FullNewsDetails = () => {
                             <p className="text-slate-700 font-bold   text-[15px] md:text-[20px] ">{post.date}</p>
                         <div dangerouslySetInnerHTML={{__html: post.fullNews}} className="text-slate-700 font-fonty  text-[12px]  md:text-[20px] "></div>
         
-                    </div>
+                    </div> 
                     </div>
             
       
@@ -109,8 +121,11 @@ export const FullNewsDetails = () => {
                 post?.comments?.map((comment, indexx )=> {
                   return <div className="shadow p-2 rounded flex relative flex-col gap-2">
                 
- {mainUser[0]?.stats === 'admin' && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 top-2 text-red-500 text-[20px] hover:text-red-900"/>}
-  <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full"/>{comment?.name}</h1>
+ {mainUser[0]?.stats === 'admin' && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 bottom-2 text-red-500 text-[20px] hover:text-red-900"/>}
+                    <div className="flex items-center justify-between">
+                      <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full" />{comment?.name}</h1>
+                      <span className="text-slate-500 text-[12px]">{comment.date}</span>
+                    </div>
   <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment?.comment}</p>
                   </div>
                   
