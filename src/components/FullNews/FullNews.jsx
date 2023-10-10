@@ -34,6 +34,7 @@ const fullDate = currentDate.toLocaleString(undefined, options);
   const [commentInput, setCommentInput] = useState({
     name: `${mainUser[0]?.firstName} ${mainUser[0]?.lastName}`,
     date: fullDate,
+    id: mainUser[0]?.id,
     comment: '',
   });
   const postId = post.id;
@@ -121,7 +122,7 @@ const fullDate = currentDate.toLocaleString(undefined, options);
                 post?.comments?.map((comment, indexx )=> {
                   return <div className="shadow p-2 rounded flex relative flex-col gap-2">
                 
- {mainUser[0]?.stats === 'admin' && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 bottom-2 text-red-500 text-[20px] hover:text-red-900"/>}
+ {(mainUser[0]?.stats === 'admin' || mainUser[0]?.id === comment?.id) && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 bottom-2 text-red-500 text-[20px] hover:text-red-900"/>}
                     <div className="flex items-center justify-between">
                       <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full" />{comment?.name}</h1>
                       <span className="text-slate-500 text-[12px]">{comment.date}</span>
