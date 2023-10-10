@@ -12,6 +12,17 @@ import { Home } from "../Home/home";
 export const Sign = () => {
     const [spinnerJs, setSpinnerJs] = useState(false);
     const [showOthers, setOthers] = useState(false);
+    const currentDate = new Date();
+    const options = {
+        year: 'numeric',
+        month: 'long', // 'short' for abbreviated name, 'long' for full name
+        day: 'numeric',
+        weekday: 'long', // 'short' for abbreviated name, 'long' for full name
+        hour: 'numeric',
+        minute: 'numeric',
+      };
+      const fullDate = currentDate.toLocaleString(undefined, options);
+
     const [userDetails, setUserDetails] = useState({
         firstName: '',
         lastName: '',
@@ -59,6 +70,7 @@ export const Sign = () => {
                 lastName: userDetails.lastName,
                 userLevel: userDetails.level,
                 stats: 'user',
+                date: fullDate
                 }
             )
             setSpinnerJs(false);
