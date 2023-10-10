@@ -124,8 +124,8 @@ const fullDate = currentDate.toLocaleString(undefined, options);
                 
  {(mainUser[0]?.stats === 'admin' || mainUser[0]?.id === comment?.id) && <MdDeleteForever onClick={() => deleteComment(comment, postId, indexx)} className="absolute right-2 bottom-2 text-red-500 text-[20px] hover:text-red-900"/>}
                     <div className="flex items-center justify-between">
-                      <h1 className="font-bold text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[30px]  p-1 rounded-full" />{comment?.name}</h1>
-                      <span className="text-slate-500 text-[12px]">{comment.date}</span>
+                      <h1 className="font-bold text-[12px] md:text-[15px] flex items-center gap-2"><FaUserAlt className="bg-slate-900 text-slate-50 text-[20px] md:text-[30px]  p-1 rounded-full" />{comment?.name}</h1>
+                      <span className="text-slate-500 text-[10px]">{comment.date}</span>
                     </div>
   <p className="text-[12px] md:text-[14px] text-slate-700 ">{comment?.comment}</p>
                   </div>
