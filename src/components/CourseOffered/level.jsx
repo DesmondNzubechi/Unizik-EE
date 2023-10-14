@@ -9,11 +9,7 @@ export const LevelCourseoutlines = () => {
     const getLevel = CoursesOffered.filter(course => {
         return course.Session[0] === Number(Session)
     });
-    const [courseStore, setCourseStore] = useState({
-        first: [],
-        second: [], 
-    }) 
-  
+    
             const firstS = getLevel.filter(semester => {
                  return semester.Session[1] === 1
             })

@@ -3,7 +3,7 @@ import {BsFillTrash3Fill} from 'react-icons/bs';
 import { CoursesOffered } from '../CourseOffered/CourseOffered';
 import cgpaImg from '../../assets/images/cgpa.jpg';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Aos from 'aos';
 let indexd = 1;
@@ -27,23 +27,23 @@ const [courses, setCourses] = useState([]);
 console.log(level);
 const addCourse = () => {
 
-  if (gradee == 'select') {
+  if (gradee === 'select') {
    // notification('Please input grade');
     const notify = () => toast('Please input grade🙏');
     notify();
-  } else if (courseName == '') {
+  } else if (courseName === '') {
     const notify = () => toast('Please input course name🙏');
     notify();
   } else if(selectedUnit == null) {
     const notify = () => toast('Please input credit unit🙏');
     notify();
-  } else if (gradee == 'select' && selectedUnit == null) {
+  } else if (gradee === 'select' && selectedUnit == null) {
     const notify = () => toast('Please input credit unit and Grade🙏');
     notify();
-  } else if (gradee == 'select' && courseName == '') {
+  } else if (gradee === 'select' &&  courseName === '') {
     const notify = () => toast('Please Grade and Course Name🙏');
     notify();
-  } else if (courseName == '' && selectedUnit == null || selectedUnit == '' || '' || 0) {
+  } else if (courseName === '' && selectedUnit == null || selectedUnit == '' || '' || 0) {
     const notify = () => toast('Please input credit unit and Course Name🙏');
     notify();
   } else{
@@ -281,8 +281,6 @@ return(
      onClick={() => {
       setCourseList(
         courseList.filter(c => c.id  !== course.id)
- 
-      
       );
    
 let courseG;
@@ -311,7 +309,7 @@ case 'D':
       totalGrad -= courseD;
       totalUnit -= course.unit;
       AvCgpa = totalGrad / totalUnit;
-   if (AvCgpa == isNaN) {
+   if (AvCgpa === isNaN) {
     AvCgpa = 0;
    } else {
     AvCgpa = AvCgpa;

@@ -3,10 +3,9 @@ import { CoursesOffered } from "./CourseOffered";
 import { useParams } from "react-router-dom";
 import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { Login } from "../login/login";
 export const FullcourseOutline = () => {
-    const navig = useNavigate();
+   
     const { signedIn } = useContext(fullNewsContext);
     const { Course } = useParams();
     const fullOutline = CoursesOffered.find(course => course.Course === Course);

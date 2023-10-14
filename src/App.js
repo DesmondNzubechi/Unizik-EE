@@ -16,7 +16,6 @@ import { FullAbout } from './components/About/fullAbout';
 import { Admission } from './components/Admission/Admission';
 import { Book } from './components/Books/Book';
 import CGPACalculator from './components/cgpa-calc/CgpaCalc';
-import { ExcosProfile } from './components/Excos/Excos';
 import { FullNewsDetails } from './components/FullNews/FullNews';
 import { FullEvent } from './components/Events/FullEvent';
 import { LevelCourses } from './components/Books/CoursesFolder/CoursesFolder';
@@ -63,7 +62,6 @@ function App() {
       <Route path='/Academics/Learning-Resources/:Session/:Course' element={<DownloadPdfs/>} />
       <Route path='/admission requirement' element={<Admission/>} />
      <Route path='/admin-dashboard' element={<Admindashboard/>} />
-     <Route path='/students leaders' element={<ExcosProfile/>} />
      <Route path='/Students/Class-Representative' element={<CourseReps/>} />
      <Route path='/Students/Departmental-Executives' element={<DeptExcos/>} />
      <Route path='/Alumni/Ex-students-leaders' element={<ExDeptExcos/>} />

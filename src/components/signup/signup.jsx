@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BounceLoader, CircleLoader, ClipLoader} from "react-spinners";
+import { BounceLoader} from "react-spinners";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { db } from "../config/firebase";
