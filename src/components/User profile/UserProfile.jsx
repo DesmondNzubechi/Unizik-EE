@@ -7,7 +7,7 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { RotateLoader, GridLoader  } from "react-spinners";
+import { RotateLoader, ClipLoader  } from "react-spinners";
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, db, storage } from "../config/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -138,8 +138,8 @@ export const UserProfile = () => {
            size={30}
            width={10}
         /></div>}
-        {!mainUser[0] ? <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
-          <GridLoader size={50} color="black" />
+        {mainUser[0] ? <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
+          <ClipLoader size={100}  color="black" />
         </div>
           :
           <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
