@@ -138,7 +138,7 @@ export const UserProfile = () => {
            size={30}
            width={10}
         /></div>}
-        {mainUser[0] ? <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
+        {!mainUser[0] ? <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
           <ClipLoader size={100}  color="black" />
         </div>
           :
