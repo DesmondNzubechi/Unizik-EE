@@ -7,14 +7,14 @@ import { fullNewsContext } from "../context/Context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { RotateLoader } from "react-spinners";
+import { RotateLoader, GridLoader  } from "react-spinners";
 import 'react-toastify/dist/ReactToastify.css';
 import { auth, db, storage } from "../config/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { Login } from "../login/login";
 const levels = [
-   100, 200, 300, 400, 500
+   100, 200, 300, 400, 500 
 ];
 export const UserProfile = () => {
   const [spinC, setSpinC] = useState(false);
@@ -138,6 +138,10 @@ export const UserProfile = () => {
            size={30}
            width={10}
         /></div>}
+        {!mainUser[0] ? <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
+          <GridLoader size={50} color="black" />
+        </div>
+          :
           <div className="flex justify-center pt-[150px] flex-row py-[50px] items-center ">
             <div className=" p-5 rounded ">
               <div className="flex flex-col items-start md:items-start md:flex-row gap-5 md:gap-[150px]">
@@ -149,9 +153,9 @@ export const UserProfile = () => {
                   </div>
                 </div>
                   
-                <div className="flex flex-col text-start md:text-start gap-[20px] "> 
+                <div className="flex flex-col text-start md:text-start gap-[20px] ">
                   <h1 className="uppercase font-myfont  text-[25px] ">My Profile</h1>
-                <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.firstName} {  mainUser[0]?.lastName}</span></p>
+                  <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px]  font-bold ">Name:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.firstName} {mainUser[0]?.lastName}</span></p>
                   <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Email:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{signedIn?.email}</span></p>
                   <p className="flex flex-row items-center gap-5"><span className="md:text-[20px] text-[15px] font-bold ">Level:</span> <span className="text-slate-700 text-[12px] md:text-[15px] " >{mainUser[0]?.userLevel}</span></p>
                   <div className="flex items-center  text-center   gap-1">
@@ -163,7 +167,7 @@ export const UserProfile = () => {
               </div>
             </div>
           </div>
-
+        }
 
 
         
