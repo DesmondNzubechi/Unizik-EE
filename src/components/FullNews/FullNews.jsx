@@ -56,7 +56,7 @@ const fullDate = currentDate.toLocaleString(undefined, options);
     }
   }
   const addComment = async (postId) => {
-    if (commentInput === '') {
+    if (commentInput.comment === '') {
       const notification = () => toast('Please input your comment below')
       notification();
       return;
