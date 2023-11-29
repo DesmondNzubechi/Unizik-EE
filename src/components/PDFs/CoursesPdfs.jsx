@@ -85,9 +85,9 @@ return <Login/>
             })
           }} className={`shadow-2xl p-2 md:text-[15px] text-[12px] rounded ${bookCat.pastQuestionBg}  ${bookCat.pastQuestionText} capitalize font-semibold`}>Past Question</button>
         </div>
-       {   filterHandouts.length == 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  handouts is not available now. </h1>  }
-       {   filterTextbook.length == 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  textbook is not available now. </h1>  }
-        {  filterPastQ.length == 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  past exam questions is not available now. </h1>}  
+       {   filterHandouts.length === 0 && bookCat.handoutState && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  handouts is not available now. </h1>  }
+       {   filterTextbook.length === 0 && bookCat.textBookState  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  textbook is not available now. </h1>  }
+        {  filterPastQ.length === 0 && bookCat.pastQuestion  && <h1 className="md:text-[15px] text-[12px] font-bold text-center capitalize mt-[50px] ">{Course}  past exam questions is not available now. </h1>}  
         
        <div className="grid md:grid-cols-3 my-[50px] lg:grid-cols-4 gap-5 grid-cols-1 ">
       

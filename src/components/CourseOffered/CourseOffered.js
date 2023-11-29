@@ -252,10 +252,10 @@ export const CoursesOffered = [
             title: 'Differentiation from first principles of some polynomial and trigonometric functions',
             descrip: ' Techniques of differentiation – sum, products, quotients and chain rules including implicit differentiations. Differentiation of simple algebraic, trigonometric, exponential, logarithmic and composite functions. Higher order derivatives. Applications to extremum and simple rate problems. L’Hospital’s rule, simple Taylor/McLaurin expansion. Curve sketching. Integration as anti-differentiation. The fundamental theorem of integral calculus. Application to areas and volumes. ',
         },
-        {
-            title: 'Natural and artificial radioactivity',
-            descrip: 'Natural and artificial radioactivity. Stability of nucleus. Fission and fusion. Differences between radioactivity and ordinary chemical reactions. Measurements of radioactivity. Decay constant and calculation involving radioactivity. ',
-        },     
+        // {
+        //     title: 'Natural and artificial radioactivity',
+        //     descrip: 'Natural and artificial radioactivity. Stability of nucleus. Fission and fusion. Differences between radioactivity and ordinary chemical reactions. Measurements of radioactivity. Decay constant and calculation involving radioactivity. ',
+        // },     
 ]},
     {Course: "PHY101", CourseTitle:'General Physics I', Credit:3, Session: [100, 1], 
     courseOutlines: [

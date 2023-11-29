@@ -27,7 +27,7 @@ const [pdfDetails, setPdfDetails] =  useState({
 });
 
   const uploadPdf = async () => {
-    if (pdfDetails.level == '' || pdfDetails.semester == '' || pdfDetails.course == '' || pdfDetails.topic == '' || pdfDetails == '' || pdfDatas == null) {
+    if (pdfDetails.level === '' || pdfDetails.semester === '' || pdfDetails.course === '' ||  pdfDetails === '' || pdfDatas == null) {
       const notify = () => toast('Please make sure you fill out the form');
       notify();
       return;
@@ -49,7 +49,7 @@ const [pdfDetails, setPdfDetails] =  useState({
         level: pdfDetails.level,
         semester: pdfDetails.semester,
         course: pdfDetails.course,
-          topic: pdfDetails.topic,
+          topic: pdfDatas.name,
           bookType: pdfDetails.resourcesType,
         link: getPdfLink,
         size: pdfSizeInMB + ' MB',
@@ -132,7 +132,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                 course: e.target.value,
             })
             const getCreditUnit = courses.find(currentCourse => {
-             return currentCourse.Course == e.target.value;
+             return currentCourse.Course === e.target.value;
             });
             setSelectedUnit(getCreditUnit.Credit);
             setSelectedCourse(e.target.value);
@@ -164,7 +164,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                             </select>
                         </div>
 
-                    <div className="flex   flex-col ">
+                    {/* <div className="flex   flex-col ">
                         <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="headline">Topic</label>
                         <input
                         onChange={(e) => {
@@ -174,7 +174,7 @@ const [pdfDetails, setPdfDetails] =  useState({
                                 topic: getTopic,
                             })
                         }}
-                         type="text" name="" className="outline-0 p-2 bg-slate-50 rounded-[2px] md:tex0px] text-[10px] shadow text-slate-900 placeholder:text-slate-900 font-[500] capitalize " placeholder="Input topic" id="" /></div>
+                         type="text" name="" className="outline-0 p-2 bg-slate-50 rounded-[2px] md:tex0px] text-[10px] shadow text-slate-900 placeholder:text-slate-900 font-[500] capitalize " placeholder="Input topic" id="" /></div> */}
 
                     <div className="flex   flex-col ">
                         <label className="md:text-[15px] text-[12px] font-semibold "  htmlFor="image">Pdf</label>

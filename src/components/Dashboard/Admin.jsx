@@ -47,7 +47,7 @@ const [logoutB, setLogoutB] = useState(false);
   const navigate = useNavigate();
   if (mainUser[0]?.stats !== 'admin') {
     return <UserProfile />
-  } else if(mainUser[0]?.stats == 'admin') {
+  } else if(mainUser[0]?.stats === 'admin') {
     return (
       // mainUser[0]?.stats !== 'admin' ? navig('/login'):
       <div className=" z-[100] bg-white  min-h-[100vh] fixed overflow-y-auto w-full left-0 right-0 top-0 pb-[100px] pt-[70px] bottom-0 "
