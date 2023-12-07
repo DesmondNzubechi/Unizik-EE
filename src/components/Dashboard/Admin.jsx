@@ -108,7 +108,15 @@ const [logoutB, setLogoutB] = useState(false);
           <div className={`bg-slate-50 lg:flex ${showBar} shadow z-[10] bottom-0 p-1 md:p-5 fixed  top-0 left-0 h-[100%]`}>
             <div>
               <ul className="flex flex-col px-[5px] pt-[70px] gap-[25px]">
-                <li ><Link to='/' onClick={() => setDisplaying({
+                <li ><Link to='/' onClick={() => {
+                  setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
                   pdfView: false,
                   viewDashboard: true,
                   viewProfile: false,
@@ -125,8 +133,16 @@ const [logoutB, setLogoutB] = useState(false);
                   userViewColor: 'text-slate-700',
                   viewAllNewsColor: 'text-slate-700',
                   viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}> <AiFillHome className={`text-slate-700 text-[17px] md:text-[20px] `} />  <span className={`${sideLinks.textSize}  text-slate-900   `}>Home</span> </Link></li>
-                <li ><Link onClick={() => setDisplaying({
+                })}} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}> <AiFillHome className={`text-slate-700 text-[17px] md:text-[20px] `} />  <span className={`${sideLinks.textSize}  text-slate-900   `}>Home</span> </Link></li>
+                <li ><Link onClick={() => {
+                  setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
                   pdfView: false,
                   viewDashboard: true,
                   viewProfile: false,
@@ -143,8 +159,16 @@ const [logoutB, setLogoutB] = useState(false);
                   userViewColor: 'text-slate-700',
                   viewAllNewsColor: 'text-slate-700',
                   viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}> <AiFillDashboard className={`${displaying.viewDashboardColor} text-[17px] md:text-[20px] `} />  <span className={`${sideLinks.textSize}  text-slate-900   `}>Dashboard</span> </Link></li>
-                <li><Link onClick={() => setDisplaying({
+                })}} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}> <AiFillDashboard className={`${displaying.viewDashboardColor} text-[17px] md:text-[20px] `} />  <span className={`${sideLinks.textSize}  text-slate-900   `}>Dashboard</span> </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
                   pdfView: false,
                   viewDashboard: false,
                   viewProfile: false,
@@ -162,98 +186,144 @@ const [logoutB, setLogoutB] = useState(false);
                   viewAllNewsColor: 'text-slate-700',
                   viewEditNewsColor: 'text-slate-700',
                         
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><BsNewspaper className={`${displaying.newsPostColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Upload News</span> </Link></li>
-                <li><Link onClick={() => setDisplaying({
-                  pdfView: false,
-                  viewDashboard: false,
-                  viewProfile: false,
-                  pdfPost: true,
-                  newsPost: false,
-                  userView: false,
-                  viewAllNews: false,
-                  viewEditNews: false,
-                  pdfViewColor: 'text-slate-700',
-                  viewDashboardColor: 'text-slate-700',
-                  viewProfileColor: 'text-slate-700',
-                  pdfPostColor: 'text-green-500',
-                  newsPostColor: 'text-slate-700',
-                  userViewColor: 'text-slate-700',
-                  viewAllNewsColor: 'text-slate-700',
-                  viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><GiWhiteBook className={`${displaying.pdfPostColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Upload Pdf</span>  </Link></li>
-                <li><Link onClick={() => setDisplaying({
-                  pdfView: false,
-                  viewDashboard: false,
-                  viewProfile: false,
-                  pdfPost: false,
-                  newsPost: false,
-                  userView: true,
-                  viewAllNews: false,
-                  viewEditNews: false,
-                  pdfViewColor: 'text-slate-700',
-                  viewDashboardColor: 'text-slate-700',
-                  viewProfileColor: 'text-slate-700',
-                  pdfPostColor: 'text-slate-700',
-                  newsPostColor: 'text-slate-700',
-                  userViewColor: 'text-green-500',
-                  viewAllNewsColor: 'text-slate-700',
-                  viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaUsers className={`${displaying.userViewColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Users</span> </Link></li>
-                <li><Link onClick={() => setDisplaying({
-                  pdfView: false,
-                  viewDashboard: false,
-                  viewProfile: false,
-                  pdfPost: false,
-                  newsPost: false,
-                  userView: false,
-                  viewAllNews: true,
-                  viewEditNews: false,
-                  pdfViewColor: 'text-slate-700',
-                  viewDashboardColor: 'text-slate-700',
-                  viewProfileColor: 'text-slate-700',
-                  pdfPostColor: 'text-slate-700',
-                  newsPostColor: 'text-slate-700',
-                  userViewColor: 'text-slate-700',
-                  viewAllNewsColor: 'text-green-500',
-                  viewEditNewsColor: 'text-green-500',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><TiNews className={`${displaying.viewAllNewsColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>All News</span> </Link></li>
-                <li><Link onClick={() => setDisplaying({
-                  pdfView: true,
-                  viewDashboard: false,
-                  viewProfile: false,
-                  pdfPost: false,
-                  newsPost: false,
-                  userView: false,
-                  viewAllNews: false,
-                  viewEditNews: false,
-                  pdfViewColor: 'text-green-500',
-                  viewDashboardColor: 'text-slate-700',
-                  viewProfileColor: 'text-slate-700',
-                  pdfPostColor: 'text-slate-700',
-                  newsPostColor: 'text-slate-500',
-                  userViewColor: 'text-slate-700',
-                  viewAllNewsColor: 'text-slate-700',
-                  viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaBook className={`${displaying.pdfViewColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>All Book</span> </Link></li>
+                })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><BsNewspaper className={`${displaying.newsPostColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Upload News</span> </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
+                    pdfView: false,
+                    viewDashboard: false,
+                    viewProfile: false,
+                    pdfPost: true,
+                    newsPost: false,
+                    userView: false,
+                    viewAllNews: false,
+                    viewEditNews: false,
+                    pdfViewColor: 'text-slate-700',
+                    viewDashboardColor: 'text-slate-700',
+                    viewProfileColor: 'text-slate-700',
+                    pdfPostColor: 'text-green-500',
+                    newsPostColor: 'text-slate-700',
+                    userViewColor: 'text-slate-700',
+                    viewAllNewsColor: 'text-slate-700',
+                    viewEditNewsColor: 'text-slate-700',
+                  })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><GiWhiteBook className={`${displaying.pdfPostColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Upload Pdf</span>  </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
+                    pdfView: false,
+                    viewDashboard: false,
+                    viewProfile: false,
+                    pdfPost: false,
+                    newsPost: false,
+                    userView: true,
+                    viewAllNews: false,
+                    viewEditNews: false,
+                    pdfViewColor: 'text-slate-700',
+                    viewDashboardColor: 'text-slate-700',
+                    viewProfileColor: 'text-slate-700',
+                    pdfPostColor: 'text-slate-700',
+                    newsPostColor: 'text-slate-700',
+                    userViewColor: 'text-green-500',
+                    viewAllNewsColor: 'text-slate-700',
+                    viewEditNewsColor: 'text-slate-700',
+                  })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaUsers className={`${displaying.userViewColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Users</span> </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
+                    pdfView: false,
+                    viewDashboard: false,
+                    viewProfile: false,
+                    pdfPost: false,
+                    newsPost: false,
+                    userView: false,
+                    viewAllNews: true,
+                    viewEditNews: false,
+                    pdfViewColor: 'text-slate-700',
+                    viewDashboardColor: 'text-slate-700',
+                    viewProfileColor: 'text-slate-700',
+                    pdfPostColor: 'text-slate-700',
+                    newsPostColor: 'text-slate-700',
+                    userViewColor: 'text-slate-700',
+                    viewAllNewsColor: 'text-green-500',
+                    viewEditNewsColor: 'text-green-500',
+                  })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><TiNews className={`${displaying.viewAllNewsColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>All News</span> </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
+                    pdfView: true,
+                    viewDashboard: false,
+                    viewProfile: false,
+                    pdfPost: false,
+                    newsPost: false,
+                    userView: false,
+                    viewAllNews: false,
+                    viewEditNews: false,
+                    pdfViewColor: 'text-green-500',
+                    viewDashboardColor: 'text-slate-700',
+                    viewProfileColor: 'text-slate-700',
+                    pdfPostColor: 'text-slate-700',
+                    newsPostColor: 'text-slate-500',
+                    userViewColor: 'text-slate-700',
+                    viewAllNewsColor: 'text-slate-700',
+                    viewEditNewsColor: 'text-slate-700',
+                  })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaBook className={`${displaying.pdfViewColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>All Book</span> </Link></li>
                     
-                <li><Link onClick={() => setDisplaying({
-                  pdfView: false,
-                  viewDashboard: false,
-                  viewProfile: true,
-                  pdfPost: false,
-                  newsPost: false,
-                  userView: false,
-                  viewAllNews: false,
-                  viewEditNews: false,
-                  pdfViewColor: 'text-slate-700',
-                  viewDashboardColor: 'text-slate-700',
-                  viewProfileColor: 'text-green-500',
-                  pdfPostColor: 'text-slate-700',
-                  newsPostColor: 'text-slate-500',
-                  userViewColor: 'text-slate-700',
-                  viewAllNewsColor: 'text-slate-700',
-                  viewEditNewsColor: 'text-slate-700',
-                })} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaUserCircle className={`${displaying.viewProfileColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Profile</span> </Link></li>
+                <li><Link onClick={() => {
+                   setSideLinks({
+                    nextIc: true,
+                    prevIc: false,
+                    textSize: 'text-[8px]',
+                    flexType: 'flex-col'
+                  });
+                  setShowBar('hidden');
+                  setDisplaying({
+                    pdfView: false,
+                    viewDashboard: false,
+                    viewProfile: true,
+                    pdfPost: false,
+                    newsPost: false,
+                    userView: false,
+                    viewAllNews: false,
+                    viewEditNews: false,
+                    pdfViewColor: 'text-slate-700',
+                    viewDashboardColor: 'text-slate-700',
+                    viewProfileColor: 'text-green-500',
+                    pdfPostColor: 'text-slate-700',
+                    newsPostColor: 'text-slate-500',
+                    userViewColor: 'text-slate-700',
+                    viewAllNewsColor: 'text-slate-700',
+                    viewEditNewsColor: 'text-slate-700',
+                  })
+                }} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><FaUserCircle className={`${displaying.viewProfileColor} text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Profile</span> </Link></li>
                 <li><Link onClick={() => setLogOut(true)} className={`${sideLinks.flexType}   flex items-center gap-x-2  `}><AiOutlineLogout className={`text-slate-700 text-[17px] md:text-[20px] `} /><span className={`${sideLinks.textSize} text-slate-900   `}>Logout</span> </Link></li>
                
               </ul>
