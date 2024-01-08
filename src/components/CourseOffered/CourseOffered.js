@@ -939,7 +939,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ECE326", CourseTitle: 'Physical Electronics', Credit: 2, Session: [300, 2],
+        Course: "ECE326", CourseTitle: 'Physical Electronics', Credit: 3, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Energy Band in Solids',
@@ -1039,7 +1039,7 @@ export const CoursesOffered = [
             }]
     },
     {
-        Course: "ELE342", CourseTitle: 'Electrodynamic', Credit: 3, Session: [300, 2],
+        Course: "ELE342", CourseTitle: 'Electrodynamic', Credit: 2, Session: [300, 2],
         courseOutlines: [
             {
                 title: 'Basic subject in electrodynamics with emphasis on phenomena associated with waves propagation and radiation.',
