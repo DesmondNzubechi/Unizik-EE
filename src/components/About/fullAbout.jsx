@@ -42,7 +42,8 @@ export const FullAbout = () => {
         <li className="md:text-[15px] font-[500] text-[12px] font-bold ">11. Prof. F. O. Enemuoh 2012 – 2013</li>
         <li className="md:text-[15px] font-[500] text-[12px] font-bold ">12. Prof. Dr. J. C. Onuegbu 2013 – 2019 </li>
         <li className="md:text-[15px] font-[500] text-[12px] font-bold ">13. Prof. Dr. A. E. Anazia 2019 – 2022</li>
-        <li className="md:text-[15px] font-[500] text-[12px] font-bold ">14. Prof. Dr. Ezechukwu Oseloka 2022 to Date.</li>
+        <li className="md:text-[15px] font-[500] text-[12px] font-bold ">14. Prof. Dr. Ezechukwu Oseloka 2022 - 2024</li>
+        <li className="md:text-[15px] font-[500] text-[12px] font-bold ">15. Engr. Dr. KC Obute 2024 to Date.</li>
     </ol>
             </div>
             <div data-aos='fade-up' aos-data-duration='2000' className="flex md:flex-row-reverse pb-[100px] flex-col gap-5 items-center">
