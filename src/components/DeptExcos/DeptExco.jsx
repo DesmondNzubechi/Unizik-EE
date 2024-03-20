@@ -1,94 +1,76 @@
 import React, { useEffect } from "react";
 import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
-import presidoImg from '../../assets/ExcoImages/ezekiel1.jpg';
-import VpImg from '../../assets/ExcoImages/obikc.jpg';
-import secGenImg from '../../assets/ExcoImages/Elvisio1.jpg';
-import finSecImg from '../../assets/ExcoImages/odinaka.jpg';
-import treasurerImg from '../../assets/ExcoImages/emeka.jpg';
-import assistSecGenImg from '../../assets/ExcoImages/onyeulo.jpg';
-import dos1Img from '../../assets/ExcoImages/uzoekwe chinaza.jpg';
-import dos2Img from '../../assets/ExcoImages/onuoha chiamaka.jpg';
-import PROImg from '../../assets/ExcoImages/sammie.jpg';
-import provostImg from '../../assets/ExcoImages/sobenna.jpg';
+import presidoImg from '../../assets/ExcoImages/UKEKWE CHIAMAKA - president.jpg';
+import VpImg from '../../assets/ExcoImages/NWOSU KENNETH - vision president.jpg';
+import secGenImg from '../../assets/ExcoImages/ADAZE -sec gen.jpg';
+import treasurerImg from '../../assets/ExcoImages/ENEMOH PRESCIOS -treasurer.jpg';
+import dos1Img from '../../assets/ExcoImages/UDEAFOR EMMANUEL - Director of sports.jpg';
+import dos2Img from '../../assets/ExcoImages/ONEULO CHINAZA - DOS1.jpg';
+import PROImg from '../../assets/ExcoImages/SAMUEL GIDEON - PRO .jpg';
+import provostImg from '../../assets/ExcoImages/DENNIS UCHENNA - provost.jpg'
 import Aos from "aos";
 const courseRepInfo = [
     {
-        name: 'Comr. Agina Ezekiel Soupluchi ',
-        email: 'agina.ezekiel@gmail.com',
-        number: '08098066766',
+        name: 'COMR. UKEKWE CHIAMAKA PRECIOUS ',
+        email: 'chiamaka@gmail.com',
+        number: '07011050418',
         picture: presidoImg,
         level: 'Final Year',
         position: 'Departmental President'
     },
     {
-        name: 'Comr. Obi Kenechukwu',
-        email: 'obikene316@gmail.com',
+        name: 'COMR. NWOSU CHINUALUMOGU KENNETH',
+        email: 'nwosukenneth@gmail.com',
         number: '08039881477',
         picture: VpImg,
         level: '300l',
         position: 'Vice President'
     },
     {
-        name: 'Comr. Onunwa Ebere Elvis',
-        email: 'eo.elvis@stu.unizik.edu.ng',
-        number: '07052065354',
+        name: 'COMR. NWAJIOBI ADAEZE FAVOUR',
+        email: 'adaeze',
+        number: '08108606618',
         picture: secGenImg,
         level: '300l',
         position: 'Secretary General'
     },
     {
-        name: 'Comr. Okafor Odinakachukwu Desmond',
-        email: 'desmondchef999@gmail.com',
-        number: '08117512508',
-        picture: finSecImg,
-        level: '200l',
-        position: 'Financial Secretary'
-    },
-    {
-        name: 'Comr. Okafor Emeka',
-        email: 'Emmyfresh999@gmail.com',
-        number: '09134039101',
+        name: 'COMR. ENEMOH PRECIOUS CHIMELU',
+        email: 'Enemohprecious@gmail.com',
+        number: '09157018267',
         picture: treasurerImg,
         level: '300l',
         position: 'Treasurer'
     },
     {
-        name: 'Comr. ONYEULO PERPETUAL CHINAZA',
-        email: 'onyeperpetual83@gmail.com',
-        number: '09061701409',
-        picture: assistSecGenImg,
-        level: '200l',
-        position: 'Assistant Secretary General'
-    },
-    {
-        name: 'Comr. UZOEKWE CHINAZA HENRY',
-        email: 'chinazauzoekwe5@gmail.com',
-        number: '07015740619',
+        name: 'COMR. Udeafor Emmanuel Somtochuwku',
+        email: 'udeafor@gmail.com',
+        number: '09165587195',
         picture: dos1Img,
         level: '200l',
         position: 'Director Of Sports (DOS1)'
     },
     {
-        name: 'Comr. ONUOHA FAVOUR CHIAMAKA',
-        email: 'fchiamaka2002@gmail.com',
+        name: 'COMR. ONYEULO PERPETUAL CHINAZA',
+        email: 'onyeuloperpetual@gmail.com',
         number: '09159108915',
         picture: dos2Img,
-        level: '200l',
+        level: '300l',
         position: 'Director Of Socials(DOS2)'
     },
     {
-        name: 'Comr. Samuel .C. Uzoamaka',
-        email: 'nechesamuel114@gmail.com',
-        number: '08085805925',
+        name: 'COMR. SAMUEL GIDEON',
+        email: 'samuelgideon@gmail.com',
+        number: '07064419616',
         picture: PROImg,
         level: '100l',
         position: 'Public Relation Officer (PRO)'
     },
     {
-        name: 'Comr. EKWUEME SOBENNA SYBIL',
+        name: 'COMR. DENNIS UCHENNA OLUEBUBECHUKWU',
         email: 'provost@gmail.com',
-        number: '09156414196',
+        number: '09034865501',
         picture: provostImg,
         level: '100l',
         position: 'Provost'

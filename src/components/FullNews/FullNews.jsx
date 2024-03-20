@@ -46,7 +46,7 @@ const fullDate = currentDate.toLocaleString(undefined, options);
     const updatedComment = post.comments.filter((com, index) => index !== indexx)
     try {
       await updateDoc(commentStore, {
-        comments: [...updatedComment]
+        comments: [...updatedComment] 
       });
       const notification = () => toast('Comment successfully deleted');
       notification();

@@ -3,6 +3,7 @@ import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
 import { IoSchoolSharp } from 'react-icons/io5';
 import ose from '../../assets/alumni/ose.jpg';
 import michael from '../../assets/alumni/michael.jpg';
+import ezekiel from '../../assets/alumni/ezekiel.jpg';
 import { useState  } from "react";
 import Aos from "aos";
 
@@ -28,6 +29,18 @@ const ExStudentLeaders = [
         state: 'Anambra',
         lga: '',
         position: 'Departmental President - 2021/2022',
+        message: []
+       
+    },
+    {
+        name: 'COMR. AGINA EZEKIEL SOUPLUCHI',
+        email: 'agina.ezekiel@gmail.com',
+        number: '08161219798',
+        picture: ezekiel,
+        year: 'Class of 2023',
+        state: 'Anambra',
+        lga: '',
+        position: 'Departmental President - 2022/2023',
         message: []
        
     },

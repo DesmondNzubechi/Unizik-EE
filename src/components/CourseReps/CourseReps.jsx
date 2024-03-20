@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import  samPic from '../../assets/CRImages/Samuel1.jpg';
+import  eloka from '../../assets/CRImages/eloka.jpg';
 import  justusPic  from '../../assets/CRImages/Justice.jpg';
 import nzubechukwuPic from '../../assets/CRImages/B2R1.jpg';
 import daberePic from '../../assets/CRImages/Dabere1.jpg';
@@ -10,38 +10,38 @@ import Aos from "aos";
 
 const courseRepInfo = [
     {
-        name: 'Samuel Nonso Nonyelu',
-        email: 'nonsononyelu@gmail.com',
-        number: '09081996708',
-        picture: samPic,
-        level: 'Final Year'
-    },
-    {
         name: 'Ezeadu Dabere Assumpta',
         email: 'ezeadudabere@gmail.com',
         number: '08035011681',
         picture: daberePic,
-        level: '400l'
+        level: 'Final Year'
     },
     {
         name: 'Abugu Desmond Nzubechukwu',
         email: 'desmondnzubechukwu1@gmail.com',
         number: '07084183611',
         picture: nzubechukwuPic,
-        level: '300l'
+        level: '400l'
     },
     {
         name: 'OKOLI WISDOM CHUKWUEMEKA',
         email: 'okoliwisdom35@gmail.com',
         number: '08126169285',
         picture: wisdomPic,
-        level: '200l'
+        level: '300l'
     },
     {
         name: 'ARINZE CHINECHEREM JUSTUS',
         email: ' arinzejustus59@gmail.com',
         number: '09072106809',
         picture: justusPic,
+        level: '200l'
+    },
+    {
+        name: 'OKORO OLISAELOKA EMMANUEL',
+        email: 'okoroemmanuel018@gmail.com',
+        number: '08123374435',
+        picture: eloka,
         level: '100l'
     },
 ];
