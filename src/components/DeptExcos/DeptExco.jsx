@@ -13,7 +13,7 @@ import Aos from "aos";
 const courseRepInfo = [
     {
         name: 'COMR. UKEKWE CHIAMAKA PRECIOUS ',
-        email: 'chiamaka@gmail.com',
+        email: 'Amakaukekwe0@gmail.com',
         number: '07011050418',
         picture: presidoImg,
         level: 'Final Year',
@@ -21,7 +21,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. NWOSU CHINUALUMOGU KENNETH',
-        email: 'nwosukenneth@gmail.com',
+        email: 'chinuakenneth668@gmail.com',
         number: '08039881477',
         picture: VpImg,
         level: '300l',
@@ -29,7 +29,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. NWAJIOBI ADAEZE FAVOUR',
-        email: 'adaeze',
+        email: 'nwajiobiadaeze3@gmail.com',
         number: '08108606618',
         picture: secGenImg,
         level: '300l',
@@ -37,7 +37,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. ENEMOH PRECIOUS CHIMELU',
-        email: 'Enemohprecious@gmail.com',
+        email: 'preciousenemoh.pe@gmail.com',
         number: '09157018267',
         picture: treasurerImg,
         level: '300l',
@@ -45,7 +45,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. Udeafor Emmanuel Somtochuwku',
-        email: 'udeafor@gmail.com',
+        email: 'udeaforemmanuel8@gmail.com',
         number: '09165587195',
         picture: dos1Img,
         level: '200l',
@@ -53,7 +53,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. ONYEULO PERPETUAL CHINAZA',
-        email: 'onyeuloperpetual@gmail.com',
+        email: 'onyeperpetual83@gmail.com',
         number: '09159108915',
         picture: dos2Img,
         level: '300l',
@@ -61,7 +61,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. SAMUEL GIDEON',
-        email: 'samuelgideon@gmail.com',
+        email: 'okekesamuelayomikun1@gmail.com',
         number: '07064419616',
         picture: PROImg,
         level: '100l',
@@ -69,7 +69,7 @@ const courseRepInfo = [
     },
     {
         name: 'COMR. DENNIS UCHENNA OLUEBUBECHUKWU',
-        email: 'provost@gmail.com',
+        email: 'dennisuchenna123@gmail.com',
         number: '09034865501',
         picture: provostImg,
         level: '100l',
